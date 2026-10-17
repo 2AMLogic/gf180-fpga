@@ -1,0 +1,10 @@
+{
+  "block": "gf180-fpga",
+  "kind": "digital",
+  "evidence": {
+    "10": {
+      "file": "verification/signoff/item10-repo-hygiene.json",
+      "content_hash": "sha256:7e9ffe4a3ef2feaf444229c1ec2fab7decfcc99b7b236cc46a3bc63f0f02756f"
+    }
+  }
+}

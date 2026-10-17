@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "kind": "t1-attestation-inventory",
+  "t1_item": 10,
+  "description": "Repo hygiene (T1 item 10): README, LICENSE and the CI workflows exist, and the README and package.json say nothing the repo cannot back.",
+  "hygiene": [
+    "README.md",
+    "LICENSE",
+    ".github/workflows/signoff.yml",
+    ".github/workflows/verification.yml"
+  ],
+  "checks": [
+    {
+      "name": "readme-cites-spec-issue-2",
+      "argv": ["grep", "-q", "engineering to ratify, see issue #2)", "README.md"]
+    },
+    {
+      "name": "signoff-ci-runs-the-record-check",
+      "argv": ["grep", "-q", "manifests/run-signoff.sh --check", ".github/workflows/signoff.yml"]
+    },
+    {
+      "name": "no-placeholder-package-scripts",
+      "argv": [
+        "python3", "-I", "-c",
+        "import json,sys; s=json.load(open('package.json'))['scripts']; bad=[k for k,v in s.items() if 'exit 0' in v or 'No ' in v]; sys.exit('placeholder scripts: %s' % bad if bad else 0)"
+      ]
+    }
+  ]
+}

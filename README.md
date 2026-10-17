@@ -44,7 +44,7 @@ What changes on gf180mcu is everything physical:
   delay and wire delay in the switch matrix differs from 130 nm, which is
   exactly what a port is meant to expose.
 
-## Target specification (DRAFT — engineering to ratify, see issue #1)
+## Target specification (DRAFT — engineering to ratify, see issue #2)
 
 Port parity: the architectural rows are `sky130-fpga`'s ratified tile spec,
 unchanged. The physical and timing rows are re-derived here.
