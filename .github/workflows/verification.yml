@@ -1,0 +1,69 @@
+name: verification
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+env:
+  ICARUS_VERSION: "13.0"
+
+jobs:
+  verification:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Cache Icarus Verilog
+        id: icarus-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/icarus
+          key: icarus-${{ env.ICARUS_VERSION }}-ubuntu-24.04
+      - name: Build pinned Icarus Verilog
+        if: steps.icarus-cache.outputs.cache-hit != 'true'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends build-essential autoconf gperf flex bison
+          tag="v$(echo "$ICARUS_VERSION" | tr . _)"
+          git clone --depth 1 --branch "$tag" https://github.com/steveicarus/iverilog.git /tmp/iverilog
+          cd /tmp/iverilog
+          sh autoconf.sh
+          ./configure --prefix="$HOME/icarus"
+          make -j2
+          make install
+      - name: Install Verilator
+        run: sudo apt-get install -y --no-install-recommends verilator
+      - name: Install pinned Python deps
+        run: |
+          echo "$HOME/icarus/bin" >> "$GITHUB_PATH"
+          pip install -r verification/requirements.txt
+      - name: Smoke test and negative control
+        # runner exits 0 only if the good DUT passes AND the negative control fails
+        run: python3 verification/runner.py verification/smoke
+      - name: Assert negative control failed
+        run: |
+          python3 - <<'PY'
+          import json, sys
+          r = json.load(open("verification/smoke/sim_build/result.json"))
+          print(json.dumps(r["tools"]))
+          nc = r["legs"]["negative_control"]
+          assert nc["expected"] == "fail" and any(t["result"] == "fail" for t in nc["tests"]), "negative control did not fail"
+          assert r["tools"]["icarus"] == "13.0", f"unexpected Icarus {r['tools']['icarus']}"
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: verification-result
+          path: verification/**/sim_build/result.json
+
+  rtl-lint:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Verilator
+        run: sudo apt-get install -y --no-install-recommends verilator
+      - name: Lint rtl/
+        run: verification/lint_rtl.sh
