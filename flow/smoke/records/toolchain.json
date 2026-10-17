@@ -1,0 +1,20 @@
+{
+  "_comment": "Toolchain and pin behind the sibling *.synth.json / *.par.json records. Recorded 2026-10-17.",
+  "base_commit": "88ab5c8",
+  "pdk": {
+    "open_pdks_revision": "f6eeac7dad085ffcc829ccfd721f7b4ce39edcf7",
+    "variant": "gf180mcuD",
+    "installer": "ciel 2.6.1 (uvx --from ciel==2.6.1)",
+    "pin_file": "flow/pdk.json"
+  },
+  "tools": {
+    "klt": "0.7.1.dev1754+g81ac4d3915c1",
+    "yosys": "0.67+post (git b8e7da6f40ae8f552c116bf6c359b07c6533e159)",
+    "openroad": "26Q3-1510-g6cb3f2b704",
+    "ciel": "2.6.1",
+    "FABulous": "2.2.0 (obtainable via uvx --from FABulous-FPGA FABulous; not installed on the host, not used by the smoke)",
+    "nextpnr-generic": "not installed"
+  },
+  "corner": "tt_025C_5v00",
+  "backend": "local, single corner"
+}

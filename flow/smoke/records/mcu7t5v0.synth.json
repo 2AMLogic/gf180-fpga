@@ -1,0 +1,104 @@
+{
+  "schema_version": 2,
+  "engine": "yosys",
+  "engine_version": "0.67+post",
+  "hdl_toplevel": "smoke_lut4",
+  "parameters": {},
+  "run_id": "run-eb9b045246114181bb25d2cadb37170f",
+  "status": "ok",
+  "instance_count": 3,
+  "area_um2": 140.4928,
+  "sequential_area_um2": 63.6608,
+  "instance_counts_by_type": {
+    "gf180mcu_fd_sc_mcu7t5v0__dffq_1": 1,
+    "gf180mcu_fd_sc_mcu7t5v0__xor2_1": 1,
+    "gf180mcu_fd_sc_mcu7t5v0__xor3_1": 1
+  },
+  "leakage_power_nw": null,
+  "leakage_by_type_nw": null,
+  "timing": {
+    "source": "abc_stime",
+    "wire_load": null,
+    "critical_path_ps": 1123.78,
+    "delay_target_ps": null
+  },
+  "clock_targets": {
+    "clocks": [],
+    "delay_target_ps": null,
+    "delay_target_basis": "none",
+    "per_clock_enforced": false
+  },
+  "sta": null,
+  "sta_unavailable_reason": "the optional klt_statime_native extension is not installed, so no gate-level static timing analysis was attempted -- from a repo checkout, run `uv sync --group statime` (or `maturin develop --release` inside native/statime/) and re-run to populate `sta`",
+  "structural": {
+    "latches": 0,
+    "expected_latches": 0,
+    "unexpected_latches": 0,
+    "comb_loops": 0,
+    "multi_driven": 0,
+    "has_critical": false
+  },
+  "cell_exclusions": {
+    "mode": "additive",
+    "requested": [],
+    "library_defaults": [],
+    "effective": [],
+    "validated": null,
+    "engine_supports_dont_use": null
+  },
+  "warnings": {
+    "total": 0,
+    "by_category": {},
+    "representatives": []
+  },
+  "memory_mapping": {
+    "status": "none_detected",
+    "reason": null,
+    "modules": [],
+    "script_path": {
+      "path": "flow/smoke/mcu7t5v0/.klt/synthesize/run-eb9b045246114181bb25d2cadb37170f/smoke_lut4_memory_evidence.ys",
+      "scope": "repo"
+    }
+  },
+  "blackbox_modules": [],
+  "netlist_path": {
+    "path": "flow/smoke/mcu7t5v0/.klt/synthesize/run-eb9b045246114181bb25d2cadb37170f/smoke_lut4_synth.v",
+    "scope": "repo"
+  },
+  "netlist_sha256": "216e22828a4a8c282199cdebedbdcdf240200928c56edfc09da14b10a57bb325",
+  "script_path": {
+    "path": "flow/smoke/mcu7t5v0/.klt/synthesize/run-eb9b045246114181bb25d2cadb37170f/synth_smoke_lut4.ys",
+    "scope": "repo"
+  },
+  "run_script_path": {
+    "path": "flow/smoke/mcu7t5v0/.klt/synthesize/run-eb9b045246114181bb25d2cadb37170f/synth_smoke_lut4.run.ys",
+    "scope": "repo"
+  },
+  "provenance": {
+    "klt_version": "0.7.1.dev1754+g81ac4d3915c1",
+    "klayout_version": "0.30.12",
+    "pdk": {
+      "name": "gf180mcuD",
+      "source": "PDK_ROOT environment variable",
+      "version": "open_pdks f6eeac7dad085ffcc829ccfd721f7b4ce39edcf7",
+      "ambiguous_sources": [
+        "search root: ~/.ciel",
+        "search root: ~/.volare"
+      ]
+    },
+    "deck": {
+      "name": "gf180mcu_fd_sc_mcu7t5v0__tt_025C_5v00",
+      "content_hash": "sha256:330aa9439255e3870ad7adfb987cd4d7bcfa7b6f9fb0cd0a712400e9bd80e38a",
+      "released": false
+    },
+    "input": {
+      "content_hash": "sha256:b8d8f503f2042ed189b1cca33b72afb693f8ce9179db8db4f45ecc94929124cb",
+      "role": "source"
+    },
+    "parameters": {}
+  },
+  "equivalence": null,
+  "restructuring": null,
+  "arithmetic": null,
+  "baseline": null
+}
