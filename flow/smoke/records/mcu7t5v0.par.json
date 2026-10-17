@@ -1,0 +1,1427 @@
+{
+  "schema_version": 1,
+  "engine": "openroad",
+  "engine_version": "26Q3-1510-g6cb3f2b704",
+  "engine_logs": [
+    {
+      "invocation_id": "11c80c6844b84d659873cab539f18e6f",
+      "script_name": "pnr_smoke_lut4_floorplan.tcl",
+      "script_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/pnr_smoke_lut4_floorplan.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "4037dde960b5d81b0fcc8243db1fb8060463ea55ee80e2ed2d2f4321e9dcc8cd",
+      "metrics_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/smoke_lut4_floorplan_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/11c80c6844b84d659873cab539f18e6f",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/11c80c6844b84d659873cab539f18e6f/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/11c80c6844b84d659873cab539f18e6f/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/11c80c6844b84d659873cab539f18e6f/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "88bd67a26cd44c31af7ab2e85abd6548",
+      "script_name": "pnr_smoke_lut4_place.tcl",
+      "script_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/pnr_smoke_lut4_place.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "4fea58a5e221b9dc5de88c8bca43d93c6f92b393fc0a15d0dcb07cf8ba1b5b4a",
+      "metrics_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/smoke_lut4_place_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/88bd67a26cd44c31af7ab2e85abd6548",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/88bd67a26cd44c31af7ab2e85abd6548/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/88bd67a26cd44c31af7ab2e85abd6548/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/88bd67a26cd44c31af7ab2e85abd6548/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "6a14b6db22c8495ba780e534cf98722a",
+      "script_name": "pnr_smoke_lut4_cts.tcl",
+      "script_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/pnr_smoke_lut4_cts.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "51f14c8981d595f4d6ff0e55f7b7e4d68c231a8334dde508544d41d5394158ec",
+      "metrics_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/smoke_lut4_cts_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/6a14b6db22c8495ba780e534cf98722a",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/6a14b6db22c8495ba780e534cf98722a/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/6a14b6db22c8495ba780e534cf98722a/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/6a14b6db22c8495ba780e534cf98722a/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "c243a7fe130e48db8af47cbdb7b5330f",
+      "script_name": "pnr_smoke_lut4_route.tcl",
+      "script_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/pnr_smoke_lut4_route.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "00f9bd7c640938aa5a04cfc73e518ee786ef0325e1092093ba7631f5343c1dc9",
+      "metrics_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/smoke_lut4_route_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/c243a7fe130e48db8af47cbdb7b5330f",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/c243a7fe130e48db8af47cbdb7b5330f/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/c243a7fe130e48db8af47cbdb7b5330f/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/c243a7fe130e48db8af47cbdb7b5330f/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "6a9ff28295fa47c5bff00e4e1bde17da",
+      "script_name": "pnr_smoke_lut4_route_corners.tcl",
+      "script_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/pnr_smoke_lut4_route_corners.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "df3acf0dfd99480e3052fec8cb56453b1c2281711499b395700befb9e8f9554c",
+      "metrics_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/smoke_lut4_route_corners_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/6a9ff28295fa47c5bff00e4e1bde17da",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/6a9ff28295fa47c5bff00e4e1bde17da/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/6a9ff28295fa47c5bff00e4e1bde17da/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/6a9ff28295fa47c5bff00e4e1bde17da/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "40badb7d3bae4bfa8e4b380b36056cb3",
+      "script_name": "pnr_smoke_lut4_route_corner_ff_125C_1v98.tcl",
+      "script_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/pnr_smoke_lut4_route_corner_ff_125C_1v98.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "ff2002ef2288064f65b21ee3eb73d60987335f3f3157d85411cdf025fc6aefc5",
+      "metrics_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/smoke_lut4_route_corner_ff_125C_1v98_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/40badb7d3bae4bfa8e4b380b36056cb3",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/40badb7d3bae4bfa8e4b380b36056cb3/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/40badb7d3bae4bfa8e4b380b36056cb3/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/40badb7d3bae4bfa8e4b380b36056cb3/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "d158216f602e4ad3a85c326577a5e91a",
+      "script_name": "pnr_smoke_lut4_route_corner_ff_125C_3v60.tcl",
+      "script_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/pnr_smoke_lut4_route_corner_ff_125C_3v60.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "d35e084c8a70e51d89d5361c859cba203d54df80d4ffb69d8ce32d49387439c1",
+      "metrics_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/smoke_lut4_route_corner_ff_125C_3v60_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/d158216f602e4ad3a85c326577a5e91a",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/d158216f602e4ad3a85c326577a5e91a/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/d158216f602e4ad3a85c326577a5e91a/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/d158216f602e4ad3a85c326577a5e91a/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "03903e18ca2e432c930f2e14274d9d20",
+      "script_name": "pnr_smoke_lut4_route_corner_ff_125C_5v50.tcl",
+      "script_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/pnr_smoke_lut4_route_corner_ff_125C_5v50.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "44c0cbdefa202d473e50ba1b6d44fdf2dfa0d8c9bfa9a2a5e5ca88d44c84056c",
+      "metrics_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/smoke_lut4_route_corner_ff_125C_5v50_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/03903e18ca2e432c930f2e14274d9d20",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/03903e18ca2e432c930f2e14274d9d20/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/03903e18ca2e432c930f2e14274d9d20/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/03903e18ca2e432c930f2e14274d9d20/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "5a20017520af4bb58366ef4180d6424a",
+      "script_name": "pnr_smoke_lut4_route_corner_ff_n40C_1v98.tcl",
+      "script_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/pnr_smoke_lut4_route_corner_ff_n40C_1v98.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "1542cae797c29305b805c514a006433831414e9da91818de2a59451aaab69afd",
+      "metrics_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/smoke_lut4_route_corner_ff_n40C_1v98_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/5a20017520af4bb58366ef4180d6424a",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/5a20017520af4bb58366ef4180d6424a/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/5a20017520af4bb58366ef4180d6424a/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/5a20017520af4bb58366ef4180d6424a/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "1de6fa6509bc44fba703b787899780ea",
+      "script_name": "pnr_smoke_lut4_route_corner_ff_n40C_3v60.tcl",
+      "script_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/pnr_smoke_lut4_route_corner_ff_n40C_3v60.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "fc73cb4537c220c7ce82c18703707243ca938f8bb42cac3a44fb10f38cec02ee",
+      "metrics_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/smoke_lut4_route_corner_ff_n40C_3v60_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/1de6fa6509bc44fba703b787899780ea",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/1de6fa6509bc44fba703b787899780ea/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/1de6fa6509bc44fba703b787899780ea/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/1de6fa6509bc44fba703b787899780ea/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "41a417eaee0348afb015eeb0be8d5a3f",
+      "script_name": "pnr_smoke_lut4_route_corner_ff_n40C_5v50.tcl",
+      "script_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/pnr_smoke_lut4_route_corner_ff_n40C_5v50.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "ba158f97e58c6590924c50bda7de71608b49a72eee3118b52b9013da617aa362",
+      "metrics_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/smoke_lut4_route_corner_ff_n40C_5v50_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/41a417eaee0348afb015eeb0be8d5a3f",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/41a417eaee0348afb015eeb0be8d5a3f/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/41a417eaee0348afb015eeb0be8d5a3f/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/41a417eaee0348afb015eeb0be8d5a3f/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "755be4ddbf814744a7e282d2e26b1c9f",
+      "script_name": "pnr_smoke_lut4_route_corner_ss_125C_1v62.tcl",
+      "script_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/pnr_smoke_lut4_route_corner_ss_125C_1v62.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "1b4841ac19b80e9067021034e93e452a7a71fbdc8e67811bd6cebc3c94bea443",
+      "metrics_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/smoke_lut4_route_corner_ss_125C_1v62_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/755be4ddbf814744a7e282d2e26b1c9f",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/755be4ddbf814744a7e282d2e26b1c9f/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/755be4ddbf814744a7e282d2e26b1c9f/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/755be4ddbf814744a7e282d2e26b1c9f/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "7bebdfd3d2c7489d80a2a7c503b2f76a",
+      "script_name": "pnr_smoke_lut4_route_corner_ss_125C_3v00.tcl",
+      "script_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/pnr_smoke_lut4_route_corner_ss_125C_3v00.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "866e2e48df51864b4e84ec143385d54c64f8790ec5e83dc049ed93b1395406ff",
+      "metrics_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/smoke_lut4_route_corner_ss_125C_3v00_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/7bebdfd3d2c7489d80a2a7c503b2f76a",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/7bebdfd3d2c7489d80a2a7c503b2f76a/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/7bebdfd3d2c7489d80a2a7c503b2f76a/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/7bebdfd3d2c7489d80a2a7c503b2f76a/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "eda394d2b85741e6b3d3e038d50d25b5",
+      "script_name": "pnr_smoke_lut4_route_corner_ss_125C_4v50.tcl",
+      "script_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/pnr_smoke_lut4_route_corner_ss_125C_4v50.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "6824def7373f2e2d89756aec2dc9c0b6983c5496819410a9ef5d8ea4db09e213",
+      "metrics_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/smoke_lut4_route_corner_ss_125C_4v50_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/eda394d2b85741e6b3d3e038d50d25b5",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/eda394d2b85741e6b3d3e038d50d25b5/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/eda394d2b85741e6b3d3e038d50d25b5/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/eda394d2b85741e6b3d3e038d50d25b5/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "b83156959a49492dab2a250f2aa2e073",
+      "script_name": "pnr_smoke_lut4_route_corner_ss_n40C_1v62.tcl",
+      "script_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/pnr_smoke_lut4_route_corner_ss_n40C_1v62.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "f041682b854e22cefcfaad541d6d27d3ed6f152100affa5cf859fffe7008f49d",
+      "metrics_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/smoke_lut4_route_corner_ss_n40C_1v62_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/b83156959a49492dab2a250f2aa2e073",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/b83156959a49492dab2a250f2aa2e073/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/b83156959a49492dab2a250f2aa2e073/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/b83156959a49492dab2a250f2aa2e073/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "b9eac77e3a8148c4a0163501866510d2",
+      "script_name": "pnr_smoke_lut4_route_corner_ss_n40C_3v00.tcl",
+      "script_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/pnr_smoke_lut4_route_corner_ss_n40C_3v00.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "00a6521746f11ff388ff2b0d16a25a5a4306565611c3e981efb84d0c7e5f6db5",
+      "metrics_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/smoke_lut4_route_corner_ss_n40C_3v00_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/b9eac77e3a8148c4a0163501866510d2",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/b9eac77e3a8148c4a0163501866510d2/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/b9eac77e3a8148c4a0163501866510d2/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/b9eac77e3a8148c4a0163501866510d2/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "ff6c7f21d89b4b57815ea5cedead6ef4",
+      "script_name": "pnr_smoke_lut4_route_corner_ss_n40C_4v50.tcl",
+      "script_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/pnr_smoke_lut4_route_corner_ss_n40C_4v50.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "7ead3f2833ce02b846feaa2b0a53ba33a750d1eb24e7954048334f1ad2884c1f",
+      "metrics_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/smoke_lut4_route_corner_ss_n40C_4v50_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/ff6c7f21d89b4b57815ea5cedead6ef4",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/ff6c7f21d89b4b57815ea5cedead6ef4/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/ff6c7f21d89b4b57815ea5cedead6ef4/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/ff6c7f21d89b4b57815ea5cedead6ef4/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "35fe6c930c93481186a9de67563ff487",
+      "script_name": "pnr_smoke_lut4_route_corner_tt_025C_1v80.tcl",
+      "script_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/pnr_smoke_lut4_route_corner_tt_025C_1v80.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "812652eb57e5ec5c2d33d9fa24c99c05a94feb88329ea158447298399998ba65",
+      "metrics_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/smoke_lut4_route_corner_tt_025C_1v80_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/35fe6c930c93481186a9de67563ff487",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/35fe6c930c93481186a9de67563ff487/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/35fe6c930c93481186a9de67563ff487/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/35fe6c930c93481186a9de67563ff487/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "a52d04c6f4bf4c3c8f07d086d7dbe76e",
+      "script_name": "pnr_smoke_lut4_route_corner_tt_025C_3v30.tcl",
+      "script_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/pnr_smoke_lut4_route_corner_tt_025C_3v30.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "486a541ab91d79220bfd3d1bbadb3d574f45c4e56d24c99e4233fd24e76cea0f",
+      "metrics_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/smoke_lut4_route_corner_tt_025C_3v30_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/a52d04c6f4bf4c3c8f07d086d7dbe76e",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/a52d04c6f4bf4c3c8f07d086d7dbe76e/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/a52d04c6f4bf4c3c8f07d086d7dbe76e/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/a52d04c6f4bf4c3c8f07d086d7dbe76e/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "79b316c60d4f4dda90b8e30ca9c429ea",
+      "script_name": "pnr_smoke_lut4_route_corner_tt_025C_5v00.tcl",
+      "script_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/pnr_smoke_lut4_route_corner_tt_025C_5v00.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "c1a5de91854fc616374ff052b1c944bb5ac6ddd44471222bc698fe917ece25cc",
+      "metrics_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/smoke_lut4_route_corner_tt_025C_5v00_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/79b316c60d4f4dda90b8e30ca9c429ea",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/79b316c60d4f4dda90b8e30ca9c429ea/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/79b316c60d4f4dda90b8e30ca9c429ea/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "flow/smoke/mcu7t5v0/.klt/place-and-route/openroad-logs/79b316c60d4f4dda90b8e30ca9c429ea/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    }
+  ],
+  "hdl_toplevel": "smoke_lut4",
+  "netlist": {
+    "path": "flow/smoke/mcu7t5v0/netlist/smoke_lut4_synth.v",
+    "scope": "repo"
+  },
+  "status": "ok",
+  "stage_reached": "route",
+  "seed": 1,
+  "coverage": {
+    "metal_density_fill": {
+      "status": "unsupported",
+      "inserted": false,
+      "reason": "no metal density fill is inserted at any stage; standard-cell gap fillers are not metal fill"
+    },
+    "density_compliance": {
+      "status": "unsupported",
+      "evaluated": false,
+      "reason": "metal density rules are not evaluated by place-and-route; a zero route_drc_violation_count does not imply density compliance"
+    }
+  },
+  "interconnect_corner": "nom",
+  "die_area_um2": 12294.4,
+  "core_area_um2": 9768.64,
+  "utilization_pct": 4.8989,
+  "wirelength_um": 118,
+  "worst_slack_ns": 1e+39,
+  "total_negative_slack_ns": 0,
+  "fmax_mhz": 963.594,
+  "setup_violation_count": 0,
+  "hold_violation_count": 0,
+  "nominal_hold_slack_ns": 1e+39,
+  "antenna_violation_count": 0,
+  "route_drc_violation_count": 0,
+  "estimated_power_mw": 0.0418,
+  "clock_skew_ns": 0,
+  "worst_setup_slack_ns": 1e+39,
+  "worst_hold_slack_ns": 1e+39,
+  "corners": [
+    {
+      "name": "ff_125C_1v98",
+      "setup_slack_ns": 1e+39,
+      "hold_slack_ns": 1e+39,
+      "total_negative_setup_slack_ns": 0,
+      "total_negative_hold_slack_ns": 0,
+      "timing_status": "unconstrained",
+      "max_transition_violation_count": 0,
+      "max_capacitance_violation_count": 0,
+      "max_transition_violation_count_vs_library": 0,
+      "max_capacitance_violation_count_vs_library": 0
+    },
+    {
+      "name": "ff_125C_3v60",
+      "setup_slack_ns": 1e+39,
+      "hold_slack_ns": 1e+39,
+      "total_negative_setup_slack_ns": 0,
+      "total_negative_hold_slack_ns": 0,
+      "timing_status": "unconstrained",
+      "max_transition_violation_count": 0,
+      "max_capacitance_violation_count": 0,
+      "max_transition_violation_count_vs_library": 0,
+      "max_capacitance_violation_count_vs_library": 0
+    },
+    {
+      "name": "ff_125C_5v50",
+      "setup_slack_ns": 1e+39,
+      "hold_slack_ns": 1e+39,
+      "total_negative_setup_slack_ns": 0,
+      "total_negative_hold_slack_ns": 0,
+      "timing_status": "unconstrained",
+      "max_transition_violation_count": 0,
+      "max_capacitance_violation_count": 0,
+      "max_transition_violation_count_vs_library": 0,
+      "max_capacitance_violation_count_vs_library": 0
+    },
+    {
+      "name": "ff_n40C_1v98",
+      "setup_slack_ns": 1e+39,
+      "hold_slack_ns": 1e+39,
+      "total_negative_setup_slack_ns": 0,
+      "total_negative_hold_slack_ns": 0,
+      "timing_status": "unconstrained",
+      "max_transition_violation_count": 0,
+      "max_capacitance_violation_count": 0,
+      "max_transition_violation_count_vs_library": 0,
+      "max_capacitance_violation_count_vs_library": 0
+    },
+    {
+      "name": "ff_n40C_3v60",
+      "setup_slack_ns": 1e+39,
+      "hold_slack_ns": 1e+39,
+      "total_negative_setup_slack_ns": 0,
+      "total_negative_hold_slack_ns": 0,
+      "timing_status": "unconstrained",
+      "max_transition_violation_count": 0,
+      "max_capacitance_violation_count": 0,
+      "max_transition_violation_count_vs_library": 0,
+      "max_capacitance_violation_count_vs_library": 0
+    },
+    {
+      "name": "ff_n40C_5v50",
+      "setup_slack_ns": 1e+39,
+      "hold_slack_ns": 1e+39,
+      "total_negative_setup_slack_ns": 0,
+      "total_negative_hold_slack_ns": 0,
+      "timing_status": "unconstrained",
+      "max_transition_violation_count": 0,
+      "max_capacitance_violation_count": 0,
+      "max_transition_violation_count_vs_library": 0,
+      "max_capacitance_violation_count_vs_library": 0
+    },
+    {
+      "name": "ss_125C_1v62",
+      "setup_slack_ns": 1e+39,
+      "hold_slack_ns": 1e+39,
+      "total_negative_setup_slack_ns": 0,
+      "total_negative_hold_slack_ns": 0,
+      "timing_status": "unconstrained",
+      "max_transition_violation_count": 0,
+      "max_capacitance_violation_count": 0,
+      "max_transition_violation_count_vs_library": 0,
+      "max_capacitance_violation_count_vs_library": 0
+    },
+    {
+      "name": "ss_125C_3v00",
+      "setup_slack_ns": 1e+39,
+      "hold_slack_ns": 1e+39,
+      "total_negative_setup_slack_ns": 0,
+      "total_negative_hold_slack_ns": 0,
+      "timing_status": "unconstrained",
+      "max_transition_violation_count": 0,
+      "max_capacitance_violation_count": 0,
+      "max_transition_violation_count_vs_library": 0,
+      "max_capacitance_violation_count_vs_library": 0
+    },
+    {
+      "name": "ss_125C_4v50",
+      "setup_slack_ns": 1e+39,
+      "hold_slack_ns": 1e+39,
+      "total_negative_setup_slack_ns": 0,
+      "total_negative_hold_slack_ns": 0,
+      "timing_status": "unconstrained",
+      "max_transition_violation_count": 0,
+      "max_capacitance_violation_count": 0,
+      "max_transition_violation_count_vs_library": 0,
+      "max_capacitance_violation_count_vs_library": 0
+    },
+    {
+      "name": "ss_n40C_1v62",
+      "setup_slack_ns": 1e+39,
+      "hold_slack_ns": 1e+39,
+      "total_negative_setup_slack_ns": 0,
+      "total_negative_hold_slack_ns": 0,
+      "timing_status": "unconstrained",
+      "max_transition_violation_count": 0,
+      "max_capacitance_violation_count": 0,
+      "max_transition_violation_count_vs_library": 0,
+      "max_capacitance_violation_count_vs_library": 0
+    },
+    {
+      "name": "ss_n40C_3v00",
+      "setup_slack_ns": 1e+39,
+      "hold_slack_ns": 1e+39,
+      "total_negative_setup_slack_ns": 0,
+      "total_negative_hold_slack_ns": 0,
+      "timing_status": "unconstrained",
+      "max_transition_violation_count": 0,
+      "max_capacitance_violation_count": 0,
+      "max_transition_violation_count_vs_library": 0,
+      "max_capacitance_violation_count_vs_library": 0
+    },
+    {
+      "name": "ss_n40C_4v50",
+      "setup_slack_ns": 1e+39,
+      "hold_slack_ns": 1e+39,
+      "total_negative_setup_slack_ns": 0,
+      "total_negative_hold_slack_ns": 0,
+      "timing_status": "unconstrained",
+      "max_transition_violation_count": 0,
+      "max_capacitance_violation_count": 0,
+      "max_transition_violation_count_vs_library": 0,
+      "max_capacitance_violation_count_vs_library": 0
+    },
+    {
+      "name": "tt_025C_1v80",
+      "setup_slack_ns": 1e+39,
+      "hold_slack_ns": 1e+39,
+      "total_negative_setup_slack_ns": 0,
+      "total_negative_hold_slack_ns": 0,
+      "timing_status": "unconstrained",
+      "max_transition_violation_count": 0,
+      "max_capacitance_violation_count": 0,
+      "max_transition_violation_count_vs_library": 0,
+      "max_capacitance_violation_count_vs_library": 0
+    },
+    {
+      "name": "tt_025C_3v30",
+      "setup_slack_ns": 1e+39,
+      "hold_slack_ns": 1e+39,
+      "total_negative_setup_slack_ns": 0,
+      "total_negative_hold_slack_ns": 0,
+      "timing_status": "unconstrained",
+      "max_transition_violation_count": 0,
+      "max_capacitance_violation_count": 0,
+      "max_transition_violation_count_vs_library": 0,
+      "max_capacitance_violation_count_vs_library": 0
+    },
+    {
+      "name": "tt_025C_5v00",
+      "setup_slack_ns": 1e+39,
+      "hold_slack_ns": 1e+39,
+      "total_negative_setup_slack_ns": 0,
+      "total_negative_hold_slack_ns": 0,
+      "timing_status": "unconstrained",
+      "max_transition_violation_count": 0,
+      "max_capacitance_violation_count": 0,
+      "max_transition_violation_count_vs_library": 0,
+      "max_capacitance_violation_count_vs_library": 0
+    }
+  ],
+  "congestion": {
+    "global_route": {
+      "total_overflow": 0,
+      "max_horizontal_overflow": 0,
+      "max_vertical_overflow": 0,
+      "usage_pct": 0.16,
+      "max_layer_usage_pct": 0.47,
+      "overflow_per_layer": {
+        "Metal1": {
+          "resource": 0,
+          "demand": 0,
+          "usage_pct": 0.0,
+          "max_horizontal_overflow": 0,
+          "max_vertical_overflow": 0,
+          "total_overflow": 0
+        },
+        "Metal2": {
+          "resource": 2124,
+          "demand": 10,
+          "usage_pct": 0.47,
+          "max_horizontal_overflow": 0,
+          "max_vertical_overflow": 0,
+          "total_overflow": 0
+        },
+        "Metal3": {
+          "resource": 2276,
+          "demand": 2,
+          "usage_pct": 0.09,
+          "max_horizontal_overflow": 0,
+          "max_vertical_overflow": 0,
+          "total_overflow": 0
+        },
+        "Metal4": {
+          "resource": 1992,
+          "demand": 0,
+          "usage_pct": 0.0,
+          "max_horizontal_overflow": 0,
+          "max_vertical_overflow": 0,
+          "total_overflow": 0
+        },
+        "Metal5": {
+          "resource": 1320,
+          "demand": 0,
+          "usage_pct": 0.0,
+          "max_horizontal_overflow": 0,
+          "max_vertical_overflow": 0,
+          "total_overflow": 0
+        }
+      },
+      "routed_net_count": 8,
+      "max_gcell_usage_pct": null
+    },
+    "detailed_route": {
+      "first_iteration_drc_violation_count": 2,
+      "iteration_count": 2,
+      "drc_violations_per_iteration": [
+        2,
+        0
+      ],
+      "converged": true
+    },
+    "completeness": {
+      "signal_net_count": 7,
+      "unrouted_net_count": 0,
+      "partially_routed_net_count": null
+    },
+    "placement": {
+      "total_routing_overflow": 0.0,
+      "overflowed_tile_count": 0,
+      "final_weighted_congestion": 0.5231
+    },
+    "null_reasons": {
+      "global_route.max_gcell_usage_pct": "OpenROAD's global router reports usage per routing layer, not per GCell",
+      "completeness.partially_routed_net_count": "OpenROAD exposes no per-net connectivity check; only nets with no routed wire at all are counted"
+    }
+  },
+  "max_transition_violation_count": 0,
+  "max_capacitance_violation_count": 0,
+  "max_transition_violation_count_vs_library": 0,
+  "max_capacitance_violation_count_vs_library": 0,
+  "timing_status": "unconstrained",
+  "stages": [
+    {
+      "name": "floorplan",
+      "die_area_um2": 12294.4,
+      "core_area_um2": 9768.64,
+      "utilization_pct": 4.8989,
+      "worst_slack_ns": 1e+39,
+      "total_negative_slack_ns": 0,
+      "timing_status": "unconstrained"
+    },
+    {
+      "name": "place",
+      "die_area_um2": 12294.4,
+      "core_area_um2": 9768.64,
+      "utilization_pct": 4.8989,
+      "worst_slack_ns": 1e+39,
+      "total_negative_slack_ns": 0,
+      "wirelength_um": 119.856,
+      "fmax_mhz": 979.174,
+      "estimated_power_mw": 0.0411,
+      "setup_violation_count": 0,
+      "hold_violation_count": 0,
+      "nominal_hold_slack_ns": 1e+39,
+      "timing_status": "unconstrained"
+    },
+    {
+      "name": "cts",
+      "die_area_um2": 12294.4,
+      "core_area_um2": 9768.64,
+      "utilization_pct": 4.8989,
+      "worst_slack_ns": 1e+39,
+      "total_negative_slack_ns": 0,
+      "wirelength_um": 119.856,
+      "fmax_mhz": 973.557,
+      "estimated_power_mw": 0.0413,
+      "clock_skew_ns": 0,
+      "setup_violation_count": 0,
+      "hold_violation_count": 0,
+      "nominal_hold_slack_ns": 1e+39,
+      "timing_status": "unconstrained"
+    },
+    {
+      "name": "route",
+      "die_area_um2": 12294.4,
+      "core_area_um2": 9768.64,
+      "utilization_pct": 4.8989,
+      "worst_slack_ns": 1e+39,
+      "total_negative_slack_ns": 0,
+      "wirelength_um": 118,
+      "fmax_mhz": 963.594,
+      "estimated_power_mw": 0.0418,
+      "clock_skew_ns": 0,
+      "setup_violation_count": 0,
+      "hold_violation_count": 0,
+      "nominal_hold_slack_ns": 1e+39,
+      "antenna_violation_count": 0,
+      "route_drc_violation_count": 0,
+      "worst_setup_slack_ns": 1e+39,
+      "worst_hold_slack_ns": 1e+39,
+      "corners": [
+        {
+          "name": "ff_125C_1v98",
+          "setup_slack_ns": 1e+39,
+          "hold_slack_ns": 1e+39,
+          "total_negative_setup_slack_ns": 0,
+          "total_negative_hold_slack_ns": 0,
+          "timing_status": "unconstrained",
+          "max_transition_violation_count": 0,
+          "max_capacitance_violation_count": 0,
+          "max_transition_violation_count_vs_library": 0,
+          "max_capacitance_violation_count_vs_library": 0
+        },
+        {
+          "name": "ff_125C_3v60",
+          "setup_slack_ns": 1e+39,
+          "hold_slack_ns": 1e+39,
+          "total_negative_setup_slack_ns": 0,
+          "total_negative_hold_slack_ns": 0,
+          "timing_status": "unconstrained",
+          "max_transition_violation_count": 0,
+          "max_capacitance_violation_count": 0,
+          "max_transition_violation_count_vs_library": 0,
+          "max_capacitance_violation_count_vs_library": 0
+        },
+        {
+          "name": "ff_125C_5v50",
+          "setup_slack_ns": 1e+39,
+          "hold_slack_ns": 1e+39,
+          "total_negative_setup_slack_ns": 0,
+          "total_negative_hold_slack_ns": 0,
+          "timing_status": "unconstrained",
+          "max_transition_violation_count": 0,
+          "max_capacitance_violation_count": 0,
+          "max_transition_violation_count_vs_library": 0,
+          "max_capacitance_violation_count_vs_library": 0
+        },
+        {
+          "name": "ff_n40C_1v98",
+          "setup_slack_ns": 1e+39,
+          "hold_slack_ns": 1e+39,
+          "total_negative_setup_slack_ns": 0,
+          "total_negative_hold_slack_ns": 0,
+          "timing_status": "unconstrained",
+          "max_transition_violation_count": 0,
+          "max_capacitance_violation_count": 0,
+          "max_transition_violation_count_vs_library": 0,
+          "max_capacitance_violation_count_vs_library": 0
+        },
+        {
+          "name": "ff_n40C_3v60",
+          "setup_slack_ns": 1e+39,
+          "hold_slack_ns": 1e+39,
+          "total_negative_setup_slack_ns": 0,
+          "total_negative_hold_slack_ns": 0,
+          "timing_status": "unconstrained",
+          "max_transition_violation_count": 0,
+          "max_capacitance_violation_count": 0,
+          "max_transition_violation_count_vs_library": 0,
+          "max_capacitance_violation_count_vs_library": 0
+        },
+        {
+          "name": "ff_n40C_5v50",
+          "setup_slack_ns": 1e+39,
+          "hold_slack_ns": 1e+39,
+          "total_negative_setup_slack_ns": 0,
+          "total_negative_hold_slack_ns": 0,
+          "timing_status": "unconstrained",
+          "max_transition_violation_count": 0,
+          "max_capacitance_violation_count": 0,
+          "max_transition_violation_count_vs_library": 0,
+          "max_capacitance_violation_count_vs_library": 0
+        },
+        {
+          "name": "ss_125C_1v62",
+          "setup_slack_ns": 1e+39,
+          "hold_slack_ns": 1e+39,
+          "total_negative_setup_slack_ns": 0,
+          "total_negative_hold_slack_ns": 0,
+          "timing_status": "unconstrained",
+          "max_transition_violation_count": 0,
+          "max_capacitance_violation_count": 0,
+          "max_transition_violation_count_vs_library": 0,
+          "max_capacitance_violation_count_vs_library": 0
+        },
+        {
+          "name": "ss_125C_3v00",
+          "setup_slack_ns": 1e+39,
+          "hold_slack_ns": 1e+39,
+          "total_negative_setup_slack_ns": 0,
+          "total_negative_hold_slack_ns": 0,
+          "timing_status": "unconstrained",
+          "max_transition_violation_count": 0,
+          "max_capacitance_violation_count": 0,
+          "max_transition_violation_count_vs_library": 0,
+          "max_capacitance_violation_count_vs_library": 0
+        },
+        {
+          "name": "ss_125C_4v50",
+          "setup_slack_ns": 1e+39,
+          "hold_slack_ns": 1e+39,
+          "total_negative_setup_slack_ns": 0,
+          "total_negative_hold_slack_ns": 0,
+          "timing_status": "unconstrained",
+          "max_transition_violation_count": 0,
+          "max_capacitance_violation_count": 0,
+          "max_transition_violation_count_vs_library": 0,
+          "max_capacitance_violation_count_vs_library": 0
+        },
+        {
+          "name": "ss_n40C_1v62",
+          "setup_slack_ns": 1e+39,
+          "hold_slack_ns": 1e+39,
+          "total_negative_setup_slack_ns": 0,
+          "total_negative_hold_slack_ns": 0,
+          "timing_status": "unconstrained",
+          "max_transition_violation_count": 0,
+          "max_capacitance_violation_count": 0,
+          "max_transition_violation_count_vs_library": 0,
+          "max_capacitance_violation_count_vs_library": 0
+        },
+        {
+          "name": "ss_n40C_3v00",
+          "setup_slack_ns": 1e+39,
+          "hold_slack_ns": 1e+39,
+          "total_negative_setup_slack_ns": 0,
+          "total_negative_hold_slack_ns": 0,
+          "timing_status": "unconstrained",
+          "max_transition_violation_count": 0,
+          "max_capacitance_violation_count": 0,
+          "max_transition_violation_count_vs_library": 0,
+          "max_capacitance_violation_count_vs_library": 0
+        },
+        {
+          "name": "ss_n40C_4v50",
+          "setup_slack_ns": 1e+39,
+          "hold_slack_ns": 1e+39,
+          "total_negative_setup_slack_ns": 0,
+          "total_negative_hold_slack_ns": 0,
+          "timing_status": "unconstrained",
+          "max_transition_violation_count": 0,
+          "max_capacitance_violation_count": 0,
+          "max_transition_violation_count_vs_library": 0,
+          "max_capacitance_violation_count_vs_library": 0
+        },
+        {
+          "name": "tt_025C_1v80",
+          "setup_slack_ns": 1e+39,
+          "hold_slack_ns": 1e+39,
+          "total_negative_setup_slack_ns": 0,
+          "total_negative_hold_slack_ns": 0,
+          "timing_status": "unconstrained",
+          "max_transition_violation_count": 0,
+          "max_capacitance_violation_count": 0,
+          "max_transition_violation_count_vs_library": 0,
+          "max_capacitance_violation_count_vs_library": 0
+        },
+        {
+          "name": "tt_025C_3v30",
+          "setup_slack_ns": 1e+39,
+          "hold_slack_ns": 1e+39,
+          "total_negative_setup_slack_ns": 0,
+          "total_negative_hold_slack_ns": 0,
+          "timing_status": "unconstrained",
+          "max_transition_violation_count": 0,
+          "max_capacitance_violation_count": 0,
+          "max_transition_violation_count_vs_library": 0,
+          "max_capacitance_violation_count_vs_library": 0
+        },
+        {
+          "name": "tt_025C_5v00",
+          "setup_slack_ns": 1e+39,
+          "hold_slack_ns": 1e+39,
+          "total_negative_setup_slack_ns": 0,
+          "total_negative_hold_slack_ns": 0,
+          "timing_status": "unconstrained",
+          "max_transition_violation_count": 0,
+          "max_capacitance_violation_count": 0,
+          "max_transition_violation_count_vs_library": 0,
+          "max_capacitance_violation_count_vs_library": 0
+        }
+      ],
+      "max_transition_violation_count": 0,
+      "max_capacitance_violation_count": 0,
+      "max_transition_violation_count_vs_library": 0,
+      "max_capacitance_violation_count_vs_library": 0,
+      "congestion": {
+        "global_route": {
+          "total_overflow": 0,
+          "max_horizontal_overflow": 0,
+          "max_vertical_overflow": 0,
+          "usage_pct": 0.16,
+          "max_layer_usage_pct": 0.47,
+          "overflow_per_layer": {
+            "Metal1": {
+              "resource": 0,
+              "demand": 0,
+              "usage_pct": 0.0,
+              "max_horizontal_overflow": 0,
+              "max_vertical_overflow": 0,
+              "total_overflow": 0
+            },
+            "Metal2": {
+              "resource": 2124,
+              "demand": 10,
+              "usage_pct": 0.47,
+              "max_horizontal_overflow": 0,
+              "max_vertical_overflow": 0,
+              "total_overflow": 0
+            },
+            "Metal3": {
+              "resource": 2276,
+              "demand": 2,
+              "usage_pct": 0.09,
+              "max_horizontal_overflow": 0,
+              "max_vertical_overflow": 0,
+              "total_overflow": 0
+            },
+            "Metal4": {
+              "resource": 1992,
+              "demand": 0,
+              "usage_pct": 0.0,
+              "max_horizontal_overflow": 0,
+              "max_vertical_overflow": 0,
+              "total_overflow": 0
+            },
+            "Metal5": {
+              "resource": 1320,
+              "demand": 0,
+              "usage_pct": 0.0,
+              "max_horizontal_overflow": 0,
+              "max_vertical_overflow": 0,
+              "total_overflow": 0
+            }
+          },
+          "routed_net_count": 8,
+          "max_gcell_usage_pct": null
+        },
+        "detailed_route": {
+          "first_iteration_drc_violation_count": 2,
+          "iteration_count": 2,
+          "drc_violations_per_iteration": [
+            2,
+            0
+          ],
+          "converged": true
+        },
+        "completeness": {
+          "signal_net_count": 7,
+          "unrouted_net_count": 0,
+          "partially_routed_net_count": null
+        },
+        "placement": {
+          "total_routing_overflow": 0.0,
+          "overflowed_tile_count": 0,
+          "final_weighted_congestion": 0.5231
+        },
+        "null_reasons": {
+          "global_route.max_gcell_usage_pct": "OpenROAD's global router reports usage per routing layer, not per GCell",
+          "completeness.partially_routed_net_count": "OpenROAD exposes no per-net connectivity check; only nets with no routed wire at all are counted"
+        }
+      },
+      "timing_status": "unconstrained"
+    }
+  ],
+  "macros": [],
+  "def_path": "flow/smoke/mcu7t5v0/.klt/place-and-route/smoke_lut4.def",
+  "unrouted_def_path": null,
+  "gds_path": "flow/smoke/mcu7t5v0/.klt/place-and-route/smoke_lut4.gds",
+  "layer_map": {
+    "path": "$PDK_ROOT/gf180mcuD/libs.tech/klayout/tech/gf180mcu.map",
+    "resolution": "family"
+  },
+  "def_net_names": {
+    "single_pin_markers": 0,
+    "unresolved_single_pin_nets": []
+  },
+  "min_area_repair": {
+    "status": "skipped",
+    "reason": "the curated deck for PDK variant 'gf180mcuD' carries no plain minimum-area rule on any routed-net layer",
+    "patches": 0,
+    "repaired": 0,
+    "remaining": 0,
+    "rules": [],
+    "unrepaired": []
+  },
+  "verilog_path": "flow/smoke/mcu7t5v0/.klt/place-and-route/smoke_lut4.v",
+  "spef_sta": null,
+  "power": {
+    "preset": "gf180mcu_7t_6M",
+    "pdn": true,
+    "global_connect": true,
+    "power_net": "VDD",
+    "ground_net": "VSS",
+    "tapcell_master": "gf180mcu_fd_sc_mcu7t5v0__filltie",
+    "endcap_master": "gf180mcu_fd_sc_mcu7t5v0__endcap",
+    "tapcell_distance_um": 40,
+    "filler_masters": [
+      "gf180mcu_fd_sc_mcu7t5v0__fill_64",
+      "gf180mcu_fd_sc_mcu7t5v0__fill_32",
+      "gf180mcu_fd_sc_mcu7t5v0__fill_16",
+      "gf180mcu_fd_sc_mcu7t5v0__fill_8",
+      "gf180mcu_fd_sc_mcu7t5v0__fill_4",
+      "gf180mcu_fd_sc_mcu7t5v0__fill_2",
+      "gf180mcu_fd_sc_mcu7t5v0__fill_1"
+    ],
+    "straps": [
+      {
+        "layer": "Metal1",
+        "spacing_um": null
+      },
+      {
+        "layer": "Metal4",
+        "spacing_um": 0.56
+      },
+      {
+        "layer": "Metal5",
+        "spacing_um": null
+      }
+    ],
+    "connects": [
+      {
+        "layers": [
+          "Metal1",
+          "Metal4"
+        ],
+        "max_columns": 5,
+        "ongrid": [
+          "Metal2",
+          "Metal3",
+          "Metal4"
+        ],
+        "split_cuts": {
+          "layer": "Metal3",
+          "width_um": 0.128
+        }
+      },
+      {
+        "layers": [
+          "Metal4",
+          "Metal5"
+        ],
+        "max_columns": null,
+        "ongrid": null,
+        "split_cuts": null
+      }
+    ],
+    "row_rail": {
+      "emitted": false,
+      "layer": null,
+      "power_net": null,
+      "ground_net": null,
+      "filler_masters": []
+    },
+    "placed": {
+      "evidence": "def",
+      "def_path": "flow/smoke/mcu7t5v0/.klt/place-and-route/smoke_lut4.def",
+      "unavailable_reason": null,
+      "status": "complete",
+      "missing": [],
+      "components": 245,
+      "tapcells": 27,
+      "endcaps": 50,
+      "fillers": 165,
+      "special_nets": [
+        {
+          "name": "VDD",
+          "use": "POWER",
+          "followpin_segments": 13,
+          "stripe_segments": 1071,
+          "other_segments": 26,
+          "stripe_layers": [
+            "Metal5",
+            "Metal4",
+            "Metal3",
+            "Metal2",
+            "Metal1"
+          ],
+          "vias": 1068
+        },
+        {
+          "name": "VSS",
+          "use": "GROUND",
+          "followpin_segments": 13,
+          "stripe_segments": 1071,
+          "other_segments": 26,
+          "stripe_layers": [
+            "Metal5",
+            "Metal4",
+            "Metal3",
+            "Metal2",
+            "Metal1"
+          ],
+          "vias": 1068
+        }
+      ]
+    }
+  },
+  "warnings": [],
+  "provenance": {
+    "klt_version": "0.7.1.dev1754+g81ac4d3915c1",
+    "klayout_version": "0.30.12",
+    "pdk": {
+      "name": "gf180mcuD",
+      "source": "PDK_ROOT environment variable",
+      "version": "open_pdks f6eeac7dad085ffcc829ccfd721f7b4ce39edcf7",
+      "ambiguous_sources": [
+        "search root: ~/.ciel",
+        "search root: ~/.volare"
+      ]
+    },
+    "deck": {
+      "name": "gf180mcu_fd_sc_mcu7t5v0__tt_025C_5v00",
+      "content_hash": "sha256:330aa9439255e3870ad7adfb987cd4d7bcfa7b6f9fb0cd0a712400e9bd80e38a",
+      "released": false
+    },
+    "input": {
+      "content_hash": "sha256:216e22828a4a8c282199cdebedbdcdf240200928c56edfc09da14b10a57bb325",
+      "role": "netlist"
+    }
+  }
+}
