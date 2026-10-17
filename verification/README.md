@@ -62,5 +62,7 @@ invocation to `.github/workflows/verification.yml` alongside the smoke step.
 ## RTL lint
 
 `lint_rtl.sh [dir]` runs `verilator --lint-only -Wall` over every `.v`/`.sv`
-under `rtl/` (or `dir`). It passes vacuously, with a printed note, while there
-is no HDL, so it gates the first RTL PR.
+under `rtl/` (or `dir`), except the vendored stamped copies in `rtl/common/`
+(ADR-0002: not lint-gated; they are guarded by `spec/check_reuse_lock.py`). It
+passes vacuously, with a printed note, while there is no other HDL, so it gates
+the first RTL PR authored here.
