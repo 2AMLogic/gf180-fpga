@@ -8,8 +8,9 @@ logic tile and a small demonstration fabric — designed by AI agents driving
 description format, and the open-source cocotb + Icarus, Yosys, nextpnr and
 OpenROAD flow.
 
-**Status: just opened, specification phase.** Nothing is designed in this
-repo yet.
+**Status: specification phase, spec ratified.** The tile RTL, FABulous
+description and bitstream-level tests are vendored from `sky130-fpga`; nothing
+is designed, placed or verified in this repo yet.
 
 **Built agent-native.** Every specification, decision record, testbench, and
 line of documentation here is produced by AI agents working from a ratified
@@ -44,10 +45,12 @@ What changes on gf180mcu is everything physical:
   delay and wire delay in the switch matrix differs from 130 nm, which is
   exactly what a port is meant to expose.
 
-## Target specification (DRAFT — engineering to ratify, see issue #1)
+## Target specification (ratified — see [`spec/target-spec.md`](spec/target-spec.md))
 
-Port parity: the architectural rows are `sky130-fpga`'s ratified tile spec,
-unchanged. The physical and timing rows are re-derived here.
+Port parity: the architectural rows are `sky130-fpga`'s tile spec, unchanged.
+The physical and timing rows are re-derived here and ratified by
+[ADR-0001](spec/decisions/0001-ratify-target-spec.md); the porting plan is
+[`spec/porting-plan.md`](spec/porting-plan.md).
 
 | Parameter | Fallback | Target | Stretch |
 |---|---|---|---|
@@ -55,14 +58,17 @@ unchanged. The physical and timing rows are re-derived here.
 | Routing | 4 tracks/edge, FABulous-style switch matrix (inherited) | same | — |
 | Demonstration fabric | 2×2 tiles | 2×2 to 4×4, single tile type | — |
 | Bitstream | open, documented, FABulous-generated (inherited) | same | — |
-| Tile physical design | DRC/LVS clean on the chosen metal stack | DRC/LVS clean, routed without congestion overrides | on the smallest available metal stack |
-| Timing | setup/hold-clean at all library corners at a relaxed clock | setup/hold-clean at all library corners, Fmax reported from characterized data | SDF-annotated gate-level re-simulation |
+| Library, supply | `gf180mcu_fd_sc_mcu9t5v0`, 3.3 V flavour | `gf180mcu_fd_sc_mcu7t5v0`, 5.0 V flavour | — |
+| Metal stack | `gf180mcuD`, Metal5 also allowed for matrix signals | `gf180mcuD` (5 metals), matrix on Metal2–Metal4 | 4-metal `gf180mcuB` |
+| Tile area / aspect | same tile at lower utilization | abuts in a grid, aspect 1:2 to 2:1, area reported as measured (no ceiling ratified) | — |
+| Tile physical design | DRC/LVS clean on the tile | DRC/LVS clean on tile and assembled fabric, routed without congestion overrides | SDF-annotated gate-level re-simulation |
+| Timing | setup/hold-clean at all 15 library corners at a relaxed 20 ns clock | same at a period pre-registered before the run | Fmax from bisected, characterized data |
 
 Maturity ladder: framework and port plan → tile spec ratified → tile RTL
 and fabric description passing bitstream-level tests → tile layout
 DRC/LVS-clean → tile timing characterized → demonstration fabric assembled
 and re-verified → shuttle seat → measured silicon.
-**Current position: pre-spec.**
+**Current position: target spec ratified; nothing designed or verified here yet.**
 
 ## Tool flow
 
@@ -79,7 +85,8 @@ and re-verified → shuttle seat → measured silicon.
 ```
 spec/          ratified spec + decision records + porting plan
 rtl/           tile RTL + fabric description (shared material under rtl/common/)
-verification/  cocotb bitstream-level testbenches + results
+verification/  bitstream-level testbenches + results (shared material under verification/common/)
+reuse.lock.json  vendored files: source commit + sha256 (spec/check_reuse_lock.py)
 layout/        tile GDS, routed DEF, DRC/LVS reports (klayout-tools driven)
 measurements/  silicon characterization (empty until tape-out)
 ```
