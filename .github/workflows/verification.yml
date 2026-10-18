@@ -67,3 +67,32 @@ jobs:
         run: sudo apt-get install -y --no-install-recommends verilator
       - name: Lint rtl/
         run: verification/lint_rtl.sh
+
+  reuse-lock:
+    # Guards vendored rtl/common and verification/common (ADR-0001, ADR-0002):
+    # byte identity with the lock, and no unlisted vendored file.
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify vendored files against reuse.lock.json
+        run: python3 -I spec/check_reuse_lock.py
+      - name: Negative control (a perturbed copy must fail)
+        # The script resolves ROOT from its own location, so a copied tree is
+        # checked independently of the checkout.
+        run: |
+          set -eu
+          t="$(mktemp -d)"
+          mkdir "$t/spec"
+          cp spec/check_reuse_lock.py "$t/spec/"
+          cp reuse.lock.json "$t/"
+          cp -r rtl verification "$t/"
+          f="$(python3 -I -c 'import json;print(json.load(open("reuse.lock.json"))["files"][0]["path"])')"
+          python3 -I "$t/spec/check_reuse_lock.py"
+          echo "// perturbed" >> "$t/$f"
+          if python3 -I "$t/spec/check_reuse_lock.py"; then
+            echo "negative control: perturbed vendored file was not caught"; exit 1
+          fi
+          rm "$t/$f"
+          if python3 -I "$t/spec/check_reuse_lock.py"; then
+            echo "negative control: missing vendored file was not caught"; exit 1
+          fi
