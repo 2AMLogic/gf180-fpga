@@ -18,6 +18,9 @@ python3 verification/runner.py verification/smoke   # smoke + negative control
 verification/lint_rtl.sh                            # RTL lint
 ```
 
+`pnpm check:ci` (Loom's build gate) runs both of these; `pnpm test` / `pnpm lint` run
+each half. It needs the same prerequisites and the venv above on `PATH`.
+
 Prerequisites on `PATH`: Icarus Verilog (`iverilog`), Verilator (lint only).
 The runner exits 0 only if the good DUT passes **and** the negative control
 fails. A missing simulator is an error (exit 2), never a pass.
