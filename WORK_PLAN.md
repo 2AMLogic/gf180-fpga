@@ -37,10 +37,47 @@ Issues currently being built (`loom:building`).
 - **#11**: Wire or remove no-op package.json check/test/lint scripts (always-green gate)
 - **#13**: Wire spec/check_reuse_lock.py into CI: ADR-0002 names it the vendored-file guard but nothing runs it
 
+## PRs Awaiting Review
+
+PRs waiting on Judge (`loom:review-requested`).
+
+_None._
+
+## Approved (Awaiting Merge)
+
+PRs that passed review and are queued for Champion auto-merge (`loom:pr`).
+
+- **#10**: feat: grade T1 state with klt signoff and gate the verdict record in CI
+- **#12**: fix: wire package.json check/test/lint scripts to the verification harness
+- **#14**: ci: run reuse-lock vendored-file guard with a negative control
+
 ## Proposed
 
 Issues carrying `loom:curated`.
 
 - **#5**: Signoff scaffolding: block manifest, committed klt signoff record, and CI (T1 item 10) *(curated)*
 - **#6**: Track the gap to T1 (klayout-tools design-evidence-tiers.md) *(curated)*
+
+## Proposed (Architect / Hermit)
+
+_None._
+
+## Epics
+
+_None._
+
+## Backlog Balance
+
+| Bucket | Count |
+|------|-------|
+| Operator merge-risk holds | 3 |
+| Very important | 0 |
+| Important | 0 |
+| Ready (`loom:issue`) | 0 |
+| In Progress (`loom:building`) | 3 |
+| PRs awaiting review | 0 |
+| Approved PRs awaiting merge | 3 |
+| Curated | 2 |
+| Architect / Hermit proposals | 0 |
+| Active epics | 0 |
 <!-- guide:plan-body:end -->
