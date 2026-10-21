@@ -2,6 +2,13 @@
 
 Chronological record of merged PRs and closed issues (maintained by the Guide role; newest first).
 
+### 2026-10-20
+
+- **PR #14**: ci: run reuse-lock vendored-file guard with a negative control
+- **PR #12**: fix: wire package.json check/test/lint scripts to the verification harness
+- **Issue #13** (closed): Wire spec/check_reuse_lock.py into CI: ADR-0002 names it the vendored-file guard but nothing runs it
+- **Issue #11** (closed): Wire or remove no-op package.json check/test/lint scripts (always-green gate)
+
 ### 2026-10-17
 
 - **PR #8**: docs: ratify gf180mcu target spec and vendor sky130-fpga tile material
