@@ -24,7 +24,7 @@
         "role": "hygiene",
         "path": ".github/workflows/verification.yml",
         "passed": true,
-        "content_hash": "sha256:7a18403b6591b05fb264a9dbd56aad4bc8a494b20f52cdfe84128bb7a2faeba7"
+        "content_hash": "sha256:4a7f4f8f68e7c34b7f1006dc7f1f59fab71300735cea1b3799459d0d9be5f8c6"
       },
       {
         "check": "present",
@@ -38,16 +38,16 @@
         "role": "hygiene",
         "path": "README.md",
         "passed": true,
-        "content_hash": "sha256:4381f59e607dfd6c3b2b3a6fa4c94b62f8eeef590ea1f9a64566e59820611eb3"
+        "content_hash": "sha256:bbd615ae78b21fc60f1c22c2daffb58e9bb00fe27ca8a6da1d75c64357fac1e6"
       },
       {
         "check": "command",
         "role": "audit",
-        "name": "readme-cites-spec-issue-2",
+        "name": "readme-links-ratified-spec",
         "argv": [
           "grep",
-          "-q",
-          "engineering to ratify, see issue #2)",
+          "-qF",
+          "(ratified \u2014 see [`spec/target-spec.md`](spec/target-spec.md))",
           "README.md"
         ],
         "cwd": ".",
@@ -94,7 +94,7 @@
         "path": "verification/signoff/item10-inventory.json",
         "scope": "repo"
       },
-      "content_hash": "sha256:7e9ffe4a3ef2feaf444229c1ec2fab7decfcc99b7b236cc46a3bc63f0f02756f"
+      "content_hash": "sha256:fc4bbb86801aa01289ba82f8a875a9bbbf8ee1f1870b68fbb84766c783eb8404"
     }
   }
 }

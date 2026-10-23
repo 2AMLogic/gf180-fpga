@@ -11,8 +11,8 @@
   ],
   "checks": [
     {
-      "name": "readme-cites-spec-issue-2",
-      "argv": ["grep", "-q", "engineering to ratify, see issue #2)", "README.md"]
+      "name": "readme-links-ratified-spec",
+      "argv": ["grep", "-qF", "(ratified — see [`spec/target-spec.md`](spec/target-spec.md))", "README.md"]
     },
     {
       "name": "signoff-ci-runs-the-record-check",
