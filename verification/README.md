@@ -1,5 +1,9 @@
 # verification
 
+`common/` holds stamped copies of the bitstream-level testbenches and committed
+bitstream fixtures from `sky130-fpga`, listed with commit and sha256 in
+`../reuse.lock.json`. Do not edit them. No result is recorded here yet.
+
 cocotb + Icarus Verilog testbench harness. The tile's functional claims
 (bitstream-level tests on the simulated fabric) run on this harness once #2's
 stamped tests land in `common/`; until then it carries a smoke test and its
@@ -13,6 +17,9 @@ pip install -r verification/requirements.txt
 python3 verification/runner.py verification/smoke   # smoke + negative control
 verification/lint_rtl.sh                            # RTL lint
 ```
+
+`pnpm check:ci` (Loom's build gate) runs both of these; `pnpm test` / `pnpm lint` run
+each half. It needs the same prerequisites and the venv above on `PATH`.
 
 Prerequisites on `PATH`: Icarus Verilog (`iverilog`), Verilator (lint only).
 The runner exits 0 only if the good DUT passes **and** the negative control
@@ -58,5 +65,8 @@ invocation to `.github/workflows/verification.yml` alongside the smoke step.
 ## RTL lint
 
 `lint_rtl.sh [dir]` runs `verilator --lint-only -Wall` over every `.v`/`.sv`
-under `rtl/` (or `dir`). It passes vacuously, with a printed note, while there
-is no HDL, so it gates the first RTL PR.
+under `rtl/` (or `dir`), except the vendored stamped copies in `rtl/common/`
+(ADR-0002: not lint-gated; they are guarded by `spec/check_reuse_lock.py`, run in CI by the `reuse-lock` job of
+`verification.yml` with a negative control that perturbs a copy). It
+passes vacuously, with a printed note, while there is no other HDL, so it gates
+the first RTL PR authored here.
