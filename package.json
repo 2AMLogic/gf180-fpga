@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "worktree:return": "./.loom/scripts/worktree-return.sh",
-    "check:ci": "pnpm test && pnpm lint",
+    "check:ci": "pnpm test && pnpm lint && manifests/run-signoff.sh --check",
     "check:all": "pnpm check:ci",
     "test": "python3 verification/runner.py verification/smoke",
     "lint": "verification/lint_rtl.sh"
