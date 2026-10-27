@@ -5,7 +5,7 @@
 # rtl/common/fabulous/.FABulous/.env) through uvx on a scratch copy, so the
 # vendored tree is never written; fails if the run changes any vendored file.
 #
-#   flow/tile/run-fabulous.sh    writes flow/tile/records/fabulous-gen.log
+#   flow/tile/run-fabulous.sh    writes flow/tile/records/fabulous-gen.txt
 set -uo pipefail
 
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -28,5 +28,5 @@ fi
 mkdir -p "$here/records"
 { echo "# FABulous $ver generator run on rtl/common/fabulous (flow/tile/run-fabulous.sh)"
   echo "# exit 0; no vendored file differs after the run"
-  sed -e "s#$scratch#<scratch>#g" -e 's#path: /[^ ]*/#path: <host>/#' "$scratch/gen.log"; } > "$here/records/fabulous-gen.log"
-klt env-provenance scan "$here/records/fabulous-gen.log"
+  sed -e "s#$scratch#<scratch>#g" -e 's#path: /[^ ]*/#path: <host>/#' "$scratch/gen.log"; } > "$here/records/fabulous-gen.txt"
+klt env-provenance scan "$here/records/fabulous-gen.txt"

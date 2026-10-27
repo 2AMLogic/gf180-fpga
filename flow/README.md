@@ -68,7 +68,7 @@ Result (2026-10-27): 193 cells, 6809.51 µm² cell area, 4 flops, 0 latches /
 comb loops / multi-driven nets. `logic_tile.v` is not instantiated by the top.
 
 `flow/tile/run-fabulous.sh` records the FABulous 2.2.0 generator run on the
-vendored description (`records/fabulous-gen.log`): it completes and changes no
+vendored description (`records/fabulous-gen.txt`): it completes and changes no
 vendored file, so no decision record is needed (ADR-0001's deferred question).
 `nextpnr-generic` is absent here, so only the fabric generator stage ran.
 
