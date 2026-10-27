@@ -16,9 +16,12 @@ on:
 permissions:
   contents: read
 
+env:
+  ICARUS_VERSION: "13.0"
+
 jobs:
   signoff:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
@@ -29,6 +32,32 @@ jobs:
 
       - name: Install uv
         run: pip install uv
+
+      # The item 9 attestation re-runs the shipped testbenches
+      # (verification/runner.py --vvp), which needs the pinned Icarus Verilog.
+      # Same pinned build as verification.yml.
+      - name: Cache Icarus Verilog
+        id: icarus-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/icarus
+          key: icarus-${{ env.ICARUS_VERSION }}-ubuntu-24.04
+
+      - name: Build pinned Icarus Verilog
+        if: steps.icarus-cache.outputs.cache-hit != 'true'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends build-essential autoconf gperf flex bison
+          tag="v$(echo "$ICARUS_VERSION" | tr . _)"
+          git clone --depth 1 --branch "$tag" https://github.com/steveicarus/iverilog.git /tmp/iverilog
+          cd /tmp/iverilog
+          sh autoconf.sh
+          ./configure --prefix="$HOME/icarus"
+          make -j2
+          make install
+
+      - name: Put Icarus Verilog on PATH
+        run: echo "$HOME/icarus/bin" >> "$GITHUB_PATH"
 
       - name: Re-run klt signoff and compare against the committed record
         run: manifests/run-signoff.sh --check
