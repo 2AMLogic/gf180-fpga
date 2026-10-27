@@ -2,6 +2,18 @@
   "block": "gf180-fpga",
   "kind": "digital",
   "evidence": {
+    "6": {
+      "not_applicable": {
+        "spec": {
+          "file": "manifests/spec.json",
+          "content_hash": "sha256:786910d27e5f8325085460b63874e0859c6645b1c92c42c3592813a313081acf"
+        },
+        "statement": {
+          "file": "manifests/item6-na-statement.json",
+          "content_hash": "sha256:36e9aa25e7f7f6f8704836a16ef19f41d0b515b656ce44bffbb74ec51bb98f87"
+        }
+      }
+    },
     "10": {
       "file": "verification/signoff/item10-repo-hygiene.json",
       "content_hash": "sha256:fc4bbb86801aa01289ba82f8a875a9bbbf8ee1f1870b68fbb84766c783eb8404"
