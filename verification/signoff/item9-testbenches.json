@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "kind": "generic",
+  "status": "pass",
+  "t1_item": 9,
+  "summary": "T1 item 9 (Testbenches shipped): 10/10 attestation checks passed (klt signoff --attest)",
+  "source": "verification/signoff/item9-inventory.json",
+  "attestation": {
+    "producer": "klt signoff --attest",
+    "inventory_schema_version": 1,
+    "hash_algorithm": "sha256-raw-bytes",
+    "check_count": 10,
+    "passed_count": 10,
+    "checks": [
+      {
+        "check": "present",
+        "role": "testbench",
+        "path": "rtl/common/fabulous/tb_lut4_ff_bel_equiv.v",
+        "passed": true,
+        "content_hash": "sha256:d76678ab028ac0f5c564b8c3e6449354d2265d7c90c8ec7642554158008c0035"
+      },
+      {
+        "check": "present",
+        "role": "testbench",
+        "path": "verification/common/tb_logic_tile.v",
+        "passed": true,
+        "content_hash": "sha256:3f90296942e63a59f55db70dd657025d90d91f9452577a07fbddef35a15c3603"
+      },
+      {
+        "check": "present",
+        "role": "testbench",
+        "path": "verification/common/tb_logic_tile_bitstream.v",
+        "passed": true,
+        "content_hash": "sha256:20b42058541902130769c0e4791462fc585e4edcd7632a2b0635ebd20d43e1f9"
+      },
+      {
+        "check": "present",
+        "role": "testbench",
+        "path": "verification/common/tb_logic_tile_gapfill.v",
+        "passed": true,
+        "content_hash": "sha256:014a86edb1f21d3c8a90e22650bcec720d45832c468145aa635bb2e90f6b7b2e"
+      },
+      {
+        "check": "present",
+        "role": "testbench",
+        "path": "verification/common/tb_logic_tile_routed.v",
+        "passed": true,
+        "content_hash": "sha256:cad2f85b85ebc037e87efdf39ed5ef1002cfa65a66b565b1cf731b74e3c4f30f"
+      },
+      {
+        "check": "present",
+        "role": "testbench",
+        "path": "verification/common/tb_lut4_slice.v",
+        "passed": true,
+        "content_hash": "sha256:ca664daecc674501368ed17d2aacf84eff52486dbfeea81f19db81f33efb382f"
+      },
+      {
+        "check": "present",
+        "role": "testbench",
+        "path": "verification/common/tb_switch_matrix.v",
+        "passed": true,
+        "content_hash": "sha256:f8843679a8e444429696f5d9c481ac5220bc6971c09d3ad751bb1751a7ff968a"
+      },
+      {
+        "check": "command",
+        "role": "cold_start",
+        "argv": [
+          "python3",
+          "-I",
+          "verification/runner.py",
+          "--vvp",
+          "verification/item9/benches.json"
+        ],
+        "cwd": ".",
+        "exit_status": 0,
+        "passed": true
+      },
+      {
+        "check": "pin",
+        "role": "pdk",
+        "passed": true,
+        "value": {
+          "name": "gf180mcu",
+          "revision": "f6eeac7dad085ffcc829ccfd721f7b4ce39edcf7"
+        }
+      },
+      {
+        "check": "pin",
+        "role": "tools",
+        "passed": true,
+        "value": {
+          "cocotb": "2.0.1",
+          "icarus": "13.0"
+        }
+      }
+    ]
+  },
+  "provenance": {
+    "klt_version": "0.8.1.dev55+g879d39bad82b",
+    "klayout_version": null,
+    "pdk": null,
+    "deck": null,
+    "input": {
+      "path": {
+        "path": "verification/signoff/item9-inventory.json",
+        "scope": "repo"
+      },
+      "content_hash": "sha256:f08810d1ab0c79c693cd6586d4b37bbfff076e2eca949af384245901ba9271ed"
+    }
+  }
+}

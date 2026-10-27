@@ -1,0 +1,105 @@
+{
+  "_comment": [
+    "Bench table for the T1 item-9 cold-start run of the stamped plain-Verilog",
+    "benches (verification/runner.py --vvp). One table drives the CI step and the",
+    "inventory (inventory.py) so they cannot drift. Nothing under a common/ tree",
+    "is edited: benches and DUT sources are referenced in place.",
+    "Paths are repo-relative. 'cases_from' expands {case}/{design} from a",
+    "'<case> <design>' index file. Plusarg values may use {case}/{design}.",
+    "'negative_control' replaces one DUT source (key) with a broken copy (value)",
+    "kept outside common/; that run must FAIL.",
+    "'excluded' lists every stamped bench that is not run, with the reason."
+  ],
+  "iverilog_args": ["-g2012"],
+  "runs": [
+    {
+      "id": "lut4_slice",
+      "bench": "verification/common/tb_lut4_slice.v",
+      "sources": ["rtl/common/rtl/lut4_slice.v"],
+      "negative_control": {"rtl/common/rtl/lut4_slice.v": "verification/item9/negative_control/lut4_slice_broken.v"}
+    },
+    {
+      "id": "logic_tile",
+      "bench": "verification/common/tb_logic_tile.v",
+      "sources": ["rtl/common/rtl/logic_tile.v", "rtl/common/rtl/lut4_slice.v"]
+    },
+    {
+      "id": "logic_tile_gapfill",
+      "bench": "verification/common/tb_logic_tile_gapfill.v",
+      "sources": ["rtl/common/rtl/logic_tile.v", "rtl/common/rtl/logic_tile_routed.v", "rtl/common/rtl/logic_tile_switch_matrix.v", "rtl/common/rtl/lut4_slice.v"]
+    },
+    {
+      "id": "logic_tile_routed",
+      "bench": "verification/common/tb_logic_tile_routed.v",
+      "sources": ["rtl/common/rtl/logic_tile_routed.v", "rtl/common/rtl/logic_tile_switch_matrix.v", "rtl/common/rtl/lut4_slice.v"]
+    },
+    {
+      "id": "switch_matrix",
+      "bench": "verification/common/tb_switch_matrix.v",
+      "includes": ["verification/common"],
+      "sources": ["rtl/common/rtl/logic_tile_switch_matrix.v"]
+    },
+    {
+      "id": "lut4_ff_bel_equiv",
+      "bench": "rtl/common/fabulous/tb_lut4_ff_bel_equiv.v",
+      "sources": ["rtl/common/fabulous/Tile/LOGIC4/lut4_ff_bel.v", "rtl/common/rtl/lut4_slice.v"]
+    },
+    {
+      "id": "bitstream_{case}",
+      "cases_from": "verification/common/bitstream/corpus/index.txt",
+      "bench": "verification/common/tb_logic_tile_bitstream.v",
+      "sources": ["rtl/common/rtl/logic_tile_routed.v", "rtl/common/rtl/logic_tile_switch_matrix.v", "rtl/common/rtl/lut4_slice.v"],
+      "plusargs": ["+bin=verification/common/bitstream/corpus/{case}.bin", "+map=verification/common/bitstream/logic4_configmem.map", "+wiring=verification/common/bitstream/corpus/{case}.wiring", "+design={design}", "+mutate"]
+    },
+    {
+      "id": "bitstream_top_io",
+      "bench": "verification/common/tb_logic_tile_bitstream.v",
+      "sources": ["rtl/common/rtl/logic_tile_routed.v", "rtl/common/rtl/logic_tile_switch_matrix.v", "rtl/common/rtl/lut4_slice.v"],
+      "plusargs": ["+bin=verification/common/bitstream/top_io.bin", "+map=verification/common/bitstream/logic4_configmem.map", "+wiring=verification/common/bitstream/top_io.wiring", "+design=comb", "+mutate"]
+    },
+    {
+      "id": "bitstream_top_reg",
+      "bench": "verification/common/tb_logic_tile_bitstream.v",
+      "sources": ["rtl/common/rtl/logic_tile_routed.v", "rtl/common/rtl/logic_tile_switch_matrix.v", "rtl/common/rtl/lut4_slice.v"],
+      "plusargs": ["+bin=verification/common/bitstream/top_reg.bin", "+map=verification/common/bitstream/logic4_configmem.map", "+wiring=verification/common/bitstream/top_reg.wiring", "+design=reg", "+mutate"],
+      "negative_control": {"rtl/common/rtl/lut4_slice.v": "verification/item9/negative_control/lut4_slice_broken.v"}
+    }
+  ],
+  "excluded": [
+    {
+      "bench": "verification/common/tb_ctrl_route.v",
+      "status": "not runnable: input missing",
+      "reason": "needs +dir= (<case>.bin streams) and +list= (case list); neither is in the stamp (verification/common/bitstream has no list file, flow/ctrl_route.py is not stamped). Filed as 2AMLogic/sky130-fpga#221."
+    },
+    {
+      "bench": "verification/common/tb_lut_basis.v",
+      "status": "not runnable: input missing",
+      "reason": "needs a +list= case list and its +dir= streams; not in the stamp. Filed as 2AMLogic/sky130-fpga#221."
+    },
+    {
+      "bench": "verification/common/tb_output_route.v",
+      "status": "not runnable: input missing",
+      "reason": "needs a +list= case list and its +dir= streams; not in the stamp. Filed as 2AMLogic/sky130-fpga#221."
+    },
+    {
+      "bench": "verification/common/tb_route_diag.v",
+      "status": "not runnable: input missing",
+      "reason": "needs a +list= case list and its +dir= streams; not in the stamp. Filed as 2AMLogic/sky130-fpga#221."
+    },
+    {
+      "bench": "verification/common/tb_boundary_fwd.v",
+      "status": "not runnable: input missing",
+      "reason": "requires -DGEN_TILE and the FABulous-generated Tile/LOGIC4/LOGIC4.v, which is generated scratch output and not stamped. Filed as 2AMLogic/sky130-fpga#221."
+    },
+    {
+      "bench": "rtl/common/fabulous/tb_configmem_equiv.v",
+      "status": "not runnable: input missing",
+      "reason": "needs the FABulous-generated LOGIC4_ConfigMem.v and a +vec= vector file; neither is stamped. Filed as 2AMLogic/sky130-fpga#221."
+    },
+    {
+      "bench": "rtl/common/fabulous/tb_switch_matrix_equiv.v",
+      "status": "not runnable: input missing",
+      "reason": "needs the FABulous-generated LOGIC4_switch_matrix.v (scratch output of the FABulous generator, not stamped). Filed as 2AMLogic/sky130-fpga#221."
+    }
+  ]
+}
