@@ -96,7 +96,7 @@
     ]
   },
   "provenance": {
-    "klt_version": "0.7.1.dev1772+gfc02bdf0b6aa",
+    "klt_version": "0.8.0",
     "klayout_version": null,
     "pdk": null,
     "deck": null,

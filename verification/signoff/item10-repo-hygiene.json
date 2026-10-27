@@ -24,7 +24,7 @@
         "role": "hygiene",
         "path": ".github/workflows/verification.yml",
         "passed": true,
-        "content_hash": "sha256:61875f84c69f76a96780671a0da061ae1a747c783049484107a76c856811ba04"
+        "content_hash": "sha256:8d0ef30540ec14ca947c9d66904877d1d70216319515d144437fe81cb690e701"
       },
       {
         "check": "present",
@@ -85,7 +85,7 @@
     ]
   },
   "provenance": {
-    "klt_version": "0.7.1.dev1772+gfc02bdf0b6aa",
+    "klt_version": "0.8.0",
     "klayout_version": null,
     "pdk": null,
     "deck": null,

@@ -10,7 +10,7 @@ permissions:
 
 env:
   ICARUS_VERSION: "13.0"
-  KLT_COMMIT: fc02bdf0b6aa62e3553927511ee2de328fd1d186
+  KLT_SPEC: klayout-tools==0.8.0
 
 jobs:
   verification:
@@ -77,11 +77,11 @@ jobs:
       - name: Item-9 inventory is current and covers every stamped bench
         run: python3 -I verification/item9/inventory.py --check
       - name: Item-9 attestation envelope still reproduces
-        # klt pin: --attest is not in a PyPI release that this repo pins yet; same
-        # klayout-tools commit as manifests/run-signoff.sh (PR #10)
+        # klt pin: same PyPI release as manifests/run-signoff.sh
         run: |
           pip install uv
-          uvx --quiet --from "git+https://github.com/2AMLogic/klayout-tools@${KLT_COMMIT}" klt signoff --attest 9 \
+          uvx --quiet --from "$KLT_SPEC" klt --version
+          uvx --quiet --from "$KLT_SPEC" klt signoff --attest 9 \
             --inventory verification/signoff/item9-inventory.json \
             --check verification/signoff/item9-testbenches.json --format json
       - uses: actions/upload-artifact@v4
