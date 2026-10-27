@@ -4,7 +4,7 @@ This block's T1 state is graded by `klt signoff --manifest`, not read by hand.
 
 - `gf180-fpga.json` — the block manifest: `block: gf180-fpga`, `kind: digital`
   (an eFPGA tile, RTL to GDS), and one evidence citation per T1 item. Only
-  item 10 is cited today; every other item is `no_evidence` until its
+  items 9 and 10 are cited today; every other item is `no_evidence` until its
   evidence lands (tracker: #6). Each evidence PR adds its citation here and
   regenerates the record in the same diff.
 - `design-evidence-tiers.md` — the checklist the grader parses, vendored
@@ -16,8 +16,12 @@ This block's T1 state is graded by `klt signoff --manifest`, not read by hand.
 - `gf180-fpga.signoff.json` — the verdict of record: the output of
   `klt signoff --manifest manifests/gf180-fpga.json --tiers-doc
   manifests/design-evidence-tiers.md --format json`.
-- `run-signoff.sh` — regenerates the item 10 envelope, the manifest's item 10
-  pin and the record; `--check` is what CI runs and fails on any drift.
+- `run-signoff.sh` — regenerates the item 9 and 10 envelopes, the manifest's
+  pins and the record; `--check` is what CI runs and fails on any drift.
+
+Item 9 is attested the same way from `verification/signoff/item9-inventory.json`
+into `verification/signoff/item9-testbenches.json` (log:
+`verification/signoff/item9-evidence-log.md`).
 
 Item 10 is attested by `klt signoff --attest 10` from
 `verification/signoff/item10-inventory.json`; the envelope it produces is

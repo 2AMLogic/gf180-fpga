@@ -2,6 +2,10 @@
   "block": "gf180-fpga",
   "kind": "digital",
   "evidence": {
+    "9": {
+      "file": "verification/signoff/item9-testbenches.json",
+      "content_hash": "sha256:f08810d1ab0c79c693cd6586d4b37bbfff076e2eca949af384245901ba9271ed"
+    },
     "10": {
       "file": "verification/signoff/item10-repo-hygiene.json",
       "content_hash": "sha256:fc4bbb86801aa01289ba82f8a875a9bbbf8ee1f1870b68fbb84766c783eb8404"
