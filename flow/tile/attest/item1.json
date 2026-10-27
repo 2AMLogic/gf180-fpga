@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "kind": "t1-attestation-inventory",
+  "t1_item": 1,
+  "description": "T1 item 1 (Design sources), digital: tile RTL plus the gf180mcu_fd_sc_mcu7t5v0 gate-level netlist regenerated from it.",
+  "sources": [
+    "rtl/common/rtl/logic_tile_routed.v",
+    "rtl/common/rtl/logic_tile_switch_matrix.v",
+    "rtl/common/rtl/lut4_slice.v",
+    "flow/tile/synth.json"
+  ],
+  "derived": [
+    {
+      "path": "flow/tile/netlist/logic_tile_routed_synth.v",
+      "generator": "klt synthesize",
+      "check": {"argv": ["flow/tile/run-synth.sh", "--check"], "local_only": true}
+    }
+  ]
+}

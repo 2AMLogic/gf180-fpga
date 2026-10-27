@@ -1,0 +1,12 @@
+{
+  "schema": "klt.synthesize.request/1",
+  "engine": "yosys",
+  "sources": [
+    "../../rtl/common/rtl/logic_tile_routed.v",
+    "../../rtl/common/rtl/logic_tile_switch_matrix.v",
+    "../../rtl/common/rtl/lut4_slice.v"
+  ],
+  "hdl_toplevel": "logic_tile_routed",
+  "pdk": { "cell_library": "gf180mcu_fd_sc_mcu7t5v0", "corner": "tt_025C_5v00" },
+  "constraints": { "clock_period_ns": null }
+}

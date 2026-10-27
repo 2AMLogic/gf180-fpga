@@ -1,0 +1,116 @@
+{
+  "schema_version": 2,
+  "engine": "yosys",
+  "engine_version": "0.67+post",
+  "hdl_toplevel": "logic_tile_routed",
+  "parameters": {},
+  "run_id": "run-abdbffc3386b4ccb8a5dc3940e367c3e",
+  "status": "ok",
+  "instance_count": 193,
+  "area_um2": 6809.5104,
+  "sequential_area_um2": 254.6432,
+  "instance_counts_by_type": {
+    "gf180mcu_fd_sc_mcu7t5v0__and2_1": 16,
+    "gf180mcu_fd_sc_mcu7t5v0__aoi211_2": 4,
+    "gf180mcu_fd_sc_mcu7t5v0__aoi21_1": 6,
+    "gf180mcu_fd_sc_mcu7t5v0__aoi21_2": 10,
+    "gf180mcu_fd_sc_mcu7t5v0__aoi22_1": 16,
+    "gf180mcu_fd_sc_mcu7t5v0__buf_2": 2,
+    "gf180mcu_fd_sc_mcu7t5v0__buf_8": 2,
+    "gf180mcu_fd_sc_mcu7t5v0__clkinv_1": 32,
+    "gf180mcu_fd_sc_mcu7t5v0__dffq_1": 4,
+    "gf180mcu_fd_sc_mcu7t5v0__inv_1": 4,
+    "gf180mcu_fd_sc_mcu7t5v0__mux2_1": 16,
+    "gf180mcu_fd_sc_mcu7t5v0__mux2_2": 4,
+    "gf180mcu_fd_sc_mcu7t5v0__mux4_1": 43,
+    "gf180mcu_fd_sc_mcu7t5v0__mux4_2": 14,
+    "gf180mcu_fd_sc_mcu7t5v0__nor2_1": 16,
+    "gf180mcu_fd_sc_mcu7t5v0__nor2_2": 4
+  },
+  "leakage_power_nw": null,
+  "leakage_by_type_nw": null,
+  "timing": {
+    "source": "abc_stime",
+    "wire_load": null,
+    "critical_path_ps": 1817.46,
+    "delay_target_ps": null
+  },
+  "clock_targets": {
+    "clocks": [],
+    "delay_target_ps": null,
+    "delay_target_basis": "none",
+    "per_clock_enforced": false
+  },
+  "sta": null,
+  "sta_unavailable_reason": "the optional klt_statime_native extension is not installed (it is not shipped with the published klayout-tools package), so no gate-level static timing analysis was attempted -- from a repo checkout, run `uv sync --group statime` (or `maturin develop --release` inside native/statime/) and re-run to populate `sta`; from an installed package, `klt sta` with a `verilog` request gives a netlist-level timing estimate (needs OpenSTA)",
+  "structural": {
+    "latches": 0,
+    "expected_latches": 0,
+    "unexpected_latches": 0,
+    "comb_loops": 0,
+    "multi_driven": 0,
+    "has_critical": false
+  },
+  "cell_exclusions": {
+    "mode": "additive",
+    "requested": [],
+    "library_defaults": [],
+    "effective": [],
+    "validated": null,
+    "engine_supports_dont_use": null
+  },
+  "warnings": {
+    "total": 0,
+    "by_category": {},
+    "representatives": []
+  },
+  "memory_mapping": {
+    "status": "none_detected",
+    "reason": null,
+    "modules": [],
+    "script_path": {
+      "path": ".klt/synthesize/run-abdbffc3386b4ccb8a5dc3940e367c3e/logic_tile_routed_memory_evidence.ys",
+      "scope": "repo"
+    }
+  },
+  "blackbox_modules": [],
+  "netlist_path": {
+    "path": ".klt/synthesize/run-abdbffc3386b4ccb8a5dc3940e367c3e/logic_tile_routed_synth.v",
+    "scope": "repo"
+  },
+  "netlist_sha256": "3445cb5cdfc8c32e951eac962b14f4a9a5075a0de894735eb47098ed0fc3f005",
+  "script_path": {
+    "path": ".klt/synthesize/run-abdbffc3386b4ccb8a5dc3940e367c3e/synth_logic_tile_routed.ys",
+    "scope": "repo"
+  },
+  "run_script_path": {
+    "path": ".klt/synthesize/run-abdbffc3386b4ccb8a5dc3940e367c3e/synth_logic_tile_routed.run.ys",
+    "scope": "repo"
+  },
+  "provenance": {
+    "klt_version": "0.8.1.dev55+g879d39bad82b",
+    "klayout_version": "0.30.12",
+    "pdk": {
+      "name": "gf180mcuD",
+      "source": "PDK_ROOT environment variable",
+      "version": "open_pdks f6eeac7dad085ffcc829ccfd721f7b4ce39edcf7",
+      "ambiguous_sources": [
+        "search root: ~/.volare"
+      ]
+    },
+    "deck": {
+      "name": "gf180mcu_fd_sc_mcu7t5v0__tt_025C_5v00",
+      "content_hash": "sha256:330aa9439255e3870ad7adfb987cd4d7bcfa7b6f9fb0cd0a712400e9bd80e38a",
+      "released": false
+    },
+    "input": {
+      "content_hash": "sha256:bbfe750e4ede7c0b136352bc991bfbd28640ef59eaede4a1f752204db425cd56",
+      "role": "source"
+    },
+    "parameters": {}
+  },
+  "equivalence": null,
+  "restructuring": null,
+  "arithmetic": null,
+  "baseline": null
+}
