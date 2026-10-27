@@ -10,11 +10,11 @@ This block's T1 state is graded by `klt signoff --manifest`, not read by hand.
   evidence lands (tracker: #6). Each evidence PR adds its citation here and
   regenerates the record in the same diff.
 - `design-evidence-tiers.md` — the checklist the grader parses, vendored
-  byte-identical from `2AMLogic/klayout-tools` at commit
-  `fc02bdf0b6aa62e3553927511ee2de328fd1d186` (`docs/design-evidence-tiers.md`,
+  byte-identical from `2AMLogic/klayout-tools` at
+  tag `v0.8.0` (`c572046be644e0407f693f2410f3abb799d68a3a`, `docs/design-evidence-tiers.md`,
   sha256 `a26b90262320d0fbd32b3f549a02b6300832706041797a559d8bf6bdb62efdc7`).
-  To bump it, copy the new revision over this file, update the commit and hash
-  here and in `run-signoff.sh`, and regenerate.
+  To bump it, copy the new revision over this file, update the tag and hash
+  here, and regenerate.
 - `gf180-fpga.signoff.json` — the verdict of record: the output of
   `klt signoff --manifest manifests/gf180-fpga.json --tiers-doc
   manifests/design-evidence-tiers.md --format json`.
@@ -33,8 +33,7 @@ workflows) makes `--check` fail until the envelope is re-attested.
 
 ## klt pin
 
-`--attest` is not in any PyPI release (0.7.0 is the newest), so the pin is the
-klayout-tools commit `fc02bdf0b6aa62e3553927511ee2de328fd1d186`
-(`0.7.1.dev1772+gfc02bdf0b6aa`), run via `uvx --from git+...@<commit>`. The
-committed record embeds the producing build, so regenerate with exactly that
-pin. When a release containing `--attest` ships, move the pin to it.
+The pin is the PyPI release `klayout-tools==0.8.0` (`klt 0.8.0`, tag `v0.8.0`,
+commit `c572046be644`), run via `uvx --from klayout-tools==0.8.0`; `--attest`
+ships in it. The committed record embeds the producing build, so regenerate
+with exactly that pin, and move the pin only together with a regenerated record.

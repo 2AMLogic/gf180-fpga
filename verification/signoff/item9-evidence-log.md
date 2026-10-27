@@ -30,3 +30,16 @@ sky130-fpga `42a8db00e138`, so the missing inputs are not vendored here.
 Extending the inventory needs a normal `reuse.lock.json` re-stamp; files are
 not vendored by hand. Deferral cites 2AMLogic/sky130-fpga#221; the re-stamp is
 a separate change.
+
+### 2026-10-27: klt pin moved to klayout-tools 0.8.0
+
+The pin moved from the dev commit `fc02bdf0b6aa` (`0.7.1.dev1772+gfc02bdf0b6aa`)
+to the PyPI release `klayout-tools==0.8.0` (tag `v0.8.0`, `c572046be644`).
+`manifests/run-signoff.sh` regenerated the item 9 and 10 envelopes and the
+signoff record; `--check` then reproduces. The inventory hashes, the tier
+verdicts and the vendored tiers doc (sha256 unchanged) are identical to before.
+The differences are the build block (`version`/`package_version` `0.8.0`,
+`git_tag` `v0.8.0`, `is_release` true, new `grading_ruleset_id`),
+`provenance.klt_version` in both envelopes, and the item 10 hygiene hash of
+`.github/workflows/verification.yml`, which this change edits. No evidence was
+relaxed. The entries above are historical and still name the old build.

@@ -9,13 +9,11 @@
 # exits 3 when the report rendered but some T1 item is unmet, which is the
 # honest state today, so 0 and 3 are both "ran clean"; anything else fails.
 #
-# klt pin: `klt signoff --attest` (items 9 and 10) is not in any PyPI release yet
-# (0.7.0 is the newest), so the pin is a klayout-tools commit, run through a
-# throwaway uvx environment. See manifests/README.md.
+# klt pin: the PyPI release klayout-tools==0.8.0 (carries `klt signoff --attest`),
+# run through a throwaway uvx environment. See manifests/README.md.
 set -euo pipefail
 
-KLT_COMMIT="fc02bdf0b6aa62e3553927511ee2de328fd1d186"
-KLT_SPEC="git+https://github.com/2AMLogic/klayout-tools@${KLT_COMMIT}"
+KLT_SPEC="klayout-tools==0.8.0"
 
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
 klt() { uvx --quiet --from "$KLT_SPEC" klt "$@"; }
