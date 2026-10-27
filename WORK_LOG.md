@@ -2,6 +2,15 @@
 
 Chronological record of merged PRs and closed issues (maintained by the Guide role; newest first).
 
+### 2026-10-27
+
+- **PR #36**: fix(verification): reject negative controls that fail to compile
+- **PR #33**: feat: run stamped plain-Verilog benches from a cold start and attest item 9
+- **PR #32**: feat(flow): synthesized gf180mcu 7t tile netlist and T1 item-1 attestation
+- **PR #31**: feat(manifests): add ratified spec row list and item 6 not-applicable statement
+- **Issue #25** (closed): T1 item 9 (testbenches shipped): wire the stamped bitstream-level testbenches into the runner and CI, then attest item 9
+- **Issue #35** (closed): Follow-on from PR #33: negative control should not pass on a compile error
+
 ### 2026-10-21
 
 - **PR #17**: Bump Repo Skills 0.24.3 -> 0.24.7
