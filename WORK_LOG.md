@@ -4,6 +4,8 @@ Chronological record of merged PRs and closed issues (maintained by the Guide ro
 
 ### 2026-10-27
 
+- **PR #10**: feat: grade T1 state with klt signoff and gate the verdict record in CI
+- **Issue #5** (closed): Signoff scaffolding: block manifest, committed klt signoff record, and CI (T1 item 10)
 - **PR #36**: fix(verification): reject negative controls that fail to compile
 - **PR #33**: feat: run stamped plain-Verilog benches from a cold start and attest item 9
 - **PR #32**: feat(flow): synthesized gf180mcu 7t tile netlist and T1 item-1 attestation

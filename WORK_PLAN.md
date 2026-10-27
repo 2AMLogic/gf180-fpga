@@ -19,19 +19,20 @@ _None._
 
 `loom:important`; taken before unlabelled work.
 
-_None._
+- **#21**: T1 item 1 (design sources): synthesized gf180mcu_fd_sc_mcu7t5v0 gate-level netlist of logic_tile_routed with item-1 attestation
 
 ## Ready
 
 Human-approved issues ready for implementation (`loom:issue`).
 
-_None._
+- **#21**: T1 item 1 (design sources): synthesized gf180mcu_fd_sc_mcu7t5v0 gate-level netlist of logic_tile_routed with item-1 attestation
+- **#26**: T1 item 6 (Monte Carlo): record that no ratified gf180-fpga spec row is statistical
 
 ## In Progress
 
 Issues currently being built (`loom:building`).
 
-- **#5**: Signoff scaffolding: block manifest, committed klt signoff record, and CI (T1 item 10)
+_None._
 
 ## PRs Awaiting Review
 
@@ -43,14 +44,15 @@ _None._
 
 PRs that passed review and are queued for Champion auto-merge (`loom:pr`).
 
-- **#10**: feat: grade T1 state with klt signoff and gate the verdict record in CI
+_None._
 
 ## Proposed
 
 Issues carrying `loom:curated`.
 
-- **#5**: Signoff scaffolding: block manifest, committed klt signoff record, and CI (T1 item 10) *(curated)*
 - **#6**: Track the gap to T1 (klayout-tools design-evidence-tiers.md) *(curated)*
+- **#21**: T1 item 1 (design sources): synthesized gf180mcu_fd_sc_mcu7t5v0 gate-level netlist of logic_tile_routed with item-1 attestation *(curated)*
+- **#26**: T1 item 6 (Monte Carlo): record that no ratified gf180-fpga spec row is statistical *(curated)*
 
 ## Proposed (Architect / Hermit)
 
@@ -66,12 +68,12 @@ _None._
 |------|-------|
 | Operator merge-risk holds | 0 |
 | Very important | 0 |
-| Important | 0 |
-| Ready (`loom:issue`) | 0 |
-| In Progress (`loom:building`) | 1 |
+| Important | 1 |
+| Ready (`loom:issue`) | 2 |
+| In Progress (`loom:building`) | 0 |
 | PRs awaiting review | 0 |
-| Approved PRs awaiting merge | 1 |
-| Curated | 2 |
+| Approved PRs awaiting merge | 0 |
+| Curated | 3 |
 | Architect / Hermit proposals | 0 |
 | Active epics | 0 |
 <!-- guide:plan-body:end -->
