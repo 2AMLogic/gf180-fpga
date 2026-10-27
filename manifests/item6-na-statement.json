@@ -1,0 +1,17 @@
+{
+  "spec": "spec/target-spec.md",
+  "note": "Row ids mirror manifests/spec.json: '1'..'8' are the numbered '### N.' parameter sections of the spec; 'arch-logic-tile', 'arch-routing' and 'arch-bitstream' are the three inherited architectural rows, which the spec does not number, so ids were assigned here. No spec row is edited.",
+  "rows": [
+    {"id": "arch-logic-tile", "class": "deterministic", "reason": "Structural: the cell set (4x LUT4 plus one output FF per LUT) is fixed by the vendored RTL; it is checked by bitstream-level simulation, not sampled."},
+    {"id": "arch-routing", "class": "deterministic", "reason": "Structural: 4 tracks per edge is a netlist property of the switch matrix; routability is a pass/fail routing and DRC result on the layout."},
+    {"id": "arch-bitstream", "class": "deterministic", "reason": "Functional: the bitstream format is generated and checked by bitstream-level tests on the simulated fabric; there is no random variable."},
+    {"id": "1", "class": "deterministic", "reason": "Library and track height are a design choice fixed per tile; whether cells are from the chosen library is a netlist check."},
+    {"id": "2", "class": "deterministic", "reason": "Supply flavour selects the nominal corner only; the timing claim is bounded by the shipped liberty corners (row 5), not by a distribution."},
+    {"id": "3", "class": "deterministic", "reason": "Metal-stack option and layer budget are fixed by the tech LEF; per-layer utilization is a measured layout result and routing closure is pass/fail."},
+    {"id": "4", "class": "deterministic", "reason": "Area, utilization and aspect ratio are measured results of one placed-and-routed layout; no statistical ceiling is ratified."},
+    {"id": "5", "class": "deterministic", "reason": "Timing is corner-bounded: STA must be clean at every shipped liberty corner of the chosen library, so the claim is a worst-case bound, not a sigma or yield figure."},
+    {"id": "6", "class": "deterministic", "reason": "Corners are the enumerated, shipped liberty set (15 per library); they are a finite list to be run, not a sampled distribution."},
+    {"id": "7", "class": "deterministic", "reason": "Fabric size is a structural choice (2x2 to 4x4 of one tile) validated by assembly and abutment checks."},
+    {"id": "8", "class": "deterministic", "reason": "Signoff is DRC and LVS pass/fail on the final GDS, with ERC and antenna reported; no mismatch or Monte Carlo analysis is claimed."}
+  ]
+}
