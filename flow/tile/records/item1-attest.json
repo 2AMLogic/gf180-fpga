@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "kind": "generic",
+  "status": "pass",
+  "t1_item": 1,
+  "summary": "T1 item 1 (Design sources): 6/6 attestation checks passed (klt signoff --attest)",
+  "source": "flow/tile/attest/item1.json",
+  "attestation": {
+    "producer": "klt signoff --attest",
+    "inventory_schema_version": 1,
+    "hash_algorithm": "sha256-raw-bytes",
+    "check_count": 6,
+    "passed_count": 6,
+    "checks": [
+      {
+        "check": "present",
+        "role": "source",
+        "path": "flow/tile/synth.json",
+        "passed": true,
+        "content_hash": "sha256:f69bda7c3bb369bbbd7a9484b138df55a4fecff50b8f6041994a59ac5b492fcf"
+      },
+      {
+        "check": "present",
+        "role": "source",
+        "path": "rtl/common/rtl/logic_tile_routed.v",
+        "passed": true,
+        "content_hash": "sha256:6f5c0fee5e882ecff60851c8d9daf6a86486abab6eb0da3e82b45ff143670fd0"
+      },
+      {
+        "check": "present",
+        "role": "source",
+        "path": "rtl/common/rtl/logic_tile_switch_matrix.v",
+        "passed": true,
+        "content_hash": "sha256:34f38f5837b7384e919dc4e21081124786600638aba41159379d95262636eb65"
+      },
+      {
+        "check": "present",
+        "role": "source",
+        "path": "rtl/common/rtl/lut4_slice.v",
+        "passed": true,
+        "content_hash": "sha256:670559dfb7e57cb8b9b636a211187406e9c9f6e09a9b5ff2c044024030a7a4aa"
+      },
+      {
+        "check": "present",
+        "role": "derived",
+        "path": "flow/tile/netlist/logic_tile_routed_synth.v",
+        "passed": true,
+        "content_hash": "sha256:3445cb5cdfc8c32e951eac962b14f4a9a5075a0de894735eb47098ed0fc3f005"
+      },
+      {
+        "check": "command",
+        "role": "freshness",
+        "target": "flow/tile/netlist/logic_tile_routed_synth.v",
+        "generator": "klt synthesize",
+        "argv": [
+          "flow/tile/run-synth.sh",
+          "--check"
+        ],
+        "cwd": ".",
+        "exit_status": 0,
+        "passed": true,
+        "local_only": true
+      }
+    ]
+  },
+  "provenance": {
+    "klt_version": "0.8.1.dev55+g879d39bad82b",
+    "klayout_version": null,
+    "pdk": null,
+    "deck": null,
+    "input": {
+      "path": {
+        "path": "flow/tile/attest/item1.json",
+        "scope": "repo"
+      },
+      "content_hash": "sha256:a304b4c679b533559815569a89e4d4764ebf90d441692f7c5ea5e60db4a92a10"
+    }
+  }
+}

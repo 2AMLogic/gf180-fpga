@@ -56,3 +56,24 @@ in a core this small and `power.placed.status` is `partial`.
 `klt place-and-route --check` against each committed report returns `match`.
 FABulous 2.2.0 resolves via `uvx --from FABulous-FPGA`; `nextpnr-generic`
 is not installed on the bring-up host.
+
+## Tile netlist and T1 item 1 (`flow/tile/`)
+
+`flow/tile/run-synth.sh` runs `klt synthesize` on `logic_tile_routed`
+(`synth.json`: vendored RTL, `gf180mcu_fd_sc_mcu7t5v0`, `tt_025C_5v00`, no
+clock target — timing needs characterized data) and pins the gate-level
+netlist at `flow/tile/netlist/logic_tile_routed_synth.v` (the stable path for
+LVS). `--check` re-synthesizes and exits 3 if the committed netlist is stale.
+Result (2026-10-27): 193 cells, 6809.51 µm² cell area, 4 flops, 0 latches /
+comb loops / multi-driven nets. `logic_tile.v` is not instantiated by the top.
+
+`flow/tile/run-fabulous.sh` records the FABulous 2.2.0 generator run on the
+vendored description (`records/fabulous-gen.txt`): it completes and changes no
+vendored file, so no decision record is needed (ADR-0001's deferred question).
+`nextpnr-generic` is absent here, so only the fabric generator stage ran.
+
+`flow/tile/attest/item1.json` is the item-1 inventory; the passing envelope is
+`flow/tile/records/item1-attest.json` (`klt signoff --attest 1 --inventory
+flow/tile/attest/item1.json --check flow/tile/records/item1-attest.json`). The
+freshness check is `local_only` (needs the PDK). Citing it from the block
+manifest waits on #5 / PR #10.
