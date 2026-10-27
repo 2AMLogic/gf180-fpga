@@ -3,8 +3,10 @@
 This block's T1 state is graded by `klt signoff --manifest`, not read by hand.
 
 - `gf180-fpga.json` — the block manifest: `block: gf180-fpga`, `kind: digital`
-  (an eFPGA tile, RTL to GDS), and one evidence citation per T1 item. Only
-  items 9 and 10 are cited today; every other item is `no_evidence` until its
+  (an eFPGA tile, RTL to GDS), and one evidence citation per T1 item. Items 9
+  and 10 (attested) and item 6 (`not_applicable`: `spec.json` plus
+  `item6-na-statement.json`, no statistical row) are cited today; every other
+  item is `no_evidence` until its
   evidence lands (tracker: #6). Each evidence PR adds its citation here and
   regenerates the record in the same diff.
 - `design-evidence-tiers.md` — the checklist the grader parses, vendored
