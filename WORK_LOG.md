@@ -4,6 +4,10 @@ Chronological record of merged PRs and closed issues (maintained by the Guide ro
 
 ### 2026-10-27
 
+- **PR #40**: feat(signoff): cite item 9 testbench attestation from the block manifest
+- **PR #39**: feat(signoff): cite T1 item 6 as not_applicable in the block manifest
+- **Issue #34** (closed): Cite the item-9 attestation envelope from the #5 manifest once PR #10 merges
+- **Issue #26** (closed): T1 item 6 (Monte Carlo): record that no ratified gf180-fpga spec row is statistical
 - **PR #10**: feat: grade T1 state with klt signoff and gate the verdict record in CI
 - **Issue #5** (closed): Signoff scaffolding: block manifest, committed klt signoff record, and CI (T1 item 10)
 - **PR #36**: fix(verification): reject negative controls that fail to compile
