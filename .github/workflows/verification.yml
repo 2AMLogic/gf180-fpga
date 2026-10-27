@@ -71,7 +71,7 @@ jobs:
           assert r["runs"], "no bench ran"
           assert all(e["good"]["result"] == "pass" for e in r["runs"]), "a bench failed"
           ncs = [e["negative_control"] for e in r["runs"] if "negative_control" in e]
-          assert ncs and all(n["expected"] == "fail" and n["result"] == "fail" for n in ncs), "negative control did not fail"
+          assert ncs and all(n["expected"] == "fail" and n["result"] == "fail" and n.get("ok") is True and n.get("reason") != "compile error" for n in ncs), "negative control did not fail at simulation (passed, or failed to compile)"
           print(f"{len(r['runs'])} bench runs passed, {len(ncs)} negative controls failed as required, {len(r['excluded'])} excluded")
           PY
       - name: Item-9 inventory is current and covers every stamped bench

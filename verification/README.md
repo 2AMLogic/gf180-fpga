@@ -37,7 +37,8 @@ table of benches, DUT sources and plusargs; the runner, CI and
 `PASS:` line and no line starting `FAIL`/`ERROR`; a bench that ends without a
 verdict counts as a failure. Entries with a `negative_control` are re-run
 against a deliberately broken DUT kept in `item9/negative_control/` (outside
-`common/`) and must fail. Results (per run, plus excluded benches with reasons)
+`common/`) and must fail at simulation: a control that fails to compile
+counts as a failure of the run, not as caught. Results (per run, plus excluded benches with reasons)
 go to `item9/sim_build/result.json`.
 
 Benches whose inputs are not in the stamp are listed as `not runnable: input

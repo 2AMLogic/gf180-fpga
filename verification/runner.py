@@ -193,8 +193,11 @@ def main_vvp(args) -> int:
         if nc:
             sources = [nc.get(s, s) for s in r["sources"]]
             broken = run_vvp_leg(r, sources, build / r["id"] / "broken", args.timeout)
-            caught = broken["result"] == "fail"
-            print(f"  negative control: {'correctly FAILED' if caught else 'DID NOT FAIL'} ({broken.get('reason', broken.get('verdict', ''))})")
+            # a control that fails to compile never exercised the bench: not "caught"
+            compile_err = broken.get("reason") == "compile error"
+            caught = broken["result"] == "fail" and not compile_err
+            label = "FAILED TO COMPILE (proves nothing; must fail at simulation)" if compile_err else "correctly FAILED" if caught else "DID NOT FAIL"
+            print(f"  negative control: {label} ({broken.get('reason', broken.get('verdict', ''))})")
             entry["negative_control"] = {"expected": "fail", "ok": caught, **broken}
             ok &= caught
         results.append(entry)
