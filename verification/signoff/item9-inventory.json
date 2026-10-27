@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "kind": "t1-attestation-inventory",
+  "t1_item": 9,
+  "description": "Testbenches shipped (T1 item 9): the stamped plain-Verilog benches that run from a cold start. Benches that cannot run (missing stamped inputs) are listed with reasons in verification/item9/INVENTORY.md and are deliberately not attested here.",
+  "testbenches": [
+    "rtl/common/fabulous/tb_lut4_ff_bel_equiv.v",
+    "verification/common/tb_logic_tile.v",
+    "verification/common/tb_logic_tile_bitstream.v",
+    "verification/common/tb_logic_tile_gapfill.v",
+    "verification/common/tb_logic_tile_routed.v",
+    "verification/common/tb_lut4_slice.v",
+    "verification/common/tb_switch_matrix.v"
+  ],
+  "cold_start": {
+    "argv": [
+      "python3",
+      "-I",
+      "verification/runner.py",
+      "--vvp",
+      "verification/item9/benches.json"
+    ]
+  },
+  "pins": {
+    "pdk": {
+      "name": "gf180mcu",
+      "revision": "f6eeac7dad085ffcc829ccfd721f7b4ce39edcf7"
+    },
+    "tools": {
+      "icarus": "13.0",
+      "cocotb": "2.0.1"
+    }
+  }
+}

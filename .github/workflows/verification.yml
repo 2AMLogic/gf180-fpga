@@ -10,6 +10,7 @@ permissions:
 
 env:
   ICARUS_VERSION: "13.0"
+  KLT_COMMIT: fc02bdf0b6aa62e3553927511ee2de328fd1d186
 
 jobs:
   verification:
@@ -56,6 +57,33 @@ jobs:
           assert nc["expected"] == "fail" and any(t["result"] == "fail" for t in nc["tests"]), "negative control did not fail"
           assert r["tools"]["icarus"] == "13.0", f"unexpected Icarus {r['tools']['icarus']}"
           PY
+      - name: Stamped benches (item 9 cold start) with negative control
+        # plain-Verilog benches from verification/common; exits 0 only if every
+        # bench passes AND each negative control (broken DUT outside common/) fails
+        run: python3 -I verification/runner.py --vvp verification/item9/benches.json
+      - name: Assert item-9 results and negative controls
+        run: |
+          python3 -I - <<'PY'
+          import json
+          r = json.load(open("verification/item9/sim_build/result.json"))
+          assert r["overall"] == "pass", "item-9 run failed"
+          assert r["tools"]["icarus"] == "13.0", f"unexpected Icarus {r['tools']['icarus']}"
+          assert r["runs"], "no bench ran"
+          assert all(e["good"]["result"] == "pass" for e in r["runs"]), "a bench failed"
+          ncs = [e["negative_control"] for e in r["runs"] if "negative_control" in e]
+          assert ncs and all(n["expected"] == "fail" and n["result"] == "fail" for n in ncs), "negative control did not fail"
+          print(f"{len(r['runs'])} bench runs passed, {len(ncs)} negative controls failed as required, {len(r['excluded'])} excluded")
+          PY
+      - name: Item-9 inventory is current and covers every stamped bench
+        run: python3 -I verification/item9/inventory.py --check
+      - name: Item-9 attestation envelope still reproduces
+        # klt pin: --attest is not in a PyPI release that this repo pins yet; same
+        # klayout-tools commit as manifests/run-signoff.sh (PR #10)
+        run: |
+          pip install uv
+          uvx --quiet --from "git+https://github.com/2AMLogic/klayout-tools@${KLT_COMMIT}" klt signoff --attest 9 \
+            --inventory verification/signoff/item9-inventory.json \
+            --check verification/signoff/item9-testbenches.json --format json
       - uses: actions/upload-artifact@v4
         if: always()
         with:

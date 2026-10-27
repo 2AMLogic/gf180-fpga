@@ -2,12 +2,11 @@
 
 `common/` holds stamped copies of the bitstream-level testbenches and committed
 bitstream fixtures from `sky130-fpga`, listed with commit and sha256 in
-`../reuse.lock.json`. Do not edit them. No result is recorded here yet.
+`../reuse.lock.json`. Do not edit them.
 
-cocotb + Icarus Verilog testbench harness. The tile's functional claims
-(bitstream-level tests on the simulated fabric) run on this harness once #2's
-stamped tests land in `common/`; until then it carries a smoke test and its
-negative control. Shape follows `2AMLogic/gf180-tmds-tx` `verification/tmds_encoder/`.
+Icarus Verilog testbench harness with two modes: cocotb (`smoke/` and its
+negative control) and plain Verilog (`--vvp`), which runs the stamped
+self-checking benches in `common/` (see "Stamped benches" below). Shape follows `2AMLogic/gf180-tmds-tx` `verification/tmds_encoder/`.
 
 ## Cold start (fresh clone)
 
@@ -24,6 +23,29 @@ each half. It needs the same prerequisites and the venv above on `PATH`.
 Prerequisites on `PATH`: Icarus Verilog (`iverilog`), Verilator (lint only).
 The runner exits 0 only if the good DUT passes **and** the negative control
 fails. A missing simulator is an error (exit 2), never a pass.
+
+## Stamped benches (T1 item 9)
+
+```sh
+python3 -I verification/runner.py --vvp verification/item9/benches.json
+python3 -I verification/item9/inventory.py --check
+```
+
+No cocotb needed, only `iverilog`/`vvp`. `item9/benches.json` is the single
+table of benches, DUT sources and plusargs; the runner, CI and
+`item9/INVENTORY.md` all read it. A run passes only if `vvp` exits 0, prints a
+`PASS:` line and no line starting `FAIL`/`ERROR`; a bench that ends without a
+verdict counts as a failure. Entries with a `negative_control` are re-run
+against a deliberately broken DUT kept in `item9/negative_control/` (outside
+`common/`) and must fail. Results (per run, plus excluded benches with reasons)
+go to `item9/sim_build/result.json`.
+
+Benches whose inputs are not in the stamp are listed as `not runnable: input
+missing` rather than run with hand-written inputs; see `item9/INVENTORY.md`.
+The item-9 attestation (`signoff/item9-inventory.json` ->
+`signoff/item9-testbenches.json`) is regenerated with
+`klt signoff --attest 9 --inventory verification/signoff/item9-inventory.json -o verification/signoff/item9-testbenches.json`
+and `--check`ed in CI.
 
 ## Pinned toolchain
 

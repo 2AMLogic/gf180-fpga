@@ -26,6 +26,14 @@ Test directory convention (NAME = directory name):
 
 Override with --module/--toplevel/--dut/--broken (e.g. to point a vendored
 test at DUT sources under rtl/).
+
+Plain-Verilog mode (--vvp TABLE): the stamped benches under verification/common/
+are self-checking Verilog, not cocotb. `--vvp verification/item9/benches.json`
+compiles each table entry with iverilog and runs it under vvp. A run passes only
+if vvp exits 0, prints a `PASS:` line and no line starting `FAIL` or `ERROR`; a
+bench that ends without a verdict (e.g. an early $finish) counts as a failure.
+Entries with a `negative_control` are re-run against the broken DUT and must
+FAIL. Needs no cocotb.
 """
 
 from __future__ import annotations
@@ -54,10 +62,15 @@ def _cmd_version(cmd: list[str], pattern: str) -> str | None:
 
 
 def tool_versions() -> dict[str, str | None]:
-    import cocotb
+    try:
+        import cocotb
+
+        cocotb_version = cocotb.__version__
+    except ImportError:
+        cocotb_version = None
 
     return {
-        "cocotb": cocotb.__version__,
+        "cocotb": cocotb_version,
         "icarus": _cmd_version(["iverilog", "-V"], r"version (\S+)"),
         "verilator": _cmd_version(["verilator", "--version"], r"Verilator (\S+)"),
         "python": sys.version.split()[0],
@@ -104,9 +117,108 @@ def run_leg(args, dut: Path, sub: str, seed: int) -> list[dict[str, str]]:
     return parse_results(Path(results_xml))
 
 
+def _expand_runs(table: dict) -> list[dict]:
+    """Expand `cases_from` entries ('<case> <design>' per line) into one run each."""
+    runs = []
+    for entry in table["runs"]:
+        src = entry.get("cases_from")
+        if src is None:
+            runs.append(entry)
+            continue
+        for line in (REPO / src).read_text().splitlines():
+            if not line.strip():
+                continue
+            case, design = line.split()
+            sub = {k: v for k, v in entry.items() if k != "cases_from"}
+            sub["id"] = entry["id"].format(case=case, design=design)
+            sub["plusargs"] = [a.format(case=case, design=design) for a in entry["plusargs"]]
+            runs.append(sub)
+    return runs
+
+
+def _plusarg(arg: str) -> str:
+    """Resolve a repo-relative path value in a +key=value plusarg against REPO."""
+    key, sep, val = arg.partition("=")
+    if sep and val.startswith(("verification/", "rtl/")):
+        return f"{key}={REPO / val}"
+    return arg
+
+
+def run_vvp_leg(run: dict, sources: list[str], outdir: Path, timeout: int) -> dict:
+    """Compile and run one bench; classify the verdict from its output."""
+    outdir.mkdir(parents=True, exist_ok=True)
+    vvp_file = outdir / "a.vvp"
+    cmd = ["iverilog", *run["iverilog_args"]]
+    for inc in run.get("includes", []):
+        cmd += ["-I", str(REPO / inc)]
+    cmd += ["-o", str(vvp_file), str(REPO / run["bench"]), *(str(REPO / s) for s in sources)]
+    comp = subprocess.run(cmd, capture_output=True, text=True, cwd=REPO)
+    if comp.returncode != 0:
+        return {"result": "fail", "reason": "compile error", "detail": comp.stderr.strip()[-2000:]}
+    args = [_plusarg(a) for a in run.get("plusargs", [])]
+    try:
+        sim = subprocess.run(["vvp", str(vvp_file), *args], capture_output=True, text=True, cwd=REPO, timeout=timeout)
+    except subprocess.TimeoutExpired:
+        return {"result": "fail", "reason": f"timeout after {timeout}s"}
+    (outdir / "sim.log").write_text(sim.stdout + sim.stderr)
+    lines = sim.stdout.splitlines()
+    pass_lines = [l for l in lines if l.startswith("PASS:")]
+    bad_lines = [l for l in lines if l.startswith(("FAIL", "ERROR"))]
+    if sim.returncode != 0:
+        reason = f"vvp exit {sim.returncode}"
+    elif bad_lines:
+        reason = bad_lines[0]
+    elif not pass_lines:
+        reason = "no PASS: verdict line (bench ended without a verdict)"
+    else:
+        return {"result": "pass", "verdict": pass_lines[-1]}
+    return {"result": "fail", "reason": reason}
+
+
+def main_vvp(args) -> int:
+    table = json.loads(args.vvp.read_text())
+    runs = _expand_runs(table)
+    for r in runs:
+        r["iverilog_args"] = table["iverilog_args"]
+    ok = True
+    results = []
+    build = args.vvp.resolve().parent / "sim_build"
+    for r in runs:
+        print(f"=== {r['id']}: {r['bench']}")
+        good = run_vvp_leg(r, r["sources"], build / r["id"] / "good", args.timeout)
+        print(f"  good: {good['result'].upper()} {good.get('verdict', good.get('reason', ''))}")
+        entry = {"id": r["id"], "bench": r["bench"], "plusargs": r.get("plusargs", []), "good": good}
+        ok &= good["result"] == "pass"
+        nc = r.get("negative_control")
+        if nc:
+            sources = [nc.get(s, s) for s in r["sources"]]
+            broken = run_vvp_leg(r, sources, build / r["id"] / "broken", args.timeout)
+            caught = broken["result"] == "fail"
+            print(f"  negative control: {'correctly FAILED' if caught else 'DID NOT FAIL'} ({broken.get('reason', broken.get('verdict', ''))})")
+            entry["negative_control"] = {"expected": "fail", "ok": caught, **broken}
+            ok &= caught
+        results.append(entry)
+    result = {
+        "table": str(args.vvp.resolve().relative_to(REPO)),
+        "commit": git_commit(),
+        "tools": tool_versions(),
+        "runs": results,
+        "excluded": table.get("excluded", []),
+        "overall": "pass" if ok else "fail",
+    }
+    out = args.result or build / "result.json"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(result, indent=2) + "\n")
+    npass = sum(e["good"]["result"] == "pass" for e in results)
+    print(f"\n{npass}/{len(results)} bench runs passed; {len(table.get('excluded', []))} excluded; result: {out}\nOVERALL: {'PASS' if ok else 'FAIL'}")
+    return 0 if ok else 1
+
+
 def main() -> int:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawTextHelpFormatter)
-    p.add_argument("test_dir", type=Path, help="test directory (see convention above)")
+    p.add_argument("test_dir", type=Path, nargs="?", help="test directory (see convention above)")
+    p.add_argument("--vvp", type=Path, help="plain-Verilog bench table (see above); replaces test_dir")
+    p.add_argument("--timeout", type=int, default=300, help="per-bench vvp timeout in seconds (--vvp)")
     p.add_argument("--module", help="cocotb module (default test_NAME)")
     p.add_argument("--toplevel", help="HDL toplevel (default NAME)")
     p.add_argument("--dut", type=Path, help="good DUT source (default <test_dir>/NAME.v)")
@@ -116,6 +228,14 @@ def main() -> int:
     p.add_argument("--broken-only", action="store_true", help="run only the negative-control leg")
     p.add_argument("--result", type=Path, help="result JSON path (default <test_dir>/sim_build/result.json)")
     args = p.parse_args()
+    if args.vvp:
+        for tool in ("iverilog", "vvp"):
+            if shutil.which(tool) is None:
+                print(f"ERROR: {tool} not found on PATH; install Icarus Verilog (see verification/README.md)", file=sys.stderr)
+                return 2
+        return main_vvp(args)
+    if args.test_dir is None:
+        p.error("test_dir is required unless --vvp is given")
     if args.good_only and args.broken_only:
         p.error("--good-only and --broken-only are mutually exclusive")
 
