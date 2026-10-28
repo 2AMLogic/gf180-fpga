@@ -2,8 +2,13 @@
 
 Chronological record of merged PRs and closed issues (maintained by the Guide role; newest first).
 
+### 2026-10-28
+
+- **PR #43**: build: pin klayout-tools to the 0.8.0 release and re-attest signoff
+
 ### 2026-10-27
 
+- **Issue #42** (closed): Bump klayout-tools pin fc02bdf0b6aa → 0.8.0
 - **PR #40**: feat(signoff): cite item 9 testbench attestation from the block manifest
 - **PR #39**: feat(signoff): cite T1 item 6 as not_applicable in the block manifest
 - **Issue #34** (closed): Cite the item-9 attestation envelope from the #5 manifest once PR #10 merges
