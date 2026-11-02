@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Render this block's T1 tier verdict (and its item 9 and 10 attestations) with the
+# Render this block's T1 tier verdict (and its item 1, 9 and 10 attestations) with the
 # pinned klt, or verify the committed copies still reproduce.
 #
 #   manifests/run-signoff.sh           # regenerate envelope, manifest pin, record
@@ -23,6 +23,7 @@ TIERS_DOC="manifests/design-evidence-tiers.md"
 RECORD="manifests/gf180-fpga.signoff.json"
 # item number : inventory : envelope
 ATTESTED=(
+  "1:flow/tile/attest/item1.json:flow/tile/records/item1-attest.json"
   "9:verification/signoff/item9-inventory.json:verification/signoff/item9-testbenches.json"
   "10:verification/signoff/item10-inventory.json:verification/signoff/item10-repo-hygiene.json"
 )
@@ -59,7 +60,7 @@ if [[ "$mode" == "check" ]]; then
     diff <(python3 -I -m json.tool "$tmp/fresh.json") <(python3 -I -m json.tool "$RECORD") || true
     exit 1
   fi
-  echo "Committed item 9 and 10 envelopes and signoff record reproduce."
+  echo "Committed item 1, 9 and 10 envelopes and signoff record reproduce."
 else
   for entry in "${ATTESTED[@]}"; do
     IFS=: read -r item inventory envelope <<< "$entry"
@@ -79,5 +80,5 @@ with open(manifest_path, "w") as f:
 PY
   done
   render "$MANIFEST" "$RECORD"
-  echo "Wrote item 9 and 10 envelopes, $MANIFEST pins and $RECORD."
+  echo "Wrote item 1, 9 and 10 envelopes, $MANIFEST pins and $RECORD."
 fi

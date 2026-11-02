@@ -2,6 +2,10 @@
   "block": "gf180-fpga",
   "kind": "digital",
   "evidence": {
+    "1": {
+      "file": "flow/tile/records/item1-attest.json",
+      "content_hash": "sha256:a304b4c679b533559815569a89e4d4764ebf90d441692f7c5ea5e60db4a92a10"
+    },
     "6": {
       "not_applicable": {
         "spec": {
