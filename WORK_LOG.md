@@ -2,6 +2,12 @@
 
 Chronological record of merged PRs and closed issues (maintained by the Guide role; newest first).
 
+### 2026-11-02
+
+- **PR #49**: feat: route logic_tile_routed on gf180mcu 7-track with committed records and stream
+- **PR #48**: feat: cite T1 item 1 attestation in manifest and signoff record
+- **Issue #21** (closed): T1 item 1 (design sources): synthesized gf180mcu_fd_sc_mcu7t5v0 gate-level netlist of logic_tile_routed with item-1 attestation
+
 ### 2026-11-01
 
 - **PR #46**: Bump Repo Skills 0.24.7 -> 0.25.1

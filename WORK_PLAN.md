@@ -19,13 +19,13 @@ _None._
 
 `loom:important`; taken before unlabelled work.
 
-- **#21**: T1 item 1 (design sources): synthesized gf180mcu_fd_sc_mcu7t5v0 gate-level netlist of logic_tile_routed with item-1 attestation
+- **#22**: T1 item 2 (layout): routed logic_tile_routed GDS on gf180mcuD via the routing-closure ladder, with 2x2 abutment check
 
 ## Ready
 
 Human-approved issues ready for implementation (`loom:issue`).
 
-- **#21**: T1 item 1 (design sources): synthesized gf180mcu_fd_sc_mcu7t5v0 gate-level netlist of logic_tile_routed with item-1 attestation
+_None._
 
 ## In Progress
 
@@ -50,7 +50,7 @@ _None._
 Issues carrying `loom:curated`.
 
 - **#6**: Track the gap to T1 (klayout-tools design-evidence-tiers.md) *(curated)*
-- **#21**: T1 item 1 (design sources): synthesized gf180mcu_fd_sc_mcu7t5v0 gate-level netlist of logic_tile_routed with item-1 attestation *(curated)*
+- **#22**: T1 item 2 (layout): routed logic_tile_routed GDS on gf180mcuD via the routing-closure ladder, with 2x2 abutment check *(curated)*
 
 ## Proposed (Architect / Hermit)
 
@@ -67,7 +67,7 @@ _None._
 | Operator merge-risk holds | 0 |
 | Very important | 0 |
 | Important | 1 |
-| Ready (`loom:issue`) | 1 |
+| Ready (`loom:issue`) | 0 |
 | In Progress (`loom:building`) | 0 |
 | PRs awaiting review | 0 |
 | Approved PRs awaiting merge | 0 |
