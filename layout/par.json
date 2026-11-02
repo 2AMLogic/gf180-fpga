@@ -1,0 +1,362 @@
+{
+  "schema": "klt.place_and_route.request/1",
+  "engine": "openroad",
+  "netlist": "../flow/tile/netlist/logic_tile_routed_synth.v",
+  "hdl_toplevel": "logic_tile_routed",
+  "pdk": {
+    "cell_library": "gf180mcu_fd_sc_mcu7t5v0",
+    "corner": "tt_025C_5v00"
+  },
+  "floorplan": {
+    "method": "explicit",
+    "die_area_um": [
+      0,
+      0,
+      117.6,
+      113.68
+    ],
+    "core_area_um": [
+      5.6,
+      3.92,
+      112.0,
+      109.76
+    ],
+    "site": "GF018hv5v_mcu_sc7"
+  },
+  "io": {
+    "layer_h": "Metal3",
+    "layer_v": "Metal2",
+    "pin_constraints": [
+      {
+        "pins": [
+          "n_out[0]",
+          "n_out[1]",
+          "n_out[2]",
+          "n_out[3]"
+        ],
+        "edge": "north",
+        "range_um": [
+          52.9,
+          56.86
+        ],
+        "ordered": true
+      },
+      {
+        "pins": [
+          "s_in[0]",
+          "s_in[1]",
+          "s_in[2]",
+          "s_in[3]"
+        ],
+        "edge": "south",
+        "range_um": [
+          52.9,
+          56.86
+        ],
+        "ordered": true
+      },
+      {
+        "pins": [
+          "n_in[0]",
+          "n_in[1]",
+          "n_in[2]",
+          "n_in[3]"
+        ],
+        "edge": "north",
+        "range_um": [
+          61.86,
+          65.82
+        ],
+        "ordered": true
+      },
+      {
+        "pins": [
+          "s_out[0]",
+          "s_out[1]",
+          "s_out[2]",
+          "s_out[3]"
+        ],
+        "edge": "south",
+        "range_um": [
+          61.86,
+          65.82
+        ],
+        "ordered": true
+      },
+      {
+        "pins": [
+          "e_out[0]",
+          "e_out[1]",
+          "e_out[2]",
+          "e_out[3]"
+        ],
+        "edge": "east",
+        "range_um": [
+          50.66,
+          54.62
+        ],
+        "ordered": true
+      },
+      {
+        "pins": [
+          "w_in[0]",
+          "w_in[1]",
+          "w_in[2]",
+          "w_in[3]"
+        ],
+        "edge": "west",
+        "range_um": [
+          50.66,
+          54.62
+        ],
+        "ordered": true
+      },
+      {
+        "pins": [
+          "e_in[0]",
+          "e_in[1]",
+          "e_in[2]",
+          "e_in[3]"
+        ],
+        "edge": "east",
+        "range_um": [
+          59.62,
+          63.58
+        ],
+        "ordered": true
+      },
+      {
+        "pins": [
+          "w_out[0]",
+          "w_out[1]",
+          "w_out[2]",
+          "w_out[3]"
+        ],
+        "edge": "west",
+        "range_um": [
+          59.62,
+          63.58
+        ],
+        "ordered": true
+      },
+      {
+        "pins": [
+          "cfg[0]",
+          "cfg[1]",
+          "cfg[2]",
+          "cfg[3]",
+          "cfg[4]",
+          "cfg[5]",
+          "cfg[6]",
+          "cfg[7]",
+          "cfg[8]",
+          "cfg[9]",
+          "cfg[10]",
+          "cfg[11]",
+          "cfg[12]",
+          "cfg[13]",
+          "cfg[14]",
+          "cfg[15]",
+          "cfg[16]",
+          "cfg[17]",
+          "cfg[18]",
+          "cfg[19]",
+          "cfg[20]",
+          "cfg[21]",
+          "cfg[22]",
+          "cfg[23]",
+          "cfg[24]",
+          "cfg[25]",
+          "cfg[26]",
+          "cfg[27]",
+          "cfg[28]",
+          "cfg[29]",
+          "cfg[30]",
+          "cfg[31]",
+          "cfg[32]",
+          "cfg[33]",
+          "cfg[34]",
+          "cfg[35]",
+          "cfg[36]",
+          "cfg[37]",
+          "cfg[38]",
+          "cfg[39]",
+          "cfg[40]",
+          "cfg[41]"
+        ],
+        "edge": "north",
+        "range_um": [
+          2.35,
+          51.74
+        ]
+      },
+      {
+        "pins": [
+          "cfg[42]",
+          "cfg[43]",
+          "cfg[44]",
+          "cfg[45]",
+          "cfg[46]",
+          "cfg[47]",
+          "cfg[48]",
+          "cfg[49]",
+          "cfg[50]",
+          "cfg[51]",
+          "cfg[52]",
+          "cfg[53]",
+          "cfg[54]",
+          "cfg[55]",
+          "cfg[56]",
+          "cfg[57]",
+          "cfg[58]",
+          "cfg[59]",
+          "cfg[60]",
+          "cfg[61]",
+          "cfg[62]",
+          "cfg[63]",
+          "cfg[64]",
+          "cfg[65]",
+          "cfg[66]",
+          "cfg[67]",
+          "cfg[68]",
+          "cfg[69]",
+          "cfg[70]",
+          "cfg[71]",
+          "cfg[72]",
+          "cfg[73]",
+          "cfg[74]",
+          "cfg[75]",
+          "cfg[76]",
+          "cfg[77]",
+          "cfg[78]",
+          "cfg[79]"
+        ],
+        "edge": "south",
+        "range_um": [
+          70.56,
+          115.25
+        ]
+      },
+      {
+        "pins": [
+          "cfg[80]",
+          "cfg[81]",
+          "cfg[82]",
+          "cfg[83]",
+          "cfg[84]",
+          "cfg[85]",
+          "cfg[86]",
+          "cfg[87]",
+          "cfg[88]",
+          "cfg[89]",
+          "cfg[90]",
+          "cfg[91]",
+          "cfg[92]",
+          "cfg[93]",
+          "cfg[94]",
+          "cfg[95]",
+          "cfg[96]",
+          "cfg[97]",
+          "cfg[98]",
+          "cfg[99]",
+          "cfg[100]",
+          "cfg[101]",
+          "cfg[102]",
+          "cfg[103]",
+          "cfg[104]",
+          "cfg[105]",
+          "cfg[106]",
+          "cfg[107]",
+          "cfg[108]",
+          "cfg[109]",
+          "cfg[110]",
+          "cfg[111]",
+          "cfg[112]",
+          "cfg[113]",
+          "cfg[114]",
+          "cfg[115]",
+          "cfg[116]",
+          "cfg[117]",
+          "cfg[118]",
+          "cfg[119]",
+          "cfg[120]",
+          "cfg[121]"
+        ],
+        "edge": "east",
+        "range_um": [
+          2.27,
+          50.02
+        ]
+      },
+      {
+        "pins": [
+          "cfg[122]",
+          "cfg[123]",
+          "cfg[124]",
+          "cfg[125]",
+          "cfg[126]",
+          "cfg[127]",
+          "cfg[128]",
+          "cfg[129]",
+          "cfg[130]",
+          "cfg[131]",
+          "cfg[132]",
+          "cfg[133]",
+          "cfg[134]",
+          "cfg[135]",
+          "cfg[136]",
+          "cfg[137]",
+          "cfg[138]",
+          "cfg[139]",
+          "cfg[140]",
+          "cfg[141]",
+          "cfg[142]",
+          "cfg[143]",
+          "cfg[144]",
+          "cfg[145]",
+          "cfg[146]",
+          "cfg[147]",
+          "cfg[148]",
+          "cfg[149]",
+          "cfg[150]",
+          "cfg[151]",
+          "cfg[152]",
+          "cfg[153]",
+          "cfg[154]",
+          "cfg[155]",
+          "cfg[156]",
+          "cfg[157]"
+        ],
+        "edge": "west",
+        "range_um": [
+          68.21,
+          111.41
+        ]
+      },
+      {
+        "pins": [
+          "clk"
+        ],
+        "edge": "south",
+        "range_um": [
+          60.21,
+          62.09
+        ]
+      }
+    ]
+  },
+  "power": {
+    "preset": "gf180mcu_7t_6M",
+    "power_net": "VDD",
+    "ground_net": "VSS",
+    "tapcell": {
+      "distance_um": 40
+    }
+  },
+  "constraints": {
+    "clock_port": "clk",
+    "clock_period_ns": 20.0
+  },
+  "seed": 1,
+  "target_stage": "route"
+}

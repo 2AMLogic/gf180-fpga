@@ -1,0 +1,637 @@
+{
+  "tile_gds": "layout/logic_tile_routed.gds",
+  "tile_w_um": 117.60000000000001,
+  "tile_h_um": 113.68,
+  "seams": {
+    "ns": {
+      "place_um": "0,113.68",
+      "pins_regex": "n_(in|out)\\[\\d\\]",
+      "exit": 0,
+      "result": {
+        "schema_version": 1,
+        "a": "layout/logic_tile_routed.gds",
+        "b": "layout/.klt/abut/neighbour-ns.gds",
+        "place_um": [
+          0.0,
+          113.68
+        ],
+        "pins_pattern": "n_(in|out)\\[\\d\\]",
+        "tolerance_um": 0.0,
+        "dbu_um": {
+          "a": 0.0005,
+          "b": 0.0005
+        },
+        "status": "pass",
+        "pin_count": 8,
+        "ok_count": 8,
+        "misaligned_count": 0,
+        "no_partner_count": 0,
+        "pins": [
+          {
+            "name": "n_in[0]",
+            "status": "ok",
+            "offset_um": [
+              0.0,
+              0.52
+            ],
+            "gap_um": 0.0,
+            "a": {
+              "layer": "36/10",
+              "label_um": [
+                62.16,
+                113.42
+              ],
+              "pad_bbox_um": [
+                62.02,
+                113.16,
+                62.3,
+                113.68
+              ]
+            },
+            "b": {
+              "layer": "36/10",
+              "label_um": [
+                62.16,
+                113.94
+              ],
+              "pad_bbox_um": [
+                62.02,
+                113.68,
+                62.3,
+                114.2
+              ]
+            },
+            "reason": null
+          },
+          {
+            "name": "n_in[1]",
+            "status": "ok",
+            "offset_um": [
+              0.0,
+              0.52
+            ],
+            "gap_um": 0.0,
+            "a": {
+              "layer": "36/10",
+              "label_um": [
+                63.28,
+                113.42
+              ],
+              "pad_bbox_um": [
+                63.14,
+                113.16,
+                63.42,
+                113.68
+              ]
+            },
+            "b": {
+              "layer": "36/10",
+              "label_um": [
+                63.28,
+                113.94
+              ],
+              "pad_bbox_um": [
+                63.14,
+                113.68,
+                63.42,
+                114.2
+              ]
+            },
+            "reason": null
+          },
+          {
+            "name": "n_in[2]",
+            "status": "ok",
+            "offset_um": [
+              0.0,
+              0.52
+            ],
+            "gap_um": 0.0,
+            "a": {
+              "layer": "36/10",
+              "label_um": [
+                64.4,
+                113.42
+              ],
+              "pad_bbox_um": [
+                64.26,
+                113.16,
+                64.54,
+                113.68
+              ]
+            },
+            "b": {
+              "layer": "36/10",
+              "label_um": [
+                64.4,
+                113.94
+              ],
+              "pad_bbox_um": [
+                64.26,
+                113.68,
+                64.54,
+                114.2
+              ]
+            },
+            "reason": null
+          },
+          {
+            "name": "n_in[3]",
+            "status": "ok",
+            "offset_um": [
+              0.0,
+              0.52
+            ],
+            "gap_um": 0.0,
+            "a": {
+              "layer": "36/10",
+              "label_um": [
+                65.52,
+                113.42
+              ],
+              "pad_bbox_um": [
+                65.38,
+                113.16,
+                65.66,
+                113.68
+              ]
+            },
+            "b": {
+              "layer": "36/10",
+              "label_um": [
+                65.52,
+                113.94
+              ],
+              "pad_bbox_um": [
+                65.38,
+                113.68,
+                65.66,
+                114.2
+              ]
+            },
+            "reason": null
+          },
+          {
+            "name": "n_out[0]",
+            "status": "ok",
+            "offset_um": [
+              0.0,
+              0.52
+            ],
+            "gap_um": 0.0,
+            "a": {
+              "layer": "36/10",
+              "label_um": [
+                53.2,
+                113.42
+              ],
+              "pad_bbox_um": [
+                53.06,
+                113.16,
+                53.34,
+                113.68
+              ]
+            },
+            "b": {
+              "layer": "36/10",
+              "label_um": [
+                53.2,
+                113.94
+              ],
+              "pad_bbox_um": [
+                53.06,
+                113.68,
+                53.34,
+                114.2
+              ]
+            },
+            "reason": null
+          },
+          {
+            "name": "n_out[1]",
+            "status": "ok",
+            "offset_um": [
+              0.0,
+              0.52
+            ],
+            "gap_um": 0.0,
+            "a": {
+              "layer": "36/10",
+              "label_um": [
+                54.32,
+                113.42
+              ],
+              "pad_bbox_um": [
+                54.18,
+                113.16,
+                54.46,
+                113.68
+              ]
+            },
+            "b": {
+              "layer": "36/10",
+              "label_um": [
+                54.32,
+                113.94
+              ],
+              "pad_bbox_um": [
+                54.18,
+                113.68,
+                54.46,
+                114.2
+              ]
+            },
+            "reason": null
+          },
+          {
+            "name": "n_out[2]",
+            "status": "ok",
+            "offset_um": [
+              0.0,
+              0.52
+            ],
+            "gap_um": 0.0,
+            "a": {
+              "layer": "36/10",
+              "label_um": [
+                55.44,
+                113.42
+              ],
+              "pad_bbox_um": [
+                55.3,
+                113.16,
+                55.58,
+                113.68
+              ]
+            },
+            "b": {
+              "layer": "36/10",
+              "label_um": [
+                55.44,
+                113.94
+              ],
+              "pad_bbox_um": [
+                55.3,
+                113.68,
+                55.58,
+                114.2
+              ]
+            },
+            "reason": null
+          },
+          {
+            "name": "n_out[3]",
+            "status": "ok",
+            "offset_um": [
+              0.0,
+              0.52
+            ],
+            "gap_um": 0.0,
+            "a": {
+              "layer": "36/10",
+              "label_um": [
+                56.56,
+                113.42
+              ],
+              "pad_bbox_um": [
+                56.42,
+                113.16,
+                56.7,
+                113.68
+              ]
+            },
+            "b": {
+              "layer": "36/10",
+              "label_um": [
+                56.56,
+                113.94
+              ],
+              "pad_bbox_um": [
+                56.42,
+                113.68,
+                56.7,
+                114.2
+              ]
+            },
+            "reason": null
+          }
+        ]
+      }
+    },
+    "ew": {
+      "place_um": "117.6,0",
+      "pins_regex": "e_(in|out)\\[\\d\\]",
+      "exit": 0,
+      "result": {
+        "schema_version": 1,
+        "a": "layout/logic_tile_routed.gds",
+        "b": "layout/.klt/abut/neighbour-ew.gds",
+        "place_um": [
+          117.6,
+          0.0
+        ],
+        "pins_pattern": "e_(in|out)\\[\\d\\]",
+        "tolerance_um": 0.0,
+        "dbu_um": {
+          "a": 0.0005,
+          "b": 0.0005
+        },
+        "status": "pass",
+        "pin_count": 8,
+        "ok_count": 8,
+        "misaligned_count": 0,
+        "no_partner_count": 0,
+        "pins": [
+          {
+            "name": "e_in[0]",
+            "status": "ok",
+            "offset_um": [
+              0.52,
+              0.0
+            ],
+            "gap_um": 0.0,
+            "a": {
+              "layer": "42/10",
+              "label_um": [
+                117.34,
+                59.92
+              ],
+              "pad_bbox_um": [
+                117.08,
+                59.78,
+                117.6,
+                60.06
+              ]
+            },
+            "b": {
+              "layer": "42/10",
+              "label_um": [
+                117.86,
+                59.92
+              ],
+              "pad_bbox_um": [
+                117.6,
+                59.78,
+                118.12,
+                60.06
+              ]
+            },
+            "reason": null
+          },
+          {
+            "name": "e_in[1]",
+            "status": "ok",
+            "offset_um": [
+              0.52,
+              0.0
+            ],
+            "gap_um": 0.0,
+            "a": {
+              "layer": "42/10",
+              "label_um": [
+                117.34,
+                61.04
+              ],
+              "pad_bbox_um": [
+                117.08,
+                60.9,
+                117.6,
+                61.18
+              ]
+            },
+            "b": {
+              "layer": "42/10",
+              "label_um": [
+                117.86,
+                61.04
+              ],
+              "pad_bbox_um": [
+                117.6,
+                60.9,
+                118.12,
+                61.18
+              ]
+            },
+            "reason": null
+          },
+          {
+            "name": "e_in[2]",
+            "status": "ok",
+            "offset_um": [
+              0.52,
+              0.0
+            ],
+            "gap_um": 0.0,
+            "a": {
+              "layer": "42/10",
+              "label_um": [
+                117.34,
+                62.16
+              ],
+              "pad_bbox_um": [
+                117.08,
+                62.02,
+                117.6,
+                62.3
+              ]
+            },
+            "b": {
+              "layer": "42/10",
+              "label_um": [
+                117.86,
+                62.16
+              ],
+              "pad_bbox_um": [
+                117.6,
+                62.02,
+                118.12,
+                62.3
+              ]
+            },
+            "reason": null
+          },
+          {
+            "name": "e_in[3]",
+            "status": "ok",
+            "offset_um": [
+              0.52,
+              0.0
+            ],
+            "gap_um": 0.0,
+            "a": {
+              "layer": "42/10",
+              "label_um": [
+                117.34,
+                63.28
+              ],
+              "pad_bbox_um": [
+                117.08,
+                63.14,
+                117.6,
+                63.42
+              ]
+            },
+            "b": {
+              "layer": "42/10",
+              "label_um": [
+                117.86,
+                63.28
+              ],
+              "pad_bbox_um": [
+                117.6,
+                63.14,
+                118.12,
+                63.42
+              ]
+            },
+            "reason": null
+          },
+          {
+            "name": "e_out[0]",
+            "status": "ok",
+            "offset_um": [
+              0.52,
+              0.0
+            ],
+            "gap_um": 0.0,
+            "a": {
+              "layer": "42/10",
+              "label_um": [
+                117.34,
+                50.96
+              ],
+              "pad_bbox_um": [
+                117.08,
+                50.82,
+                117.6,
+                51.1
+              ]
+            },
+            "b": {
+              "layer": "42/10",
+              "label_um": [
+                117.86,
+                50.96
+              ],
+              "pad_bbox_um": [
+                117.6,
+                50.82,
+                118.12,
+                51.1
+              ]
+            },
+            "reason": null
+          },
+          {
+            "name": "e_out[1]",
+            "status": "ok",
+            "offset_um": [
+              0.52,
+              0.0
+            ],
+            "gap_um": 0.0,
+            "a": {
+              "layer": "42/10",
+              "label_um": [
+                117.34,
+                52.08
+              ],
+              "pad_bbox_um": [
+                117.08,
+                51.94,
+                117.6,
+                52.22
+              ]
+            },
+            "b": {
+              "layer": "42/10",
+              "label_um": [
+                117.86,
+                52.08
+              ],
+              "pad_bbox_um": [
+                117.6,
+                51.94,
+                118.12,
+                52.22
+              ]
+            },
+            "reason": null
+          },
+          {
+            "name": "e_out[2]",
+            "status": "ok",
+            "offset_um": [
+              0.52,
+              0.0
+            ],
+            "gap_um": 0.0,
+            "a": {
+              "layer": "42/10",
+              "label_um": [
+                117.34,
+                53.2
+              ],
+              "pad_bbox_um": [
+                117.08,
+                53.06,
+                117.6,
+                53.34
+              ]
+            },
+            "b": {
+              "layer": "42/10",
+              "label_um": [
+                117.86,
+                53.2
+              ],
+              "pad_bbox_um": [
+                117.6,
+                53.06,
+                118.12,
+                53.34
+              ]
+            },
+            "reason": null
+          },
+          {
+            "name": "e_out[3]",
+            "status": "ok",
+            "offset_um": [
+              0.52,
+              0.0
+            ],
+            "gap_um": 0.0,
+            "a": {
+              "layer": "42/10",
+              "label_um": [
+                117.34,
+                54.32
+              ],
+              "pad_bbox_um": [
+                117.08,
+                54.18,
+                117.6,
+                54.46
+              ]
+            },
+            "b": {
+              "layer": "42/10",
+              "label_um": [
+                117.86,
+                54.32
+              ],
+              "pad_bbox_um": [
+                117.6,
+                54.18,
+                118.12,
+                54.46
+              ]
+            },
+            "reason": null
+          }
+        ]
+      }
+    }
+  }
+}

@@ -110,3 +110,6 @@ sim_build/
 
 # Repo Skills Codex-side machine-local install metadata (never committed)
 .agents/skills/repo/.install-local.json
+
+# klt place-and-route scratch (stage odb, logs); the routed GDS/DEF are copied out
+layout/.klt/
