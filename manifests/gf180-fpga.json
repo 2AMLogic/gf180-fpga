@@ -33,6 +33,17 @@
     "10": {
       "file": "verification/signoff/item10-repo-hygiene.json",
       "content_hash": "sha256:fc4bbb86801aa01289ba82f8a875a9bbbf8ee1f1870b68fbb84766c783eb8404"
-    }
+    },
+    "11": [
+      {
+        "file": "layout/records/erc.json",
+        "content_hash": "sha256:d71889f054b5087bd607cfc69a02e23e60b7c6601f6be586c91ca02b582d634a"
+      },
+      {
+        "file": "layout/records/lvs.json",
+        "content_hash": "sha256:d71889f054b5087bd607cfc69a02e23e60b7c6601f6be586c91ca02b582d634a"
+      },
+      "layout/records/step0-par.json"
+    ]
   }
 }
