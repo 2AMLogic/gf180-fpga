@@ -19,7 +19,7 @@ _None._
 
 `loom:important`; taken before unlabelled work.
 
-- **#22**: T1 item 2 (layout): routed logic_tile_routed GDS on gf180mcuD via the routing-closure ladder, with 2x2 abutment check
+- **#27**: T1 item 5 (corner verification): klt sta on the routed tile at all 15 mcu7t5v0 corners plus klt functional-verification of the stamped bitstream-level tests
 
 ## Ready
 
@@ -31,7 +31,7 @@ _None._
 
 Issues currently being built (`loom:building`).
 
-- **#22**: T1 item 2 (layout): routed logic_tile_routed GDS on gf180mcuD via the routing-closure ladder, with 2x2 abutment check
+_None._
 
 ## PRs Awaiting Review
 
@@ -50,11 +50,12 @@ _None._
 Issues carrying `loom:curated`.
 
 - **#6**: Track the gap to T1 (klayout-tools design-evidence-tiers.md) *(curated)*
-- **#22**: T1 item 2 (layout): routed logic_tile_routed GDS on gf180mcuD via the routing-closure ladder, with 2x2 abutment check *(curated)*
+- **#23**: T1 item 3 (DRC clean): klt drc report on the routed gf180mcuD tile with deck coverage disclosed *(curated)*
+- **#55**: DRC: 46 MV tap-distance violations on routed tile (tapcell pitch 40 um) *(curated)*
 
 ## Proposed (Architect / Hermit)
 
-_None._
+- **#58**: Single-source the klayout-tools pin: three places hardcode 0.9.0, three scripts use unpinned host klt *(hermit)*
 
 ## Epics
 
@@ -68,10 +69,10 @@ _None._
 | Very important | 0 |
 | Important | 1 |
 | Ready (`loom:issue`) | 0 |
-| In Progress (`loom:building`) | 1 |
+| In Progress (`loom:building`) | 0 |
 | PRs awaiting review | 0 |
 | Approved PRs awaiting merge | 0 |
-| Curated | 2 |
-| Architect / Hermit proposals | 0 |
+| Curated | 3 |
+| Architect / Hermit proposals | 1 |
 | Active epics | 0 |
 <!-- guide:plan-body:end -->

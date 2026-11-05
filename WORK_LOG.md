@@ -2,6 +2,16 @@
 
 Chronological record of merged PRs and closed issues (maintained by the Guide role; newest first).
 
+### 2026-11-05
+
+- **PR #57**: feat(signoff): supply ERC of the routed tile, cited as T1 item 11
+- **PR #56**: feat(drc): commit tile DRC report (46 MV tap-distance violations, item 3 unmet)
+- **PR #54**: feat(signoff): gate-level LVS of the routed tile, cited as T1 item 4
+- **PR #52**: feat(signoff): attest T1 item 2 from routed GDS, bump klt pin to 0.9.0
+- **Issue #30** (closed): T1 item 11 (power delivery): klt erc supply spec for the routed tile, PDN evidence and power_connectivity match
+- **Issue #24** (closed): T1 item 4 (LVS clean): klt lvs of the routed tile against its gate-level netlist with power_connectivity graded
+- **Issue #22** (closed): T1 item 2 (layout): routed logic_tile_routed GDS on gf180mcuD via the routing-closure ladder, with 2x2 abutment check
+
 ### 2026-11-02
 
 - **PR #49**: feat: route logic_tile_routed on gf180mcu 7-track with committed records and stream
