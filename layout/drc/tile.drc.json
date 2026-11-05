@@ -1,0 +1,2600 @@
+{
+  "schema_version": 3,
+  "file": {
+    "path": "layout/logic_tile_routed.gds",
+    "scope": "repo"
+  },
+  "deck": "gf180mcu",
+  "dbu_um": 0.0005,
+  "status": "violations",
+  "violation_count": 46,
+  "rule_counts": {
+    "comp.tap_distance.nwell.mv.1": 23,
+    "comp.tap_distance.psub.mv.1": 23
+  },
+  "metrics": {
+    "drc__error__count": 46
+  },
+  "violations": [
+    {
+      "rule": "comp.tap_distance.nwell.mv.1",
+      "description": "Max distance of an Nwell tap (NCOMP inside Nwell) from PCOMP inside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__nor2_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__nor2_1"
+      ],
+      "bbox": {
+        "left": 42920,
+        "bottom": 43920,
+        "right": 48020,
+        "top": 46360
+      },
+      "polygon": [
+        [
+          42920,
+          43920
+        ],
+        [
+          42920,
+          46360
+        ],
+        [
+          48020,
+          46360
+        ],
+        [
+          48020,
+          43920
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.nwell.mv.1",
+      "description": "Max distance of an Nwell tap (NCOMP inside Nwell) from PCOMP inside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__dffq_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__dffq_1"
+      ],
+      "bbox": {
+        "left": 43160,
+        "bottom": 32040,
+        "right": 45920,
+        "top": 34480
+      },
+      "polygon": [
+        [
+          43160,
+          32040
+        ],
+        [
+          43160,
+          34480
+        ],
+        [
+          45920,
+          34480
+        ],
+        [
+          45920,
+          32040
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.nwell.mv.1",
+      "description": "Max distance of an Nwell tap (NCOMP inside Nwell) from PCOMP inside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__mux4_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__mux4_1"
+      ],
+      "bbox": {
+        "left": 46430,
+        "bottom": 169790,
+        "right": 52370,
+        "top": 170920
+      },
+      "polygon": [
+        [
+          46430,
+          169790
+        ],
+        [
+          46430,
+          170920
+        ],
+        [
+          52370,
+          170920
+        ],
+        [
+          52370,
+          169790
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.nwell.mv.1",
+      "description": "Max distance of an Nwell tap (NCOMP inside Nwell) from PCOMP inside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__dffq_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__dffq_1"
+      ],
+      "bbox": {
+        "left": 47640,
+        "bottom": 63400,
+        "right": 50400,
+        "top": 65840
+      },
+      "polygon": [
+        [
+          47640,
+          63400
+        ],
+        [
+          47640,
+          65840
+        ],
+        [
+          50400,
+          65840
+        ],
+        [
+          50400,
+          63400
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.nwell.mv.1",
+      "description": "Max distance of an Nwell tap (NCOMP inside Nwell) from PCOMP inside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__mux4_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__mux4_1"
+      ],
+      "bbox": {
+        "left": 48520,
+        "bottom": 138000,
+        "right": 60850,
+        "top": 139560
+      },
+      "polygon": [
+        [
+          58170,
+          138000
+        ],
+        [
+          58170,
+          138430
+        ],
+        [
+          48520,
+          138430
+        ],
+        [
+          48520,
+          139560
+        ],
+        [
+          60850,
+          139560
+        ],
+        [
+          60850,
+          138000
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.nwell.mv.1",
+      "description": "Max distance of an Nwell tap (NCOMP inside Nwell) from PCOMP inside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__mux4_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__mux4_1"
+      ],
+      "bbox": {
+        "left": 53150,
+        "bottom": 189720,
+        "right": 59090,
+        "top": 190850
+      },
+      "polygon": [
+        [
+          53150,
+          189720
+        ],
+        [
+          53150,
+          190850
+        ],
+        [
+          59090,
+          190850
+        ],
+        [
+          59090,
+          189720
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.nwell.mv.1",
+      "description": "Max distance of an Nwell tap (NCOMP inside Nwell) from PCOMP inside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__mux4_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__mux4_1"
+      ],
+      "bbox": {
+        "left": 54270,
+        "bottom": 205400,
+        "right": 60210,
+        "top": 206530
+      },
+      "polygon": [
+        [
+          54270,
+          205400
+        ],
+        [
+          54270,
+          206530
+        ],
+        [
+          60210,
+          206530
+        ],
+        [
+          60210,
+          205400
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.nwell.mv.1",
+      "description": "Max distance of an Nwell tap (NCOMP inside Nwell) from PCOMP inside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__mux4_2",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__mux4_2"
+      ],
+      "bbox": {
+        "left": 54450,
+        "bottom": 91330,
+        "right": 60440,
+        "top": 92520
+      },
+      "polygon": [
+        [
+          54450,
+          91330
+        ],
+        [
+          54450,
+          92520
+        ],
+        [
+          60440,
+          92520
+        ],
+        [
+          60440,
+          91330
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.nwell.mv.1",
+      "description": "Max distance of an Nwell tap (NCOMP inside Nwell) from PCOMP inside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__mux4_2",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__mux4_2"
+      ],
+      "bbox": {
+        "left": 54450,
+        "bottom": 158360,
+        "right": 60440,
+        "top": 159550
+      },
+      "polygon": [
+        [
+          54450,
+          158360
+        ],
+        [
+          54450,
+          159550
+        ],
+        [
+          60440,
+          159550
+        ],
+        [
+          60440,
+          158360
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.nwell.mv.1",
+      "description": "Max distance of an Nwell tap (NCOMP inside Nwell) from PCOMP inside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__clkinv_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__clkinv_1"
+      ],
+      "bbox": {
+        "left": 122440,
+        "bottom": 90960,
+        "right": 125200,
+        "top": 93400
+      },
+      "polygon": [
+        [
+          122440,
+          90960
+        ],
+        [
+          122440,
+          93400
+        ],
+        [
+          125200,
+          93400
+        ],
+        [
+          125200,
+          90960
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.nwell.mv.1",
+      "description": "Max distance of an Nwell tap (NCOMP inside Nwell) from PCOMP inside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__clkinv_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__clkinv_1"
+      ],
+      "bbox": {
+        "left": 122440,
+        "bottom": 122320,
+        "right": 125200,
+        "top": 124760
+      },
+      "polygon": [
+        [
+          122440,
+          122320
+        ],
+        [
+          122440,
+          124760
+        ],
+        [
+          125200,
+          124760
+        ],
+        [
+          125200,
+          122320
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.nwell.mv.1",
+      "description": "Max distance of an Nwell tap (NCOMP inside Nwell) from PCOMP inside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__mux2_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__mux2_1"
+      ],
+      "bbox": {
+        "left": 122640,
+        "bottom": 126120,
+        "right": 135440,
+        "top": 128560
+      },
+      "polygon": [
+        [
+          122640,
+          126120
+        ],
+        [
+          122640,
+          128560
+        ],
+        [
+          125400,
+          128560
+        ],
+        [
+          125400,
+          127350
+        ],
+        [
+          135440,
+          127350
+        ],
+        [
+          135440,
+          126120
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.nwell.mv.1",
+      "description": "Max distance of an Nwell tap (NCOMP inside Nwell) from PCOMP inside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__mux4_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__mux4_1"
+      ],
+      "bbox": {
+        "left": 123710,
+        "bottom": 201150,
+        "right": 129650,
+        "top": 202280
+      },
+      "polygon": [
+        [
+          123710,
+          201150
+        ],
+        [
+          123710,
+          202280
+        ],
+        [
+          129650,
+          202280
+        ],
+        [
+          129650,
+          201150
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.nwell.mv.1",
+      "description": "Max distance of an Nwell tap (NCOMP inside Nwell) from PCOMP inside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__dffq_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__dffq_1"
+      ],
+      "bbox": {
+        "left": 123800,
+        "bottom": 185040,
+        "right": 126560,
+        "top": 187480
+      },
+      "polygon": [
+        [
+          123800,
+          185040
+        ],
+        [
+          123800,
+          187480
+        ],
+        [
+          126560,
+          187480
+        ],
+        [
+          126560,
+          185040
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.nwell.mv.1",
+      "description": "Max distance of an Nwell tap (NCOMP inside Nwell) from PCOMP inside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__mux4_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__mux4_1"
+      ],
+      "bbox": {
+        "left": 125250,
+        "bottom": 60030,
+        "right": 139010,
+        "top": 61160
+      },
+      "polygon": [
+        [
+          125250,
+          60030
+        ],
+        [
+          125250,
+          61160
+        ],
+        [
+          139010,
+          61160
+        ],
+        [
+          139010,
+          60030
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.nwell.mv.1",
+      "description": "Max distance of an Nwell tap (NCOMP inside Nwell) from PCOMP inside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__aoi21_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__aoi21_1"
+      ],
+      "bbox": {
+        "left": 125800,
+        "bottom": 153680,
+        "right": 133080,
+        "top": 156110
+      },
+      "polygon": [
+        [
+          125800,
+          153680
+        ],
+        [
+          125800,
+          156110
+        ],
+        [
+          133080,
+          156110
+        ],
+        [
+          133080,
+          153680
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.nwell.mv.1",
+      "description": "Max distance of an Nwell tap (NCOMP inside Nwell) from PCOMP inside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__mux4_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__mux4_1"
+      ],
+      "bbox": {
+        "left": 125950,
+        "bottom": 75710,
+        "right": 131890,
+        "top": 76840
+      },
+      "polygon": [
+        [
+          125950,
+          75710
+        ],
+        [
+          125950,
+          76840
+        ],
+        [
+          131890,
+          76840
+        ],
+        [
+          131890,
+          75710
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.nwell.mv.1",
+      "description": "Max distance of an Nwell tap (NCOMP inside Nwell) from PCOMP inside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__clkinv_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__clkinv_1"
+      ],
+      "bbox": {
+        "left": 126920,
+        "bottom": 63400,
+        "right": 129680,
+        "top": 65840
+      },
+      "polygon": [
+        [
+          126920,
+          63400
+        ],
+        [
+          126920,
+          65840
+        ],
+        [
+          129680,
+          65840
+        ],
+        [
+          129680,
+          63400
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.nwell.mv.1",
+      "description": "Max distance of an Nwell tap (NCOMP inside Nwell) from PCOMP inside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__nor2_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__nor2_1"
+      ],
+      "bbox": {
+        "left": 126920,
+        "bottom": 122320,
+        "right": 132020,
+        "top": 124760
+      },
+      "polygon": [
+        [
+          126920,
+          122320
+        ],
+        [
+          126920,
+          124760
+        ],
+        [
+          132020,
+          124760
+        ],
+        [
+          132020,
+          122320
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.nwell.mv.1",
+      "description": "Max distance of an Nwell tap (NCOMP inside Nwell) from PCOMP inside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__mux4_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__mux4_1"
+      ],
+      "bbox": {
+        "left": 127070,
+        "bottom": 138430,
+        "right": 133010,
+        "top": 139560
+      },
+      "polygon": [
+        [
+          127070,
+          138430
+        ],
+        [
+          127070,
+          139560
+        ],
+        [
+          133010,
+          139560
+        ],
+        [
+          133010,
+          138430
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.nwell.mv.1",
+      "description": "Max distance of an Nwell tap (NCOMP inside Nwell) from PCOMP inside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__mux4_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__mux4_1"
+      ],
+      "bbox": {
+        "left": 128040,
+        "bottom": 48600,
+        "right": 140370,
+        "top": 50160
+      },
+      "polygon": [
+        [
+          128040,
+          48600
+        ],
+        [
+          128040,
+          49730
+        ],
+        [
+          137690,
+          49730
+        ],
+        [
+          137690,
+          50160
+        ],
+        [
+          140370,
+          50160
+        ],
+        [
+          140370,
+          48600
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.nwell.mv.1",
+      "description": "Max distance of an Nwell tap (NCOMP inside Nwell) from PCOMP inside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__nor2_2",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__nor2_2"
+      ],
+      "bbox": {
+        "left": 129260,
+        "bottom": 90960,
+        "right": 138740,
+        "top": 93400
+      },
+      "polygon": [
+        [
+          129260,
+          90960
+        ],
+        [
+          129260,
+          93400
+        ],
+        [
+          138740,
+          93400
+        ],
+        [
+          138740,
+          90960
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.nwell.mv.1",
+      "description": "Max distance of an Nwell tap (NCOMP inside Nwell) from PCOMP inside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__mux4_2",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__mux4_2"
+      ],
+      "bbox": {
+        "left": 129490,
+        "bottom": 79960,
+        "right": 135480,
+        "top": 81150
+      },
+      "polygon": [
+        [
+          129490,
+          79960
+        ],
+        [
+          129490,
+          81150
+        ],
+        [
+          135480,
+          81150
+        ],
+        [
+          135480,
+          79960
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.psub.mv.1",
+      "description": "Max distance of a substrate tap (PCOMP outside Nwell) from NCOMP outside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__nor2_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__nor2_1"
+      ],
+      "bbox": {
+        "left": 42920,
+        "bottom": 40250,
+        "right": 48120,
+        "top": 41380
+      },
+      "polygon": [
+        [
+          42920,
+          40250
+        ],
+        [
+          42920,
+          41380
+        ],
+        [
+          48120,
+          41380
+        ],
+        [
+          48120,
+          40250
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.psub.mv.1",
+      "description": "Max distance of a substrate tap (PCOMP outside Nwell) from NCOMP outside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__dffq_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__dffq_1"
+      ],
+      "bbox": {
+        "left": 43280,
+        "bottom": 36880,
+        "right": 46240,
+        "top": 38520
+      },
+      "polygon": [
+        [
+          43280,
+          36880
+        ],
+        [
+          43280,
+          38520
+        ],
+        [
+          46240,
+          38520
+        ],
+        [
+          46240,
+          36880
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.psub.mv.1",
+      "description": "Max distance of a substrate tap (PCOMP outside Nwell) from NCOMP outside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__mux4_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__mux4_1"
+      ],
+      "bbox": {
+        "left": 46400,
+        "bottom": 166200,
+        "right": 52370,
+        "top": 166930
+      },
+      "polygon": [
+        [
+          46400,
+          166200
+        ],
+        [
+          46400,
+          166930
+        ],
+        [
+          52370,
+          166930
+        ],
+        [
+          52370,
+          166200
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.psub.mv.1",
+      "description": "Max distance of a substrate tap (PCOMP outside Nwell) from NCOMP outside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__dffq_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__dffq_1"
+      ],
+      "bbox": {
+        "left": 47760,
+        "bottom": 68240,
+        "right": 50720,
+        "top": 69880
+      },
+      "polygon": [
+        [
+          47760,
+          68240
+        ],
+        [
+          47760,
+          69880
+        ],
+        [
+          50720,
+          69880
+        ],
+        [
+          50720,
+          68240
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.psub.mv.1",
+      "description": "Max distance of a substrate tap (PCOMP outside Nwell) from NCOMP outside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__mux4_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__mux4_1"
+      ],
+      "bbox": {
+        "left": 48520,
+        "bottom": 134840,
+        "right": 61050,
+        "top": 135600
+      },
+      "polygon": [
+        [
+          48520,
+          134840
+        ],
+        [
+          48520,
+          135570
+        ],
+        [
+          58170,
+          135570
+        ],
+        [
+          58170,
+          135600
+        ],
+        [
+          61050,
+          135600
+        ],
+        [
+          61050,
+          134840
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.psub.mv.1",
+      "description": "Max distance of a substrate tap (PCOMP outside Nwell) from NCOMP outside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__mux4_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__mux4_1"
+      ],
+      "bbox": {
+        "left": 53120,
+        "bottom": 193710,
+        "right": 59090,
+        "top": 194440
+      },
+      "polygon": [
+        [
+          53120,
+          193710
+        ],
+        [
+          53120,
+          194440
+        ],
+        [
+          59090,
+          194440
+        ],
+        [
+          59090,
+          193710
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.psub.mv.1",
+      "description": "Max distance of a substrate tap (PCOMP outside Nwell) from NCOMP outside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__mux4_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__mux4_1"
+      ],
+      "bbox": {
+        "left": 54240,
+        "bottom": 209390,
+        "right": 60210,
+        "top": 210120
+      },
+      "polygon": [
+        [
+          54240,
+          209390
+        ],
+        [
+          54240,
+          210120
+        ],
+        [
+          60210,
+          210120
+        ],
+        [
+          60210,
+          209390
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.psub.mv.1",
+      "description": "Max distance of a substrate tap (PCOMP outside Nwell) from NCOMP outside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__mux4_2",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__mux4_2"
+      ],
+      "bbox": {
+        "left": 54420,
+        "bottom": 87800,
+        "right": 60440,
+        "top": 88530
+      },
+      "polygon": [
+        [
+          54420,
+          87800
+        ],
+        [
+          54420,
+          88530
+        ],
+        [
+          60440,
+          88530
+        ],
+        [
+          60440,
+          87800
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.psub.mv.1",
+      "description": "Max distance of a substrate tap (PCOMP outside Nwell) from NCOMP outside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__mux4_2",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__mux4_2"
+      ],
+      "bbox": {
+        "left": 54420,
+        "bottom": 162350,
+        "right": 60440,
+        "top": 163080
+      },
+      "polygon": [
+        [
+          54420,
+          162350
+        ],
+        [
+          54420,
+          163080
+        ],
+        [
+          60440,
+          163080
+        ],
+        [
+          60440,
+          162350
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.psub.mv.1",
+      "description": "Max distance of a substrate tap (PCOMP outside Nwell) from NCOMP outside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__clkinv_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__clkinv_1"
+      ],
+      "bbox": {
+        "left": 122440,
+        "bottom": 87600,
+        "right": 125400,
+        "top": 88560
+      },
+      "polygon": [
+        [
+          122440,
+          87600
+        ],
+        [
+          122440,
+          88560
+        ],
+        [
+          125400,
+          88560
+        ],
+        [
+          125400,
+          87600
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.psub.mv.1",
+      "description": "Max distance of a substrate tap (PCOMP outside Nwell) from NCOMP outside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__clkinv_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__clkinv_1"
+      ],
+      "bbox": {
+        "left": 122440,
+        "bottom": 118960,
+        "right": 125400,
+        "top": 119920
+      },
+      "polygon": [
+        [
+          122440,
+          118960
+        ],
+        [
+          122440,
+          119920
+        ],
+        [
+          125400,
+          119920
+        ],
+        [
+          125400,
+          118960
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.psub.mv.1",
+      "description": "Max distance of a substrate tap (PCOMP outside Nwell) from NCOMP outside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__mux2_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__mux2_1"
+      ],
+      "bbox": {
+        "left": 122440,
+        "bottom": 130960,
+        "right": 135840,
+        "top": 132600
+      },
+      "polygon": [
+        [
+          122440,
+          130960
+        ],
+        [
+          122440,
+          132600
+        ],
+        [
+          125320,
+          132600
+        ],
+        [
+          125320,
+          132240
+        ],
+        [
+          135840,
+          132240
+        ],
+        [
+          135840,
+          131520
+        ],
+        [
+          125320,
+          131520
+        ],
+        [
+          125320,
+          130960
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.psub.mv.1",
+      "description": "Max distance of a substrate tap (PCOMP outside Nwell) from NCOMP outside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__mux4_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__mux4_1"
+      ],
+      "bbox": {
+        "left": 123680,
+        "bottom": 197560,
+        "right": 129650,
+        "top": 198290
+      },
+      "polygon": [
+        [
+          123680,
+          197560
+        ],
+        [
+          123680,
+          198290
+        ],
+        [
+          129650,
+          198290
+        ],
+        [
+          129650,
+          197560
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.psub.mv.1",
+      "description": "Max distance of a substrate tap (PCOMP outside Nwell) from NCOMP outside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__dffq_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__dffq_1"
+      ],
+      "bbox": {
+        "left": 123920,
+        "bottom": 181000,
+        "right": 126880,
+        "top": 182640
+      },
+      "polygon": [
+        [
+          123920,
+          181000
+        ],
+        [
+          123920,
+          182640
+        ],
+        [
+          126880,
+          182640
+        ],
+        [
+          126880,
+          181000
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.psub.mv.1",
+      "description": "Max distance of a substrate tap (PCOMP outside Nwell) from NCOMP outside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__mux4_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__mux4_1"
+      ],
+      "bbox": {
+        "left": 125050,
+        "bottom": 56440,
+        "right": 139210,
+        "top": 57170
+      },
+      "polygon": [
+        [
+          125050,
+          56440
+        ],
+        [
+          125050,
+          57170
+        ],
+        [
+          139210,
+          57170
+        ],
+        [
+          139210,
+          56440
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.psub.mv.1",
+      "description": "Max distance of a substrate tap (PCOMP outside Nwell) from NCOMP outside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__aoi21_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__aoi21_1"
+      ],
+      "bbox": {
+        "left": 125800,
+        "bottom": 149640,
+        "right": 133280,
+        "top": 151280
+      },
+      "polygon": [
+        [
+          125800,
+          149640
+        ],
+        [
+          125800,
+          151280
+        ],
+        [
+          130600,
+          151280
+        ],
+        [
+          130600,
+          150660
+        ],
+        [
+          133280,
+          150660
+        ],
+        [
+          133280,
+          149640
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.psub.mv.1",
+      "description": "Max distance of a substrate tap (PCOMP outside Nwell) from NCOMP outside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__mux4_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__mux4_1"
+      ],
+      "bbox": {
+        "left": 125920,
+        "bottom": 72120,
+        "right": 131890,
+        "top": 72850
+      },
+      "polygon": [
+        [
+          125920,
+          72120
+        ],
+        [
+          125920,
+          72850
+        ],
+        [
+          131890,
+          72850
+        ],
+        [
+          131890,
+          72120
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.psub.mv.1",
+      "description": "Max distance of a substrate tap (PCOMP outside Nwell) from NCOMP outside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__clkinv_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__clkinv_1"
+      ],
+      "bbox": {
+        "left": 126920,
+        "bottom": 68240,
+        "right": 129880,
+        "top": 69200
+      },
+      "polygon": [
+        [
+          126920,
+          68240
+        ],
+        [
+          126920,
+          69200
+        ],
+        [
+          129880,
+          69200
+        ],
+        [
+          129880,
+          68240
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.psub.mv.1",
+      "description": "Max distance of a substrate tap (PCOMP outside Nwell) from NCOMP outside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__nor2_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__nor2_1"
+      ],
+      "bbox": {
+        "left": 126920,
+        "bottom": 118650,
+        "right": 132120,
+        "top": 119780
+      },
+      "polygon": [
+        [
+          126920,
+          118650
+        ],
+        [
+          126920,
+          119780
+        ],
+        [
+          132120,
+          119780
+        ],
+        [
+          132120,
+          118650
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.psub.mv.1",
+      "description": "Max distance of a substrate tap (PCOMP outside Nwell) from NCOMP outside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__mux4_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__mux4_1"
+      ],
+      "bbox": {
+        "left": 127040,
+        "bottom": 134840,
+        "right": 133010,
+        "top": 135570
+      },
+      "polygon": [
+        [
+          127040,
+          134840
+        ],
+        [
+          127040,
+          135570
+        ],
+        [
+          133010,
+          135570
+        ],
+        [
+          133010,
+          134840
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.psub.mv.1",
+      "description": "Max distance of a substrate tap (PCOMP outside Nwell) from NCOMP outside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__mux4_1",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__mux4_1"
+      ],
+      "bbox": {
+        "left": 128040,
+        "bottom": 52560,
+        "right": 140570,
+        "top": 53320
+      },
+      "polygon": [
+        [
+          137690,
+          52560
+        ],
+        [
+          137690,
+          52590
+        ],
+        [
+          128040,
+          52590
+        ],
+        [
+          128040,
+          53320
+        ],
+        [
+          140570,
+          53320
+        ],
+        [
+          140570,
+          52560
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.psub.mv.1",
+      "description": "Max distance of a substrate tap (PCOMP outside Nwell) from NCOMP outside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__nor2_2",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__nor2_2"
+      ],
+      "bbox": {
+        "left": 129160,
+        "bottom": 87290,
+        "right": 138840,
+        "top": 88420
+      },
+      "polygon": [
+        [
+          129160,
+          87290
+        ],
+        [
+          129160,
+          88420
+        ],
+        [
+          138840,
+          88420
+        ],
+        [
+          138840,
+          87290
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    },
+    {
+      "rule": "comp.tap_distance.psub.mv.1",
+      "description": "Max distance of a substrate tap (PCOMP outside Nwell) from NCOMP outside Nwell: 15um (5V/6V)",
+      "check": "tap_distance",
+      "layer": "Comp",
+      "cell": "logic_tile_routed",
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__mux4_2",
+      "source_path": [
+        "gf180mcu_fd_sc_mcu7t5v0__mux4_2"
+      ],
+      "bbox": {
+        "left": 129460,
+        "bottom": 83950,
+        "right": 135480,
+        "top": 84680
+      },
+      "polygon": [
+        [
+          129460,
+          83950
+        ],
+        [
+          129460,
+          84680
+        ],
+        [
+          135480,
+          84680
+        ],
+        [
+          135480,
+          83950
+        ]
+      ],
+      "note": "tap_distance is context-dependent (tap-cell placement): a standalone standard cell carries no tap, so this may be expected there and is not necessarily a cell defect; evaluate it on the placed design"
+    }
+  ],
+  "coverage": {
+    "deck_layers": [
+      "11/39",
+      "12/0",
+      "21/0",
+      "22/0",
+      "24/0",
+      "30/0",
+      "31/0",
+      "32/0",
+      "33/0",
+      "34/0",
+      "35/0",
+      "36/0",
+      "37/0",
+      "38/0",
+      "40/0",
+      "41/0",
+      "42/0",
+      "46/0",
+      "49/0",
+      "53/0",
+      "55/0",
+      "62/0",
+      "75/0",
+      "80/5",
+      "81/0",
+      "100/8",
+      "110/5",
+      "112/1",
+      "115/5",
+      "117/5",
+      "117/10",
+      "125/5",
+      "127/5",
+      "167/5",
+      "204/0",
+      "210/0",
+      "226/0",
+      "241/0"
+    ],
+    "layers_checked": [
+      "21/0",
+      "22/0",
+      "30/0",
+      "31/0",
+      "32/0",
+      "33/0",
+      "34/0",
+      "35/0",
+      "36/0",
+      "38/0",
+      "40/0",
+      "41/0",
+      "42/0",
+      "46/0",
+      "55/0",
+      "81/0",
+      "112/1",
+      "204/0"
+    ],
+    "layers_in_stream_without_rules": [
+      "0/0",
+      "21/10",
+      "34/10",
+      "36/10",
+      "42/10",
+      "63/63",
+      "81/10",
+      "204/10"
+    ],
+    "rules_checked": [
+      "comp.coverage.1",
+      "comp.enclosing.contact.1",
+      "comp.ongrid.1",
+      "comp.space.1",
+      "comp.space.mv.1",
+      "comp.tap_distance.nwell.mv.1",
+      "comp.tap_distance.psub.mv.1",
+      "comp.width.1",
+      "comp.width.mv.1",
+      "contact.ongrid.1",
+      "contact.space.1",
+      "contact.width.1",
+      "dualgate.ongrid.1",
+      "dualgate.space.1",
+      "dualgate.width.1",
+      "metal1.enclosing.contact.1",
+      "metal1.enclosing.via1.1",
+      "metal1.ongrid.1",
+      "metal1.space.1",
+      "metal1.width.1",
+      "metal2.enclosing.via1.1",
+      "metal2.enclosing.via2.1",
+      "metal2.ongrid.1",
+      "metal2.space.1",
+      "metal2.width.1",
+      "metal3.enclosing.via2.1",
+      "metal3.enclosing.via3.1",
+      "metal3.ongrid.1",
+      "metal3.space.1",
+      "metal3.width.1",
+      "metal4.enclosing.via3.1",
+      "metal4.enclosing.via4.1",
+      "metal4.ongrid.1",
+      "metal4.space.1",
+      "metal4.width.1",
+      "metal5.enclosing.via4.1",
+      "metal5.ongrid.1",
+      "metal5.space.1",
+      "metal5.width.1",
+      "nplus.enclosing.comp.1",
+      "nplus.enclosing.poly2.1",
+      "nplus.ongrid.1",
+      "nplus.space.1",
+      "nplus.space.pcomp.1",
+      "nplus.space.pcomp.far.1",
+      "nplus.width.1",
+      "nwell.enclosing.comp.1",
+      "nwell.ongrid.1",
+      "nwell.space.1",
+      "poly2.enclosing.contact.1",
+      "poly2.ongrid.1",
+      "poly2.space.1",
+      "poly2.width.1",
+      "pplus.enclosing.comp.1",
+      "pplus.enclosing.comp.far.1",
+      "pplus.enclosing.poly2.1",
+      "pplus.ongrid.1",
+      "pplus.space.1",
+      "pplus.space.ncomp.1",
+      "pplus.width.1",
+      "via1.ongrid.1",
+      "via1.space.1",
+      "via1.width.1",
+      "via2.ongrid.1",
+      "via2.space.1",
+      "via2.width.1",
+      "via3.ongrid.1",
+      "via3.space.1",
+      "via3.width.1",
+      "via4.ongrid.1",
+      "via4.space.1",
+      "via4.width.1"
+    ],
+    "rules_skipped": [
+      "bjt.separation.comp.1",
+      "cap_mk.ongrid.1",
+      "comp.separation.guard_ring_mk.1",
+      "comp.tap_distance.nwell.lv.1",
+      "comp.tap_distance.psub.lv.1",
+      "diode_mk.ongrid.1",
+      "dnwell.ongrid.1",
+      "drc_bjt.ongrid.1",
+      "efuse_mk.enclosing.lvs_source.1",
+      "efuse_mk.ongrid.1",
+      "efuse_mk.space.1",
+      "esd.area.1",
+      "esd.holes_area.1",
+      "esd.overlap.comp.1",
+      "esd.separation.nplus.1",
+      "esd.separation.pplus.1",
+      "esd.space.1",
+      "esd.width.1",
+      "fusetop.ongrid.1",
+      "ldmos_xtor.enclosing.mvpsd.1",
+      "metal1.separation.guard_ring_mk.1",
+      "metal2.separation.guard_ring_mk.1",
+      "metal3.separation.guard_ring_mk.1",
+      "metal4.separation.guard_ring_mk.1",
+      "metal5.separation.guard_ring_mk.1",
+      "metaltop.ongrid.1",
+      "metaltop.separation.guard_ring_mk.1",
+      "metaltop.space.1",
+      "metaltop.width.1",
+      "mim.enclosing.fusetop.1",
+      "mim.enclosing.via4.1",
+      "mim.space.1",
+      "mim_l_mk.ongrid.1",
+      "mvpsd.ongrid.1",
+      "mvsd.ongrid.1",
+      "mvsd.separation.dnwell.1",
+      "mvsd.width.1",
+      "nwell.separation.guard_ring_mk.1",
+      "pad.enclosing.metal5.1",
+      "pad.ongrid.1",
+      "plfuse.ongrid.1",
+      "plfuse.separation.comp.1",
+      "plfuse.separation.esd.1",
+      "plfuse.separation.nplus.1",
+      "plfuse.separation.resistor.1",
+      "plfuse.separation.sab.1",
+      "poly2.enclosing.sab.1",
+      "poly2.separation.guard_ring_mk.1",
+      "res_mk.ongrid.1",
+      "resistor.ongrid.1",
+      "sab.ongrid.1",
+      "sab.separation.contact.1",
+      "sab.space.1",
+      "sab.width.1"
+    ],
+    "voltage_domain_warnings": [
+      {
+        "marker": "55/0",
+        "description": "Dualgate (55/0) marks gf180mcu's 5V/6V thick-oxide voltage domain. This curated deck models it for the DF.1a/DF.3a COMP width/space rules, the Dualgate DV.2/DV.5 width/space rules (issue #3791) and (issue #1111) MOS device recognition/model binding (nfet_06v0/pfet_06v0 under --pdk) only; the other Dualgate DV rules and _MV columns are listed in coverage.unmodeled_rules, and every other DRC rule still applies the 3.3V/_LV thresholds regardless of Dualgate's presence (e.g. DF.6 COMP extend beyond gate 0.24 vs. 0.40, PL.5a/PL.5b field poly to COMP 0.10 vs. 0.30 -- all in um, and neither transcribed in this deck yet). The DF.13/DF.14 tap-distance rules read it as the MV (15 um) selector (comp.tap_distance.{nwell,psub}.mv.1)."
+      }
+    ],
+    "unchecked_rules": [],
+    "marker_blind_layers_in_stream": [],
+    "deck_scope": [
+      "10.4.2 MIM Option B",
+      "10.7 DRC_BJT Mark Layer",
+      "7.12 Contact",
+      "7.13 Metaln",
+      "7.14 Vian",
+      "7.15 MetalTop",
+      "7.4 Nwell",
+      "7.5 Comp",
+      "7.7 Poly2",
+      "7.8 Nplus",
+      "7.9 Pplus",
+      "9.1 Bond Pad",
+      "EF",
+      "ESD",
+      "GR",
+      "MDN",
+      "MDP",
+      "OFFGRID",
+      "SB"
+    ],
+    "unmodeled_rules": [
+      "CO.6a",
+      "CO.6b",
+      "DF.15a_MV",
+      "DF.15b_MV",
+      "DF.16_MV",
+      "DF.17_MV",
+      "DF.19_MV",
+      "DF.1b_MV",
+      "DF.2a_MV",
+      "DF.3c_MV",
+      "DF.4a_MV",
+      "DF.4b_MV",
+      "DF.4c_MV",
+      "DF.4d_MV",
+      "DF.4e_MV",
+      "DF.5_MV",
+      "DF.6_MV",
+      "DF.7_MV",
+      "DF.8_MV",
+      "DV.1",
+      "DV.3",
+      "DV.6",
+      "DV.7",
+      "DV.8",
+      "DV.9",
+      "EF.01",
+      "EF.02",
+      "EF.03",
+      "EF.04a",
+      "EF.04b",
+      "EF.04c",
+      "EF.04d",
+      "EF.05",
+      "EF.06",
+      "EF.07",
+      "EF.08",
+      "EF.09",
+      "EF.10",
+      "EF.11",
+      "EF.12",
+      "EF.13",
+      "EF.15",
+      "EF.16a",
+      "EF.16b",
+      "EF.18",
+      "EF.19",
+      "EF.21",
+      "EF.22a",
+      "EF.22b",
+      "ESD.10",
+      "ESD.3a",
+      "ESD.3b",
+      "ESD.4a",
+      "ESD.6",
+      "ESD.7",
+      "ESD.9",
+      "ESD.pl",
+      "GR.1",
+      "GR.11",
+      "GR.3",
+      "GR.4",
+      "GR.6",
+      "LPW.1_MV",
+      "LPW.2a_MV",
+      "LPW.2b_MV",
+      "M1.2b",
+      "M2.2b",
+      "M3.2b",
+      "M4.2b",
+      "M5.2b",
+      "MDN.10a",
+      "MDN.10b",
+      "MDN.10c",
+      "MDN.10d",
+      "MDN.10ei",
+      "MDN.10eii",
+      "MDN.10f",
+      "MDN.11",
+      "MDN.12",
+      "MDN.13a",
+      "MDN.13b",
+      "MDN.13c",
+      "MDN.13d",
+      "MDN.15a",
+      "MDN.15b",
+      "MDN.17",
+      "MDN.2a",
+      "MDN.2b",
+      "MDN.3a",
+      "MDN.3b",
+      "MDN.4a",
+      "MDN.4b",
+      "MDN.5ai",
+      "MDN.5aii",
+      "MDN.5b",
+      "MDN.5c",
+      "MDN.6",
+      "MDN.6a",
+      "MDN.7",
+      "MDN.7a",
+      "MDN.8a",
+      "MDN.8b",
+      "MDN.9",
+      "MDP.1",
+      "MDP.10",
+      "MDP.10a",
+      "MDP.10b",
+      "MDP.11",
+      "MDP.12",
+      "MDP.13a",
+      "MDP.13b",
+      "MDP.13c",
+      "MDP.15",
+      "MDP.16a",
+      "MDP.16b",
+      "MDP.17a",
+      "MDP.17c",
+      "MDP.1a",
+      "MDP.2",
+      "MDP.3",
+      "MDP.3ai",
+      "MDP.3aii",
+      "MDP.3b",
+      "MDP.3c",
+      "MDP.3d",
+      "MDP.4",
+      "MDP.4a",
+      "MDP.4b",
+      "MDP.5",
+      "MDP.5a",
+      "MDP.6a",
+      "MDP.7",
+      "MDP.8",
+      "MDP.9a",
+      "MDP.9b",
+      "MDP.9c",
+      "MDP.9d",
+      "MDP.9ei",
+      "MDP.9eii",
+      "MDP.9f",
+      "MSLOT.1",
+      "MSLOT.2",
+      "MSLOT.3",
+      "MSLOT.4",
+      "MSLOT.5",
+      "MSLOT.6",
+      "MSLOT.7",
+      "MSLOT.8",
+      "MT.2b",
+      "MT.3",
+      "MT.4",
+      "MT30.1a",
+      "MT30.1b",
+      "MT30.2",
+      "MT30.3",
+      "MT30.4",
+      "MT30.5",
+      "MT30.6",
+      "MT30.7",
+      "MT30.8",
+      "NW.1a_MV",
+      "NW.1b_MV",
+      "NW.2a_MV",
+      "NW.2b_MV",
+      "NW.5_MV",
+      "NW.6_MV",
+      "NW.7_MV",
+      "PAD.1",
+      "PAD.10",
+      "PAD.11",
+      "PAD.12",
+      "PAD.13",
+      "PAD.14",
+      "PAD.15",
+      "PAD.16",
+      "PAD.17",
+      "PAD.18",
+      "PAD.19a",
+      "PAD.19b",
+      "PAD.2",
+      "PAD.20",
+      "PAD.5",
+      "PAD.6",
+      "PAD.7",
+      "PAD.8",
+      "PAD.9",
+      "PL.1_MV",
+      "PL.1a_MV",
+      "PL.2_MV",
+      "PL.3b_MV",
+      "PL.4_MV",
+      "PL.5a_MV",
+      "PL.5b_MV",
+      "PL.7_MV",
+      "V1.3c",
+      "V1.3d",
+      "V1.4b",
+      "V1.4c",
+      "V2.3c",
+      "V2.3d",
+      "V2.4b",
+      "V2.4c",
+      "V3.3c",
+      "V3.3d",
+      "V3.4b",
+      "V3.4c",
+      "V4.3c",
+      "V4.3d",
+      "V4.4b",
+      "V4.4c"
+    ],
+    "schema_version": 1,
+    "known": true,
+    "checked": [
+      "comp.coverage.1",
+      "comp.enclosing.contact.1",
+      "comp.ongrid.1",
+      "comp.space.1",
+      "comp.space.mv.1",
+      "comp.tap_distance.nwell.mv.1",
+      "comp.tap_distance.psub.mv.1",
+      "comp.width.1",
+      "comp.width.mv.1",
+      "contact.ongrid.1",
+      "contact.space.1",
+      "contact.width.1",
+      "dualgate.ongrid.1",
+      "dualgate.space.1",
+      "dualgate.width.1",
+      "metal1.enclosing.contact.1",
+      "metal1.enclosing.via1.1",
+      "metal1.ongrid.1",
+      "metal1.space.1",
+      "metal1.width.1",
+      "metal2.enclosing.via1.1",
+      "metal2.enclosing.via2.1",
+      "metal2.ongrid.1",
+      "metal2.space.1",
+      "metal2.width.1",
+      "metal3.enclosing.via2.1",
+      "metal3.enclosing.via3.1",
+      "metal3.ongrid.1",
+      "metal3.space.1",
+      "metal3.width.1",
+      "metal4.enclosing.via3.1",
+      "metal4.enclosing.via4.1",
+      "metal4.ongrid.1",
+      "metal4.space.1",
+      "metal4.width.1",
+      "metal5.enclosing.via4.1",
+      "metal5.ongrid.1",
+      "metal5.space.1",
+      "metal5.width.1",
+      "nplus.enclosing.comp.1",
+      "nplus.enclosing.poly2.1",
+      "nplus.ongrid.1",
+      "nplus.space.1",
+      "nplus.space.pcomp.1",
+      "nplus.space.pcomp.far.1",
+      "nplus.width.1",
+      "nwell.enclosing.comp.1",
+      "nwell.ongrid.1",
+      "nwell.space.1",
+      "poly2.enclosing.contact.1",
+      "poly2.ongrid.1",
+      "poly2.space.1",
+      "poly2.width.1",
+      "pplus.enclosing.comp.1",
+      "pplus.enclosing.comp.far.1",
+      "pplus.enclosing.poly2.1",
+      "pplus.ongrid.1",
+      "pplus.space.1",
+      "pplus.space.ncomp.1",
+      "pplus.width.1",
+      "via1.ongrid.1",
+      "via1.space.1",
+      "via1.width.1",
+      "via2.ongrid.1",
+      "via2.space.1",
+      "via2.width.1",
+      "via3.ongrid.1",
+      "via3.space.1",
+      "via3.width.1",
+      "via4.ongrid.1",
+      "via4.space.1",
+      "via4.width.1"
+    ],
+    "skipped": [],
+    "inapplicable": [
+      {
+        "id": "bjt.separation.comp.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "cap_mk.ongrid.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "comp.separation.guard_ring_mk.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "comp.tap_distance.nwell.lv.1",
+        "reason": "inapplicable_empty_checked_region"
+      },
+      {
+        "id": "comp.tap_distance.psub.lv.1",
+        "reason": "inapplicable_empty_checked_region"
+      },
+      {
+        "id": "diode_mk.ongrid.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "dnwell.ongrid.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "drc_bjt.ongrid.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "efuse_mk.enclosing.lvs_source.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "efuse_mk.ongrid.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "efuse_mk.space.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "esd.area.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "esd.holes_area.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "esd.overlap.comp.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "esd.separation.nplus.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "esd.separation.pplus.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "esd.space.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "esd.width.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "fusetop.ongrid.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "ldmos_xtor.enclosing.mvpsd.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "metal1.separation.guard_ring_mk.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "metal2.separation.guard_ring_mk.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "metal3.separation.guard_ring_mk.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "metal4.separation.guard_ring_mk.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "metal5.separation.guard_ring_mk.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "metaltop.ongrid.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "metaltop.separation.guard_ring_mk.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "metaltop.space.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "metaltop.width.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "mim.enclosing.fusetop.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "mim.enclosing.via4.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "mim.space.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "mim_l_mk.ongrid.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "mvpsd.ongrid.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "mvsd.ongrid.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "mvsd.separation.dnwell.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "mvsd.width.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "nwell.separation.guard_ring_mk.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "pad.enclosing.metal5.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "pad.ongrid.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "plfuse.ongrid.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "plfuse.separation.comp.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "plfuse.separation.esd.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "plfuse.separation.nplus.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "plfuse.separation.resistor.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "plfuse.separation.sab.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "poly2.enclosing.sab.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "poly2.separation.guard_ring_mk.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "res_mk.ongrid.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "resistor.ongrid.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "sab.ongrid.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "sab.separation.contact.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "sab.space.1",
+        "reason": "no_applicable_geometry"
+      },
+      {
+        "id": "sab.width.1",
+        "reason": "no_applicable_geometry"
+      }
+    ],
+    "unknown": [],
+    "nothing_checked": false,
+    "nothing_checked_reasons": []
+  },
+  "source_cell_rollup": [
+    {
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__aoi21_1",
+      "rule": "comp.tap_distance.nwell.mv.1",
+      "count": 1,
+      "waived_count": 0
+    },
+    {
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__aoi21_1",
+      "rule": "comp.tap_distance.psub.mv.1",
+      "count": 1,
+      "waived_count": 0
+    },
+    {
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__clkinv_1",
+      "rule": "comp.tap_distance.nwell.mv.1",
+      "count": 3,
+      "waived_count": 0
+    },
+    {
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__clkinv_1",
+      "rule": "comp.tap_distance.psub.mv.1",
+      "count": 3,
+      "waived_count": 0
+    },
+    {
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__dffq_1",
+      "rule": "comp.tap_distance.nwell.mv.1",
+      "count": 3,
+      "waived_count": 0
+    },
+    {
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__dffq_1",
+      "rule": "comp.tap_distance.psub.mv.1",
+      "count": 3,
+      "waived_count": 0
+    },
+    {
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__mux2_1",
+      "rule": "comp.tap_distance.nwell.mv.1",
+      "count": 1,
+      "waived_count": 0
+    },
+    {
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__mux2_1",
+      "rule": "comp.tap_distance.psub.mv.1",
+      "count": 1,
+      "waived_count": 0
+    },
+    {
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__mux4_1",
+      "rule": "comp.tap_distance.nwell.mv.1",
+      "count": 9,
+      "waived_count": 0
+    },
+    {
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__mux4_1",
+      "rule": "comp.tap_distance.psub.mv.1",
+      "count": 9,
+      "waived_count": 0
+    },
+    {
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__mux4_2",
+      "rule": "comp.tap_distance.nwell.mv.1",
+      "count": 3,
+      "waived_count": 0
+    },
+    {
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__mux4_2",
+      "rule": "comp.tap_distance.psub.mv.1",
+      "count": 3,
+      "waived_count": 0
+    },
+    {
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__nor2_1",
+      "rule": "comp.tap_distance.nwell.mv.1",
+      "count": 2,
+      "waived_count": 0
+    },
+    {
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__nor2_1",
+      "rule": "comp.tap_distance.psub.mv.1",
+      "count": 2,
+      "waived_count": 0
+    },
+    {
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__nor2_2",
+      "rule": "comp.tap_distance.nwell.mv.1",
+      "count": 1,
+      "waived_count": 0
+    },
+    {
+      "source_cell": "gf180mcu_fd_sc_mcu7t5v0__nor2_2",
+      "rule": "comp.tap_distance.psub.mv.1",
+      "count": 1,
+      "waived_count": 0
+    }
+  ],
+  "provenance": {
+    "klt_version": "0.9.0",
+    "klt_git_commit": "5dbbad05ff42265c92a6f3d2f20d1bbcd2957d49",
+    "klt_reinstall_spec": "klayout-tools==0.9.0",
+    "klayout_version": "0.30.12",
+    "pdk": {
+      "name": "gf180mcuD",
+      "source": "--pdk-root flag",
+      "version": "open_pdks f6eeac7dad085ffcc829ccfd721f7b4ce39edcf7"
+    },
+    "deck": {
+      "name": "gf180mcu",
+      "content_hash": "sha256:cf44de63f0a5b01c1d09c4d58e0535e990aa4b070bcaae17fd3a94a67a1d97e1",
+      "released": true
+    },
+    "input": {
+      "content_hash": "sha256:d71889f054b5087bd607cfc69a02e23e60b7c6601f6be586c91ca02b582d634a",
+      "role": "layout"
+    },
+    "klayout_version_mismatch": false
+  }
+}
