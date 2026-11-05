@@ -1,0 +1,371 @@
+{
+  "table": "verification/item9/benches.json",
+  "commit": "3d3345d58df31e781f69e9f72823dd6ddb919fbb",
+  "tools": {
+    "cocotb": null,
+    "icarus": "13.0",
+    "verilator": "5.050",
+    "python": "3.12.3"
+  },
+  "runs": [
+    {
+      "id": "lut4_slice",
+      "bench": "verification/common/tb_lut4_slice.v",
+      "plusargs": [],
+      "good": {
+        "result": "pass",
+        "verdict": "PASS: tb_lut4_slice -- 79 checks, 0 failures"
+      },
+      "negative_control": {
+        "expected": "fail",
+        "ok": true,
+        "result": "fail",
+        "reason": "FAIL[1] lut4 truth table (combinational): expected=0 got=x (t=1000)"
+      }
+    },
+    {
+      "id": "logic_tile",
+      "bench": "verification/common/tb_logic_tile.v",
+      "plusargs": [],
+      "good": {
+        "result": "pass",
+        "verdict": "PASS: tb_logic_tile -- 4 checks, 0 failures"
+      }
+    },
+    {
+      "id": "logic_tile_gapfill",
+      "bench": "verification/common/tb_logic_tile_gapfill.v",
+      "plusargs": [],
+      "good": {
+        "result": "pass",
+        "verdict": "PASS: tb_logic_tile_gapfill -- 256 checks, 0 failures"
+      }
+    },
+    {
+      "id": "logic_tile_routed",
+      "bench": "verification/common/tb_logic_tile_routed.v",
+      "plusargs": [],
+      "good": {
+        "result": "pass",
+        "verdict": "PASS: tb_logic_tile_routed (1046 checks, 0 failures)"
+      }
+    },
+    {
+      "id": "switch_matrix",
+      "bench": "verification/common/tb_switch_matrix.v",
+      "plusargs": [],
+      "good": {
+        "result": "pass",
+        "verdict": "PASS: tb_switch_matrix -- 469 checks, 0 failures"
+      }
+    },
+    {
+      "id": "lut4_ff_bel_equiv",
+      "bench": "rtl/common/fabulous/tb_lut4_ff_bel_equiv.v",
+      "plusargs": [],
+      "good": {
+        "result": "pass",
+        "verdict": "PASS: lut4_ff_bel == lut4_slice over 20000 random cycles"
+      }
+    },
+    {
+      "id": "bitstream_quad4_s1",
+      "bench": "verification/common/tb_logic_tile_bitstream.v",
+      "plusargs": [
+        "+bin=verification/common/bitstream/corpus/quad4_s1.bin",
+        "+map=verification/common/bitstream/logic4_configmem.map",
+        "+wiring=verification/common/bitstream/corpus/quad4_s1.wiring",
+        "+design=quad4",
+        "+mutate"
+      ],
+      "good": {
+        "result": "pass",
+        "verdict": "PASS: tb_logic_tile_bitstream[quad4] (83201 checks, 0 failures; 52/52 perturbations detected)"
+      }
+    },
+    {
+      "id": "bitstream_quad4_s2",
+      "bench": "verification/common/tb_logic_tile_bitstream.v",
+      "plusargs": [
+        "+bin=verification/common/bitstream/corpus/quad4_s2.bin",
+        "+map=verification/common/bitstream/logic4_configmem.map",
+        "+wiring=verification/common/bitstream/corpus/quad4_s2.wiring",
+        "+design=quad4",
+        "+mutate"
+      ],
+      "good": {
+        "result": "pass",
+        "verdict": "PASS: tb_logic_tile_bitstream[quad4] (83201 checks, 0 failures; 52/52 perturbations detected)"
+      }
+    },
+    {
+      "id": "bitstream_quad4_s3",
+      "bench": "verification/common/tb_logic_tile_bitstream.v",
+      "plusargs": [
+        "+bin=verification/common/bitstream/corpus/quad4_s3.bin",
+        "+map=verification/common/bitstream/logic4_configmem.map",
+        "+wiring=verification/common/bitstream/corpus/quad4_s3.wiring",
+        "+design=quad4",
+        "+mutate"
+      ],
+      "good": {
+        "result": "pass",
+        "verdict": "PASS: tb_logic_tile_bitstream[quad4] (83201 checks, 0 failures; 52/52 perturbations detected)"
+      }
+    },
+    {
+      "id": "bitstream_casc2_s1",
+      "bench": "verification/common/tb_logic_tile_bitstream.v",
+      "plusargs": [
+        "+bin=verification/common/bitstream/corpus/casc2_s1.bin",
+        "+map=verification/common/bitstream/logic4_configmem.map",
+        "+wiring=verification/common/bitstream/corpus/casc2_s1.wiring",
+        "+design=casc2",
+        "+mutate"
+      ],
+      "good": {
+        "result": "pass",
+        "verdict": "PASS: tb_logic_tile_bitstream[casc2] (10049 checks, 0 failures; 24/24 perturbations detected)"
+      }
+    },
+    {
+      "id": "bitstream_casc2_s2",
+      "bench": "verification/common/tb_logic_tile_bitstream.v",
+      "plusargs": [
+        "+bin=verification/common/bitstream/corpus/casc2_s2.bin",
+        "+map=verification/common/bitstream/logic4_configmem.map",
+        "+wiring=verification/common/bitstream/corpus/casc2_s2.wiring",
+        "+design=casc2",
+        "+mutate"
+      ],
+      "good": {
+        "result": "pass",
+        "verdict": "PASS: tb_logic_tile_bitstream[casc2] (10049 checks, 0 failures; 24/24 perturbations detected)"
+      }
+    },
+    {
+      "id": "bitstream_casc2_s3",
+      "bench": "verification/common/tb_logic_tile_bitstream.v",
+      "plusargs": [
+        "+bin=verification/common/bitstream/corpus/casc2_s3.bin",
+        "+map=verification/common/bitstream/logic4_configmem.map",
+        "+wiring=verification/common/bitstream/corpus/casc2_s3.wiring",
+        "+design=casc2",
+        "+mutate"
+      ],
+      "good": {
+        "result": "pass",
+        "verdict": "PASS: tb_logic_tile_bitstream[casc2] (10049 checks, 0 failures; 24/24 perturbations detected)"
+      }
+    },
+    {
+      "id": "bitstream_casc_fan_s1",
+      "bench": "verification/common/tb_logic_tile_bitstream.v",
+      "plusargs": [
+        "+bin=verification/common/bitstream/corpus/casc_fan_s1.bin",
+        "+map=verification/common/bitstream/logic4_configmem.map",
+        "+wiring=verification/common/bitstream/corpus/casc_fan_s1.wiring",
+        "+design=casc_fan",
+        "+mutate"
+      ],
+      "good": {
+        "result": "pass",
+        "verdict": "PASS: tb_logic_tile_bitstream[casc_fan] (64705 checks, 0 failures; 54/54 perturbations detected)"
+      }
+    },
+    {
+      "id": "bitstream_casc_fan_s2",
+      "bench": "verification/common/tb_logic_tile_bitstream.v",
+      "plusargs": [
+        "+bin=verification/common/bitstream/corpus/casc_fan_s2.bin",
+        "+map=verification/common/bitstream/logic4_configmem.map",
+        "+wiring=verification/common/bitstream/corpus/casc_fan_s2.wiring",
+        "+design=casc_fan",
+        "+mutate"
+      ],
+      "good": {
+        "result": "pass",
+        "verdict": "PASS: tb_logic_tile_bitstream[casc_fan] (64705 checks, 0 failures; 54/54 perturbations detected)"
+      }
+    },
+    {
+      "id": "bitstream_casc_fan_s3",
+      "bench": "verification/common/tb_logic_tile_bitstream.v",
+      "plusargs": [
+        "+bin=verification/common/bitstream/corpus/casc_fan_s3.bin",
+        "+map=verification/common/bitstream/logic4_configmem.map",
+        "+wiring=verification/common/bitstream/corpus/casc_fan_s3.wiring",
+        "+design=casc_fan",
+        "+mutate"
+      ],
+      "good": {
+        "result": "pass",
+        "verdict": "PASS: tb_logic_tile_bitstream[casc_fan] (64705 checks, 0 failures; 54/54 perturbations detected)"
+      }
+    },
+    {
+      "id": "bitstream_regcasc_s1",
+      "bench": "verification/common/tb_logic_tile_bitstream.v",
+      "plusargs": [
+        "+bin=verification/common/bitstream/corpus/regcasc_s1.bin",
+        "+map=verification/common/bitstream/logic4_configmem.map",
+        "+wiring=verification/common/bitstream/corpus/regcasc_s1.wiring",
+        "+design=regcasc",
+        "+mutate"
+      ],
+      "good": {
+        "result": "pass",
+        "verdict": "PASS: tb_logic_tile_bitstream[regcasc] (313273 checks, 0 failures; 36/36 perturbations detected)"
+      }
+    },
+    {
+      "id": "bitstream_regcasc_s3",
+      "bench": "verification/common/tb_logic_tile_bitstream.v",
+      "plusargs": [
+        "+bin=verification/common/bitstream/corpus/regcasc_s3.bin",
+        "+map=verification/common/bitstream/logic4_configmem.map",
+        "+wiring=verification/common/bitstream/corpus/regcasc_s3.wiring",
+        "+design=regcasc",
+        "+mutate"
+      ],
+      "good": {
+        "result": "pass",
+        "verdict": "PASS: tb_logic_tile_bitstream[regcasc] (313273 checks, 0 failures; 36/36 perturbations detected)"
+      }
+    },
+    {
+      "id": "bitstream_regbel_a_s1",
+      "bench": "verification/common/tb_logic_tile_bitstream.v",
+      "plusargs": [
+        "+bin=verification/common/bitstream/corpus/regbel_a_s1.bin",
+        "+map=verification/common/bitstream/logic4_configmem.map",
+        "+wiring=verification/common/bitstream/corpus/regbel_a_s1.wiring",
+        "+design=regbel",
+        "+mutate"
+      ],
+      "good": {
+        "result": "pass",
+        "verdict": "PASS: tb_logic_tile_bitstream[regbel] (131671 checks, 0 failures; 20/20 perturbations detected)"
+      }
+    },
+    {
+      "id": "bitstream_regbel_b_s1",
+      "bench": "verification/common/tb_logic_tile_bitstream.v",
+      "plusargs": [
+        "+bin=verification/common/bitstream/corpus/regbel_b_s1.bin",
+        "+map=verification/common/bitstream/logic4_configmem.map",
+        "+wiring=verification/common/bitstream/corpus/regbel_b_s1.wiring",
+        "+design=regbel",
+        "+mutate"
+      ],
+      "good": {
+        "result": "pass",
+        "verdict": "PASS: tb_logic_tile_bitstream[regbel] (113851 checks, 0 failures; 17/17 perturbations detected)"
+      }
+    },
+    {
+      "id": "bitstream_regbel_c_s1",
+      "bench": "verification/common/tb_logic_tile_bitstream.v",
+      "plusargs": [
+        "+bin=verification/common/bitstream/corpus/regbel_c_s1.bin",
+        "+map=verification/common/bitstream/logic4_configmem.map",
+        "+wiring=verification/common/bitstream/corpus/regbel_c_s1.wiring",
+        "+design=regbel",
+        "+mutate"
+      ],
+      "good": {
+        "result": "pass",
+        "verdict": "PASS: tb_logic_tile_bitstream[regbel] (113851 checks, 0 failures; 17/17 perturbations detected)"
+      }
+    },
+    {
+      "id": "bitstream_regbel_d_s1",
+      "bench": "verification/common/tb_logic_tile_bitstream.v",
+      "plusargs": [
+        "+bin=verification/common/bitstream/corpus/regbel_d_s1.bin",
+        "+map=verification/common/bitstream/logic4_configmem.map",
+        "+wiring=verification/common/bitstream/corpus/regbel_d_s1.wiring",
+        "+design=regbel",
+        "+mutate"
+      ],
+      "good": {
+        "result": "pass",
+        "verdict": "PASS: tb_logic_tile_bitstream[regbel] (113851 checks, 0 failures; 17/17 perturbations detected)"
+      }
+    },
+    {
+      "id": "bitstream_top_io",
+      "bench": "verification/common/tb_logic_tile_bitstream.v",
+      "plusargs": [
+        "+bin=verification/common/bitstream/top_io.bin",
+        "+map=verification/common/bitstream/logic4_configmem.map",
+        "+wiring=verification/common/bitstream/top_io.wiring",
+        "+design=comb",
+        "+mutate"
+      ],
+      "good": {
+        "result": "pass",
+        "verdict": "PASS: tb_logic_tile_bitstream[comb] (5409 checks, 0 failures; 26/26 perturbations detected)"
+      }
+    },
+    {
+      "id": "bitstream_top_reg",
+      "bench": "verification/common/tb_logic_tile_bitstream.v",
+      "plusargs": [
+        "+bin=verification/common/bitstream/top_reg.bin",
+        "+map=verification/common/bitstream/logic4_configmem.map",
+        "+wiring=verification/common/bitstream/top_reg.wiring",
+        "+design=reg",
+        "+mutate"
+      ],
+      "good": {
+        "result": "pass",
+        "verdict": "PASS: tb_logic_tile_bitstream[reg] (139651 checks, 0 failures; 27/27 perturbations detected)"
+      },
+      "negative_control": {
+        "expected": "fail",
+        "ok": true,
+        "result": "fail",
+        "reason": "FAIL: tb_logic_tile_bitstream[reg] (139651 checks, 3067 failures, 0 perturbations survived)"
+      }
+    }
+  ],
+  "excluded": [
+    {
+      "bench": "verification/common/tb_ctrl_route.v",
+      "status": "not runnable: input missing",
+      "reason": "needs +dir= (<case>.bin streams) and +list= (case list); neither is in the stamp (verification/common/bitstream has no list file, flow/ctrl_route.py is not stamped). Filed as 2AMLogic/sky130-fpga#221."
+    },
+    {
+      "bench": "verification/common/tb_lut_basis.v",
+      "status": "not runnable: input missing",
+      "reason": "needs a +list= case list and its +dir= streams; not in the stamp. Filed as 2AMLogic/sky130-fpga#221."
+    },
+    {
+      "bench": "verification/common/tb_output_route.v",
+      "status": "not runnable: input missing",
+      "reason": "needs a +list= case list and its +dir= streams; not in the stamp. Filed as 2AMLogic/sky130-fpga#221."
+    },
+    {
+      "bench": "verification/common/tb_route_diag.v",
+      "status": "not runnable: input missing",
+      "reason": "needs a +list= case list and its +dir= streams; not in the stamp. Filed as 2AMLogic/sky130-fpga#221."
+    },
+    {
+      "bench": "verification/common/tb_boundary_fwd.v",
+      "status": "not runnable: input missing",
+      "reason": "requires -DGEN_TILE and the FABulous-generated Tile/LOGIC4/LOGIC4.v, which is generated scratch output and not stamped. Filed as 2AMLogic/sky130-fpga#221."
+    },
+    {
+      "bench": "rtl/common/fabulous/tb_configmem_equiv.v",
+      "status": "not runnable: input missing",
+      "reason": "needs the FABulous-generated LOGIC4_ConfigMem.v and a +vec= vector file; neither is stamped. Filed as 2AMLogic/sky130-fpga#221."
+    },
+    {
+      "bench": "rtl/common/fabulous/tb_switch_matrix_equiv.v",
+      "status": "not runnable: input missing",
+      "reason": "needs the FABulous-generated LOGIC4_switch_matrix.v (scratch output of the FABulous generator, not stamped). Filed as 2AMLogic/sky130-fpga#221."
+    }
+  ],
+  "overall": "pass"
+}
