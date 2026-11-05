@@ -31,7 +31,7 @@ _None._
 
 Issues currently being built (`loom:building`).
 
-_None._
+- **#22**: T1 item 2 (layout): routed logic_tile_routed GDS on gf180mcuD via the routing-closure ladder, with 2x2 abutment check
 
 ## PRs Awaiting Review
 
@@ -68,7 +68,7 @@ _None._
 | Very important | 0 |
 | Important | 1 |
 | Ready (`loom:issue`) | 0 |
-| In Progress (`loom:building`) | 0 |
+| In Progress (`loom:building`) | 1 |
 | PRs awaiting review | 0 |
 | Approved PRs awaiting merge | 0 |
 | Curated | 2 |
