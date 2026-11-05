@@ -200,6 +200,60 @@ The report was made with the PDK at `$PDK_ROOT` (open_pdks `f6eeac7`, pinned in
 `flow/pdk.json`) and klt `0.9.0`. `--check` re-hashes the stream, the reference
 and the extraction deck; it does not re-run the compare.
 
+## Supply ERC and power delivery (T1 item 11, issue #30)
+
+`layout/run-erc.sh` runs `klt erc` (klt `0.9.0`, `--findings-only --compact`)
+on `logic_tile_routed.gds` with `records/erc-supply-spec.json`. Item 11 cites
+three artifacts together: `records/erc.json`, `records/lvs.json` (item 4,
+`power_connectivity.status: match`) and `records/step0-par.json`
+(`power.pdn: true`, tapcell `gf180mcu_fd_sc_mcu7t5v0__filltie`).
+`layout/run-erc.sh --check` re-hashes the stream and the spec against the report.
+
+| | |
+|---|---|
+| Result | `erc_status: clean`, 0 findings (no `erc.unconnected_net`, `erc.supply_short`, `erc.missing_tie`) |
+| Supplies | `VDD` and `VSS`, each `kind: supply`, 1 declared island, 1 matched |
+| Stackup | poly, Metal1–Metal5 with Contact and Via1–Via4; the P&R strap layers (Metal1, Metal4, Metal5) are all inside it |
+| N-well tie | `nwell_tie`: well `21/0`, tap = `22/0` (Comp) ∩ `32/0` (Nplus), to `VDD`; derived from drawn layers, checked |
+| Substrate tie | `substrate_tie`: **asserted**, see below; tap = Comp ∩ Pplus − Nwell, to `VSS` |
+
+**The substrate tie rests on an asserted region.** gf180mcu draws no p-well or
+substrate marker, so the substrate side is declared with `well_layer: null` and
+`well_boxes`. The 14 boxes are the strips of the standard-cell placement
+extent (x 5.17–112.43, y 3.49–110.19 µm) between the 14 merged n-well bars
+(read from the stream's `21/0`); every strip must independently hold a tap
+reaching `VSS`, and does. They are listed in `ties_checked_by_well_assertion`
+in the item 11 citation. The die margin (outside the cell extent) carries no
+cells, hence no tap, and is not asserted; a first run with full-width boxes
+reported `erc.missing_tie` on the empty top margin strip, which is why the
+boxes stop at the cell extent. Boxes follow this tile's floorplan and must be
+regenerated if it changes.
+
+**Coverage disclosures** (both values are in `records/erc.json`,
+`erc_coverage`; item 11 requires the claimant to state them):
+
+- *Layers in the stream without a declaration.* `layers_in_stream_without_declaration`
+  is non-empty: `0/0, 21/10, 55/0, 63/63, 112/1, 204/0, 204/10`. `provenance.deck`
+  is `null` (no `--deck`), so this is the unfiltered list of drawn layers the
+  ERC spec does not declare, not a list narrowed to connectivity-relevant
+  layers. This run says nothing about those layers; item 11 does not rest on
+  them. This README has not re-derived what each of them draws.
+- *Well-assertion coverage of `substrate_tie`.* Zero `erc.missing_tie` covers
+  only what the 14 asserted boxes cover. `well_assertion_coverage` reports
+  `uncovered_tap_area_um2: 1208.26` of `drawn_tap_area_um2: 1957.54`
+  (`uncovered_tap_fraction: 0.617`) for tap layer `22/0`: about 62% of the drawn
+  Comp area lies outside the asserted substrate region. The likely explanation
+  is that most of it is Comp inside n-wells (PMOS active), which a substrate
+  tie region correctly excludes. **That explanation was not measured or
+  re-derived here**; only the fraction is evidence.
+
+What this does and does not show: supply nets are single conductor islands on
+Metal1–Metal5 through Via1–Via4 and every n-well and substrate strip is tied to
+its rail. `klt erc` does not model substrate/well continuity
+(`erc.supply_short` is reported `inapplicable`, `substrate_continuity_not_modelled`),
+so a VDD/VSS short through diffusion is not covered by this run. Not an IR-drop
+or EM result.
+
 ## Open
 
 - LVS (#24) consumes `logic_tile_routed.gds`; DRC result above (#23).

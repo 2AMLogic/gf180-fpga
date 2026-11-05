@@ -1,0 +1,196 @@
+{
+  "stackup": [
+    {
+      "name": "poly",
+      "layer": "30/0",
+      "role": "gate"
+    },
+    {
+      "name": "Metal1",
+      "layer": "34/0",
+      "label_layer": "34/10"
+    },
+    {
+      "name": "Metal2",
+      "layer": "36/0",
+      "label_layer": "36/10"
+    },
+    {
+      "name": "Metal3",
+      "layer": "42/0",
+      "label_layer": "42/10"
+    },
+    {
+      "name": "Metal4",
+      "layer": "46/0"
+    },
+    {
+      "name": "Metal5",
+      "layer": "81/0",
+      "label_layer": "81/10"
+    }
+  ],
+  "vias": [
+    {
+      "name": "Contact",
+      "layer": "33/0",
+      "between": [
+        "poly",
+        "Metal1"
+      ]
+    },
+    {
+      "name": "Via1",
+      "layer": "35/0",
+      "between": [
+        "Metal1",
+        "Metal2"
+      ]
+    },
+    {
+      "name": "Via2",
+      "layer": "38/0",
+      "between": [
+        "Metal2",
+        "Metal3"
+      ]
+    },
+    {
+      "name": "Via3",
+      "layer": "40/0",
+      "between": [
+        "Metal3",
+        "Metal4"
+      ]
+    },
+    {
+      "name": "Via4",
+      "layer": "41/0",
+      "between": [
+        "Metal4",
+        "Metal5"
+      ]
+    }
+  ],
+  "nets": [
+    {
+      "name": "VDD",
+      "kind": "supply"
+    },
+    {
+      "name": "VSS",
+      "kind": "supply"
+    }
+  ],
+  "ties": [
+    {
+      "name": "nwell_tie",
+      "well_layer": "21/0",
+      "tap_layer": "22/0",
+      "tap_requires": [
+        "32/0"
+      ],
+      "connect_to": "Metal1",
+      "net": "VDD"
+    },
+    {
+      "name": "substrate_tie",
+      "well_layer": null,
+      "well_boxes": [
+        [
+          5.17,
+          3.49,
+          112.43,
+          5.68
+        ],
+        [
+          5.17,
+          10.0,
+          112.43,
+          13.52
+        ],
+        [
+          5.17,
+          17.84,
+          112.43,
+          21.36
+        ],
+        [
+          5.17,
+          25.68,
+          112.43,
+          29.2
+        ],
+        [
+          5.17,
+          33.52,
+          112.43,
+          37.04
+        ],
+        [
+          5.17,
+          41.36,
+          112.43,
+          44.88
+        ],
+        [
+          5.17,
+          49.2,
+          112.43,
+          52.72
+        ],
+        [
+          5.17,
+          57.04,
+          112.43,
+          60.56
+        ],
+        [
+          5.17,
+          64.88,
+          112.43,
+          68.4
+        ],
+        [
+          5.17,
+          72.72,
+          112.43,
+          76.24
+        ],
+        [
+          5.17,
+          80.56,
+          112.43,
+          84.08
+        ],
+        [
+          5.17,
+          88.4,
+          112.43,
+          91.92
+        ],
+        [
+          5.17,
+          96.24,
+          112.43,
+          99.76
+        ],
+        [
+          5.17,
+          104.08,
+          112.43,
+          107.6
+        ]
+      ],
+      "tap_layer": "22/0",
+      "tap_requires": [
+        "31/0"
+      ],
+      "tap_excludes": [
+        "21/0"
+      ],
+      "connect_to": "Metal1",
+      "net": "VSS"
+    }
+  ]
+}
