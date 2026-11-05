@@ -104,6 +104,49 @@ with `flow/setup-pdk.sh` done, and is gated when the record is rewritten by
 `manifests/run-signoff.sh`. CI does not re-prove it; no separate CI job does
 yet.
 
+## LVS (T1 item 4, issue #24)
+
+`layout/run-lvs.sh` runs `klt lvs` (engine `klayout`, `reference.form:
+gate-level-verilog`, library `gf180mcu_fd_sc_mcu7t5v0`) on the routed stream
+extracted with `--abstract-cells 'gf180mcu_fd_sc_mcu7t5v0__*' --def-net-names`,
+so every standard cell is a pin-only black box on both sides. This is a
+cell-level connectivity compare: it checks that the routed wiring connects the
+cell pins as the netlist says. It does not compare transistors inside the
+library cells. Requests are `records/lvs-request.json` and
+`records/lvs-vs-synth-request.json`, read on stdin from the repo root so the
+repo-relative paths are the ones `--check` re-hashes.
+`layout/run-lvs.sh --check` returns `match` for both reports.
+
+| Report | Reference | Result |
+|---|---|---|
+| `records/lvs.json` | `layout/logic_tile_routed_routed.v` (as-built netlist of the same place-and-route run) | `status: match`, 0 errors; `power_connectivity.status: match` (16 masters, 618 instances, no findings) |
+| `records/lvs-vs-synth.json` | `flow/tile/netlist/logic_tile_routed_synth.v` (pre-place-and-route synthesis netlist, #21) | `status: mismatch`, 6 circuit-level errors plus 191 `hints.rejected` (pin anchoring on a top that does not pair) |
+
+**The cited reference is the as-built netlist, not the #21 synthesis netlist.**
+The synthesis netlist is not a valid LVS reference for the routed layout: it is
+hierarchical (`LUT4_SLICE`, `LOGIC_TILE_SWITCH_MATRIX`) and uses `BUF_2`/`BUF_8`,
+while the placed-and-routed design carries `buf_4` that place-and-route
+inserted, so the cell sets differ before any wire is compared. Deciding that the
+synthesis netlist and the as-built netlist are logically equivalent is a
+different check (equivalence, not LVS) and is not claimed here. What item 4
+therefore establishes is layout == as-built netlist from the same run.
+
+Warnings listed with the claim (all `severity: warning`, none an error): three
+`topology` notes that the `nfet`/`pfet`/`bjt` device classes have no
+counterpart because no devices are extracted (cells are abstracted);
+`topology.power_only_pruned`, 8 layout circuits removed before comparing
+(`endcap`, `filltie`, `fill_1/2/4/8/16/32`) because every pin of them is
+power/ground and the gate-level Verilog never carries them; and
+`topology.top_level_pins_anchored`, 191 top-level pins matched by name.
+
+Power scope: `power_connectivity` checks that each cell's declared power/ground
+pins reach the same net on all 618 instances. It is not a rail or PDN
+continuity check; the PDN result is the place-and-route response above.
+
+The report was made with the PDK at `$PDK_ROOT` (open_pdks `f6eeac7`, pinned in
+`flow/pdk.json`) and klt `0.9.0`. `--check` re-hashes the stream, the reference
+and the extraction deck; it does not re-run the compare.
+
 ## Open
 
-- DRC (#23) and LVS (#24) consume `logic_tile_routed.gds`.
+- DRC (#23) consumes `logic_tile_routed.gds`.

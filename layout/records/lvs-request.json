@@ -1,0 +1,19 @@
+{
+  "layout": {
+    "file": "layout/logic_tile_routed.gds",
+    "top": "logic_tile_routed",
+    "deck": "gf180mcu",
+    "abstract_cells": [
+      "gf180mcu_fd_sc_mcu7t5v0__*"
+    ],
+    "def_net_names": true
+  },
+  "reference": {
+    "netlist": "layout/logic_tile_routed_routed.v",
+    "top": "logic_tile_routed",
+    "form": "gate-level-verilog",
+    "library": "gf180mcu_fd_sc_mcu7t5v0",
+    "pdk": "gf180mcuD",
+    "deck": "gf180mcu"
+  }
+}

@@ -10,6 +10,10 @@
       "file": "layout/records/item2-attest.json",
       "content_hash": "sha256:d71889f054b5087bd607cfc69a02e23e60b7c6601f6be586c91ca02b582d634a"
     },
+    "4": {
+      "file": "layout/records/lvs.json",
+      "content_hash": "sha256:d71889f054b5087bd607cfc69a02e23e60b7c6601f6be586c91ca02b582d634a"
+    },
     "6": {
       "not_applicable": {
         "spec": {
