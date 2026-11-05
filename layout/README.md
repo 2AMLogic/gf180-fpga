@@ -1,4 +1,4 @@
-# layout/ — routed tile (T1 item 2, issue #22)
+# layout/ — routed tile (T1 item 2, issue #22; DRC item 3, issue #23)
 
 `logic_tile_routed` placed and routed with `klt place-and-route` (OpenROAD) on
 `gf180mcu_fd_sc_mcu7t5v0`, variant `gf180mcuD`, corner `tt_025C_5v00`, input
@@ -25,6 +25,7 @@ Single local run; not a grid.
 | `logic_tile_routed.gds` / `.def` | routed stream and DEF consumed by items 3, 4, 11 |
 | `logic_tile_routed_routed.v` | as-built gate-level netlist (for LVS) |
 | `abut-check.py` | drives the abutment check (see below) |
+| `drc/tile.drc.json` | `klt drc` report on `logic_tile_routed.gds` (T1 item 3; **not clean**, see below) |
 
 ## Result: ladder step 0 closes (2026-11-02, klt 0.8.1.dev1073+gbe5754378ff3)
 
@@ -104,6 +105,58 @@ with `flow/setup-pdk.sh` done, and is gated when the record is rewritten by
 `manifests/run-signoff.sh`. CI does not re-prove it; no separate CI job does
 yet.
 
+## DRC (T1 item 3, issue #23): not clean
+
+`drc/tile.drc.json` is `klt drc --deck gf180mcu --engine curated --pdk gf180mcuD`
+(klayout-tools 0.9.0, PDK root from `flow/setup-pdk.sh`, open_pdks `f6eeac7`)
+on `logic_tile_routed.gds`. No waivers, `--allow-deck-errors` or
+`--allow-missing-host-tools`. `klt drc --check` returns `match`.
+
+| | |
+|---|---|
+| status | `violations`, **46** |
+| rules | `comp.tap_distance.nwell.mv.1` 23, `comp.tap_distance.psub.mv.1` 23 (15 µm max tap distance, 5V/6V domain) |
+| where | 8 standard-cell types (mux4_1 18, dffq_1 6, mux4_2 6, clkinv_1 6, ...) |
+| input hash | `sha256:d71889f0...d582d634a` (equals the committed GDS) |
+| deck hash | `sha256:cf44de63f0a5b01c1d09c4d58e0535e990aa4b070bcaae17fd3a94a67a1d97e1` |
+
+Coverage, verbatim from the report:
+
+- `layers_in_stream_without_rules`: `0/0, 21/10, 34/10, 36/10, 42/10, 63/63, 81/10, 204/10`
+- `rules_skipped` (54, none of them waivers; rules the curated deck marks
+  inapplicable to this stream): `bjt.separation.comp.1`, `cap_mk.ongrid.1`,
+  `comp.separation.guard_ring_mk.1`, `comp.tap_distance.nwell.lv.1`,
+  `comp.tap_distance.psub.lv.1`, `diode_mk.ongrid.1`, `dnwell.ongrid.1`,
+  `drc_bjt.ongrid.1`, `efuse_mk.*` (3), `esd.*` (6), `fusetop.ongrid.1`,
+  `ldmos_xtor.enclosing.mvpsd.1`, `metal{1..5,top}.separation.guard_ring_mk.1`,
+  `metaltop.{ongrid,space,width}.1`, `mim.*` (3), `mim_l_mk.ongrid.1`,
+  `mvpsd/mvsd.*` (4), `nwell/poly2.*guard_ring_mk.1`, `pad.*` (2),
+  `plfuse.*` (6), `poly2.enclosing.sab.1`, `res_mk.ongrid.1`,
+  `resistor.ongrid.1`, `sab.*` (5); full list in the report
+- `deck_scope`: `10.4.2 MIM Option B`, `10.7 DRC_BJT Mark Layer`, `7.12 Contact`,
+  `7.13 Metaln`, `7.14 Vian`, `7.15 MetalTop`, `7.4 Nwell`, `7.5 Comp`,
+  `7.7 Poly2`, `7.8 Nplus`, `7.9 Pplus`, `9.1 Bond Pad`, `EF`, `ESD`, `GR`,
+  `MDN`, `MDP`, `OFFGRID`, `SB`
+
+The curated deck lists 210 `unmodeled_rules`; it is not the full PDK deck.
+
+**The PDK-native deck did not run.** `--engine both` returned
+`comparison.state: engine_failed`: the host's standalone KLayout is 0.28.16 and
+the pinned PDK deck needs >= 0.30.9. This is a worker-spec gap (no newer
+KLayout provisioned, none may be installed host-wide), not a design result.
+Until a native run exists, "clean" could not be claimed even without the 46
+violations. The crosscheck envelope is not committed (2AMLogic/klayout-tools#4986): `klt drc --check` does not
+accept its nested shape.
+
+**Reading the 46.** Both rules are the MV (15 µm) tap-distance rules, selected
+because the 5V library carries Dualgate (55/0). The tile's `par.json` places
+tapcells at 40 µm pitch. The klt note says tap distance is context-dependent;
+here it is evaluated on the placed design, so this looks like a real
+finding rather than a standalone-cell artefact. Fixing it (denser tapcells,
+i.e. a floorplan/area change) is a spec decision and was **not** made here;
+the tile is unchanged. T1 item 3 therefore stays `unmet` (`check_failed`) in
+`manifests/gf180-fpga.signoff.json`. The fabric-level check is #53.
+
 ## LVS (T1 item 4, issue #24)
 
 `layout/run-lvs.sh` runs `klt lvs` (engine `klayout`, `reference.form:
@@ -149,4 +202,5 @@ and the extraction deck; it does not re-run the compare.
 
 ## Open
 
-- DRC (#23) consumes `logic_tile_routed.gds`.
+- LVS (#24) consumes `logic_tile_routed.gds`; DRC result above (#23).
+- Tap distance (46 DRC violations): #55. `klt drc --check` on crosscheck reports: 2AMLogic/klayout-tools#4986.
