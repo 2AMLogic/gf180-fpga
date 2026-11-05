@@ -176,6 +176,24 @@ reported `erc.missing_tie` on the empty top margin strip, which is why the
 boxes stop at the cell extent. Boxes follow this tile's floorplan and must be
 regenerated if it changes.
 
+**Coverage disclosures** (both values are in `records/erc.json`,
+`erc_coverage`; item 11 requires the claimant to state them):
+
+- *Layers in the stream without a declaration.* `layers_in_stream_without_declaration`
+  is non-empty: `0/0, 21/10, 55/0, 63/63, 112/1, 204/0, 204/10`. `provenance.deck`
+  is `null` (no `--deck`), so this is the unfiltered list of drawn layers the
+  ERC spec does not declare, not a list narrowed to connectivity-relevant
+  layers. This run says nothing about those layers; item 11 does not rest on
+  them. This README has not re-derived what each of them draws.
+- *Well-assertion coverage of `substrate_tie`.* Zero `erc.missing_tie` covers
+  only what the 14 asserted boxes cover. `well_assertion_coverage` reports
+  `uncovered_tap_area_um2: 1208.26` of `drawn_tap_area_um2: 1957.54`
+  (`uncovered_tap_fraction: 0.617`) for tap layer `22/0`: about 62% of the drawn
+  Comp area lies outside the asserted substrate region. The likely explanation
+  is that most of it is Comp inside n-wells (PMOS active), which a substrate
+  tie region correctly excludes. **That explanation was not measured or
+  re-derived here**; only the fraction is evidence.
+
 What this does and does not show: supply nets are single conductor islands on
 Metal1–Metal5 through Via1–Via4 and every n-well and substrate strip is tied to
 its rail. `klt erc` does not model substrate/well continuity
