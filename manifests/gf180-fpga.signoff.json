@@ -5,18 +5,18 @@
   "tier": null,
   "t1_item_count": 11,
   "build_t1_item_count": 11,
-  "t1_met_count": 3,
+  "t1_met_count": 4,
   "t1_not_applicable_count": 1,
   "source_doc": "manifests/design-evidence-tiers.md",
   "source_doc_content_hash": "sha256:a26b90262320d0fbd32b3f549a02b6300832706041797a559d8bf6bdb62efdc7",
   "build": {
-    "version": "0.8.0",
-    "package_version": "0.8.0",
-    "git_commit": "c572046be644e0407f693f2410f3abb799d68a3a",
-    "git_tag": "v0.8.0",
+    "version": "0.9.0",
+    "package_version": "0.9.0",
+    "git_commit": "5dbbad05ff42265c92a6f3d2f20d1bbcd2957d49",
+    "git_tag": "v0.9.0",
     "dirty": false,
     "is_release": true,
-    "grading_ruleset_id": "sha256:46c446d84423b7399ee1cf957b3d49801ae4f42a0bda53da92f435776cf977c4"
+    "grading_ruleset_id": "sha256:22c42b66c4d1f99b5c00f6bf53d80b20fa8365860d857a921508ca5ab5f3771b"
   },
   "items": [
     {
@@ -34,17 +34,64 @@
         "command": null,
         "kind": "generic",
         "check_status": "pass",
-        "content_hash": "sha256:a304b4c679b533559815569a89e4d4764ebf90d441692f7c5ea5e60db4a92a10",
+        "content_hash": "sha256:749c0edaa7a19ccd609ed5ca8d0deea1938dd41e1cb046b710c23d695bd2f36e",
         "input_verified": true,
         "exit_status": 0,
         "artifact_binding": {
           "t1_item": 1,
-          "path": {
-            "path": "flow/tile/attest/item1.json",
-            "scope": "repo"
-          },
-          "content_hash": "sha256:a304b4c679b533559815569a89e4d4764ebf90d441692f7c5ea5e60db4a92a10",
+          "path": null,
+          "content_hash": "sha256:749c0edaa7a19ccd609ed5ca8d0deea1938dd41e1cb046b710c23d695bd2f36e",
           "input_verified": true,
+          "members": [
+            {
+              "path": {
+                "path": "flow/tile/attest/item1.json",
+                "scope": "repo"
+              },
+              "content_hash": "sha256:a304b4c679b533559815569a89e4d4764ebf90d441692f7c5ea5e60db4a92a10",
+              "status": "verified"
+            },
+            {
+              "path": {
+                "path": "flow/tile/netlist/logic_tile_routed_synth.v",
+                "scope": "repo"
+              },
+              "content_hash": "sha256:3445cb5cdfc8c32e951eac962b14f4a9a5075a0de894735eb47098ed0fc3f005",
+              "status": "verified"
+            },
+            {
+              "path": {
+                "path": "flow/tile/synth.json",
+                "scope": "repo"
+              },
+              "content_hash": "sha256:f69bda7c3bb369bbbd7a9484b138df55a4fecff50b8f6041994a59ac5b492fcf",
+              "status": "verified"
+            },
+            {
+              "path": {
+                "path": "rtl/common/rtl/logic_tile_routed.v",
+                "scope": "repo"
+              },
+              "content_hash": "sha256:6f5c0fee5e882ecff60851c8d9daf6a86486abab6eb0da3e82b45ff143670fd0",
+              "status": "verified"
+            },
+            {
+              "path": {
+                "path": "rtl/common/rtl/logic_tile_switch_matrix.v",
+                "scope": "repo"
+              },
+              "content_hash": "sha256:34f38f5837b7384e919dc4e21081124786600638aba41159379d95262636eb65",
+              "status": "verified"
+            },
+            {
+              "path": {
+                "path": "rtl/common/rtl/lut4_slice.v",
+                "scope": "repo"
+              },
+              "content_hash": "sha256:670559dfb7e57cb8b9b636a211187406e9c9f6e09a9b5ff2c044024030a7a4aa",
+              "status": "verified"
+            }
+          ],
           "summary": "T1 item 1 (Design sources): 6/6 attestation checks passed (klt signoff --attest)",
           "source": "flow/tile/attest/item1.json",
           "attestation": {
@@ -63,10 +110,40 @@
       "partition": null,
       "text": "committed routed GDS/OASIS from place-and-route, reproducibly generated from the gate-level netlist (P&R script/flow committed, not a one-off hand edit). For the same full-custom sub-case, this item is satisfied instead by the Analog column's artifact: committed GDS/OASIS, reproducibly generated or with documented provenance \u2014 hand-drawn layout, not P&R output.",
       "notes": [],
-      "status": "unmet",
-      "reason": "no_evidence",
+      "status": "met",
+      "reason": null,
       "graded_by_build": true,
-      "citation": null
+      "citation": {
+        "file": "layout/records/item2-attest.json",
+        "command": null,
+        "kind": "generic",
+        "check_status": "pass",
+        "content_hash": "sha256:d71889f054b5087bd607cfc69a02e23e60b7c6601f6be586c91ca02b582d634a",
+        "input_verified": true,
+        "exit_status": 0,
+        "artifact_binding": {
+          "t1_item": 2,
+          "path": {
+            "path": "layout/logic_tile_routed.gds",
+            "scope": "repo"
+          },
+          "content_hash": "sha256:d71889f054b5087bd607cfc69a02e23e60b7c6601f6be586c91ca02b582d634a",
+          "input_verified": true,
+          "summary": "T1 item 2 (Layout): 3/3 attestation checks passed (klt signoff --attest)",
+          "source": "layout/logic_tile_routed.gds",
+          "attestation": {
+            "producer": "klt signoff --attest",
+            "inventory_schema_version": null,
+            "check_count": 3,
+            "passed_count": 3
+          },
+          "regeneration": {
+            "generator": "layout/run-par.sh",
+            "regenerated_hash": "sha256:d71889f054b5087bd607cfc69a02e23e60b7c6601f6be586c91ca02b582d634a",
+            "executed_by_klt": false
+          }
+        }
+      }
     },
     {
       "tier": "T1",

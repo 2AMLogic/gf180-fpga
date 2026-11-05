@@ -4,7 +4,7 @@ This block's T1 state is graded by `klt signoff --manifest`, not read by hand.
 
 - `gf180-fpga.json` — the block manifest: `block: gf180-fpga`, `kind: digital`
   (an eFPGA tile, RTL to GDS), and one evidence citation per T1 item. Items 1,
-  9 and 10 (attested) and item 6 (`not_applicable`: `spec.json` plus
+  2, 9 and 10 (attested) and item 6 (`not_applicable`: `spec.json` plus
   `item6-na-statement.json`, no statistical row) are cited today; every other
   item is `no_evidence` until its
   evidence lands (tracker: #6). Each evidence PR adds its citation here and
@@ -18,7 +18,7 @@ This block's T1 state is graded by `klt signoff --manifest`, not read by hand.
 - `gf180-fpga.signoff.json` — the verdict of record: the output of
   `klt signoff --manifest manifests/gf180-fpga.json --tiers-doc
   manifests/design-evidence-tiers.md --format json`.
-- `run-signoff.sh` — regenerates the item 1, 9 and 10 envelopes, the manifest's
+- `run-signoff.sh` — regenerates the item 1, 2, 9 and 10 envelopes, the manifest's
   pins and the record; `--check` is what CI runs and fails on any drift.
 
 Item 9 is attested the same way from `verification/signoff/item9-inventory.json`
@@ -31,9 +31,14 @@ Item 10 is attested by `klt signoff --attest 10` from
 inventory's hash, so editing a file the inventory lists (README, LICENSE, the
 workflows) makes `--check` fail until the envelope is re-attested.
 
+Item 2 is attested by `klt signoff --attest 2 --input layout/logic_tile_routed.gds`
+into `layout/records/item2-attest.json`, with `layout/run-par.sh` as the
+recorded generator. `run-signoff.sh` passes the committed stream's hash as the
+regenerated hash only after `layout/run-par.sh --check` returns `match`.
+
 ## klt pin
 
-The pin is the PyPI release `klayout-tools==0.8.0` (`klt 0.8.0`, tag `v0.8.0`,
-commit `c572046be644`), run via `uvx --from klayout-tools==0.8.0`; `--attest`
-ships in it. The committed record embeds the producing build, so regenerate
+The pin is the PyPI release `klayout-tools==0.9.0` (`klt 0.9.0`, tag `v0.9.0`,
+commit `5dbbad05ff42`), run via `uvx --from klayout-tools==0.9.0`; `--attest`
+(items 1, 2, 9, 10) ships in it. The committed record embeds the producing build, so regenerate
 with exactly that pin, and move the pin only together with a regenerated record.

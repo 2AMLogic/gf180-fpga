@@ -88,11 +88,14 @@ names, so `abut-check.py` renames the facing pins of the neighbour copy first
 (gap: 2AMLogic/klayout-tools#4803). The two checks cover N/S and E/W seams of a
 2×2; the corner relation follows from the same tile.
 
+## Item 2 attestation
+
+`layout/records/item2-attest.json` is `klt signoff --attest 2` over
+`logic_tile_routed.gds` (stream hash pinned, generator `layout/run-par.sh`,
+regenerated hash taken after `run-par.sh --check` returned `match`). It is
+cited from `manifests/gf180-fpga.json`; `manifests/run-signoff.sh --check`
+reports item 2 `met` (klt pin `klayout-tools==0.9.0`).
+
 ## Open
 
-- T1 item 2 is not yet cited from `manifests/gf180-fpga.json`: the manifest's
-  klt pin (`klayout-tools==0.8.0`) has no `--attest 2` (choices 1, 9, 10), and
-  bumping the pin is a separate change. `klt signoff --manifest` item 2
-  therefore stays unmet until that pin moves; the committed stream and
-  request are the inputs.
 - DRC (#23) and LVS (#24) consume `logic_tile_routed.gds`.

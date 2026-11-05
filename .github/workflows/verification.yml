@@ -10,7 +10,7 @@ permissions:
 
 env:
   ICARUS_VERSION: "13.0"
-  KLT_SPEC: klayout-tools==0.8.0
+  KLT_SPEC: klayout-tools==0.9.0
 
 jobs:
   verification:
