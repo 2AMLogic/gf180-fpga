@@ -8,7 +8,7 @@
 #                                    writes nothing under flow/tile/
 #
 # Single local `klt synthesize` run; not a grid. Needs the pinned PDK
-# (flow/setup-pdk.sh) plus jq, yosys and klt on PATH.
+# (flow/setup-pdk.sh) plus jq and yosys on PATH (klt comes from flow/klt.sh).
 set -uo pipefail
 
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -18,6 +18,7 @@ check=0
 [[ "${1:-}" == "--check" ]] && check=1
 
 "$here/../setup-pdk.sh" --verify || exit 2
+source "$here/../klt.sh" || exit 2
 
 repo="$(git -C "$here" rev-parse --show-toplevel)"
 pdk_root="$(cd "$PDK_ROOT" && pwd)"

@@ -3,10 +3,12 @@
     "Committed PDK pin for the gf180-fpga flow. Read by flow/setup-pdk.sh.",
     "The revision is the open_pdks commit klayout-tools' eda-sim image uses",
     "(2AMLogic/gf180-ldo#428 re-pinned it from c6d73a3).",
+    "klt_spec is the single klayout-tools pin: flow/klt.sh and the CI workflow read it.",
     "This file pins the toolchain only. Which variant, library and metal stack",
     "the tile uses is a spec decision (#2), not made here: smoke_variant is the",
     "variant the bring-up smoke ran against, and nothing more."
   ],
+  "klt_spec": "klayout-tools==0.9.0",
   "pdk_family": "gf180mcu",
   "open_pdks_revision": "f6eeac7dad085ffcc829ccfd721f7b4ce39edcf7",
   "installer": { "tool": "ciel", "version": "2.6.1" },

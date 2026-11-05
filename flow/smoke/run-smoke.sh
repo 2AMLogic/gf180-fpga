@@ -10,6 +10,7 @@ export PDK_ROOT="${PDK_ROOT:-$here/../.pdk-root}"
 export PDK="${PDK:-$(jq -er .smoke_variant "$pdk")}"
 
 "$here/../setup-pdk.sh" --verify || exit 2
+source "$here/../klt.sh" || exit 2
 
 rc=0
 for lib in mcu7t5v0 mcu9t5v0; do
