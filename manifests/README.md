@@ -33,8 +33,12 @@ workflows) makes `--check` fail until the envelope is re-attested.
 
 Item 2 is attested by `klt signoff --attest 2 --input layout/logic_tile_routed.gds`
 into `layout/records/item2-attest.json`, with `layout/run-par.sh` as the
-recorded generator. `run-signoff.sh` passes the committed stream's hash as the
-regenerated hash only after `layout/run-par.sh --check` returns `match`.
+recorded generator. Writing (`run-signoff.sh`) passes the committed stream's hash as
+the regenerated hash only after `layout/run-par.sh --check` returns `match`.
+`run-signoff.sh --check` (the `signoff` CI job) does not re-run place-and-route,
+since that job has no gf180mcu PDK or OpenROAD: it re-attests from the committed
+stream and confirms the envelope still binds to it. The regeneration claim itself
+is verified wherever the PDK is set up, with `layout/run-par.sh --check`.
 
 ## klt pin
 

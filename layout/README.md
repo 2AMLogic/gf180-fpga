@@ -96,6 +96,14 @@ regenerated hash taken after `run-par.sh --check` returned `match`). It is
 cited from `manifests/gf180-fpga.json`; `manifests/run-signoff.sh --check`
 reports item 2 `met` (klt pin `klayout-tools==0.9.0`).
 
+Where the claim is checked: the `signoff` CI job re-attests from the committed
+stream only (it has no PDK checkout or OpenROAD), so it proves the envelope
+still binds to the committed GDS. The regeneration claim (that `run-par.sh`
+reproduces that stream) is verified by `layout/run-par.sh --check` on a host
+with `flow/setup-pdk.sh` done, and is gated when the record is rewritten by
+`manifests/run-signoff.sh`. CI does not re-prove it; no separate CI job does
+yet.
+
 ## Open
 
 - DRC (#23) and LVS (#24) consume `logic_tile_routed.gds`.
