@@ -18,6 +18,16 @@
       "file": "layout/records/lvs.json",
       "content_hash": "sha256:d71889f054b5087bd607cfc69a02e23e60b7c6601f6be586c91ca02b582d634a"
     },
+    "5": [
+      {
+        "file": "measurements/item5/sta-lef-only.report.json",
+        "content_hash": "sha256:b707b647568c1656de06532edd9b4af63ce56b7435cb04ab8022fb0fcfe48de2"
+      },
+      {
+        "file": "measurements/item5/sta-spef.report.json",
+        "content_hash": "sha256:8fc107117f40eda1e2d908f34ed3ddcd1ff15df21ebbc1d62c68ef9f423848d3"
+      }
+    ],
     "6": {
       "not_applicable": {
         "spec": {
