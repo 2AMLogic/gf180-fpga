@@ -39,8 +39,15 @@ against the working directory.
   the reader warns that the SPEF's flattened names are not found
   (918 reader warnings, see `spef_annotation` in the report). The SPEF run is
   therefore a lower bound on parasitic impact, not a full post-route claim.
-- **Functional:** the 23 stamped bench runs pass (0 failures, negative control
-  fails as required). `klt functional-verification` takes only a cocotb
-  testbench, so it was not used; the plain-Verilog runner's result is cited
-  instead. This is a tool-capability gap, not a substitute for the cocotb
-  report the item text names.
+- **Functional:** the 23 stamped bench runs pass in the plain-Verilog runner
+  (0 failures, negative control fails as required; `item5/functional-item9.result.json`).
+  Additionally (re-run 2026-11-05, klt 0.9.0 via `testbench.verilog_top`, the
+  path klayout-tools#4996 pointed to), the six benches that need no plusargs
+  were run through `klt functional-verification`; requests and reports are under
+  `item5/func/` (`lut4_slice`, `logic_tile`, `logic_tile_gapfill`,
+  `logic_tile_routed`, `switch_matrix`, `lut4_ff_bel_equiv`): 6/6 `pass`. The
+  bitstream-level benches (`tb_logic_tile_bitstream.v`, driven by `+bin= +map=
+  +wiring=`) cannot be expressed as a request because the Verilog-bench form has
+  no plusargs field (filed as 2AMLogic/klayout-tools#5006), so they remain
+  covered only by the runner result above. The tool reports one synthetic test
+  per bench, not per-case rows.
