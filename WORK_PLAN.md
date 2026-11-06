@@ -53,6 +53,7 @@ Issues carrying `loom:curated`.
 - **#23**: T1 item 3 (DRC clean): klt drc report on the routed gf180mcuD tile with deck coverage disclosed *(curated)*
 - **#27**: T1 item 5 (corner verification): klt sta on the routed tile at all 15 mcu7t5v0 corners plus klt functional-verification of the stamped bitstream-level tests *(curated)*
 - **#55**: DRC: 46 MV tap-distance violations on routed tile (tapcell pitch 40 um) *(curated)*
+- **#62**: Run PDK-dependent checks after klt single-sourcing (PR #61) *(curated)*
 
 ## Proposed (Architect / Hermit)
 
@@ -73,7 +74,7 @@ _None._
 | In Progress (`loom:building`) | 0 |
 | PRs awaiting review | 1 |
 | Approved PRs awaiting merge | 0 |
-| Curated | 4 |
+| Curated | 5 |
 | Architect / Hermit proposals | 0 |
 | Active epics | 0 |
 <!-- guide:plan-body:end -->
