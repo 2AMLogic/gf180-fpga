@@ -10,6 +10,12 @@
 # exits 3 when the report rendered but some T1 item is unmet, which is the
 # honest state today, so 0 and 3 are both "ran clean"; anything else fails.
 #
+# Write mode needs the gf180mcu PDK on the host: item 1's inventory declares a
+# local_only derived-file check (flow/tile/run-synth.sh --check) that re-runs
+# synthesis. Write mode therefore runs `flow/setup-pdk.sh --verify` first and
+# exits before touching any envelope, manifest pin or record if the PDK is
+# missing. --check (CI) is unaffected and needs no PDK.
+#
 # klt pin: klt_spec in flow/pdk.json, the PyPI release klayout-tools 0.9.0 (carries `klt signoff --attest`, incl. item 2),
 # run through a throwaway uvx environment. See manifests/README.md.
 set -euo pipefail
@@ -31,6 +37,14 @@ ATTESTED=(
 ITEM2_ENVELOPE="layout/records/item2-attest.json"
 mode="write"
 [[ "${1:-}" == "--check" ]] && mode="check"
+
+# Write-mode preflight: fail before modifying anything if the PDK is absent.
+if [[ "$mode" == "write" ]]; then
+  if ! flow/setup-pdk.sh --verify >&2; then
+    echo "::error::write mode needs the pinned gf180mcu PDK (item 1 re-runs flow/tile/run-synth.sh); run flow/setup-pdk.sh or set PDK_ROOT. Nothing was modified. --check does not need the PDK." >&2
+    exit 2
+  fi
+fi
 
 tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
