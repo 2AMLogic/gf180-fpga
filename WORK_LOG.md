@@ -2,8 +2,14 @@
 
 Chronological record of merged PRs and closed issues (maintained by the Guide role; newest first).
 
+### 2026-11-06
+
+- **PR #61**: refactor(flow): single-source the klayout-tools pin in flow/pdk.json
+- **Issue #58** (closed): Single-source the klayout-tools pin: three places hardcode 0.9.0, three scripts use unpinned host klt
+
 ### 2026-11-05
 
+- **PR #60**: feat(measurements): record item 5 STA at 15 corners; setup fails at two ss corners
 - **PR #57**: feat(signoff): supply ERC of the routed tile, cited as T1 item 11
 - **PR #56**: feat(drc): commit tile DRC report (46 MV tap-distance violations, item 3 unmet)
 - **PR #54**: feat(signoff): gate-level LVS of the routed tile, cited as T1 item 4
