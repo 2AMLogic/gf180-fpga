@@ -8,9 +8,11 @@ logic tile and a small demonstration fabric — designed by AI agents driving
 description format, and the open-source cocotb + Icarus, Yosys, nextpnr and
 OpenROAD flow.
 
-**Status: specification phase, spec ratified.** The tile RTL, FABulous
-description and bitstream-level tests are vendored from `sky130-fpga`; nothing
-is designed, placed or verified in this repo yet.
+**Status: spec ratified; routed tile LVS-matched and supply-ERC'd.** The tile
+RTL, FABulous description and bitstream-level tests are vendored from
+`sky130-fpga`. DRC ([#55](../../issues/55)) and timing at the two ss 1.62 V
+corners ([#27](../../issues/27)) are open. The graded state of every T1 item is
+in [`manifests/gf180-fpga.signoff.json`](manifests/gf180-fpga.signoff.json).
 
 **Built agent-native.** Every specification, decision record, testbench, and
 line of documentation here is produced by AI agents working from a ratified
@@ -68,7 +70,7 @@ Maturity ladder: framework and port plan → tile spec ratified → tile RTL
 and fabric description passing bitstream-level tests → tile layout
 DRC/LVS-clean → tile timing characterized → demonstration fabric assembled
 and re-verified → shuttle seat → measured silicon.
-**Current position: target spec ratified; nothing designed or verified here yet.**
+**Current position: target spec ratified; routed tile LVS-matched and supply-ERC'd; DRC and ss 1.62 V timing open — see [`manifests/gf180-fpga.signoff.json`](manifests/gf180-fpga.signoff.json).**
 
 ## Tool flow
 
@@ -88,7 +90,7 @@ rtl/           tile RTL + fabric description (shared material under rtl/common/)
 verification/  bitstream-level testbenches + results (shared material under verification/common/)
 reuse.lock.json  vendored files: source commit + sha256 (spec/check_reuse_lock.py)
 layout/        tile GDS, routed DEF, DRC/LVS reports (klayout-tools driven)
-measurements/  silicon characterization (empty until tape-out)
+measurements/  characterization data (item5/); silicon measurements empty until tape-out
 ```
 
 ## License
