@@ -16,6 +16,7 @@ export PDK_ROOT="${PDK_ROOT:-$root/flow/.pdk-root}"
 export PDK="${PDK:-$(jq -er .smoke_variant "$root/flow/pdk.json")}"
 "$root/flow/setup-pdk.sh" --verify || exit 2
 cd "$root" || exit 1
+source "$root/flow/klt.sh" || exit 2
 
 if [[ "${1:-}" == "--check" ]]; then
   klt place-and-route --check layout/records/step0-par.json layout/par.json
@@ -45,6 +46,6 @@ sed -i -e "s#$root/##g" -e "s#$pdk_root#\$PDK_ROOT#g" layout/records/step0-par.j
 klt env-provenance scan layout/records/step0-par.json
 
 # 2x2 abutment: neighbour placed one tile pitch over on each axis.
-kbin="$(dirname "$(readlink -f "$(command -v klt)")")"
+kbin="$(klt_bin_dir)" || exit 1
 PATH="$kbin:$PATH" "$kbin/python" -I layout/abut-check.py layout/logic_tile_routed.gds \
   layout/.klt/abut > layout/records/abutment.json || exit 1

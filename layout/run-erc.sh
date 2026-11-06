@@ -14,7 +14,7 @@ set -uo pipefail
 
 root="$(git -C "$(dirname "${BASH_SOURCE[0]}")" rev-parse --show-toplevel)"
 cd "$root" || exit 1
-klt() { uvx --quiet --from "klayout-tools==0.9.0" klt "$@"; }
+source "$root/flow/klt.sh" || exit 2
 spec=layout/records/erc-supply-spec.json
 report=layout/records/erc.json
 

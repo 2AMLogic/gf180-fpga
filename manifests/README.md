@@ -43,6 +43,6 @@ is verified wherever the PDK is set up, with `layout/run-par.sh --check`.
 ## klt pin
 
 The pin is the PyPI release `klayout-tools==0.9.0` (`klt 0.9.0`, tag `v0.9.0`,
-commit `5dbbad05ff42`), run via `uvx --from klayout-tools==0.9.0`; `--attest`
+commit `5dbbad05ff42`), run via `uvx --from` the `klt_spec` in `flow/pdk.json` (see `flow/klt.sh`); `--attest`
 (items 1, 2, 9, 10) ships in it. The committed record embeds the producing build, so regenerate
 with exactly that pin, and move the pin only together with a regenerated record.

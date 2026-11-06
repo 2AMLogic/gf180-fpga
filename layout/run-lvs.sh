@@ -20,7 +20,7 @@ export PDK_ROOT="${PDK_ROOT:-$root/flow/.pdk-root}"
 export PDK="${PDK:-$(jq -er .smoke_variant "$root/flow/pdk.json")}"
 "$root/flow/setup-pdk.sh" --verify || exit 2
 cd "$root" || exit 1
-klt() { uvx --quiet --from "klayout-tools==0.9.0" klt "$@"; }
+source "$root/flow/klt.sh" || exit 2
 
 if [[ "${1:-}" == "--check" ]]; then
   rc=0

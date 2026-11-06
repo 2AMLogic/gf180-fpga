@@ -10,14 +10,12 @@
 # exits 3 when the report rendered but some T1 item is unmet, which is the
 # honest state today, so 0 and 3 are both "ran clean"; anything else fails.
 #
-# klt pin: the PyPI release klayout-tools==0.9.0 (carries `klt signoff --attest`, incl. item 2),
+# klt pin: klt_spec in flow/pdk.json, the PyPI release klayout-tools 0.9.0 (carries `klt signoff --attest`, incl. item 2),
 # run through a throwaway uvx environment. See manifests/README.md.
 set -euo pipefail
 
-KLT_SPEC="klayout-tools==0.9.0"
-
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
-klt() { uvx --quiet --from "$KLT_SPEC" klt "$@"; }
+source flow/klt.sh
 
 MANIFEST="manifests/gf180-fpga.json"
 TIERS_DOC="manifests/design-evidence-tiers.md"
