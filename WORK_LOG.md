@@ -4,6 +4,10 @@ Chronological record of merged PRs and closed issues (maintained by the Guide ro
 
 ### 2026-11-06
 
+- **PR #70**: fix: fail fast in run-signoff write mode when the PDK is absent
+- **PR #68**: fix: carry over item 2 claim in run-signoff write mode and correct README status
+- **Issue #69** (closed): run-signoff.sh write mode: item 1 attestation needs the PDK (flow/tile/run-synth.sh --check)
+- **Issue #67** (closed): Let run-signoff.sh write on hosts without the PDK, then correct the stale README status
 - **PR #61**: refactor(flow): single-source the klayout-tools pin in flow/pdk.json
 - **Issue #58** (closed): Single-source the klayout-tools pin: three places hardcode 0.9.0, three scripts use unpinned host klt
 
