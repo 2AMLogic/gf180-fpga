@@ -1,0 +1,3 @@
+{"sources":["../../../verification/common/tb_lut4_slice.v","../../../rtl/common/rtl/lut4_slice.v"],
+ "hdl_toplevel":"tb_lut4_slice","engine":"icarus",
+ "testbench":{"verilog_top":"tb_lut4_slice","pass_marker":"PASS: tb_lut4_slice","fail_marker":"FAIL"}}
