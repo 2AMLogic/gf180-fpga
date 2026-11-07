@@ -2,6 +2,10 @@
 
 Chronological record of merged PRs and closed issues (maintained by the Guide role; newest first).
 
+### 2026-11-07
+
+- **PR #72**: Bump Repo Skills 0.25.1 -> 0.25.10
+
 ### 2026-11-06
 
 - **PR #70**: fix: fail fast in run-signoff write mode when the PDK is absent
