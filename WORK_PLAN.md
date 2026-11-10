@@ -20,6 +20,7 @@ _None._
 `loom:important`; taken before unlabelled work.
 
 - **#27**: T1 item 5 (corner verification): klt sta on the routed tile at all 15 mcu7t5v0 corners plus klt functional-verification of the stamped bitstream-level tests
+- **#55**: DRC: 46 MV tap-distance violations on routed tile (tapcell pitch 40 um)
 
 ## Ready
 
@@ -69,7 +70,7 @@ _None._
 |------|-------|
 | Operator merge-risk holds | 0 |
 | Very important | 0 |
-| Important | 1 |
+| Important | 2 |
 | Ready (`loom:issue`) | 0 |
 | In Progress (`loom:building`) | 0 |
 | PRs awaiting review | 1 |
