@@ -13,20 +13,19 @@ _None._
 
 `loom:very-important` (one counts per workspace); every stage takes these first.
 
-_None._
+- **#55**: DRC: 46 MV tap-distance violations on routed tile (tapcell pitch 40 um)
 
 ## Important
 
 `loom:important`; taken before unlabelled work.
 
 - **#27**: T1 item 5 (corner verification): klt sta on the routed tile at all 15 mcu7t5v0 corners plus klt functional-verification of the stamped bitstream-level tests
-- **#55**: DRC: 46 MV tap-distance violations on routed tile (tapcell pitch 40 um)
 
 ## Ready
 
 Human-approved issues ready for implementation (`loom:issue`).
 
-_None._
+- **#55**: DRC: 46 MV tap-distance violations on routed tile (tapcell pitch 40 um)
 
 ## In Progress
 
@@ -69,9 +68,9 @@ _None._
 | Bucket | Count |
 |------|-------|
 | Operator merge-risk holds | 0 |
-| Very important | 0 |
-| Important | 2 |
-| Ready (`loom:issue`) | 0 |
+| Very important | 1 |
+| Important | 1 |
+| Ready (`loom:issue`) | 1 |
 | In Progress (`loom:building`) | 0 |
 | PRs awaiting review | 1 |
 | Approved PRs awaiting merge | 0 |
