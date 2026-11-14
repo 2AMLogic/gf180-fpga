@@ -44,9 +44,21 @@ not stale merely by inheritance from the SPEF. `item5/logic_tile_routed.spef`
 carries no `provenance` block of its own and is bound only through
 `item5/extract.report.json`, which produced it.
 
-**Superseded (stream-bound), these four and only these four:**
-`item5/extract.report.json`, `item5/logic_tile_routed.spef`,
-`item5/sta-lef-only.report.json`, `item5/sta-spef.report.json`.
+**Superseded (stream-bound):** `item5/extract.report.json`,
+`item5/logic_tile_routed.spef`, `item5/setup-paths.md`,
+`item5/sta-lef-only.report.json`, `item5/sta-spef.report.json`. Three of the
+five carry the pins in the table above; the other two carry no stream pin of
+their own and are bound transitively — `item5/logic_tile_routed.spef` through
+`item5/extract.report.json`, which produced it, and `item5/setup-paths.md`
+through the two STA reports it transcribes row for row (it landed on `item5/`
+after these records were written — PR #87, 2026-11-14 — and its `## Provenance`
+pins those reports by bytes while carrying no supersession disclosure of its
+own; `item5/summarize_sta.py` regenerates it from them, see below). This is a
+positive list, not a census: what puts a file under this disclosure is the
+binding stated above — it measures the pinned stream, or is derived from a
+record that did — not its presence in this list. `item5/` keeps growing (PR #87
+added two files mid-review, and #90 will index both in the file table above),
+so no here-and-now count claims to be complete.
 
 **Not superseded: `item5/functional-item9.result.json`.** Its `provenance` is
 `null` — it carries no layout pin at all — and it is an RTL run: 23 bench runs
