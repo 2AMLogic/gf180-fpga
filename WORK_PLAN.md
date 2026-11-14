@@ -13,51 +13,58 @@ _None._
 
 `loom:very-important` (one counts per workspace); every stage takes these first.
 
-- **#55**: DRC: 46 MV tap-distance violations on routed tile (tapcell pitch 40 um)
+- **#27**: T1 item 5 (corner verification): klt sta on the routed tile at all 15 mcu7t5v0 corners plus klt functional-verification of the stamped bitstream-level tests
 
 ## Important
 
 `loom:important`; taken before unlabelled work.
 
-- **#27**: T1 item 5 (corner verification): klt sta on the routed tile at all 15 mcu7t5v0 corners plus klt functional-verification of the stamped bitstream-level tests
+- **#82**: Probe which closed klayout-tools fixes are present in the pinned klt 0.9.0 and in the latest release
 
 ## Ready
 
 Human-approved issues ready for implementation (`loom:issue`).
 
-- **#55**: DRC: 46 MV tap-distance violations on routed tile (tapcell pitch 40 um)
+- **#88**: Remove the duplicate item-9 attestation step from verification.yml: signoff.yml already runs the identical klt check
 
 ## In Progress
 
 Issues currently being built (`loom:building`).
 
-_None._
+- **#82**: Probe which closed klayout-tools fixes are present in the pinned klt 0.9.0 and in the latest release
+- **#84**: measurements/item5 records are bound to the superseded 40 um GDS, and nothing says so
 
 ## PRs Awaiting Review
 
 PRs waiting on Judge (`loom:review-requested`).
 
 - **#63**: feat(measurements): run six plusarg-free stamped benches through klt functional-verification
+- **#95**: docs(measurements): disclose that the item 5 STA records pin the pre-#83 stream
 
 ## Approved (Awaiting Merge)
 
 PRs that passed review and are queued for Champion auto-merge (`loom:pr`).
 
-_None._
+- **#99**: docs(flow): record which closed klayout-tools fixes ship in klt 0.9.0 and 0.9.2
 
 ## Proposed
 
 Issues carrying `loom:curated`.
 
 - **#6**: Track the gap to T1 (klayout-tools design-evidence-tiers.md) *(curated)*
-- **#23**: T1 item 3 (DRC clean): klt drc report on the routed gf180mcuD tile with deck coverage disclosed *(curated)*
 - **#27**: T1 item 5 (corner verification): klt sta on the routed tile at all 15 mcu7t5v0 corners plus klt functional-verification of the stamped bitstream-level tests *(curated)*
-- **#55**: DRC: 46 MV tap-distance violations on routed tile (tapcell pitch 40 um) *(curated)*
 - **#62**: Run PDK-dependent checks after klt single-sourcing (PR #61) *(curated)*
+- **#82**: Probe which closed klayout-tools fixes are present in the pinned klt 0.9.0 and in the latest release *(curated)*
+- **#84**: measurements/item5 records are bound to the superseded 40 um GDS, and nothing says so *(curated)*
+- **#102**: Decide on bumping klt_spec 0.9.0 -> 0.9.2: it unblocks the #4986 crosscheck envelope and the #5006 Verilog-bench evidence *(curated)*
 
 ## Proposed (Architect / Hermit)
 
-_None._
+- **#86**: Remove the superseded cocotb wiring path: runner.py --dut/--broken/--module/--toplevel and the stale verification/README.md section *(hermit)*
+- **#89**: Stop vendoring design-evidence-tiers.md: the pinned klt bundles the ladder, and the two pins have drifted (0.8.0 vs 0.9.0) *(hermit)*
+- **#92**: Wire in or delete verification/signoff/test_run_signoff_write.sh: nothing runs it and it now fails *(hermit)*
+- **#96**: Stop committing parasitics.nets in extract records: 94% of the repo's largest file duplicates the SPEF beside it *(hermit)*
+- **#100**: item9-inventory.json hand-copies the bench set, cold-start argv and three pins; inventory.py --check verifies none of them *(hermit)*
 
 ## Epics
 
@@ -71,10 +78,10 @@ _None._
 | Very important | 1 |
 | Important | 1 |
 | Ready (`loom:issue`) | 1 |
-| In Progress (`loom:building`) | 0 |
-| PRs awaiting review | 1 |
-| Approved PRs awaiting merge | 0 |
-| Curated | 5 |
-| Architect / Hermit proposals | 0 |
+| In Progress (`loom:building`) | 2 |
+| PRs awaiting review | 2 |
+| Approved PRs awaiting merge | 1 |
+| Curated | 6 |
+| Architect / Hermit proposals | 5 |
 | Active epics | 0 |
 <!-- guide:plan-body:end -->
