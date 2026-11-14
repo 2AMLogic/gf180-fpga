@@ -100,9 +100,9 @@
       {
         "id": "erc.missing_tie:[\"substrate_tie\"]",
         "tap_layer": "22/0",
-        "drawn_tap_area_um2": 1957.543525,
-        "uncovered_tap_area_um2": 1208.260475,
-        "uncovered_tap_fraction": 0.617233,
+        "drawn_tap_area_um2": 1992.807525,
+        "uncovered_tap_area_um2": 1227.284475,
+        "uncovered_tap_fraction": 0.615857,
         "extent_uncovered_fraction": 0.615289
       }
     ]
@@ -116,7 +116,7 @@
     "pdk": null,
     "deck": null,
     "input": {
-      "content_hash": "sha256:d71889f054b5087bd607cfc69a02e23e60b7c6601f6be586c91ca02b582d634a",
+      "content_hash": "sha256:ecf5be0a2415d1ef744c227c6086a36ff2009b7dfe76907a166f1eea2f56b662",
       "role": "layout"
     },
     "spec": {
@@ -128,7 +128,7 @@
       {
         "name": "Metal1",
         "label_layer": "34/10",
-        "label_text_count": 2077
+        "label_text_count": 2149
       },
       {
         "name": "Metal2",

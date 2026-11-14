@@ -24,9 +24,13 @@ if [[ "${1:-}" == "--check" ]]; then
 fi
 
 # Tile core: 190 sites x 27 rows of the 7-track library (106.40 x 105.84 um).
+# Last argument is power.tapcell.distance_um: the staggered tap-column spacing,
+# about twice the worst-case Comp-to-tap distance it yields, so 24 um keeps the
+# routed tile under the 15 um MV limit of comp.tap_distance.{nwell,psub}.mv.1
+# (40 um gave 19.75 um measured and 46 DRC violations, issue #55).
 python3 -I layout/make-request.py layout/par.json ../flow/tile/netlist/logic_tile_routed_synth.v \
   gf180mcu_fd_sc_mcu7t5v0 GF018hv5v_mcu_sc7 gf180mcu_7t_6M \
-  gf180mcu_fd_sc_mcu7t5v0__filltie 0.56 3.92 190 27 || exit 1
+  gf180mcu_fd_sc_mcu7t5v0__filltie 0.56 3.92 190 27 24 || exit 1
 
 rm -rf layout/.klt
 mkdir -p layout/records

@@ -345,12 +345,18 @@
       }
     ]
   },
+  "library": {
+    "route_layers": {
+      "low": "Metal2",
+      "high": "Metal4"
+    }
+  },
   "power": {
     "preset": "gf180mcu_7t_6M",
     "power_net": "VDD",
     "ground_net": "VSS",
     "tapcell": {
-      "distance_um": 40
+      "distance_um": 24
     }
   },
   "constraints": {

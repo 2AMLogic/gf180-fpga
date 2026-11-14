@@ -26,6 +26,7 @@
         "ok_count": 8,
         "misaligned_count": 0,
         "no_partner_count": 0,
+        "pairs": [],
         "pins": [
           {
             "name": "n_in[0]",
@@ -61,7 +62,8 @@
                 114.2
               ]
             },
-            "reason": null
+            "reason": null,
+            "b_name": "n_in[0]"
           },
           {
             "name": "n_in[1]",
@@ -97,7 +99,8 @@
                 114.2
               ]
             },
-            "reason": null
+            "reason": null,
+            "b_name": "n_in[1]"
           },
           {
             "name": "n_in[2]",
@@ -133,7 +136,8 @@
                 114.2
               ]
             },
-            "reason": null
+            "reason": null,
+            "b_name": "n_in[2]"
           },
           {
             "name": "n_in[3]",
@@ -169,7 +173,8 @@
                 114.2
               ]
             },
-            "reason": null
+            "reason": null,
+            "b_name": "n_in[3]"
           },
           {
             "name": "n_out[0]",
@@ -205,7 +210,8 @@
                 114.2
               ]
             },
-            "reason": null
+            "reason": null,
+            "b_name": "n_out[0]"
           },
           {
             "name": "n_out[1]",
@@ -241,7 +247,8 @@
                 114.2
               ]
             },
-            "reason": null
+            "reason": null,
+            "b_name": "n_out[1]"
           },
           {
             "name": "n_out[2]",
@@ -277,7 +284,8 @@
                 114.2
               ]
             },
-            "reason": null
+            "reason": null,
+            "b_name": "n_out[2]"
           },
           {
             "name": "n_out[3]",
@@ -313,7 +321,8 @@
                 114.2
               ]
             },
-            "reason": null
+            "reason": null,
+            "b_name": "n_out[3]"
           }
         ]
       }
@@ -341,6 +350,7 @@
         "ok_count": 8,
         "misaligned_count": 0,
         "no_partner_count": 0,
+        "pairs": [],
         "pins": [
           {
             "name": "e_in[0]",
@@ -376,7 +386,8 @@
                 60.06
               ]
             },
-            "reason": null
+            "reason": null,
+            "b_name": "e_in[0]"
           },
           {
             "name": "e_in[1]",
@@ -412,7 +423,8 @@
                 61.18
               ]
             },
-            "reason": null
+            "reason": null,
+            "b_name": "e_in[1]"
           },
           {
             "name": "e_in[2]",
@@ -448,7 +460,8 @@
                 62.3
               ]
             },
-            "reason": null
+            "reason": null,
+            "b_name": "e_in[2]"
           },
           {
             "name": "e_in[3]",
@@ -484,7 +497,8 @@
                 63.42
               ]
             },
-            "reason": null
+            "reason": null,
+            "b_name": "e_in[3]"
           },
           {
             "name": "e_out[0]",
@@ -520,7 +534,8 @@
                 51.1
               ]
             },
-            "reason": null
+            "reason": null,
+            "b_name": "e_out[0]"
           },
           {
             "name": "e_out[1]",
@@ -556,7 +571,8 @@
                 52.22
               ]
             },
-            "reason": null
+            "reason": null,
+            "b_name": "e_out[1]"
           },
           {
             "name": "e_out[2]",
@@ -592,7 +608,8 @@
                 53.34
               ]
             },
-            "reason": null
+            "reason": null,
+            "b_name": "e_out[2]"
           },
           {
             "name": "e_out[3]",
@@ -628,7 +645,8 @@
                 54.46
               ]
             },
-            "reason": null
+            "reason": null,
+            "b_name": "e_out[3]"
           }
         ]
       }

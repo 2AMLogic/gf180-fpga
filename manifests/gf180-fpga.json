@@ -8,15 +8,15 @@
     },
     "2": {
       "file": "layout/records/item2-attest.json",
-      "content_hash": "sha256:d71889f054b5087bd607cfc69a02e23e60b7c6601f6be586c91ca02b582d634a"
+      "content_hash": "sha256:ecf5be0a2415d1ef744c227c6086a36ff2009b7dfe76907a166f1eea2f56b662"
     },
     "3": {
       "file": "layout/drc/tile.drc.json",
-      "content_hash": "sha256:28e95081ef68d1e00bf8475154f0b3534137fe971b6bd39934a4c8afd91354d2"
+      "content_hash": "sha256:ecf5be0a2415d1ef744c227c6086a36ff2009b7dfe76907a166f1eea2f56b662"
     },
     "4": {
       "file": "layout/records/lvs.json",
-      "content_hash": "sha256:d71889f054b5087bd607cfc69a02e23e60b7c6601f6be586c91ca02b582d634a"
+      "content_hash": "sha256:ecf5be0a2415d1ef744c227c6086a36ff2009b7dfe76907a166f1eea2f56b662"
     },
     "5": [
       {
@@ -51,11 +51,11 @@
     "11": [
       {
         "file": "layout/records/erc.json",
-        "content_hash": "sha256:d71889f054b5087bd607cfc69a02e23e60b7c6601f6be586c91ca02b582d634a"
+        "content_hash": "sha256:ecf5be0a2415d1ef744c227c6086a36ff2009b7dfe76907a166f1eea2f56b662"
       },
       {
         "file": "layout/records/lvs.json",
-        "content_hash": "sha256:d71889f054b5087bd607cfc69a02e23e60b7c6601f6be586c91ca02b582d634a"
+        "content_hash": "sha256:ecf5be0a2415d1ef744c227c6086a36ff2009b7dfe76907a166f1eea2f56b662"
       },
       "layout/records/step0-par.json"
     ]
