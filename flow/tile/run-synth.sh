@@ -12,7 +12,9 @@
 set -uo pipefail
 
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-export PDK_ROOT="${PDK_ROOT:-$here/../.pdk-root}"
+source "$here/../pdk-root.sh" || exit 2
+PDK_ROOT="$(pdk_root_resolve)" || exit 2
+export PDK_ROOT
 export PDK="${PDK:-$(jq -er .smoke_variant "$here/../pdk.json")}"
 check=0
 [[ "${1:-}" == "--check" ]] && check=1

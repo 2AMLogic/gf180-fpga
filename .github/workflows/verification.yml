@@ -127,3 +127,13 @@ jobs:
           if python3 -I "$t/spec/check_reuse_lock.py"; then
             echo "negative control: missing vendored file was not caught"; exit 1
           fi
+
+  flow-scripts:
+    # Resolution order for $PDK_ROOT (flow/pdk-root.sh, issue #79). Hermetic:
+    # fixture roots instead of a store, ciel/uvx stubbed to a recorder that
+    # fails, so "no network fetch" is asserted rather than timed. No PDK.
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: PDK root resolution order
+        run: flow/test-pdk-root.sh
