@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Emit a `klt place-and-route` request for the tile at a given core size.
 
-usage: make-request.py OUT.json NETLIST_REL CELL_LIB SITE PRESET FILLTIE \
+usage: make-request.py OUT.json NETLIST_REL CELL_LIB SITE PRESET \
            SITE_W SITE_H NCOLS NROWS TAP_DISTANCE_UM
 
 The core is NCOLS sites wide and NROWS rows high, offset by one tapcell-sized
@@ -27,10 +27,10 @@ Pin placement:
 import json
 import sys
 
-out, netlist, lib, site, preset, filltie = sys.argv[1:7]
-sw, sh = float(sys.argv[7]), float(sys.argv[8])
-ncols, nrows = int(sys.argv[9]), int(sys.argv[10])
-tap_distance = float(sys.argv[11])
+out, netlist, lib, site, preset = sys.argv[1:6]
+sw, sh = float(sys.argv[6]), float(sys.argv[7])
+ncols, nrows = int(sys.argv[8]), int(sys.argv[9])
+tap_distance = float(sys.argv[10])
 if tap_distance.is_integer():
     tap_distance = int(tap_distance)
 mx, my = 5.6, sh

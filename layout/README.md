@@ -19,13 +19,26 @@ Single local run; not a grid.
 | File | Content |
 |---|---|
 | `make-request.py` | emits `par.json` for a given core size (pin windows included) |
-| `par.json` | the request: explicit floorplan, `power.pdn: true`, preset `gf180mcu_7t_6M`, tapcell `gf180mcu_fd_sc_mcu7t5v0__filltie` (24 µm), `library.route_layers` Metal2–Metal4, `io` Metal3/Metal2 |
+| `par.json` | the request: explicit floorplan, `power.pdn: true`, preset `gf180mcu_7t_6M`, tapcell pitch 24 µm (`power.tapcell.distance_um`; the master is **not** pinned here — see below), `library.route_layers` Metal2–Metal4, `io` Metal3/Metal2 |
 | `records/step0-par.json` | the `klt place-and-route` response (ladder step 0) |
 | `records/abutment.json` | `klt interface-check` 2×2 seam results |
 | `logic_tile_routed.gds` / `.def` | routed stream and DEF consumed by items 3, 4, 11 |
 | `logic_tile_routed_routed.v` | as-built gate-level netlist (for LVS) |
 | `abut-check.py` | drives the abutment check (see below) |
 | `drc/tile.drc.json` | `klt drc` report on `logic_tile_routed.gds` (T1 item 3; **clean** on the curated deck, see below) |
+
+`par.json` pins the tapcell *pitch* and nothing else about the tap cells: the
+only key `klt.place_and_route.request/1` accepts under `power.tapcell` is
+`distance_um`. The tapcell **master** is chosen by klt from its built-in
+per-cell-library table, keyed on `pdk.cell_library` — for
+`gf180mcu_fd_sc_mcu7t5v0` that is `gf180mcu_fd_sc_mcu7t5v0__filltie` (with
+endcap `gf180mcu_fd_sc_mcu7t5v0__endcap`), the effective value klt reports back
+as `power.tapcell_master` in `records/step0-par.json`. `flow/README.md`
+tabulates the same per-library value for the two smoke libraries. So the master
+this tile is built with is attested by the response, not held by the request;
+klt 0.9.0 would let the request pin it (`library.tapcell.master`, which takes
+precedence over the built-in table), and whether this repo should do so is
+issue #93.
 
 ## Result: ladder step 0 closes, tap-distance clean (2026-11-14, klt 0.9.0)
 

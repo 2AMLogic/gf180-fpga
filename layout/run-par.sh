@@ -30,7 +30,7 @@ fi
 # (40 um gave 19.75 um measured and 46 DRC violations, issue #55).
 python3 -I layout/make-request.py layout/par.json ../flow/tile/netlist/logic_tile_routed_synth.v \
   gf180mcu_fd_sc_mcu7t5v0 GF018hv5v_mcu_sc7 gf180mcu_7t_6M \
-  gf180mcu_fd_sc_mcu7t5v0__filltie 0.56 3.92 190 27 24 || exit 1
+  0.56 3.92 190 27 24 || exit 1
 
 rm -rf layout/.klt
 mkdir -p layout/records
