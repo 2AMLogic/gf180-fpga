@@ -8,10 +8,13 @@ logic tile and a small demonstration fabric — designed by AI agents driving
 description format, and the open-source cocotb + Icarus, Yosys, nextpnr and
 OpenROAD flow.
 
-**Status: spec ratified; routed tile LVS-matched and supply-ERC'd.** The tile
-RTL, FABulous description and bitstream-level tests are vendored from
-`sky130-fpga`. DRC ([#55](../../issues/55)) and timing at the two ss 1.62 V
-corners ([#27](../../issues/27)) are open. The graded state of every T1 item is
+**Status: spec ratified; routed tile DRC-clean, LVS-matched and supply-ERC'd.**
+The tile RTL, FABulous description and bitstream-level tests are vendored from
+`sky130-fpga`. Tile DRC is clean on the curated gf180mcu deck
+([#55](../../issues/55) closed it: 46 → 0 violations); the PDK-native deck
+crosscheck ([#23](../../issues/23)), fabric-level DRC
+([#53](../../issues/53)) and timing at the two ss 1.62 V corners
+([#27](../../issues/27)) are open. The graded state of every T1 item is
 in [`manifests/gf180-fpga.signoff.json`](manifests/gf180-fpga.signoff.json).
 
 **Built agent-native.** Every specification, decision record, testbench, and
@@ -70,7 +73,7 @@ Maturity ladder: framework and port plan → tile spec ratified → tile RTL
 and fabric description passing bitstream-level tests → tile layout
 DRC/LVS-clean → tile timing characterized → demonstration fabric assembled
 and re-verified → shuttle seat → measured silicon.
-**Current position: target spec ratified; routed tile LVS-matched and supply-ERC'd; DRC and ss 1.62 V timing open — see [`manifests/gf180-fpga.signoff.json`](manifests/gf180-fpga.signoff.json).**
+**Current position: target spec ratified; routed tile DRC-clean (curated deck), LVS-matched and supply-ERC'd; native-deck DRC crosscheck, fabric-level DRC and ss 1.62 V timing open — see [`manifests/gf180-fpga.signoff.json`](manifests/gf180-fpga.signoff.json).**
 
 ## Tool flow
 

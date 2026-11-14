@@ -14,13 +14,39 @@ both candidate libraries, and rewrites `flow/smoke/records/`. Install the PDK
 first on a clean machine:
 
 ```bash
-flow/setup-pdk.sh          # installs into flow/.pdk-root (git-ignored) or $PDK_ROOT
+flow/setup-pdk.sh          # installs into the resolved root (see below)
 ```
 
 `setup-pdk.sh` runs ciel 2.6.1 through `uvx` (nothing is installed host-wide)
 and exits 2 if any variant's `SOURCES` revision differs from the pin in
 `flow/pdk.json`, or a candidate library is missing. `--verify` checks without
 installing. A stale install at another revision is refused, never used.
+
+### Which PDK root is used
+
+`flow/pdk-root.sh` is the one place that decides, for `setup-pdk.sh` and for
+every consumer that needs `$PDK_ROOT` (`layout/run-par.sh`,
+`layout/run-lvs.sh`, `flow/tile/run-synth.sh`, `flow/smoke/run-smoke.sh`).
+First match wins:
+
+| | root | when |
+| --- | --- | --- |
+| 1 | `$PDK_ROOT` | set and non-empty in the environment. Used as given; a mismatch still exits 2, and is never repaired or worked around. |
+| 2 | `flow/.pdk-root` | an install has materialized there (any variant `SOURCES` present) — at *any* revision, so a leftover install is refused rather than silently reached past. |
+| 3 | `${CIEL_PDK_ROOT:-$HOME/.ciel}` | ciel's own store already satisfies the pinned revision and both libraries. Adopted, reported on stderr, and `ciel enable` is skipped — a host that already has the PDK does not re-fetch 3.6 GB of it. |
+| 4 | `flow/.pdk-root` | nothing else: the install target in install mode, and the missing root `--verify` reports before exiting 2. |
+
+`flow/.pdk-root` is git-ignored and empty in a fresh checkout or worktree, so
+step 3 is what makes a worker that already carries the pinned PDK usable
+without a download (issue #79). Step 2 keys on a `SOURCES` file rather than on
+the directory, because install mode creates `flow/.pdk-root` before fetching:
+an empty one is a download that never landed, not an install to protect.
+
+`$HOME/.ciel` is shared with sibling repos, which re-point its flat variant
+symlinks with their own `ciel enable`, so adoption is a point-in-time check —
+the revision is re-checked immediately before adoption and again on every
+consumer run. `flow/test-pdk-root.sh` tests the whole order against fixture
+roots and needs no PDK.
 
 Needs `jq`, `uvx`, `yosys`, `openroad` and `klt` on `PATH`. The smoke is a
 single local corner; it is not a grid.
