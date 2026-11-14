@@ -12,7 +12,9 @@ set -uo pipefail
 
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 root="$(git -C "$here" rev-parse --show-toplevel)"
-export PDK_ROOT="${PDK_ROOT:-$root/flow/.pdk-root}"
+source "$root/flow/pdk-root.sh" || exit 2
+PDK_ROOT="$(pdk_root_resolve)" || exit 2
+export PDK_ROOT
 export PDK="${PDK:-$(jq -er .smoke_variant "$root/flow/pdk.json")}"
 "$root/flow/setup-pdk.sh" --verify || exit 2
 cd "$root" || exit 1
