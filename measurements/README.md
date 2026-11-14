@@ -73,9 +73,12 @@ committed `manifests/gf180-fpga.signoff.json`. Editing either report's bytes
 therefore **does** fail that job. What nothing checks is the other direction: no
 gate compares those reports' own `provenance.input.content_hash` against the
 live `layout/` stream, so replacing the stream left every pinned hash intact and
-the gate silent. Everything else under `measurements/` is ungated — the SPEF,
-`item5/extract.report.json` and this README are cited by no manifest entry, and
-`measurements/` has no regenerate-and-`--check` script of its own. A re-run
+the gate silent. Everything else under `measurements/` sits outside that gate:
+the SPEF, `item5/extract.report.json` and this README are cited by no manifest
+entry. `item5/summarize_sta.py --check` does regenerate-and-compare
+`item5/setup-paths.md` against the two committed reports, but nothing in CI
+invokes it, and it too reads only the reports — never the stream they were
+measured on. A re-run
 against `ecf5be0a…` belongs to issue #27, which owns item 5, and would land as
 a new record rather than an edit to these.
 
