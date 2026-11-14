@@ -19,15 +19,121 @@ Single local run; not a grid.
 | File | Content |
 |---|---|
 | `make-request.py` | emits `par.json` for a given core size (pin windows included) |
-| `par.json` | the request: explicit floorplan, `power.pdn: true`, preset `gf180mcu_7t_6M`, tapcell `gf180mcu_fd_sc_mcu7t5v0__filltie` (40 µm), `io` Metal3/Metal2 |
+| `par.json` | the request: explicit floorplan, `power.pdn: true`, preset `gf180mcu_7t_6M`, tapcell `gf180mcu_fd_sc_mcu7t5v0__filltie` (24 µm), `library.route_layers` Metal2–Metal4, `io` Metal3/Metal2 |
 | `records/step0-par.json` | the `klt place-and-route` response (ladder step 0) |
 | `records/abutment.json` | `klt interface-check` 2×2 seam results |
 | `logic_tile_routed.gds` / `.def` | routed stream and DEF consumed by items 3, 4, 11 |
 | `logic_tile_routed_routed.v` | as-built gate-level netlist (for LVS) |
 | `abut-check.py` | drives the abutment check (see below) |
-| `drc/tile.drc.json` | `klt drc` report on `logic_tile_routed.gds` (T1 item 3; **not clean**, see below) |
+| `drc/tile.drc.json` | `klt drc` report on `logic_tile_routed.gds` (T1 item 3; **clean** on the curated deck, see below) |
 
-## Result: ladder step 0 closes (2026-11-02, klt 0.8.1.dev1073+gbe5754378ff3)
+## Result: ladder step 0 closes, tap-distance clean (2026-11-14, klt 0.9.0)
+
+Re-run of the same floorplan with the tapcell pitch brought under the MV
+tap-distance limit (issue #55). **The floorplan is unchanged** — same die, same
+core, same 190 × 27 site grid, same pin windows — so this is the step-0 result
+re-measured with denser well ties, not a smaller tile. Ladder steps 1–3 are
+still **not taken** and step 4 was never in play; the tile cell set is unchanged.
+
+| | | prior (40 µm) |
+|---|---|---|
+| Stage reached | `route`, status `ok` | `route`, `ok` |
+| Die / core area | 13368.8 µm² (117.60 × 113.68) / 11261.4 µm² (106.40 × 105.84) | *unchanged* |
+| Utilization (post-route) | 64.33 % | 63.20 % |
+| Aspect (die) | 1.03 : 1 (inside 1:2–2:1) | 1.03 : 1 |
+| Global-route overflow | 0 (H 0, V 0); 367 routed nets, 0 unrouted | 0; 367, 0 |
+| Detailed-route DRC | 0 (per iteration 206 → 88 → 107 → 1 → 0) | 0 (205 → 115 → 95 → 0) |
+| Antenna violations | 0 | 0 |
+| Global-route layer usage | Metal1 0 %, Metal2 44.4 %, Metal3 35.3 %, Metal4 3.2 % | 44.6 / 33.8 / 3.8 %, Metal5 0 % |
+| PDN | `power.placed.status` `complete`; **58 tapcells**, 54 endcaps | 29 tapcells, 54 endcaps |
+| Wirelength | 18.1 mm (route-stage estimate) | 17.8 mm |
+| Worst-case Comp-to-tap distance | **11.67 µm** (nwell) / 11.55 µm (psub), limit 15 µm | 19.75 / 19.66 µm |
+
+Area did not change and was not made to change: `floorplan.method` is
+`explicit`, so the die and core are inputs, not results. The cost of the denser
+ties is paid in **utilization** (63.20 % → 64.33 %) and wirelength (+1.3 %), not
+in µm². Per spec row 4 no µm² ceiling is ratified; 11261 µm² core remains the
+figure of record. Congestion stayed low (peak layer 44.4 %, Metal4 nearly
+unused), so the extra 29 tie cells did not make the switch matrix the limit.
+This is still one seed (`seed: 1`) at one floorplan, not a utilization sweep.
+
+### Tapcell pitch and MV tap distance
+
+`power.tapcell.distance_um` is **24 µm** (`layout/run-par.sh`, passed through
+`make-request.py`). It is not the DRM limit and must not be read as one:
+OpenROAD's `tapcell -distance` is the *staggered tap-column spacing*, and the
+worst-case Comp-to-tap distance it yields comes out at **about half** of it. The
+relationship was measured, not assumed, with `klt tap-distance` on the routed
+stream:
+
+| `distance_um` | measured worst-case Comp→tap | vs 15 µm limit | `comp.tap_distance.*.mv.1` |
+|---|---|---|---|
+| 40 (prior) | 19.75 µm (nwell), 19.66 µm (psub) | **over** | 46 violations |
+| 24 (now) | 11.67 µm (nwell), 11.55 µm (psub) | 22 % under | 0 |
+
+So 24 µm was chosen as "roughly twice under the limit", for margin on a
+relationship that is approximate (tap columns quantize to the site grid, and the
+rule is Euclidean and 2-D, measured to taps in neighbouring rows too). One
+re-run was needed, not a search: 40 µm was measured first, the ~D/2 relation
+read off it, and 24 µm hit 11.67 µm against a predicted ~11.9 µm.
+
+Reproducing the two measurements above (they are diagnostics, not committed
+evidence — the committed verdict is `drc/tile.drc.json`):
+
+```bash
+source flow/klt.sh
+klt tap-distance layout/logic_tile_routed.gds --max-distance-um 15 \
+  --subject '22/0 & 31/0 & 21/0' --taps '22/0 & 32/0 & 21/0' --island '21/0'  # nwell, DF.13
+klt tap-distance layout/logic_tile_routed.gds --max-distance-um 15 \
+  --subject '22/0 & 32/0 - 21/0' --taps '22/0 & 31/0 - 21/0'                  # psub, DF.14
+```
+
+### Layer budget (spec row 3: signals on Metal2–Metal4)
+
+**The budget is now enforced by the request, not evidenced after the fact.**
+`par.json` carries `library.route_layers` `Metal2`–`Metal4`, and the response
+echoes `applied.signal_layers: "Metal2-Metal4"`. The routed DEF has signal wire
+segments on Metal1 (842, in-cell pin access stubs), Metal2 (2910), Metal3 (1130),
+Metal4 (126) and **none on Metal5**; Metal5 appears only in the PDN
+(`SPECIALNETS`).
+
+This replaced an after-the-fact check, and the change was not cosmetic. klt
+could not cap the signal layers when the 2026-11-02 run was made — it always
+opened the library's whole Metal2–Metal5 range (2AMLogic/klayout-tools#4802) —
+so that run's compliance was luck, not construction. **The first 24 µm run
+proved it: with the range uncapped, the denser ties pushed one 7.84 µm segment
+of net `w_in[1]` onto Metal5**, which is spec row 3's *fallback* (ladder step 2),
+not its target. #4802 has since landed in klt 0.9.0, so capping the router holds
+ladder step 0 by construction instead. Taking the cap cost nothing: the tile
+still routes with 0 overflow, 0 unrouted nets and 0 detailed-route DRC.
+
+Reproducibility: `run-par.sh --check` returns `match`. Stream SHA-256
+`ecf5be0a2415d1ef744c227c6086a36ff2009b7dfe76907a166f1eea2f56b662`
+(`logic_tile_routed.gds`). `--check` verifies the request inputs (netlist,
+liberty) against the record; it does not re-run the flow, and no second full run
+was byte-compared.
+
+STA in the response (15 liberty corners, post-route, 20 ns clock) shows 0
+setup/hold violations, worst setup slack 3.08 ns (was 3.28 ns). That is a tool
+figure, not the timing claim: spec row 5 needs parasitics from a pre-registered
+run (separate item).
+
+**Engine pin.** This run is klt `0.9.0` with KLayout pinned to `0.30.12`
+(`klayout_spec` in `flow/pdk.json`). The pin was added here: `flow/klt.sh`
+pinned klt but not its engine, so uvx resolved a freshly released KLayout
+`0.30.13` and the first re-run of this tile carried
+`provenance.klayout_version_mismatch: true` — klt's own warning that report
+counts may differ from the pairing it was tested against. Every record committed
+in this repo was made on `0.30.12`; the pin keeps it that way. The merged GDS
+was byte-identical under both engine versions, so nothing here rests on the
+difference.
+
+## Superseded: first closing run (2026-11-02, tapcell 40 µm, klt 0.8.1.dev1073+gbe5754378ff3)
+
+Kept as history (recorded evidence is append-only). **The stream and records
+this section describes are no longer the committed ones**: its 40 µm tapcell
+pitch is what issue #55 fixed, and its `d71889f0…` GDS is replaced by the
+`ecf5be0a…` stream above. Its DRC result is kept in the DRC section below.
 
 The tile routed on the target library and stack with no ladder step needed, so
 steps 1–3 (lower utilization, Metal5 for signals, 9-track library) were **not
@@ -61,9 +167,12 @@ floorplan chosen here, not the densest the tile closes at. Per spec row 4 no
 µm² ceiling is ratified; 11261 µm² core is the figure of record for this
 first closing tile.
 
-Reproducibility: `run-par.sh --check` returns `match`. Stream SHA-256
+Reproducibility, as recorded at the time: `run-par.sh --check` returned
+`match` against stream SHA-256
 `d71889f054b5087bd607cfc69a02e23e60b7c6601f6be586c91ca02b582d634a`
-(`logic_tile_routed.gds`). `--check` verifies the request inputs (netlist, liberty) against the record; it does not re-run the flow, and no second full run was byte-compared.
+(`logic_tile_routed.gds`). That stream is no longer committed, so this
+particular `--check` claim is historical and does not re-run today; the live one
+is in the current section above. `--check` verifies the request inputs (netlist, liberty) against the record; it does not re-run the flow, and no second full run was byte-compared.
 
 STA in the response (15 liberty corners, post-route, 20 ns clock) shows 0
 setup/hold violations. That is a tool figure, not the timing claim: spec row 5
@@ -105,20 +214,34 @@ with `flow/setup-pdk.sh` done, and is gated when the record is rewritten by
 `manifests/run-signoff.sh`. CI does not re-prove it; no separate CI job does
 yet.
 
-## DRC (T1 item 3, issue #23): not clean
+## DRC (T1 item 3, issue #23): clean on the curated deck
 
 `drc/tile.drc.json` is `klt drc --deck gf180mcu --engine curated --pdk gf180mcuD`
-(klayout-tools 0.9.0, PDK root from `flow/setup-pdk.sh`, open_pdks `f6eeac7`)
-on `logic_tile_routed.gds`. No waivers, `--allow-deck-errors` or
-`--allow-missing-host-tools`. `klt drc --check` returns `match`.
+(klayout-tools 0.9.0, KLayout 0.30.12, PDK root from `flow/setup-pdk.sh`,
+open_pdks `f6eeac7`) on `logic_tile_routed.gds`. No waivers,
+`--allow-deck-errors` or `--allow-missing-host-tools`. `klt drc --check` returns
+`match`.
 
-| | |
-|---|---|
-| status | `violations`, **46** |
-| rules | `comp.tap_distance.nwell.mv.1` 23, `comp.tap_distance.psub.mv.1` 23 (15 µm max tap distance, 5V/6V domain) |
-| where | 8 standard-cell types (mux4_1 18, dffq_1 6, mux4_2 6, clkinv_1 6, ...) |
-| input hash | `sha256:d71889f0...d582d634a` (equals the committed GDS) |
-| deck hash | `sha256:cf44de63f0a5b01c1d09c4d58e0535e990aa4b070bcaae17fd3a94a67a1d97e1` |
+| | | prior run |
+|---|---|---|
+| status | **`clean`, 0 violations** | `violations`, 46 |
+| rules | none | `comp.tap_distance.{nwell,psub}.mv.1`, 23 each |
+| input hash | `sha256:ecf5be0a...1eea2f56b662` (equals the committed GDS) | `sha256:d71889f0...d582d634a` |
+| deck hash | `sha256:cf44de63f0a5b01c1d09c4d58e0535e990aa4b070bcaae17fd3a94a67a1d97e1` | *same deck* |
+| rules checked / skipped / unmodeled | 72 / 54 / 210 | *identical* |
+
+**What changed and what did not.** Only the tapcell pitch (40 → 24 µm, see
+"Tapcell pitch and MV tap distance" above). The deck, its content hash and its
+entire coverage set are byte-identical to the 46-violation run, so this is the
+same deck reaching a different verdict on a changed layout — not a narrower deck
+reaching a quieter one. No rule was waived, suppressed or deselected: the
+`--rules` selector was not used, and `rule_counts` is empty because nothing
+fired. **No new violation class appeared**: the report went from 46 violations in
+exactly 2 rules to 0 in any of the 72 checked rules.
+
+T1 item 3 now grades **`met`** in `manifests/gf180-fpga.signoff.json` (T1 met
+count 6 → 7 of 11), citing this report. Scope of that verdict is the curated
+deck only — see "The PDK-native deck did not run" below.
 
 Coverage, verbatim from the report:
 
@@ -140,22 +263,30 @@ Coverage, verbatim from the report:
 
 The curated deck lists 210 `unmodeled_rules`; it is not the full PDK deck.
 
-**The PDK-native deck did not run.** `--engine both` returned
-`comparison.state: engine_failed`: the host's standalone KLayout is 0.28.16 and
-the pinned PDK deck needs >= 0.30.9. This is a worker-spec gap (no newer
-KLayout provisioned, none may be installed host-wide), not a design result.
-Until a native run exists, "clean" could not be claimed even without the 46
-violations. The crosscheck envelope is not committed (2AMLogic/klayout-tools#4986): `klt drc --check` does not
-accept its nested shape.
+**The PDK-native deck still has not run, so read "clean" as deck-scoped.**
+`klt signoff` grades item 3 on `status: "clean"` alone, and this deck lists 210
+`unmodeled_rules` plus the 54 skipped and 8 rule-free drawn layers quoted above
+— it is not the full PDK deck. A clean curated-deck verdict is therefore
+evidence that nothing in those **72** rules fires, and not evidence that the
+tile passes the foundry deck. The crosscheck remains open under #23; its
+envelope is also not committable yet (2AMLogic/klayout-tools#4986: `klt drc
+--check` does not accept its nested shape).
 
-**Reading the 46.** Both rules are the MV (15 µm) tap-distance rules, selected
-because the 5V library carries Dualgate (55/0). The tile's `par.json` places
-tapcells at 40 µm pitch. The klt note says tap distance is context-dependent;
-here it is evaluated on the placed design, so this looks like a real
-finding rather than a standalone-cell artefact. Fixing it (denser tapcells,
-i.e. a floorplan/area change) is a spec decision and was **not** made here;
-the tile is unchanged. T1 item 3 therefore stays `unmet` (`check_failed`) in
-`manifests/gf180-fpga.signoff.json`. The fabric-level check is #53.
+What has changed since #23 recorded this as blocked: that run's `--engine both`
+returned `comparison.state: engine_failed` because the host's standalone KLayout
+was 0.28.16 against a deck needing >= 0.30.9. **This host now has KLayout
+0.30.12**, above that floor, so the native run is no longer blocked by the
+worker spec. Actually running and analysing it is out of scope here (it is a
+result in its own right, and #23 owns item 3's full claim); it was not attempted
+in this change.
+
+**Reading the fix.** Both rules were the MV (15 µm) tap-distance rules, selected
+because the 5V library carries Dualgate (55/0), and they were evaluated on the
+placed design rather than on standalone cells — a real finding, as #23 judged.
+The fix was denser well ties, **not** a floorplan or area change: the die and
+core are byte-identical inputs (`floorplan.method: explicit`) and the tile cell
+set is unchanged, so no spec decision was needed or taken. The fabric-level
+check is #53.
 
 ## LVS (T1 item 4, issue #24)
 
@@ -172,7 +303,7 @@ repo-relative paths are the ones `--check` re-hashes.
 
 | Report | Reference | Result |
 |---|---|---|
-| `records/lvs.json` | `layout/logic_tile_routed_routed.v` (as-built netlist of the same place-and-route run) | `status: match`, 0 errors; `power_connectivity.status: match` (16 masters, 618 instances, no findings) |
+| `records/lvs.json` | `layout/logic_tile_routed_routed.v` (as-built netlist of the same place-and-route run) | `status: match`, 0 errors; `power_connectivity.status: match` (16 masters, 654 instances, no findings) |
 | `records/lvs-vs-synth.json` | `flow/tile/netlist/logic_tile_routed_synth.v` (pre-place-and-route synthesis netlist, #21) | `status: mismatch`, 6 circuit-level errors plus 191 `hints.rejected` (pin anchoring on a top that does not pair) |
 
 **The cited reference is the as-built netlist, not the #21 synthesis netlist.**
@@ -193,7 +324,7 @@ power/ground and the gate-level Verilog never carries them; and
 `topology.top_level_pins_anchored`, 191 top-level pins matched by name.
 
 Power scope: `power_connectivity` checks that each cell's declared power/ground
-pins reach the same net on all 618 instances. It is not a rail or PDN
+pins reach the same net on all 654 instances. It is not a rail or PDN
 continuity check; the PDN result is the place-and-route response above.
 
 The report was made with the PDK at `$PDK_ROOT` (open_pdks `f6eeac7`, pinned in
@@ -229,6 +360,12 @@ reported `erc.missing_tie` on the empty top margin strip, which is why the
 boxes stop at the cell extent. Boxes follow this tile's floorplan and must be
 regenerated if it changes.
 
+They did **not** need regenerating for the 24 µm re-run, and that was checked
+rather than assumed: the floorplan is unchanged, and the new stream still draws
+exactly 14 merged `21/0` bars with the same bounding box (x 5.17–112.43,
+y 5.68–110.19 µm), so the committed `well_boxes` still describe this layout.
+`run-erc.sh` was re-run against them and reports 0 `erc.missing_tie`.
+
 **Coverage disclosures** (both values are in `records/erc.json`,
 `erc_coverage`; item 11 requires the claimant to state them):
 
@@ -240,9 +377,11 @@ regenerated if it changes.
   them. This README has not re-derived what each of them draws.
 - *Well-assertion coverage of `substrate_tie`.* Zero `erc.missing_tie` covers
   only what the 14 asserted boxes cover. `well_assertion_coverage` reports
-  `uncovered_tap_area_um2: 1208.26` of `drawn_tap_area_um2: 1957.54`
-  (`uncovered_tap_fraction: 0.617`) for tap layer `22/0`: about 62% of the drawn
-  Comp area lies outside the asserted substrate region. The likely explanation
+  `uncovered_tap_area_um2: 1227.28` of `drawn_tap_area_um2: 1992.81`
+  (`uncovered_tap_fraction: 0.616`) for tap layer `22/0`: about 62% of the drawn
+  Comp area lies outside the asserted substrate region. (Both areas grew with
+  the 24 µm tapcell pitch — 29 more `filltie` cells draw more Comp — while the
+  fraction barely moved.) The likely explanation
   is that most of it is Comp inside n-wells (PMOS active), which a substrate
   tie region correctly excludes. **That explanation was not measured or
   re-derived here**; only the fraction is evidence.
@@ -257,4 +396,8 @@ or EM result.
 ## Open
 
 - LVS (#24) consumes `logic_tile_routed.gds`; DRC result above (#23).
-- Tap distance (46 DRC violations): #55. `klt drc --check` on crosscheck reports: 2AMLogic/klayout-tools#4986.
+- Tap distance (#55): **closed** — 46 → 0 violations at a 24 µm tapcell pitch,
+  see the result and DRC sections above.
+- PDK-native DRC deck crosscheck (#23): still not run. The host KLayout floor is
+  no longer the blocker (0.30.12 >= 0.30.9); `klt drc --check` on crosscheck
+  reports: 2AMLogic/klayout-tools#4986.
