@@ -36,7 +36,7 @@ The binding is two distinct pins across three files:
 
 | Pin (`provenance.input.content_hash`, role `layout`) | Measured against | Now committed |
 | --- | --- | --- |
-| `item5/extract.report.json` — the **GDS** | `sha256:d71889f0…d582d634a` | `ecf5be0a…2f56b662` (`layout/logic_tile_routed.gds`) |
+| `item5/extract.report.json` — the **GDS** | `sha256:d71889f0…b582d634a` | `ecf5be0a…2f56b662` (`layout/logic_tile_routed.gds`) |
 | `item5/sta-lef-only.report.json` **and** `item5/sta-spef.report.json` — the **DEF** | `sha256:460a41c9…52a07620` | `0b8fa71b…529a388c` (`layout/logic_tile_routed.def`) |
 
 The two STA reports are pinned to the superseded DEF **independently**; they are
@@ -61,9 +61,21 @@ measurement of the stream.
 `manifests/gf180-fpga.signoff.json` grades item 5 `unmet` with `citation: null`
 and `detail.failed_citations` = the two `item5` STA reports; `t1_met_count` is 7
 (items 1, 2, 3, 4, 9, 10, 11). Item 5 is `unmet` against either stream, so this
-disclosure moves no grade. Nothing detected the change because `measurements/`
-has no regenerate-and-`--check` script and CI's `signoff` job runs only
-`manifests/run-signoff.sh --check`, which never reads `measurements/`. A re-run
+disclosure moves no grade. Nothing detected the change because **the gate pins
+these measurement files' own bytes, not the layout stream they were measured
+against.** `manifests/gf180-fpga.json` cites and byte-pins exactly two files
+under `measurements/` — `evidence["5"]` is `item5/sta-lef-only.report.json`
+(`sha256:b707b647…fe48de2`) and `item5/sta-spef.report.json`
+(`sha256:8fc10711…23848d3`) — and CI's `signoff` job, via
+`manifests/run-signoff.sh --check`, re-renders `klt signoff --manifest` (which
+grades item 5 from those two reports) and `cmp`s the result against the
+committed `manifests/gf180-fpga.signoff.json`. Editing either report's bytes
+therefore **does** fail that job. What nothing checks is the other direction: no
+gate compares those reports' own `provenance.input.content_hash` against the
+live `layout/` stream, so replacing the stream left every pinned hash intact and
+the gate silent. Everything else under `measurements/` is ungated — the SPEF,
+`item5/extract.report.json` and this README are cited by no manifest entry, and
+`measurements/` has no regenerate-and-`--check` script of its own. A re-run
 against `ecf5be0a…` belongs to issue #27, which owns item 5, and would land as
 a new record rather than an edit to these.
 
@@ -74,7 +86,14 @@ At the same 20 ns period, OpenROAD's in-flow STA in
 of its 15 corners `constrained` with `total_negative_setup_slack_ns` and
 `total_negative_hold_slack_ns` both 0 — worst setup slack **+3.08 ns**, at
 `ss_125C_1v62` — while the `klt sta` run below reports **-25.41 ns** WNS over
-20 endpoints at that same corner: a gap of roughly 28 ns.
+20 endpoints at that same corner: a gap of roughly 28 ns. (That comparison
+crosses streams, per the supersession above: `432f919` rewrote
+`step0-par.json` too, so the committed **+3.08 ns** is the post-#83 24 µm
+stream's in-flow run while the `klt sta` figure is the pre-#83 40 µm stream's.
+Same-stream, pre-#83 `step0-par.json` reports **+3.28 ns** at the same
+`ss_125C_1v62` corner, also with TNS 0 across all 15 — a gap of ~28.7 ns rather
+than ~28.5 ns, so the disagreement this subsection explains is the same order
+either way.)
 `layout/README.md` already disclaims the first ("a tool figure, not the timing
 claim"). The leading explanation is a **constraint-set difference**, not the
 liberty flavour:
