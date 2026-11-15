@@ -2,6 +2,20 @@
 
 Chronological record of merged PRs and closed issues (maintained by the Guide role; newest first).
 
+### 2026-11-14
+
+- **PR #85**: fix(flow): resolve $PDK_ROOT in one helper, adopting an already-pinned ciel store
+- **PR #87**: docs(item5): add setup-paths.md and its generator, read from the committed STA reports
+- **PR #94**: refactor(layout): drop the inert FILLTIE argument, state tapcell master provenance
+- **PR #80**: docs: roadmap as of 2026-11-13
+- **PR #83**: fix(layout): tapcell pitch 40 -> 24 um clears 46 MV tap-distance violations
+- **Issue #79** (closed): flow/setup-pdk.sh: adopt an already-populated ciel PDK store instead of forcing a fresh download
+- **Issue #23** (closed): T1 item 3 (DRC clean): klt drc report on the routed gf180mcuD tile with deck coverage disclosed
+- **Issue #81** (closed): Record the per-corner worst setup path from the committed item 5 STA reports
+- **Issue #91** (closed): Remove the inert FILLTIE parameter of layout/make-request.py (and correct the README claim it backs)
+- **Issue #97** (closed): flow/ scripts default PDK_ROOT to flow/.pdk-root, so agents conclude the PDK is absent when it is in the ciel store
+- **Issue #55** (closed): DRC: 46 MV tap-distance violations on routed tile (tapcell pitch 40 um)
+
 ### 2026-11-12
 
 - **PR #75**: Bump Repo Skills 0.25.10 -> 0.26.1
