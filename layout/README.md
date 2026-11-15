@@ -206,10 +206,28 @@ unverified for shorts and is left to DRC (#23) of the assembly.
 mated groups. `records/abutment.json` is `klt interface-check` with a tile
 and a copy placed one pitch over: seam N/S `0,113.68`, regex
 `n_(in|out)\[\d\]`; seam E/W `117.6,0`, regex `e_(in|out)\[\d\]`. Both:
-8/8 pins ok, 0 misaligned, 0 no_partner. interface-check pairs identical label
-names, so `abut-check.py` renames the facing pins of the neighbour copy first
-(gap: 2AMLogic/klayout-tools#4803). The two checks cover N/S and E/W seams of a
-2×2; the corner relation follows from the same tile.
+8/8 pins ok, 0 misaligned, 0 no_partner. `abut-check.py` renames the facing
+pins of the neighbour copy first. Why a rename and not `klt interface-check
+--pair`, measured 2026-11-15 at klt 0.9.0 (base `56a179e`;
+klayout-tools#5778): `--pair` is present at the pin and pairs the mated
+groups correctly, but a one-seam check is not expressible with it — the pair
+target must also match `--pins`, `--pins` is a single regex applied to both
+blocks, and an in-scope label that matches no `--pair` rule falls back to
+same-name pairing. A tile checked against a copy of itself (A and B the same
+stream) therefore cannot keep the check scoped to one seam:
+
+- The two N/S rules alone (`--pins '[ns]_(in|out)\[\d\]' --pair
+  'n_out\[(\d+)\]=s_in[\1]' --pair 'n_in\[(\d+)\]=s_out[\1]'`, place
+  `0,113.68`) exit 1: `--pair maps both 's_in[0]' and 'n_out[0]' to
+  's_in[0]'` — B's own near-edge label falls back to same-name pairing and
+  collides with the rule's target.
+- Adding the reverse rules removes the fallback but pulls the opposite edge,
+  a full tile pitch away, into scope: exit 3, `status=fail`, `pin_count` 16,
+  8 ok, 8 misaligned.
+
+The rename stays until the scoping gap (klayout-tools#5778) is resolved;
+#4803 itself — the naming half — shipped in 0.9.0. The two checks cover N/S
+and E/W seams of a 2×2; the corner relation follows from the same tile.
 
 ## Item 2 attestation
 
@@ -239,7 +257,7 @@ open_pdks `f6eeac7`) on `logic_tile_routed.gds`. No waivers,
 |---|---|---|
 | status | **`clean`, 0 violations** | `violations`, 46 |
 | rules | none | `comp.tap_distance.{nwell,psub}.mv.1`, 23 each |
-| input hash | `sha256:ecf5be0a...1eea2f56b662` (equals the committed GDS) | `sha256:d71889f0...d582d634a` |
+| input hash | `sha256:ecf5be0a...1eea2f56b662` (equals the committed GDS) | `sha256:d71889f0...b582d634a` |
 | deck hash | `sha256:cf44de63f0a5b01c1d09c4d58e0535e990aa4b070bcaae17fd3a94a67a1d97e1` | *same deck* |
 | rules checked / skipped / unmodeled | 72 / 54 / 210 | *identical* |
 
