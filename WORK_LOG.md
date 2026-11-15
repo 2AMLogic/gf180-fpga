@@ -4,6 +4,12 @@ Chronological record of merged PRs and closed issues (maintained by the Guide ro
 
 ### 2026-11-15
 
+- **PR #131**: layout: stop re-running the lvs-vs-synth compare; keep the record as frozen evidence
+- **PR #129**: docs: classify parasitics non-scalars outside the summary-scalars parenthetical
+- **PR #127**: test(item9): net the inventory guard's remaining assertions (cases k-r)
+- **Issue #126** (closed): Extend the item-9 inventory-guard net to the pre-#107 assertions it does not cover
+- **Issue #125** (closed): Extract-record convention: `parasitics.model` is listed among "summary scalars" but is a nested prose object
+- **Issue #106** (closed): Remove lvs-vs-synth.json: a known-mismatch LVS record that nothing cites and an extra klt lvs compare
 - **Issue #109** (closed): The item-9 inventory guard's perturbation matrix lives only in PR transcripts, not in a committed regression test
 - **Issue #84** (closed): measurements/item5 records are bound to the superseded 40 um GDS, and nothing says so
 - **Issue #117** (closed): Extract-record convention: two imprecise labels in the keep/drop lists (paths, and hub_net's why-safe reason)
