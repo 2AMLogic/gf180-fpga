@@ -61,8 +61,9 @@ deliberate.
 
 **Kept** (per extract record committed with a SPEF beside it):
 
-- the top-level report outside `parasitics.nets`: the summary scalars
-  (`r_count`, `total_resistance_ohm`, `model`, …), the findings lists
+- the top-level report outside `parasitics.nets`: the summary scalars under
+  `parasitics` (`parasitics.r_count`, `parasitics.total_resistance_ohm`,
+  `parasitics.model`, …), the findings lists
   (`warnings`, `dead_metal`, `missing_flavour_markers`), the
   `parasitics.integrity` aggregate, and `provenance` (tool versions).
 - per net: its summary scalars (`net`, `net_id`, `resistance_ohm`,
@@ -100,8 +101,10 @@ deliberate.
   `segments == []` everywhere, so every check renders the same
   `not_applicable` reason; the aggregate already lives in top-level
   `parasitics.integrity` (~300 bytes).
-- per-net `terminals` / `segments` / `pin_order` / `hub_net` — empty or
-  SPEF-expressible under the lumped model.
+- per-net `terminals` / `segments` / `pin_order` — empty under the lumped
+  model; `hub_net` is derivable by a constant rule (`<net>__par`, 369/369
+  in the measured record) and has no consumer once the RC network is cited
+  to the SPEF.
 
 **Scope and obligations:**
 
