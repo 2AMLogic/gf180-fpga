@@ -4,6 +4,14 @@ Chronological record of merged PRs and closed issues (maintained by the Guide ro
 
 ### 2026-11-15
 
+- **Issue #109** (closed): The item-9 inventory guard's perturbation matrix lives only in PR transcripts, not in a committed regression test
+- **Issue #84** (closed): measurements/item5 records are bound to the superseded 40 um GDS, and nothing says so
+- **Issue #117** (closed): Extract-record convention: two imprecise labels in the keep/drop lists (paths, and hub_net's why-safe reason)
+- **Issue #114** (closed): Local vs sibling ADR numbers collide: spec/porting-plan.md and spec/target-spec.md cite "ADR-0002/0003" meaning sky130-fpga's, while spec/decisions/0002 and 0003 are this repo's
+- **PR #122**: test(verification): net the item-9 inventory guard with a committed perturbation-matrix regression script
+- **PR #124**: docs: qualify parasitics scalars and restate hub_net's drop reason in extract-record convention
+- **PR #119**: docs(spec): state the ADR citation convention and qualify sibling citations
+- **PR #95**: docs(measurements): disclose that the item 5 STA records pin the pre-#83 stream
 - **Issue #103** (closed): Delete the unverifiable cocotb pin from the attested item9-inventory.json and re-attest (after #100)
 - **Issue #118** (closed): Remove the inert hi parameter of sig() in layout/make-request.py
 - **PR #121**: fix: drop inert hi parameter of sig() in make-request.py
