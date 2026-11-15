@@ -1,11 +1,19 @@
 #!/usr/bin/env python3
 """2x2 abutment check of the routed tile with `klt interface-check`.
 
-interface-check pairs labels of A and B that carry the SAME name, but a tile
-mates complementary pins (A.n_out with B.s_in).  So for each seam this script
-writes a copy of the neighbour with the facing pins renamed to the names they
-mate with, then runs interface-check with the neighbour placed one tile pitch
-over.  The tile itself is untouched.
+interface-check cannot scope a one-seam check between a tile and a copy of
+itself.  Since klt 0.9.0 it can mate complementary names with `--pair`, but
+the pair target must also match `--pins`, `--pins` is one regex applied to A
+and B alike, and an in-scope label matching no rule falls back to same-name
+pairing: B's own facing labels collide with the rule targets, and the
+reverse rules that avoid that pull the opposite edge, a full tile pitch away,
+into scope (measured 2026-11-15 at the pin; upstream gap
+klayout-tools#5778).  Renaming the neighbour's facing pins to the names they
+mate with, and dropping the labels that would collide, does what `--pair`
+has no flag for: it scopes the check to one seam.  So for each seam this
+script writes a copy of the neighbour with the facing pins renamed, then
+runs interface-check with the neighbour placed one tile pitch over.  The
+tile itself is untouched.
 
 usage (run with the klt interpreter so `pya` is importable):
   abut-check.py TILE.gds OUT_DIR  ->  prints one JSON record

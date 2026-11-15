@@ -89,8 +89,11 @@ editing them requires a write-mode re-attest, which needs the PDK too.
    Blocked on: the operator; Now 2 feeds it.
 6. **`klt` pin bump and workaround removal.** Done when `flow/pdk.json` moves
    to a release carrying the fixes Now 3 confirms, the record is regenerated,
-   and the pin rename in `layout/abut-check.py` and the after-the-fact Metal5
-   argument in `layout/README.md` are gone. Blocked on: Now 3 and a PDK host.
+   and the after-the-fact Metal5 argument in `layout/README.md` is gone. The
+   pin rename in `layout/abut-check.py` is independent of the pin (measured
+   2026-11-15 at klt 0.9.0: `--pair` shipped but cannot scope a one-seam
+   check on a tile that abuts itself) and is tracked upstream at
+   klayout-tools#5778. Blocked on: Now 3 and a PDK host.
 
 ## Later
 
