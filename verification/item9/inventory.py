@@ -25,7 +25,6 @@ SIGNED_OFF = ROOT / "verification" / "signoff" / "item9-inventory.json"
 WORKFLOW = ROOT / ".github" / "workflows" / "verification.yml"
 COLD_START = "python3 -I verification/runner.py --vvp verification/item9/benches.json"
 COLD_START_TOOLS = {"icarus"}   # tools the attested argv invokes
-KNOWN_STALE_TOOLS = {"cocotb"}  # false pin in the attested JSON; #103 deletes it
 
 
 def workflow_pins():
@@ -106,12 +105,10 @@ def main(argv):
     if attested["pins"]["tools"].get("icarus") != wf_icarus:
         problems.append("item9-inventory.json pins.tools.icarus diverges from verification.yml ICARUS_VERSION")
     tools = set(attested["pins"]["tools"])
-    for extra in sorted(tools - COLD_START_TOOLS - KNOWN_STALE_TOOLS):
+    for extra in sorted(tools - COLD_START_TOOLS):
         problems.append(f"item9-inventory.json pins a tool the cold start never invokes: {extra}")
     for missing in sorted(COLD_START_TOOLS - tools):
         problems.append(f"item9-inventory.json is missing a pin for {missing}")
-    for retired in sorted(KNOWN_STALE_TOOLS - tools):
-        problems.append(f"known-stale pin {retired} is gone; drop it from KNOWN_STALE_TOOLS (#103)")
     if problems:
         print("\n".join(f"ERROR: {p}" for p in problems), file=sys.stderr)
         return 1
