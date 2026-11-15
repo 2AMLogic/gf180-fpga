@@ -32,21 +32,18 @@ _None._
 Issues currently being built (`loom:building`).
 
 - **#93**: Decide whether par.json should pin the tapcell master (library.tapcell.master) rather than inherit klt's per-library default
-- **#125**: Extract-record convention: `parasitics.model` is listed among "summary scalars" but is a nested prose object
-- **#126**: Extend the item-9 inventory-guard net to the pre-#107 assertions it does not cover
 
 ## PRs Awaiting Review
 
 PRs waiting on Judge (`loom:review-requested`).
 
-- **#127**: test(item9): net the inventory guard's remaining assertions (cases k-r)
+_None._
 
 ## Approved (Awaiting Merge)
 
 PRs that passed review and are queued for Champion auto-merge (`loom:pr`).
 
 - **#111**: docs(spec): keep the tapcell master tool-owned, record ADR-0003
-- **#129**: docs: classify parasitics non-scalars outside the summary-scalars parenthetical
 
 ## Proposed
 
@@ -57,15 +54,12 @@ Issues carrying `loom:curated`.
 - **#62**: Run PDK-dependent checks after klt single-sourcing (PR #61) *(curated)*
 - **#93**: Decide whether par.json should pin the tapcell master (library.tapcell.master) rather than inherit klt's per-library default *(curated)*
 - **#102**: Decide on bumping klt_spec 0.9.0 -> 0.9.2: it unblocks the #4986 crosscheck envelope and the #5006 Verilog-bench evidence *(curated)*
-- **#125**: Extract-record convention: `parasitics.model` is listed among "summary scalars" but is a nested prose object *(curated)*
-- **#126**: Extend the item-9 inventory-guard net to the pre-#107 assertions it does not cover *(curated)*
 
 ## Proposed (Architect / Hermit)
 
 - **#86**: Remove the superseded cocotb wiring path: runner.py --dut/--broken/--module/--toplevel and the stale verification/README.md section *(hermit)*
 - **#89**: Stop vendoring design-evidence-tiers.md: the pinned klt bundles the ladder, and the two pins have drifted (0.8.0 vs 0.9.0) *(hermit)*
 - **#92**: Wire in or delete verification/signoff/test_run_signoff_write.sh: nothing runs it and it now fails *(hermit)*
-- **#106**: Remove lvs-vs-synth.json: a known-mismatch LVS record that nothing cites and an extra klt lvs compare *(hermit)*
 
 ## Epics
 
@@ -79,10 +73,10 @@ _None._
 | Very important | 1 |
 | Important | 0 |
 | Ready (`loom:issue`) | 0 |
-| In Progress (`loom:building`) | 3 |
-| PRs awaiting review | 1 |
-| Approved PRs awaiting merge | 2 |
-| Curated | 7 |
-| Architect / Hermit proposals | 4 |
+| In Progress (`loom:building`) | 1 |
+| PRs awaiting review | 0 |
+| Approved PRs awaiting merge | 1 |
+| Curated | 5 |
+| Architect / Hermit proposals | 3 |
 | Active epics | 0 |
 <!-- guide:plan-body:end -->
