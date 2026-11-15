@@ -44,3 +44,77 @@ against the working directory.
   testbench, so it was not used; the plain-Verilog runner's result is cited
   instead. This is a tool-capability gap, not a substitute for the cocotb
   report the item text names.
+
+## Extract record shape — convention for future records (2026-11-15)
+
+A `klt extract --parasitics --spef` record committed **alongside its SPEF**
+keeps the summary and the design-relevant per-net data, and cites the SPEF
+for the RC network and coupling capacitances instead of repeating them.
+Measured against `origin/main` @ `7c3822b`
+(`measurements/item5/extract.report.json`, 369 nets, 12,354 `coupled`
+entries = 6,177 distinct coupling pairs): the record is 4,151,181 bytes and
+`parasitics.nets` is 93.8% of it — the report without that key is 258,448
+bytes. Applying this convention yields a **~650 KB JSON (650,899 bytes
+measured) + the ~344 KB SPEF** for a 369-net tile, an 84.3% reduction — not
+the ~260 KB of dropping the key outright; the per-net data kept below is
+deliberate.
+
+**Kept** (per extract record committed with a SPEF beside it):
+
+- the top-level report outside `parasitics.nets`: the summary scalars
+  (`r_count`, `total_resistance_ohm`, `model`, …), the findings lists
+  (`warnings`, `dead_metal`, `missing_flavour_markers`), the
+  `parasitics.integrity` aggregate, and `provenance` (tool versions).
+- per net: its summary scalars (`net`, `net_id`, `resistance_ohm`,
+  `capacitance_ff`, `inductance_nh`, `rc_model`, …), `by_layer` (per-layer
+  R/C — not expressible in SPEF), and `integrity.capacitance` (varies per
+  net).
+- a `coupling_by_layer_pair` histogram. The one thing in `coupled` the SPEF
+  does not carry is `levels`, the metal-layer pairs each coupling capacitor
+  spans (10 distinct values across all 12,354 entries in the measured
+  record) — on this repo, per-layer coupling attribution is the routing
+  density evidence, so it survives as a global histogram (each pair counted
+  once; a pair spanning several level pairs contributes its capacitance
+  divided evenly across them):
+
+  ```json
+  "coupling_by_layer_pair": {
+    "0-1": { "pairs": 1328, "cap_ff": 28.402517 },
+    "1-2": { "pairs": 3976, "cap_ff": 23.701433 },
+    "2-3": { "pairs": 1744, "cap_ff": 24.208681 },
+    "3-4": { "pairs": 53,   "cap_ff": 5.715547 }
+  }
+  ```
+
+**Dropped** (and why each is safe):
+
+- `coupled[].net` / `coupled[].capacitance_ff` — each of the 6,177 distinct
+  pairs is already in the SPEF's two-terminal `*CAP` rows, verified
+  bit-for-bit (max absolute difference 0.0 fF over all pairs); the JSON
+  records every pair twice, once per side.
+- `coupled[].lateral_levels` — `[]` for all 12,354 entries in the measured
+  record.
+- the five constant per-net `integrity` sub-keys (`open`, `islands`,
+  `orphan_nodes`, `suspicious_resistors`, `short_candidates`) —
+  byte-identical across all 369 nets because `rc_model == "lumped"` and
+  `segments == []` everywhere, so every check renders the same
+  `not_applicable` reason; the aggregate already lives in top-level
+  `parasitics.integrity` (~300 bytes).
+- per-net `terminals` / `segments` / `pin_order` / `hub_net` — empty or
+  SPEF-expressible under the lumped model.
+
+**Scope and obligations:**
+
+- Forward-looking only. This does not reverse the append-only rule at the
+  top of this file: nothing under `measurements/item5/` is edited, and the
+  measured record stays byte-identical.
+- A record with **no** SPEF beside it keeps `parasitics.nets` in full — the
+  per-net RC network would otherwise have no copy.
+- A future `--distributed-rc` record (`segments` non-empty) keeps per-net
+  `integrity` in full — the constant-sub-key collapse above no longer holds
+  once the model is distributed.
+- Applying this to an actual record waits on a klt report-shape flag or a
+  documented post-filter; the gap is filed upstream at
+  [2AMLogic/klayout-tools#5816](https://github.com/2AMLogic/klayout-tools/issues/5816).
+  Until one of those lands, the next extract run knows the obligation exists
+  and commits the full-shape record.
