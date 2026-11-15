@@ -4,9 +4,10 @@
   issue #2.
 - **Date**: 2026-10-17
 - **Related**: #2, `spec/target-spec.md`, `spec/porting-plan.md`,
-  `reuse.lock.json`. Sibling records are cited by their sibling numbers
-  (`sky130-fpga` ADR-0001 is the framework choice; it is a different record
-  from this one).
+  `reuse.lock.json`. Citation convention (see `spec/README.md`): bare
+  `ADR-NNNN` cites this repo's `spec/decisions/`; sibling records are cited
+  as `sky130-fpga` ADR-NNNN (`sky130-fpga` ADR-0001 is the framework choice;
+  it is a different record from this one).
 
 ## Context
 
@@ -20,9 +21,10 @@ any placement, routing or timing run so results cannot move it.
    area/aspect, timing, corner, fabric-size and signoff rows exactly as written
    there, including the pre-named routing-closure ladder and the rule that no
    µm² ceiling and no Fmax figure are ratified yet.
-2. **Inherit** the sibling's architecture and ADR-0001 (framework) unchanged,
-   and the timing claim *shape* from its ADR-0002/0003 without any number. The
-   sibling's ADR-0004, 0005 and 0006 are **Proposed** at the commit read
+2. **Inherit** the sibling's architecture and `sky130-fpga` ADR-0001
+   (framework) unchanged, and the timing claim *shape* from `sky130-fpga`
+   ADR-0002/0003 without any number. `sky130-fpga` ADR-0004, 0005 and 0006
+   are **Proposed** at the commit read
    (`42a8db00e138aa892a388b077a8ae2ea2ccab511`); they are inherited as
    Proposed and are not decided here.
 3. **Stamp** the PDK-independent RTL, FABulous description and bitstream-level

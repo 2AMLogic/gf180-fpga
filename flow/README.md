@@ -299,6 +299,27 @@ look reasonable.
 
 Sites below are line-cited against this section's base commit, `7ec812b`.
 
+**Correction (2026-11-15, PR #108 / issue #110):** the conclusion the #4803
+half of the paragraph below draws — the pin rename is "retirable with no bump
+at all. Retiring it is follow-on work" — is **superseded**. PR #108's
+2026-11-15 measurement (recorded at `layout/README.md` § "Pins and the 2×2
+abutment check"; not re-run for this note) shows the rename is retirable
+**neither** at the pin **nor** with a bump: no one-seam check is expressible
+with `--pair`, because the obstacle is the documented `--pins`/`--pair`
+scoping contract — the pair target must also match `--pins`, `--pins` is one
+regex applied to A and B alike, and an in-scope label matching no rule falls
+back to same-name pairing — not a missing upstream fix. The gap is tracked
+upstream at `2AMLogic/klayout-tools#5778` (filed by #108), which is why
+`layout/README.md` now says the rename stays until that gap is resolved. #108
+also moved the line citations the paragraphs below rely on; use these section
+references instead, which do not drift: the rename site is `renamed()` in
+`layout/abut-check.py`, with its rationale in that file's module docstring;
+the abutment-check record — including the replacement for the "named as a
+gap" text cited below — is `layout/README.md` § "Pins and the 2×2 abutment
+check"; the #4986 envelope is § "DRC (T1 item 3, issue #23)"; the open-item
+entry is § "Open". The 2026-11-14 text below is kept as written; this note is
+the only thing added.
+
 **Already retired at the current pin (0.9.0), no bump involved.** #4802: the
 budget is enforced by the request today — `layout/make-request.py:104` caps the
 router, and `layout/README.md:106` records that it is "now enforced by the
