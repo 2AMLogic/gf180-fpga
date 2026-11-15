@@ -327,15 +327,20 @@ extracted with `--abstract-cells 'gf180mcu_fd_sc_mcu7t5v0__*' --def-net-names`,
 so every standard cell is a pin-only black box on both sides. This is a
 cell-level connectivity compare: it checks that the routed wiring connects the
 cell pins as the netlist says. It does not compare transistors inside the
-library cells. Requests are `records/lvs-request.json` and
-`records/lvs-vs-synth-request.json`, read on stdin from the repo root so the
-repo-relative paths are the ones `--check` re-hashes.
-`layout/run-lvs.sh --check` returns `match` for both reports.
+library cells. The request is `records/lvs-request.json`, read on stdin from
+the repo root so the repo-relative paths are the ones `--check` re-hashes.
+`layout/run-lvs.sh --check` returns `match` for `records/lvs.json`.
 
 | Report | Reference | Result |
 |---|---|---|
 | `records/lvs.json` | `layout/logic_tile_routed_routed.v` (as-built netlist of the same place-and-route run) | `status: match`, 0 errors; `power_connectivity.status: match` (16 masters, 654 instances, no findings) |
 | `records/lvs-vs-synth.json` | `flow/tile/netlist/logic_tile_routed_synth.v` (pre-place-and-route synthesis netlist, #21) | `status: mismatch`, 6 circuit-level errors plus 191 `hints.rejected` (pin anchoring on a top that does not pair) |
+
+`records/lvs-vs-synth.json` (with its `records/lvs-vs-synth-request.json`) is
+**frozen evidence** (issue #106): it documents why the synthesis netlist is not
+the reference and is committed as recorded. `run-lvs.sh` no longer regenerates
+it and `--check` no longer re-hashes it — only `records/lvs.json` is re-run or
+re-checked.
 
 **The cited reference is the as-built netlist, not the #21 synthesis netlist.**
 The synthesis netlist is not a valid LVS reference for the routed layout: it is
