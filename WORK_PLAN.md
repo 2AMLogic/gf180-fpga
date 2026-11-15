@@ -31,22 +31,22 @@ _None._
 
 Issues currently being built (`loom:building`).
 
-- **#84**: measurements/item5 records are bound to the superseded 40 um GDS, and nothing says so
 - **#93**: Decide whether par.json should pin the tapcell master (library.tapcell.master) rather than inherit klt's per-library default
-- **#114**: Local vs sibling ADR numbers collide: spec/porting-plan.md and spec/target-spec.md cite "ADR-0002/0003" meaning sky130-fpga's, while spec/decisions/0002 and 0003 are this repo's
+- **#125**: Extract-record convention: `parasitics.model` is listed among "summary scalars" but is a nested prose object
+- **#126**: Extend the item-9 inventory-guard net to the pre-#107 assertions it does not cover
 
 ## PRs Awaiting Review
 
 PRs waiting on Judge (`loom:review-requested`).
 
-- **#95**: docs(measurements): disclose that the item 5 STA records pin the pre-#83 stream
-- **#119**: docs(spec): state the ADR citation convention and qualify sibling citations
+- **#127**: test(item9): net the inventory guard's remaining assertions (cases k-r)
 
 ## Approved (Awaiting Merge)
 
 PRs that passed review and are queued for Champion auto-merge (`loom:pr`).
 
 - **#111**: docs(spec): keep the tapcell master tool-owned, record ADR-0003
+- **#129**: docs: classify parasitics non-scalars outside the summary-scalars parenthetical
 
 ## Proposed
 
@@ -55,13 +55,10 @@ Issues carrying `loom:curated`.
 - **#6**: Track the gap to T1 (klayout-tools design-evidence-tiers.md) *(curated)*
 - **#27**: T1 item 5 (corner verification): klt sta on the routed tile at all 15 mcu7t5v0 corners plus klt functional-verification of the stamped bitstream-level tests *(curated)*
 - **#62**: Run PDK-dependent checks after klt single-sourcing (PR #61) *(curated)*
-- **#84**: measurements/item5 records are bound to the superseded 40 um GDS, and nothing says so *(curated)*
 - **#93**: Decide whether par.json should pin the tapcell master (library.tapcell.master) rather than inherit klt's per-library default *(curated)*
 - **#102**: Decide on bumping klt_spec 0.9.0 -> 0.9.2: it unblocks the #4986 crosscheck envelope and the #5006 Verilog-bench evidence *(curated)*
-- **#103**: Delete the unverifiable cocotb pin from the attested item9-inventory.json and re-attest (after #100) *(curated)*
-- **#109**: The item-9 inventory guard's perturbation matrix lives only in PR transcripts, not in a committed regression test *(curated)*
-- **#114**: Local vs sibling ADR numbers collide: spec/porting-plan.md and spec/target-spec.md cite "ADR-0002/0003" meaning sky130-fpga's, while spec/decisions/0002 and 0003 are this repo's *(curated)*
-- **#117**: Extract-record convention: two imprecise labels in the keep/drop lists (paths, and hub_net's why-safe reason) *(curated)*
+- **#125**: Extract-record convention: `parasitics.model` is listed among "summary scalars" but is a nested prose object *(curated)*
+- **#126**: Extend the item-9 inventory-guard net to the pre-#107 assertions it does not cover *(curated)*
 
 ## Proposed (Architect / Hermit)
 
@@ -69,7 +66,6 @@ Issues carrying `loom:curated`.
 - **#89**: Stop vendoring design-evidence-tiers.md: the pinned klt bundles the ladder, and the two pins have drifted (0.8.0 vs 0.9.0) *(hermit)*
 - **#92**: Wire in or delete verification/signoff/test_run_signoff_write.sh: nothing runs it and it now fails *(hermit)*
 - **#106**: Remove lvs-vs-synth.json: a known-mismatch LVS record that nothing cites and an extra klt lvs compare *(hermit)*
-- **#118**: Remove the inert hi parameter of sig() in layout/make-request.py *(hermit)*
 
 ## Epics
 
@@ -84,9 +80,9 @@ _None._
 | Important | 0 |
 | Ready (`loom:issue`) | 0 |
 | In Progress (`loom:building`) | 3 |
-| PRs awaiting review | 2 |
-| Approved PRs awaiting merge | 1 |
-| Curated | 10 |
-| Architect / Hermit proposals | 5 |
+| PRs awaiting review | 1 |
+| Approved PRs awaiting merge | 2 |
+| Curated | 7 |
+| Architect / Hermit proposals | 4 |
 | Active epics | 0 |
 <!-- guide:plan-body:end -->
