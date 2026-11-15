@@ -2,8 +2,20 @@
 
 Chronological record of merged PRs and closed issues (maintained by the Guide role; newest first).
 
+### 2026-11-15
+
+- **PR #108**: docs: correct recorded reason for abut-check pin rename (scoping, not naming)
+- **PR #107**: guard(verification): assert the item-9 inventory's copies against their owning files
+- **Issue #101** (closed): Retire the abut-check pin-rename workaround: klt interface-check --pair is already in the pinned 0.9.0
+- **Issue #100** (closed): item9-inventory.json hand-copies the bench set, cold-start argv and three pins; inventory.py --check verifies none of them
+
 ### 2026-11-14
 
+- **PR #104**: ci: drop duplicate item-9 attestation step from verification workflow
+- **PR #99**: docs(flow): record which closed klayout-tools fixes ship in klt 0.9.0 and 0.9.2
+- **Issue #98** (closed): layout/README.md:229 abbreviates the pre-#83 GDS hash with a wrong tail (d582d634a -> b582d634a)
+- **Issue #88** (closed): Remove the duplicate item-9 attestation step from verification.yml: signoff.yml already runs the identical klt check
+- **Issue #82** (closed): Probe which closed klayout-tools fixes are present in the pinned klt 0.9.0 and in the latest release
 - **PR #85**: fix(flow): resolve $PDK_ROOT in one helper, adopting an already-pinned ciel store
 - **PR #87**: docs(item5): add setup-paths.md and its generator, read from the committed STA reports
 - **PR #94**: refactor(layout): drop the inert FILLTIE argument, state tapcell master provenance
