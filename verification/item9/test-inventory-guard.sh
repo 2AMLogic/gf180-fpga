@@ -19,6 +19,16 @@
 # assertions (measured), so an exit-1-only check would pass with the
 # wrong assertion doing the work.
 #
+# Case inventory: (a)-(j) are the original net (issue #109, added by
+# PR #122) -- the five divergence assertions plus the workflow_pins()
+# fail-loudly paths they can ride on. (k)-(r) (issue #126) extend the
+# same net to the assertions it did not cover: both arms of the
+# staleness check, the bench-set scans (unstamped, ghost,
+# both-run-and-excluded) and the remaining workflow-parsing paths
+# (empty ICARUS_VERSION value, block scalar, missing run line). With
+# them every ERROR: site in inventory.py -- 16 distinct sites -- is
+# netted by the 18 cases.
+#
 # Hermetic: no PDK, no Icarus, no network. inventory.py reads only JSON,
 # Markdown, YAML and tb_*.v filenames and resolves ROOT from its own
 # location, so a copied tree is a complete stand-in. Nothing outside the
@@ -31,6 +41,8 @@ work="$(mktemp -d)"; trap 'rm -rf "$work"' EXIT
 inv="$work/verification/item9/inventory.py"
 attested="$work/verification/signoff/item9-inventory.json"
 wf="$work/.github/workflows/verification.yml"
+benches="$work/verification/item9/benches.json"
+invmd="$work/verification/item9/INVENTORY.md"
 
 fail() { echo "FAIL: $*" >&2; exit 1; }
 
@@ -133,4 +145,55 @@ jq 'del(.pins.tools.icarus)' "$attested" > "$attested.new"
 mv "$attested.new" "$attested"
 expect_fail "(j) icarus pin removed" "is missing a pin for icarus"
 
-echo "test-inventory-guard: baseline + 10 perturbation cases passed"
+# (k) INVENTORY.md modified -- the rendered-text arm of the guard's
+# primary staleness assertion
+stage_fixture
+printf 'x' >> "$invmd"
+expect_fail "(k) INVENTORY.md appended a byte" "is stale; run verification/item9/inventory.py"
+
+# (l) INVENTORY.md absent -- the file-missing arm of the same assertion
+stage_fixture
+rm "$invmd"
+expect_fail "(l) INVENTORY.md deleted" "is stale; run verification/item9/inventory.py"
+
+# (m) a stamped tb_*.v neither run nor excluded -- the module docstring's
+# stated purpose: a newly stamped bench cannot be silently left out
+stage_fixture
+mkdir -p "$work/verification/common"
+: > "$work/verification/common/tb_perturb_unstamped.v"
+expect_fail "(m) unstamped tb_*.v created on disk" "stamped bench neither run nor excluded"
+
+# (n) a listed bench that is not on disk; perturbed via excluded[] so
+# exactly one assertion fires -- perturbing runs[] would also trip the
+# attested-set comparison and the case would pass with the wrong
+# assertion doing the work
+stage_fixture
+jq '.excluded += [{"bench":"verification/common/tb_nonexistent.v","status":"x","reason":"y"}]' "$benches" > "$benches.new"
+mv "$benches.new" "$benches"
+expect_fail "(n) ghost bench in excluded" "listed bench not on disk"
+
+# (o) a bench both run and excluded -- contradictory benches.json
+stage_fixture
+jq '.excluded += [{"bench":"verification/common/tb_lut4_slice.v","status":"x","reason":"y"}]' "$benches" > "$benches.new"
+mv "$benches.new" "$benches"
+expect_fail "(o) bench both run and excluded" "both run and excluded"
+
+# (p) the ICARUS_VERSION env value emptied. The bare key does NOT reach
+# this path -- the pin regex needs at least one captured character, so a
+# bare key falls to the already-netted (g) 'not found' path
+stage_fixture
+sed -i 's/^\([ \t]*\)ICARUS_VERSION:.*/\1ICARUS_VERSION: ""/' "$wf"
+expect_fail "(p) ICARUS_VERSION env value emptied" "has an empty value"
+
+# (q) the 'Stamped benches' run line made a block scalar
+stage_fixture
+sed -i 's@^\([ \t]*\)run: python3 -I verification/runner.py --vvp verification/item9/benches.json$@\1run: |\n\1python3 -I verification/runner.py --vvp verification/item9/benches.json@' "$wf"
+expect_fail "(q) 'Stamped benches' run made a block scalar" "is not a single-line command"
+
+# (r) the 'Stamped benches' run line removed outright; the scan runs to
+# the next '- name:' and reports the step has no run: line
+stage_fixture
+sed -i '\|^[ \t]*run: python3 -I verification/runner.py --vvp verification/item9/benches.json$|d' "$wf"
+expect_fail "(r) 'Stamped benches' run line removed" "has no run: line"
+
+echo "test-inventory-guard: baseline + 18 perturbation cases passed"
