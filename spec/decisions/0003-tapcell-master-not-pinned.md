@@ -90,7 +90,11 @@ Facts the decision rests on, verified against the pinned klt 0.9.0:
     whose measured rationale `layout/README.md` records — into a key meaning
     "the table value": doc and evidence churn for no change in the tile;
   - it costs a full PDK-host re-run of ladder step 0 plus re-attestation of
-    the item 2 and item 11 envelopes, to land a byte-identical layout.
+    the evidence citing the run — write-mode `run-signoff.sh` re-derives the
+    item 1, 2, 9 and 10 envelopes (item 2 re-attested from the new stream)
+    and item 11, a compound citation in `manifests/gf180-fpga.signoff.json`
+    whose `power_delivery` names the resolved master, regenerates against
+    the new records — to land a byte-identical layout.
 - **Add a new check asserting the expected master against the record.**
   Rejected: a new mechanism where `manifests/run-signoff.sh --check` already
   byte-compares the derived citation.
