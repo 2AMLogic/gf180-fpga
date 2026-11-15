@@ -313,7 +313,8 @@ retirable with no bump at all. Retiring it is follow-on work, not done here.
 **A bump to 0.9.2 would retire** the #4986 crosscheck-envelope workaround
 (`layout/README.md:285-286`, with the open-item entry at
 `layout/README.md:414-416`) and the #5006 functional-verification workaround
-(`measurements/README.md:42-46`), both of which are `absent` at the pin and
+(the `**Functional:**` bullet under "Result (as found)" in
+`measurements/README.md`), both of which are `absent` at the pin and
 `present` in 0.9.2.
 
 **It would retire nothing further: there is no row a bump leaves unfixed.** All
