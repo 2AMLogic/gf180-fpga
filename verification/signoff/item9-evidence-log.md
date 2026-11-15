@@ -43,3 +43,50 @@ The differences are the build block (`version`/`package_version` `0.8.0`,
 `provenance.klt_version` in both envelopes, and the item 10 hygiene hash of
 `.github/workflows/verification.yml`, which this change edits. No evidence was
 relaxed. The entries above are historical and still name the old build.
+
+### 2026-11-15: unverifiable cocotb tools pin removed from the attested inventory (#103)
+
+`pins.tools` in `item9-inventory.json` dropped the `"cocotb": "2.0.1"` key:
+the attested cold-start argv (`verification/runner.py --vvp`) invokes only
+`iverilog`/`vvp` and never loads cocotb, so the `passed: true` `pin`/`tools`
+check asserted a dependency the attested command cannot load. The known-stale
+exemption that #100 added to `verification/item9/inventory.py` for exactly
+this key was removed in the same commit, leaving the unconditional guard that
+`pins.tools` carries only tools the cold start invokes.
+
+- Inventory hash moved from
+  `sha256:f08810d1ab0c79c693cd6586d4b37bbfff076e2eca949af384245901ba9271ed`
+  to `sha256:c79267c1ea5b1a9029357ae571aa25970da1e72e37d16fdefdfce2adda9aa499`
+  (pure two-line textual deletion; re-derived with `sha256sum`, not copied).
+- Command: `klt signoff --attest 9 --inventory
+  verification/signoff/item9-inventory.json -o
+  verification/signoff/item9-testbenches.json --format json` (the pinned
+  klayout-tools 0.9.0 via `flow/klt.sh`; `attest item 9: cold_start ok in
+  85.9s`), then the `manifests/run-signoff.sh:121-133` inline pin rewrite for
+  `manifests/gf180-fpga.json`, then `klt signoff --manifest
+  manifests/gf180-fpga.json --tiers-doc manifests/design-evidence-tiers.md
+  --format json > manifests/gf180-fpga.signoff.json` (exit 3: some T1 items
+  unmet, the honest state before and after this change; `t1_met_count` stays
+  7).
+- Result: item 9 stays `met` with `10/10 attestation checks passed`; the
+  `pin`/`tools` check value is now `{"icarus": "13.0"}` with no cocotb under
+  any `passed: true` check. All four pins of the inventory hash
+  (`manifests/gf180-fpga.json:45`, `manifests/gf180-fpga.signoff.json:431`
+  and `:440`, `verification/signoff/item9-testbenches.json:107`) were
+  rewritten to the new hash and stay equal. `provenance.klt_version` stays
+  `0.9.0`.
+- Items 2 and 10 envelopes re-attested to byte-identical files (cmp-verified
+  against the committed copies), so only the item 9 envelope moved.
+  `manifests/run-signoff.sh --check` then exits 0: "Committed item 1, 2, 9
+  and 10 envelopes and signoff record reproduce." (live, 2026-11-15).
+- Scope note: the monolithic `manifests/run-signoff.sh` write mode could not
+  complete on the dispatch host used for this regeneration — item 1's
+  `local_only` freshness leg (`flow/tile/run-synth.sh --check`) hangs in the
+  yosys `abc` pass (yosys-abc idle at 0% CPU waiting on the yosys pipe for
+  20+ minutes, and twice killed at klt's fixed 300s `DEFAULT_YOSYS_TIMEOUT_S`
+  budget), reproducibly and independently of this change; item 1's committed
+  envelope is unchanged by this regeneration. The item 9, manifest-pin and
+  record steps above are the exact commands write mode runs, executed
+  individually, and the check-mode reproduction covers the whole evidence
+  set. This entry is historical and still names the old inventory hash for
+  the run it describes.

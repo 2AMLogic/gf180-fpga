@@ -27,8 +27,7 @@
       "revision": "f6eeac7dad085ffcc829ccfd721f7b4ce39edcf7"
     },
     "tools": {
-      "icarus": "13.0",
-      "cocotb": "2.0.1"
+      "icarus": "13.0"
     }
   }
 }
