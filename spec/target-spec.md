@@ -107,7 +107,7 @@ step down the ladder on failure.
 
 | | |
 |---|---|
-| Claim shape (inherited from ADR-0002/0003, numbers not) | Setup- and hold-clean (0 violations, 0 TNS) at every shipped liberty corner of the chosen library, both without parasitics (LEF-only) and with parasitics extracted from the routed tile, against a stated clock period on `clk`. |
+| Claim shape (inherited from `sky130-fpga` ADR-0002/0003, numbers not) | Setup- and hold-clean (0 violations, 0 TNS) at every shipped liberty corner of the chosen library, both without parasitics (LEF-only) and with parasitics extracted from the routed tile, against a stated clock period on `clk`. |
 | Fallback | a relaxed period of **20 ns** (a chosen reference, not a sky130 result). |
 | Target | a period pre-registered in the characterization issue *before* the run, no looser than the fallback. The period is not tuned after seeing results. |
 | Stretch | an Fmax figure, ratified only if bisected from characterized gf180mcu data. |
