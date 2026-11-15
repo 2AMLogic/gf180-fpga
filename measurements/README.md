@@ -46,28 +46,43 @@ carries no `provenance` block of its own and is bound only through
 
 **Superseded (stream-bound):** `item5/extract.report.json`,
 `item5/logic_tile_routed.spef`, `item5/setup-paths.md`,
-`item5/sta-lef-only.report.json`, `item5/sta-spef.report.json`. Three of the
-five carry the pins in the table above; the other two carry no stream pin of
-their own and are bound transitively — `item5/logic_tile_routed.spef` through
-`item5/extract.report.json`, which produced it, and `item5/setup-paths.md`
+`item5/sta-lef-only.request.json`, `item5/sta-lef-only.report.json`,
+`item5/sta-spef.request.json`, `item5/sta-spef.report.json`. Three of the
+seven carry the pins in the table above; the other four carry no stream pin of
+their own and are bound transitively or by path — `item5/logic_tile_routed.spef`
+through `item5/extract.report.json`, which produced it; `item5/setup-paths.md`
 through the two STA reports it transcribes row for row (it landed on `item5/`
 after these records were written — PR #87, 2026-11-14 — and its `## Provenance`
 pins those reports by bytes while carrying no supersession disclosure of its
-own; `item5/summarize_sta.py` regenerates it from them, see below). This is a
+own; `item5/summarize_sta.py` regenerates it from them, see below); and the two
+request records through the reports they produced, each of which also names
+the superseded stream directly by path — both set `"def":
+"../../layout/logic_tile_routed.def"`, which resolves today to the committed
+24 µm DEF the runs never measured, and the SPEF request also names
+`"spef": "logic_tile_routed.spef"`. This is a
 positive list, not a census: what puts a file under this disclosure is the
 binding stated above — it measures the pinned stream, or is derived from a
 record that did — not its presence in this list. `item5/` keeps growing (PR #87
 added two files mid-review, and #90 will index both in the file table above),
 so no here-and-now count claims to be complete.
 
-**Not superseded: `item5/functional-item9.result.json`.** Its `provenance` is
-`null` — it carries no layout pin at all — and it is an RTL run: 23 bench runs
-over `verification/common/tb_*.v` at `commit 3d3345d5…`, Icarus 13.0 /
-Verilator 5.050. T1 item 9 grades **met** cited to a different file
+**Not superseded: `item5/functional-item9.result.json`.** It carries no
+`provenance` block at all — the string occurs nowhere in the file, so it has no
+layout pin — and it is an RTL run: 23 bench runs, 22 of them over
+`verification/common/tb_*.v` and the remaining one
+`rtl/common/fabulous/tb_lut4_ff_bel_equiv.v`, at `commit 3d3345d5…`, Icarus
+13.0 / Verilator 5.050. T1 item 9 grades **met** cited to a different file
 (`verification/signoff/item9-testbenches.json`), so nothing in this
-supersession bears on it. The same exclusion applies to any other record under
-`item5/` whose `provenance.input` is `null`: it is an RTL run, not a
-measurement of the stream.
+supersession bears on it. What generalises is the list's own criterion, read in
+both directions: a record under `item5/` sits outside this disclosure only when
+it names no layout input at all — no `provenance.input` pin and no
+`def`/`spef`/`gds` path — which describes `functional-item9.result.json` alone
+among the `item5/` JSON files; everything else measures the pinned stream or is
+derived from a record that did. (A bare `provenance.input is null` test would
+misfire here: it is true of the two request records too, which carry no
+`provenance` block either but are requests **for** the superseded runs, bound
+by the stream path they set — an absent key and a null value read the same to
+`jq`.)
 
 **No T1 claim rests on the superseded records, and no gate noticed the drift.**
 `manifests/gf180-fpga.signoff.json` grades item 5 `unmet` with `citation: null`
@@ -86,8 +101,8 @@ therefore **does** fail that job. What nothing checks is the other direction: no
 gate compares those reports' own `provenance.input.content_hash` against the
 live `layout/` stream, so replacing the stream left every pinned hash intact and
 the gate silent. Everything else under `measurements/` sits outside that gate:
-the SPEF, `item5/extract.report.json` and this README are cited by no manifest
-entry. `item5/summarize_sta.py --check` does regenerate-and-compare
+the SPEF, `item5/extract.report.json`, the two `item5/sta-*.request.json`
+records and this README are cited by no manifest entry. `item5/summarize_sta.py --check` does regenerate-and-compare
 `item5/setup-paths.md` against the two committed reports, but nothing in CI
 invokes it, and it too reads only the reports — never the stream they were
 measured on. A re-run
