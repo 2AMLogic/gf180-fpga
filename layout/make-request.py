@@ -55,24 +55,23 @@ cons = []
 PITCH = 1.12  # pin-slot pitch (2 x 0.56 um tracks), slots sit at (k + 0.5) * PITCH
 
 
-def sig(pins, edge, length, lo, hi):
-    # Window exactly 4 slots wide, centred on the slot lattice, so the ordered
-    # group lands on the same 4 slots on both edges (hi is kept only to keep
-    # the call sites readable: the window starts at `lo`).
+def sig(pins, edge, length, lo):
+    # Window exactly 4 slots wide, starting at `lo`, centred on the slot
+    # lattice, so the ordered group lands on the same 4 slots on both edges.
     k = round(length * lo / PITCH - 0.5)
     x0 = (k + 0.5) * PITCH - 0.3
     return {"pins": pins, "edge": edge, "range_um": [round(x0, 2), round(x0 + 3 * PITCH + 0.6, 2)], "ordered": True}
 
 
 cons += [
-    sig(bus("n_out", 0, 3), "north", W, .45, .51),
-    sig(bus("s_in", 0, 3), "south", W, .45, .51),
-    sig(bus("n_in", 0, 3), "north", W, .53, .59),
-    sig(bus("s_out", 0, 3), "south", W, .53, .59),
-    sig(bus("e_out", 0, 3), "east", H, .45, .51),
-    sig(bus("w_in", 0, 3), "west", H, .45, .51),
-    sig(bus("e_in", 0, 3), "east", H, .53, .59),
-    sig(bus("w_out", 0, 3), "west", H, .53, .59),
+    sig(bus("n_out", 0, 3), "north", W, .45),
+    sig(bus("s_in", 0, 3), "south", W, .45),
+    sig(bus("n_in", 0, 3), "north", W, .53),
+    sig(bus("s_out", 0, 3), "south", W, .53),
+    sig(bus("e_out", 0, 3), "east", H, .45),
+    sig(bus("w_in", 0, 3), "west", H, .45),
+    sig(bus("e_in", 0, 3), "east", H, .53),
+    sig(bus("w_out", 0, 3), "west", H, .53),
     # cfg 42 + 38 + 42 + 36: low band on N/E, high band on S/W.
     {"pins": bus("cfg", 0, 41), "edge": "north", "range_um": win(W, .02, .44)},
     {"pins": bus("cfg", 42, 79), "edge": "south", "range_um": win(W, .60, .98)},
