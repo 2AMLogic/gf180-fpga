@@ -4,6 +4,11 @@ Chronological record of merged PRs and closed issues (maintained by the Guide ro
 
 ### 2026-11-15
 
+- **PR #116**: docs(measurements): ratify extract-record shape convention for records with a SPEF beside them
+- **PR #115**: fix(signoff): drop unverifiable cocotb tools pin from attested item9 inventory
+- **PR #113**: docs: supersede flow/README "retirable with no bump" conclusion for the abut-check pin rename
+- **Issue #110** (closed): flow/README.md:308-311 still says the abut-check rename is "retirable with no bump at all" — measurement says it is not retirable at all
+- **Issue #96** (closed): Stop committing parasitics.nets in extract records: 94% of the repo's largest file duplicates the SPEF beside it
 - **PR #108**: docs: correct recorded reason for abut-check pin rename (scoping, not naming)
 - **PR #107**: guard(verification): assert the item-9 inventory's copies against their owning files
 - **Issue #101** (closed): Retire the abut-check pin-rename workaround: klt interface-check --pair is already in the pinned 0.9.0
