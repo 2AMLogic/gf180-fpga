@@ -4,6 +4,9 @@ Chronological record of merged PRs and closed issues (maintained by the Guide ro
 
 ### 2026-11-15
 
+- **Issue #103** (closed): Delete the unverifiable cocotb pin from the attested item9-inventory.json and re-attest (after #100)
+- **Issue #118** (closed): Remove the inert hi parameter of sig() in layout/make-request.py
+- **PR #121**: fix: drop inert hi parameter of sig() in make-request.py
 - **PR #116**: docs(measurements): ratify extract-record shape convention for records with a SPEF beside them
 - **PR #115**: fix(signoff): drop unverifiable cocotb tools pin from attested item9 inventory
 - **PR #113**: docs: supersede flow/README "retirable with no bump" conclusion for the abut-check pin rename
