@@ -196,9 +196,13 @@ deliberate.
 
 - the top-level report outside `parasitics.nets`: the summary scalars under
   `parasitics` (`parasitics.r_count`, `parasitics.total_resistance_ohm`,
-  `parasitics.model`, …), the findings lists
+  `parasitics.total_capacitance_ff`, …), the root findings lists
   (`warnings`, `dead_metal`, `missing_flavour_markers`), the
-  `parasitics.integrity` aggregate, and `provenance` (tool versions).
+  `parasitics`-level lists (`parasitics.metals_without_coefficient`,
+  `parasitics.overlap_pairs_without_coefficient`, `parasitics.critical_nets`,
+  `parasitics.parasitics_nets` — all empty in the measured record), the
+  `parasitics.integrity` and `parasitics.substrate_dc_tie` aggregates, the
+  `parasitics.model` prose, and `provenance` (tool versions).
 - per net: its summary scalars (`net`, `net_id`, `resistance_ohm`,
   `capacitance_ff`, `inductance_nh`, `rc_model`, …), `by_layer` (per-layer
   R/C — not expressible in SPEF), and `integrity.capacitance` (varies per
