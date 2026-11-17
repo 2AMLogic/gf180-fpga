@@ -2,6 +2,10 @@
 
 Chronological record of merged PRs and closed issues (maintained by the Guide role; newest first).
 
+### 2026-11-17
+
+- **PR #137**: chore(loom): resync installed Loom to v0.19.1306
+
 ### 2026-11-16
 
 - **Issue #105** (closed): Operator: confirm `signoff` is a required status check on main (carried over from #88)
