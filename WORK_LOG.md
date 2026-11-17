@@ -2,6 +2,10 @@
 
 Chronological record of merged PRs and closed issues (maintained by the Guide role; newest first).
 
+### 2026-11-16
+
+- **Issue #105** (closed): Operator: confirm `signoff` is a required status check on main (carried over from #88)
+
 ### 2026-11-15
 
 - **PR #131**: layout: stop re-running the lvs-vs-synth compare; keep the record as frozen evidence
