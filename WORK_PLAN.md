@@ -13,7 +13,7 @@ Judge-approved PRs under a hold (`loom:blocked` or `loom:operator`) — only a h
 
 `loom:very-important` (one counts per workspace); every stage takes these first.
 
-- **#27**: T1 item 5 (corner verification): klt sta on the routed tile at all 15 mcu7t5v0 corners plus klt functional-verification of the stamped bitstream-level tests
+- **#27**: T1 item 5 (corner verification): klt sta on the routed tile at all 15 mcu7t5v0 corners plus klt functional-verification of the stamped bitstream-level tests *(held)*
 
 ## Important
 
@@ -50,16 +50,16 @@ PRs that passed review and are queued for Champion auto-merge (`loom:pr`).
 Issues carrying `loom:curated`.
 
 - **#6**: Track the gap to T1 (klayout-tools design-evidence-tiers.md) *(curated)*
-- **#27**: T1 item 5 (corner verification): klt sta on the routed tile at all 15 mcu7t5v0 corners plus klt functional-verification of the stamped bitstream-level tests *(curated)*
-- **#62**: Run PDK-dependent checks after klt single-sourcing (PR #61) *(curated)*
+- **#27**: T1 item 5 (corner verification): klt sta on the routed tile at all 15 mcu7t5v0 corners plus klt functional-verification of the stamped bitstream-level tests *(curated)* *(held)*
+- **#62**: Run PDK-dependent checks after klt single-sourcing (PR #61) *(curated)* *(held)*
 - **#93**: Decide whether par.json should pin the tapcell master (library.tapcell.master) rather than inherit klt's per-library default *(curated)*
-- **#102**: Decide on bumping klt_spec 0.9.0 -> 0.9.2: it unblocks the #4986 crosscheck envelope and the #5006 Verilog-bench evidence *(curated)*
+- **#102**: Decide on bumping klt_spec 0.9.0 -> 0.9.2: it unblocks the #4986 crosscheck envelope and the #5006 Verilog-bench evidence *(curated)* *(held)*
 
 ## Proposed (Architect / Hermit)
 
-- **#86**: Remove the superseded cocotb wiring path: runner.py --dut/--broken/--module/--toplevel and the stale verification/README.md section *(hermit)*
-- **#89**: Stop vendoring design-evidence-tiers.md: the pinned klt bundles the ladder, and the two pins have drifted (0.8.0 vs 0.9.0) *(hermit)*
-- **#92**: Wire in or delete verification/signoff/test_run_signoff_write.sh: nothing runs it and it now fails *(hermit)*
+- **#86**: Remove the superseded cocotb wiring path: runner.py --dut/--broken/--module/--toplevel and the stale verification/README.md section *(hermit)* *(held)*
+- **#89**: Stop vendoring design-evidence-tiers.md: the pinned klt bundles the ladder, and the two pins have drifted (0.8.0 vs 0.9.0) *(hermit)* *(held)*
+- **#92**: Wire in or delete verification/signoff/test_run_signoff_write.sh: nothing runs it and it now fails *(hermit)* *(held)*
 
 ## Epics
 
