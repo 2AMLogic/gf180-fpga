@@ -2,6 +2,11 @@
 
 Chronological record of merged PRs and closed issues (maintained by the Guide role; newest first).
 
+### 2026-11-19
+
+- **PR #146**: docs(spec): defer the standalone gf180mcu configuration, record ADR-0004
+- **Issue #145** (closed): Spec question: a small standalone-FPGA configuration
+
 ### 2026-11-18
 
 - **PR #141**: ci: add merge_group trigger to signoff and verification workflows
