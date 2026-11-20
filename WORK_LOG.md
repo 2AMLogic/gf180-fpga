@@ -2,6 +2,11 @@
 
 Chronological record of merged PRs and closed issues (maintained by the Guide role; newest first).
 
+### 2026-11-20
+
+- **PR #153**: feat: one-command blinky demo from the stamped sky130-fpga flow
+- **Issue #144** (closed): A timed blinky from a clean checkout with the open flow
+
 ### 2026-11-19
 
 - **PR #146**: docs(spec): defer the standalone gf180mcu configuration, record ADR-0004
