@@ -53,7 +53,7 @@ and `--check`ed in CI.
 | Tool | Version | Where pinned |
 |---|---|---|
 | cocotb | 2.0.1 | `requirements.txt` |
-| Icarus Verilog | 13.0 | CI builds this version (`verification.yml`); host-verified |
+| Icarus Verilog | 13.0 | CI builds this version (`.github/actions/setup-icarus/action.yml`, shared by both CI jobs); host-verified |
 | Verilator | 5.050 (lint) | host-verified; CI installs the distro package and records its version |
 
 cocotb 2.0.1 was run against Icarus 13.0 and Python 3.12.3 and works with

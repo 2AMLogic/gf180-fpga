@@ -20,14 +20,16 @@
 # wrong assertion doing the work.
 #
 # Case inventory: (a)-(j) are the original net (issue #109, added by
-# PR #122) -- the five divergence assertions plus the workflow_pins()
+# PR #122) -- the five divergence assertions plus the pin-parser
 # fail-loudly paths they can ride on. (k)-(r) (issue #126) extend the
 # same net to the assertions it did not cover: both arms of the
 # staleness check, the bench-set scans (unstamped, ghost,
 # both-run-and-excluded) and the remaining workflow-parsing paths
-# (empty ICARUS_VERSION value, block scalar, missing run line). With
-# them every ERROR: site in inventory.py -- 16 distinct sites -- is
-# netted by the 18 cases.
+# (block scalar, missing run line). (g) and (p) were retargeted to the
+# shared setup-icarus action when the single CI Icarus pin moved there
+# (#154), and (s)-(t) extend the net to the new action-parsing paths
+# (no default, action file deleted). With them every ERROR: site in
+# inventory.py -- 18 distinct sites -- is netted by the 20 cases.
 #
 # Hermetic: no PDK, no Icarus, no network. inventory.py reads only JSON,
 # Markdown, YAML and tb_*.v filenames and resolves ROOT from its own
@@ -41,6 +43,7 @@ work="$(mktemp -d)"; trap 'rm -rf "$work"' EXIT
 inv="$work/verification/item9/inventory.py"
 attested="$work/verification/signoff/item9-inventory.json"
 wf="$work/.github/workflows/verification.yml"
+action="$work/.github/actions/setup-icarus/action.yml"
 benches="$work/verification/item9/benches.json"
 invmd="$work/verification/item9/INVENTORY.md"
 
@@ -52,12 +55,14 @@ fail() { echo "FAIL: $*" >&2; exit 1; }
 stage_fixture() {
   rm -rf "$work/verification" "$work/rtl" "$work/flow" "$work/.github"
   mkdir -p "$work/verification/item9" "$work/verification/signoff" \
-           "$work/flow" "$work/.github/workflows"
+           "$work/flow" "$work/.github/workflows" \
+           "$work/.github/actions/setup-icarus"
   cp "$root/verification/item9/inventory.py" "$inv"
   cp "$root/verification/item9/benches.json" "$root/verification/item9/INVENTORY.md" \
      "$work/verification/item9/"
   cp "$root/verification/signoff/item9-inventory.json" "$attested"
   cp "$root/.github/workflows/verification.yml" "$wf"
+  cp "$root/.github/actions/setup-icarus/action.yml" "$action"
   cp "$root/flow/pdk.json" "$work/flow/"
   (cd "$root" && find verification/common rtl/common -type f -name 'tb_*.v' -print0 \
     | xargs -0 -r cp --parents -t "$work")
@@ -121,10 +126,11 @@ jq '.pins.tools.verilator = "5.0"' "$attested" > "$attested.new"
 mv "$attested.new" "$attested"
 expect_fail "(f) extra pins.tools key (verilator)" "pins a tool the cold start never invokes: verilator"
 
-# (g) the ICARUS_VERSION env key renamed
+# (g) the action's icarus-version input renamed; the guard can no longer
+# find the one place the CI pin is declared
 stage_fixture
-sed -i 's/^\([ \t]*\)ICARUS_VERSION:/\1ICARUS_VERSION_OLD:/' "$wf"
-expect_fail "(g) ICARUS_VERSION env key renamed" "ICARUS_VERSION env line not found"
+sed -i 's/^\([ \t]*\)icarus-version:/\1icarus-version-old:/' "$action"
+expect_fail "(g) icarus-version input renamed" "icarus-version input not found"
 
 # (h) cocotb re-added to the attested pins -- the exemption #103 deleted
 # must stay deleted; re-adding it must fail like any other unpinned tool
@@ -178,12 +184,12 @@ jq '.excluded += [{"bench":"verification/common/tb_lut4_slice.v","status":"x","r
 mv "$benches.new" "$benches"
 expect_fail "(o) bench both run and excluded" "both run and excluded"
 
-# (p) the ICARUS_VERSION env value emptied. The bare key does NOT reach
-# this path -- the pin regex needs at least one captured character, so a
-# bare key falls to the already-netted (g) 'not found' path
+# (p) the action's icarus-version default emptied. An absent default
+# line is the separate (s) path; `default: ""` is what reaches the
+# empty-value branch
 stage_fixture
-sed -i 's/^\([ \t]*\)ICARUS_VERSION:.*/\1ICARUS_VERSION: ""/' "$wf"
-expect_fail "(p) ICARUS_VERSION env value emptied" "has an empty value"
+sed -i 's/^\([ \t]*\)default:.*/\1default: ""/' "$action"
+expect_fail "(p) icarus-version default emptied" "has an empty value"
 
 # (q) the 'Stamped benches' run line made a block scalar
 stage_fixture
@@ -196,4 +202,15 @@ stage_fixture
 sed -i '\|^[ \t]*run: python3 -I verification/runner.py --vvp verification/item9/benches.json$|d' "$wf"
 expect_fail "(r) 'Stamped benches' run line removed" "has no run: line"
 
-echo "test-inventory-guard: baseline + 18 perturbation cases passed"
+# (s) the action's icarus-version default line removed; the input block
+# scan ends without a default to assert the attested pin against
+stage_fixture
+sed -i '/^\([ \t]*\)default:/d' "$action"
+expect_fail "(s) icarus-version default removed" "has no default"
+
+# (t) the shared action deleted outright; the guard has no pin source
+stage_fixture
+rm "$action"
+expect_fail "(t) setup-icarus action deleted" "action.yml not found"
+
+echo "test-inventory-guard: baseline + 20 perturbation cases passed"
