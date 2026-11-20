@@ -3,6 +3,75 @@
 Toolchain bring-up only. Nothing here designs the tile; the library, variant
 and metal stack the tile uses are decided in the spec (#2).
 
+## The one-command blinky demo (issue #144)
+
+```bash
+./flow/blinky.sh
+```
+
+A newcomer's reproducible path: a blinky goes from RTL (`blinky.v`) through
+Yosys and `nextpnr-generic` to a bitstream, and the bitstream is loaded into
+the simulated fabric where the stamped self-checking bench confirms the
+output blinks (reset to 0, then a toggle on every clock edge; period = two
+input clocks, in fabric clock cycles). The command exits nonzero unless the
+bench reports its terminal PASS line, so a bitstream that does not blink
+fails. The bench's built-in negative control (`+mutate`) flips every used
+routing-select / BEL bit of the loaded stream and requires every flip to be
+detected — a zeroed or broken bitstream cannot pass.
+
+The flow is **not re-written here**: it is stamped verbatim from
+`sky130-fpga` at the `reuse.lock.json` commit into `flow/common/`
+(ADR-0005), and this repo's `flow/blinky.sh` runs it unmodified from a
+throwaway staged layout under `flow/build/` (symlinks to the vendored trees;
+nothing vendored is edited, no generated file lands in a tracked path).
+Regenerated model outputs are byte-compared against the committed stamped
+fixtures (`verification/common/bitstream/`), and the assembled frame stream
+is byte-compared with FABulous's own `bit_gen`.
+
+**Experimental harness, functional result only.** The demo runs the
+experimental single-LOGIC4 harness (upstream `sim/README.md` status), not
+the ratified fabric; it makes no timing claim — "wall clock" below is tool
+time on the stated machine, not a fabric speed figure.
+
+### Prerequisites
+
+On `PATH`, checked and never skipped (a missing tool exits 2): `python3`
+(with tkinter — FABulous imports it at module load), `uv`, `curl`, `tar`,
+`sha256sum`, `timeout`, `iverilog`, `vvp`. The first run also downloads the
+pinned OSS CAD Suite (~750 MB, sha256-verified) into `flow/build/dl/` and
+the pinned FABulous into a throwaway venv under `flow/build/`; nothing is
+installed host-wide, and later runs reuse both.
+
+### Measured wall clock and tool versions
+
+Machine class: shared dispatch worker, 16 vCPU Intel Xeon Platinum 848C,
+Ubuntu 24.04, Python 3.12.3, fast network. The machine-readable record behind these
+figures — written by the command itself on every successful run — is
+[`records/blinky.json`](records/blinky.json); the committed copy is
+the 2026-11-20 cold run. CI
+(`.github/workflows/verification.yml`, `blinky` job) runs the same command
+so a stale figure fails a check rather than silently drifting.
+
+Wall clock measured 2026-11-20 on the machine class above — a **shared**
+host, so the figures vary with co-tenant load (quiet-host runs first; the
+loaded figure was observed at load average well above the core count):
+
+| | wall clock | tool fetch |
+|---|---|---|
+| Cold (first run, empty `flow/build/`) | 54–64 s quiet, 133 s loaded | ~750 MB OSS CAD Suite + FABulous venv (download + network-dependent) |
+| Warm (tools cached) | 16 s quiet, 67–80 s loaded | none |
+
+| Tool | Version (pinned by the stamped `flow/common/tool_versions.sh`) |
+|---|---|
+| yosys | 0.69+260 (OSS CAD Suite 2026-10-08, sha256-pinned) |
+| nextpnr-generic | nextpnr-0.11.1-54-g861c57be |
+| FABulous | 2.2.0 |
+| Icarus Verilog | 14.0 (devel) — the OSS CAD Suite build the flow unpacks and runs the benches with; the host Icarus (13.0 here) only satisfies the pre-unpack PATH check |
+| uv / python3 | 0.13.5 / 3.12.3 (host, recorded in `records/blinky.json`) |
+
+The pins are verified at run time: `flow/blinky.sh` fails if the yosys or
+nextpnr it unpacks does not match the recorded version strings.
+
 ## Cold start (one command)
 
 ```bash

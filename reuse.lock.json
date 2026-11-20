@@ -3,10 +3,76 @@
   "mode": "vendored",
   "source": {
     "repo": "2AMLogic/sky130-fpga",
-    "commit": "42a8db00e138aa892a388b077a8ae2ea2ccab511"
+    "commit": "3af524cd5d4369317d3ca1e4ef50569705ad38b1"
   },
   "divergence_policy": "A vendored file diverges from its source only with a decision record under spec/decisions/.",
   "files": [
+    {
+      "path": "flow/common/_modload.py",
+      "source_path": "flow/_modload.py",
+      "source_blob": "ac479da186f8f062aa996145270fb7c3286c196f",
+      "sha256": "e3c8b91d4d054940f79c35e00251b1a859cc31e34b881704e2a53235de7d8dcd"
+    },
+    {
+      "path": "flow/common/blinky.sh",
+      "source_path": "flow/blinky.sh",
+      "source_blob": "e22fd9578f28f77ed8c485bf9b0b9b18d8356e60",
+      "sha256": "c9a9cd783c7da554f340582e0f84195b8ead37cf7b91f7f857adce07e24732db"
+    },
+    {
+      "path": "flow/common/configmem_bad_inputs.py",
+      "source_path": "flow/configmem_bad_inputs.py",
+      "source_blob": "70bdf11ecf5c3044dd41342cbc53a697da2c8aeb",
+      "sha256": "0f57e00005b95e10ed1b05d11b7b511ed2be0128156977f2ac46655b6f910500"
+    },
+    {
+      "path": "flow/common/configmem_frames.py",
+      "source_path": "flow/configmem_frames.py",
+      "source_blob": "a1e4e9ecfab8e0c15dd46b428083686a920b68e7",
+      "sha256": "c1a2b5aca673dbfada8d57617d49ce22393c0144636b925fa6f4db5e43f4bb3c"
+    },
+    {
+      "path": "flow/common/fabulous.sh",
+      "source_path": "flow/fabulous.sh",
+      "source_blob": "125ea6b94f94c9c553c53e3ef24b3770ed1f071b",
+      "sha256": "092cb923cee89d917d1da57429b922a2cd0cd415167add3b1d7bd44bcb5c1f0c"
+    },
+    {
+      "path": "flow/common/fabulous_summary.py",
+      "source_path": "flow/fabulous_summary.py",
+      "source_blob": "52ec0955ede89600d761ae938fb85d47cf00b67f",
+      "sha256": "cbde18baee1792cbf9ff86b23ddbba4e3320e3a59ddac0f10e3cc8cc0723bacb"
+    },
+    {
+      "path": "flow/common/fasm_to_bitstream.py",
+      "source_path": "flow/fasm_to_bitstream.py",
+      "source_blob": "ef9482c3df08f1203e5bb77898d3cdfdf391bab1",
+      "sha256": "b3d51401f465ba5694c755607caa5ec9615816eea1d92d84ce51658e437b386a"
+    },
+    {
+      "path": "flow/common/gate_sim_verdict.sh",
+      "source_path": "flow/gate_sim_verdict.sh",
+      "source_blob": "8b41ab7659280ffaff19b0bcb65f4911ef82be90",
+      "sha256": "ea20d927f443ccbdc54f41ead69350db7679935340770c3a62971c9106ec87ae"
+    },
+    {
+      "path": "flow/common/nextpnr_io_overlay.py",
+      "source_path": "flow/nextpnr_io_overlay.py",
+      "source_blob": "143dd545841ce89ef9a97f81a84d8c213e4bfca7",
+      "sha256": "a6ce95fe8b6d393e73a744ca2dc8314198bcc5ec348e23bf5e48b876d0e46c9c"
+    },
+    {
+      "path": "flow/common/test_configmem_frames.py",
+      "source_path": "flow/test_configmem_frames.py",
+      "source_blob": "14e7cadf503d724d01e15e57f18a9d783f3827e9",
+      "sha256": "d9cd71f817fb1f45b6c430c0508ec298c4c622738c42a8e2dc2356634b5899d1"
+    },
+    {
+      "path": "flow/common/tool_versions.sh",
+      "source_path": "flow/tool_versions.sh",
+      "source_blob": "6a197b8c55310f184c6a84337087e886548144ba",
+      "sha256": "c1a5ef0ab8694c8b6280ebd7d5af07882a3656ee15b1b50a1d490157a653f45d"
+    },
     {
       "path": "rtl/common/fabulous/.FABulous/.env",
       "source_path": "design/fabulous/.FABulous/.env",
@@ -222,6 +288,24 @@
       "source_path": "design/fabulous/fabric.csv",
       "source_blob": "e421a5c35553d76cfd4a96d3fe804d0d60eaad91",
       "sha256": "351d92bbe22836f40c277db5743ea1d563263f7aff99d7b22a2c3348bb78faca"
+    },
+    {
+      "path": "rtl/common/fabulous/generator.log",
+      "source_path": "design/fabulous/generator.log",
+      "source_blob": "1c21f1ee07bd08bd428c395b829acc047e670abb",
+      "sha256": "aea1fae3e2005b27ae47fc14e550cc8466ea8115ad8a7a2d9ac022e5ce01f85c"
+    },
+    {
+      "path": "rtl/common/fabulous/nextpnr/blinky.pcf",
+      "source_path": "design/fabulous/nextpnr/blinky.pcf",
+      "source_blob": "07afadf38aadff350a190eccdb4d34bf1afe427b",
+      "sha256": "c1bf543e9ad65eac0acb5a55634027eefd49fc96b16c1f1de6f7fffe084125b8"
+    },
+    {
+      "path": "rtl/common/fabulous/nextpnr/blinky.v",
+      "source_path": "design/fabulous/nextpnr/blinky.v",
+      "source_blob": "bff9ca1c322b881eefdc91415fa8d17157763382",
+      "sha256": "3ce5869ef9457980860e1e9ff0dbb8005519618826b8042587fb98f76dc29c7e"
     },
     {
       "path": "rtl/common/fabulous/nextpnr/cells_map.v",
@@ -974,6 +1058,18 @@
       "sha256": "d4206bff82527feb86de2aa14d941469b08a16b296f2e71767b4bb58a1bad857"
     },
     {
+      "path": "verification/common/bitstream_corrupt.py",
+      "source_path": "sim/bitstream_corrupt.py",
+      "source_blob": "67c17b1b63f278c1935b96e816933d8c227c67a5",
+      "sha256": "d499b6bc14ee70214ebe4dd454414a4f96479d615ecbc892a23ad1b204e2c22d"
+    },
+    {
+      "path": "verification/common/bitstream_load.vh",
+      "source_path": "sim/bitstream_load.vh",
+      "source_blob": "7d416587cf4055c78342c045fc738b6c0d9cc45a",
+      "sha256": "800e3821aa8085fe910a693ea502888d9fd4d02cd49a51895187ea7271ac3cbd"
+    },
+    {
       "path": "verification/common/switch_matrix_tb_gen.vh",
       "source_path": "sim/switch_matrix_tb_gen.vh",
       "source_blob": "5a0433f4574c299e737564d72252189ecb800be3",
@@ -988,8 +1084,8 @@
     {
       "path": "verification/common/tb_ctrl_route.v",
       "source_path": "sim/tb_ctrl_route.v",
-      "source_blob": "f4635aa5cb04db699c78e68e9a1ec1fb679cf43b",
-      "sha256": "a1c6a55b773c1510d980f5d1ff88ba79e509db1b7b64c4e4be229d26c869f603"
+      "source_blob": "9e3776b3499d21400ee6f12eda304aa65679af97",
+      "sha256": "f72b280abbfe83f9bc76f431677992a1fdb46dc2f4830316195f50af754111e0"
     },
     {
       "path": "verification/common/tb_logic_tile.v",
@@ -1000,8 +1096,8 @@
     {
       "path": "verification/common/tb_logic_tile_bitstream.v",
       "source_path": "sim/tb_logic_tile_bitstream.v",
-      "source_blob": "d12e904b39dd8b4d51336cc5aec5b803382bf071",
-      "sha256": "20b42058541902130769c0e4791462fc585e4edcd7632a2b0635ebd20d43e1f9"
+      "source_blob": "2e4798a00f0645ab451f575281407997bd9d8cca",
+      "sha256": "660d2697e9b9292dfca7692cb65b2623d3466589513efce4a4b8bd658909e81a"
     },
     {
       "path": "verification/common/tb_logic_tile_gapfill.v",
@@ -1024,20 +1120,20 @@
     {
       "path": "verification/common/tb_lut_basis.v",
       "source_path": "sim/tb_lut_basis.v",
-      "source_blob": "7345ec1bc0a14f794e44092bf1a67241f8981d22",
-      "sha256": "45a7d48b418e09ce2264a8cbce20cfb757fff9140ee5369aa0b347a7913fdfd8"
+      "source_blob": "2b570772fa214843148de71a993a9ad2702e4b11",
+      "sha256": "b7e6a554ee7d1894b2af4e25eb0b19b7a88924da99b002052111b607410d7211"
     },
     {
       "path": "verification/common/tb_output_route.v",
       "source_path": "sim/tb_output_route.v",
-      "source_blob": "11b69ecb53cd3b03bb6be956863a308e655f4226",
-      "sha256": "ca6245b6c413371fe90f75eb1d134c9e8ebc154ccd6710a1a3736ef6817972b8"
+      "source_blob": "3c1d13c7c783835af6f9fb60ff6f77b52df67e8b",
+      "sha256": "855d4e0c0442fa64059d293a1c585a3630db0d101496158749cbbd4fc01f7ca1"
     },
     {
       "path": "verification/common/tb_route_diag.v",
       "source_path": "sim/tb_route_diag.v",
-      "source_blob": "cb6537ee0aa6e7245822d5d16fd34f0ab8e5e0c2",
-      "sha256": "5500be2c541dbaa48f990a2c431222237d104b58dcb06b3c4cd1b3145cb7214a"
+      "source_blob": "9ece19c0695a14f31fd738280d2e6f59cc1dcc33",
+      "sha256": "52335e977d65fbdbc9e365fec4fcdc68fb50797da4f82aec09548b7ea4e56ccc"
     },
     {
       "path": "verification/common/tb_switch_matrix.v",

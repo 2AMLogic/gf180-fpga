@@ -16,7 +16,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-VENDORED_DIRS = ("rtl/common", "verification/common")
+VENDORED_DIRS = ("rtl/common", "verification/common", "flow/common")
 
 
 def git_blob_id(data: bytes) -> str:

@@ -1,0 +1,34 @@
+{
+  "_comment": "Written by ./flow/blinky.sh on every successful run (issue #144). The staged flow verified yosys/nextpnr against the pins at run time; the benches run under the OSS CAD Suite's iverilog (tools.iverilog; the host iverilog recorded as iverilog_host_prereq only satisfies the staged script's PATH check before the suite is unpacked). Wall clock is tool wall-clock on this machine, not a fabric timing claim.",
+  "schema": "blinky-record/1",
+  "date_utc": "2026-11-20T08:20:23+00:00",
+  "command": "./flow/blinky.sh",
+  "source": {
+    "repo": "2AMLogic/sky130-fpga",
+    "commit": "3af524cd5d4369317d3ca1e4ef50569705ad38b1",
+    "stamped_flow": "flow/common/ (ADR-0005)"
+  },
+  "harness": "experimental single-LOGIC4 (not the ratified fabric); functional bitstream-level result only, no timing claim",
+  "tools": {
+    "yosys": "0.69+260",
+    "nextpnr_generic": "nextpnr-0.11.1-54-g861c57be",
+    "oss_cad_suite": {
+      "tag": "2026-10-08",
+      "tarball": "oss-cad-suite-linux-x64-20261008.tgz",
+      "sha256": "8fa59d93d6cadbbee352077c059f2c5b72cda301e4508d9064a23d1ec11579c7"
+    },
+    "FABulous": "2.2.0",
+    "iverilog": "14.0",
+    "iverilog_host_prereq": "13.0",
+    "uv": "0.13.5",
+    "python3": "3.12.3"
+  },
+  "wall_clock_s": 133,
+  "tool_fetch": "fetched-this-run",
+  "bitstream_sha256": "bb8ce321852018754b9e81511ee891bbe28efef8734e718cc04a8aaee8bf6a98",
+  "machine": {
+    "os": "Linux-7.0.0-1014-aws-x86_64-with-glibc2.39",
+    "cpu": "x86_64",
+    "nproc": 16
+  }
+}
