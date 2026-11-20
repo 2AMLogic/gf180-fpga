@@ -140,3 +140,20 @@ observed simulator version against the shared pin instead of a hardcoded
   (live, 2026-11-20; `attest item 9: cold_start ok in 70.1s`, Icarus
   13.0 on PATH). No evidence was relaxed; the entries above are
   historical.
+
+## 2026-11-20 — Re-attestation after merging `origin/main` (e5b862b) into the #154 branch
+
+- Why: `main` gained the `blinky` job and moved
+  `verification/common/tb_logic_tile_bitstream.v` (item 9 testbench hash).
+  The merged `.github/workflows/verification.yml` hashes to a value neither
+  side attested, so the item 10 envelope was re-rendered, not textually
+  merged. The `blinky` job's own duplicate Icarus cache/build steps (which
+  read the workflow-level `ICARUS_VERSION` this PR deletes) were replaced by
+  `./.github/actions/setup-icarus`.
+- Command: `manifests/run-signoff.sh` (write mode, PDK-equipped host, pinned
+  klayout-tools via `flow/klt.sh`); item 2 stream unchanged, regeneration
+  claim carried over.
+- Result: `manifests/run-signoff.sh --check` exits 0 ("Committed item 1, 2, 9
+  and 10 envelopes and signoff record reproduce"); `inventory.py --check`
+  reports up to date; `test-inventory-guard.sh` passes baseline + 20 cases.
+  No evidence was relaxed; earlier entries are historical.

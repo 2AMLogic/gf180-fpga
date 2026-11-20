@@ -84,6 +84,11 @@ and re-verified → shuttle seat → measured silicon.
   the fabric.
 - **Physical design**: OpenROAD place-and-route; layout, DRC, LVS and STA
   through klayout-tools (`klt`).
+- **One-command demo**: `./flow/blinky.sh` takes a blinky from RTL to a
+  bitstream to a simulated blink, open tools only, from a clean clone — the
+  newcomer's path, with the measured wall clock and tool versions in
+  [`flow/README.md`](flow/README.md) (experimental single-tile harness; a
+  functional bitstream-level result, no timing claim).
 
 ## Repo layout
 

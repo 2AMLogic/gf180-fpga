@@ -1,0 +1,267 @@
+#!/usr/bin/env bash
+# flow/fabulous.sh -- run the pinned FABulous generator on design/fabulous/.
+#
+# Spec gap G1 (spec/framework-gaps.md). Builds a throwaway venv under
+# flow/build/ (never a host-wide install), installs the pinned FABulous
+# release, copies design/fabulous/ to a scratch dir so no generated file lands
+# in the source tree, runs `load_fabric; run_FABulous_fabric`, then
+#   * writes the generator log to design/fabulous/generator.log (committed
+#     evidence; ANSI/paths normalized), and
+#   * runs flow/fabulous_summary.py to print the emitted file list and
+#     config-bit layout, and an iverilog equivalence run of the FABulous BEL
+#     against design/rtl/lut4_slice.v, and a differential iverilog run of the
+#     FABulous switch matrix against design/rtl/logic_tile_switch_matrix.v
+#     (generated output stays in flow/build/, never committed), the ConfigMem
+#     storage check, and flow/generated_tile_replay.sh: committed streams
+#     replayed through the integrated generated LOGIC4 tile (issue #140).
+#
+# Usage: flow/fabulous.sh [--update-log]
+#   default       run, print summary, diff the normalized log against the
+#                 committed one (exit 1 on drift)
+#   --update-log  rewrite design/fabulous/generator.log
+set -euo pipefail
+
+REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+# shellcheck source=flow/tool_versions.sh
+source "$REPO/flow/tool_versions.sh"
+# simulation wall-clock budget helpers (issue #157): SIM_TIMEOUT_SECONDS /
+# SIM_KILL_AFTER_SECONDS bound every vvp run below and in generated_tile_replay.sh
+# shellcheck source=flow/gate_sim_verdict.sh
+source "$REPO/flow/gate_sim_verdict.sh"
+gs_budget_check || exit 1
+
+BUILD="$REPO/flow/build"
+VENV="$BUILD/fab-venv"
+RUN="$BUILD/fabulous-run"
+export UV_CACHE_DIR="$BUILD/uv-cache"   # keep uv's cache out of ~/.cache
+mkdir -p "$BUILD"
+
+if [[ ! -x "$VENV/bin/FABulous" ]] || \
+   [[ "$("$VENV/bin/FABulous" --version 2>&1 | awk '{print $NF}')" != "$RECORDED_FABULOUS_VERSION" ]]; then
+    uv venv "$VENV"
+    uv pip install --python "$VENV/bin/python" "fabulous-fpga==${RECORDED_FABULOUS_VERSION}"
+fi
+echo "=== FABulous $("$VENV/bin/FABulous" --version 2>&1 | tail -1) (pinned ${RECORDED_FABULOUS_VERSION}) ==="
+
+rm -rf "$RUN"
+mkdir -p "$RUN"
+cp -r "$REPO/design/fabulous/." "$RUN/"
+rm -f "$RUN/generator.log"
+
+RAW="$BUILD/fabulous-raw.log"
+( cd "$RUN" && "$VENV/bin/FABulous" -p . script FABulous.tcl ) >"$RAW" 2>&1 || {
+    echo "FABulous generator FAILED; see $RAW" >&2; tail -20 "$RAW" >&2; exit 1; }
+
+# Normalize (order-independent, see below): strip ANSI, rewrite absolute scratch path, drop host tool-probe lines.
+NORM="$BUILD/fabulous-norm.log"
+sed -e 's/\x1b\[[0-9;]*m//g' -e "s#$RUN#<project>#g" "$RAW" \
+  | grep -v -E 'Resolved .* path|not found in PATH|PDK_root' \
+  | python3 -c '
+import sys
+# FABulous 2.2.0 emits tiles in set/hash order (nondeterministic run to run),
+# so the committed log is the sorted unique line set, with the tile-name list
+# on "Generating tile ..." lines sorted too.
+out = set()
+for l in sys.stdin.read().splitlines():
+    if l.startswith("INFO | Generating tile "):
+        l = "INFO | Generating tile " + " ".join(sorted(l.split()[4:]))
+    out.add(l)
+print("\n".join(sorted(out)))' > "$NORM"
+
+python3 "$REPO/flow/fabulous_summary.py" "$RUN"
+
+echo "=== BEL equivalence (iverilog) ==="
+iverilog -g2005 -o "$BUILD/bel_tb" \
+    "$REPO/design/fabulous/tb_lut4_ff_bel_equiv.v" \
+    "$REPO/design/fabulous/Tile/LOGIC4/lut4_ff_bel.v" \
+    "$REPO/design/rtl/lut4_slice.v"
+gs_run_bounded_tee "BEL equivalence bel_tb" "$BUILD/bel_tb.out" vvp "$BUILD/bel_tb" \
+    || { echo "error: BEL equivalence run failed (see $BUILD/bel_tb.out)" >&2; exit 1; }
+grep -q '^PASS' "$BUILD/bel_tb.out"
+
+# Switch-matrix differential check (issue #96): the FABulous-generated
+# LOGIC4_switch_matrix.v lives only in the gitignored scratch dir ($RUN).
+echo "=== switch-matrix equivalence (iverilog) ==="
+iverilog -g2005 -o "$BUILD/sm_tb" \
+    "$REPO/design/fabulous/tb_switch_matrix_equiv.v" \
+    "$RUN/Tile/LOGIC4/LOGIC4_switch_matrix.v" \
+    "$REPO/design/rtl/logic_tile_switch_matrix.v"
+gs_run_bounded_tee "switch-matrix equivalence sm_tb" "$BUILD/sm_tb.out" vvp "$BUILD/sm_tb" \
+    || { echo "error: switch-matrix equivalence run failed (see $BUILD/sm_tb.out)" >&2; exit 1; }
+grep -q '^PASS: switch_matrix_fabulous_equiv' "$BUILD/sm_tb.out"
+
+# ConfigMem storage differential check (issue #136): the FABulous-generated
+# LOGIC4_ConfigMem.v (+ its config_latch model) is driven through its real
+# FrameData/FrameStrobe interface and compared with the recorded map
+# sim/bitstream/logic4_configmem.map, then the committed baseline streams'
+# frame payloads are replayed and compared with their recorded .cfg vectors.
+# FRAME STORAGE ONLY -- not a hardware serial receiver. Fails on compile error
+# or missing PASS; four scratch mutations (frame select, output mapping,
+# rising-edge and falling-edge storage in place of the transparent latch) must FAIL; the
+# edge-storage ones must be caught by the transparent-open phase (issue #195).
+echo "=== ConfigMem storage equivalence (iverilog) ==="
+CM_V="$RUN/Tile/LOGIC4/LOGIC4_ConfigMem.v"
+CM_VEC="$BUILD/configmem_vectors.txt"
+# adapter unit tests (issue #169): malformed streams must be rejected, valid ones sliced unchanged
+python3 "$REPO/flow/test_configmem_frames.py" >"$BUILD/test_configmem_frames.log" 2>&1 \
+    || { cat "$BUILD/test_configmem_frames.log" >&2; echo "error: ConfigMem adapter unit tests failed" >&2; exit 1; }
+grep -q '^OK' "$BUILD/test_configmem_frames.log"
+echo "PASS: test_configmem_frames ($(grep -o '^Ran [0-9]* tests' "$BUILD/test_configmem_frames.log"), 0 failures)"
+# strict adapter: a rejected stream exits nonzero (set -e) and leaves no vector file content
+python3 "$REPO/flow/configmem_frames.py" "$REPO/sim/bitstream" > "$CM_VEC" \
+    || { echo "error: ConfigMem frame adapter rejected a committed stream (see stderr above)" >&2; exit 1; }
+cm_run() {  # $1 = ConfigMem file, $2 = output prefix, $3 = models file (default: generated); nonzero = did not complete
+    iverilog -g2005 -o "$2_tb" "$REPO/design/fabulous/tb_configmem_equiv.v" "$1" \
+        "${3:-$RUN/Fabric/models_pack.v}" || return 1
+    gs_run_bounded_tee "ConfigMem equivalence $(basename "$2")" "$2.out" \
+        vvp "$2_tb" +map="$REPO/sim/bitstream/logic4_configmem.map" +vec="$CM_VEC"
+}
+cm_run "$CM_V" "$BUILD/cm" || { echo "error: ConfigMem equivalence run failed (see $BUILD/cm.out)" >&2; exit 1; }
+[[ "$(gs_classify_configmem 0 "$BUILD/cm.out")" == PASS ]] \
+    || { echo "error: ConfigMem baseline is not a single completed PASS summary (see $BUILD/cm.out)" >&2; exit 1; }
+grep -q 'transparent-open: [1-9][0-9]* frames, 158/158 mapped bits changed under asserted strobe' "$BUILD/cm.out" \
+    || { echo "error: transparent-open phase did not report full mapped-bit coverage (see $BUILD/cm.out)" >&2; exit 1; }
+# the pinned generated config_latch must be level-sensitive (always @(*) if (E)), not edge-triggered
+python3 - "$RUN/Fabric/models_pack.v" <<'PYEOF'
+import re, sys
+m = re.search(r"module config_latch\b.*?endmodule", open(sys.argv[1]).read(), re.S)
+assert m, "config_latch not found in generated models_pack.v"
+b = m.group(0)
+assert re.search(r"always\s*@\(\s*\*\s*\)", b) and not re.search(r"posedge|negedge", b), \
+    "generated config_latch is not a level-sensitive latch"
+PYEOF
+# (issue #196 / PR #198 review) broken bench inputs against the UNMODIFIED
+# ConfigMem must be setup ERRORs classified INFRA -- never a functional FAIL
+# that a mutant run could count as a kill.
+echo "--- ConfigMem bench input failures (each must be INFRA, not a kill) ---"
+: > "$BUILD/cm_vec_empty.txt"
+awk '/^S/{n++} n<2' "$CM_VEC" > "$BUILD/cm_vec_one.txt"
+for c in "missing:$BUILD/cm_vec_nonexistent.txt" "empty:$BUILD/cm_vec_empty.txt" "one-stream:$BUILD/cm_vec_one.txt"; do
+    rm -f "$BUILD/cm_vec_nonexistent.txt"
+    rc=0; gs_run_bounded "ConfigMem input ${c%%:*}" "$BUILD/cm_in_${c%%:*}.out" \
+        vvp "$BUILD/cm_tb" +map="$REPO/sim/bitstream/logic4_configmem.map" +vec="${c#*:}" || rc=$?
+    verdict="$(gs_classify_configmem "$rc" "$BUILD/cm_in_${c%%:*}.out")"
+    if [[ "$verdict" != INFRA ]] || ! grep -q '^ERROR: configmem_fabulous_equiv setup:' "$BUILD/cm_in_${c%%:*}.out"; then
+        echo "error: ConfigMem bench with ${c%%:*} vector file gave '$verdict', not a setup ERROR / INFRA (see $BUILD/cm_in_${c%%:*}.out)" >&2
+        exit 1
+    fi
+    echo "input '${c%%:*}' vector file -> $verdict: $(grep '^ERROR: configmem' "$BUILD/cm_in_${c%%:*}.out")"
+done
+# (issue #200) malformed transaction records and maps (flow/configmem_bad_inputs.py:
+# short/extra fields, bad tags/numbers/widths, out-of-range or duplicate/missing
+# frames, F before S, truncated streams, trailing input, non-bijective or malformed
+# maps) must each terminate as a setup ERROR with no summary; its positive controls
+# (frame order permuted inside each stream, no final newline) must still PASS.
+CM_BAD="$BUILD/cm_bad_inputs"
+rm -rf "$CM_BAD"
+python3 "$REPO/flow/configmem_bad_inputs.py" "$CM_VEC" "$REPO/sim/bitstream/logic4_configmem.map" "$CM_BAD" \
+    > "$BUILD/cm_bad_inputs.lst"
+n_bad=0; n_good=0
+while read -r expect kind name vecf mapf; do
+    o="$CM_BAD/$expect-$kind-$name.out"
+    rc=0; gs_run_bounded "ConfigMem input $kind $name" "$o" vvp "$BUILD/cm_tb" +map="$mapf" +vec="$vecf" || rc=$?
+    if [[ "$expect" == bad ]]; then
+        gs_configmem_is_setup_error "$rc" "$o" || {
+            echo "error: ConfigMem bench with malformed $kind '$name' gave '$(gs_classify_configmem "$rc" "$o")' (rc=$rc), not a setup ERROR with no summary (see $o)" >&2; exit 1; }
+        n_bad=$((n_bad + 1))
+    else
+        [[ "$(gs_classify_configmem "$rc" "$o")" == PASS ]] || {
+            echo "error: ConfigMem bench rejected valid $kind control '$name' (see $o)" >&2; exit 1; }
+        n_good=$((n_good + 1))
+    fi
+done < "$BUILD/cm_bad_inputs.lst"
+echo "malformed inputs: $n_bad/$n_bad setup ERROR -> INFRA (no summary); valid controls: $n_good/$n_good PASS"
+grep -h '^ERROR: configmem' "$CM_BAD/bad-vec-truncated-2nd-stream.out"
+echo "--- scratch mutations of the generated ConfigMem (each must be caught) ---"
+# (1) frame select: bit of frame 2 latched by frame 3's strobe
+python3 - "$CM_V" "$BUILD/cm_mut_select.v" "$BUILD/cm_mut_map.v" <<'PYEOF'
+import re, sys
+src = open(sys.argv[1]).read()
+a = re.sub(r"(Inst_frame2_bit5 \(\s*\.D\(FrameData\[5\]\),\s*\.E\()FrameStrobe\[2\]", r"\1FrameStrobe[3]", src, count=1)
+b = src
+for x, y in (("ConfigBits[100]", "ConfigBits[@@]"), ("ConfigBits[101]", "ConfigBits[100]"), ("ConfigBits[@@]", "ConfigBits[101]")):
+    b = b.replace(x, y)
+b = b.replace("ConfigBits_N[100]", "ConfigBits_N[@@]").replace("ConfigBits_N[101]", "ConfigBits_N[100]").replace("ConfigBits_N[@@]", "ConfigBits_N[101]")
+assert a != src and b != src
+open(sys.argv[2], "w").write(a); open(sys.argv[3], "w").write(b)
+PYEOF
+# (2) storage kind (issue #195): scratch copies of models_pack.v whose config_latch is
+# rising-edge / falling-edge storage instead of a transparent latch. ConfigMem is unmodified.
+python3 - "$RUN/Fabric/models_pack.v" "$BUILD/cm_models_rise.v" "$BUILD/cm_models_fall.v" <<'PYEOF'
+import re, sys
+src = open(sys.argv[1]).read()
+m = re.search(r"module config_latch\b.*?endmodule", src, re.S)
+assert m
+for out, edge in ((sys.argv[2], "posedge"), (sys.argv[3], "negedge")):
+    mod = ("module config_latch (input wire D, E, output reg Q, QN);\n"
+           "    always @(%s E) begin Q <= D; QN <= ~D; end\n"
+           "endmodule" % edge)
+    open(out, "w").write(src.replace(m.group(0), mod))
+PYEOF
+cp "$CM_V" "$BUILD/cm_mut_rise.v"; cp "$CM_V" "$BUILD/cm_mut_fall.v"
+for m in select map rise fall; do
+    # a mutation is caught only by a COMPLETED run reporting FAIL: a compile error,
+    # simulator error or wall-clock timeout (issue #157) is an infrastructure failure
+    mdl=""; case "$m" in rise) mdl="$BUILD/cm_models_rise.v";; fall) mdl="$BUILD/cm_models_fall.v";; esac
+    rc=0; cm_run "$BUILD/cm_mut_$m.v" "$BUILD/cm_mut_$m" $mdl >/dev/null 2>"$BUILD/cm_mut_$m.err" || rc=$?
+    if [[ "$rc" -ne 0 ]]; then
+        cat "$BUILD/cm_mut_$m.err" >&2
+        echo "ConfigMem mutation '$m': run did not complete (rc=$rc; infrastructure failure, not a caught mutation; see $BUILD/cm_mut_$m.out)" >&2
+        exit 1
+    fi
+    # (issue #196) only a completed functional FAIL summary is a kill; setup
+    # errors, missing/duplicate/conflicting summaries are infrastructure failures
+    verdict="$(gs_classify_configmem "$rc" "$BUILD/cm_mut_$m.out")"
+    case "$verdict" in
+        FUNC_FAIL) ;;
+        PASS) echo "ConfigMem mutation '$m' was NOT caught" >&2; exit 1 ;;
+        *) echo "ConfigMem mutation '$m': no completed functional summary (infrastructure failure, not a caught mutation; see $BUILD/cm_mut_$m.out)" >&2; exit 1 ;;
+    esac
+    if [[ "$m" == rise || "$m" == fall ]]; then
+        # must be caught by the transparent-open phase specifically (completed functional verdict)
+        grep -Eq '^FAIL: configmem_fabulous_equiv -- .*\([1-9][0-9]* transparent-open failures' "$BUILD/cm_mut_$m.out" \
+            || { echo "ConfigMem mutation '$m' not caught by the transparent-open phase" >&2; exit 1; }
+    fi
+    echo "mutation '$m' caught: $(grep '^FAIL: configmem' "$BUILD/cm_mut_$m.out")"
+    # (issue #200) the same mutant fed a truncated second stream must still be a
+    # setup ERROR: malformed input never yields a summary, even on a broken DUT
+    rc=0; gs_run_bounded "ConfigMem mutation $m + truncated stream" "$BUILD/cm_mut_${m}_trunc.out" \
+        vvp "$BUILD/cm_mut_${m}_tb" +map="$REPO/sim/bitstream/logic4_configmem.map" \
+        +vec="$CM_BAD/vec_truncated-2nd-stream.txt" || rc=$?
+    gs_configmem_is_setup_error "$rc" "$BUILD/cm_mut_${m}_trunc.out" || {
+        echo "error: mutation '$m' with a truncated vector file was not a setup ERROR (see $BUILD/cm_mut_${m}_trunc.out)" >&2; exit 1; }
+done
+
+# Integrated generated-tile replay (issue #140): the component checks above
+# stay for diagnosis; this one instantiates the freshly generated LOGIC4 tile
+# (its generated ConfigMem, switch matrix and four BELs wired together by the
+# generator), loads every committed baseline/corpus/pin-experiment stream through
+# its real FrameData/FrameStrobe ports and checks it with the independent design
+# oracles of sim/tb_logic_tile_bitstream.v, side by side with the repository
+# composition. Scratch composition mutations (BEL config slice swap, EN/SR
+# swaps) must each produce a functional FAIL. It then runs the LUT basis
+# diagnostic (issue #172: every truth-table address of every BEL, assembler-
+# generated streams, sim/tb_lut_basis.v) with its own scratch mutants.
+# The control-jump route diagnostic (issue #181: every enable/reset directional
+# source through frame programming, sim/tb_ctrl_route.v) follows the same pattern,
+# as does the boundary output-track source diagnostic (issue #180: every output
+# edge/track/source tuple, sim/tb_output_route.v) and by the tile clock and frame
+# forwarding diagnostic (issue #188: UserCLKo, FrameData_O, FrameStrobe_O,
+# sim/tb_boundary_fwd.v).
+# EXPERIMENTAL; see sim/README.md.
+echo "=== generated-tile integrated replay (iverilog) ==="
+if [[ "${FABULOUS_SKIP_TILE_REPLAY:-0}" == 1 ]]; then
+    echo "SKIPPED: generated-tile replay (FABULOUS_SKIP_TILE_REPLAY=1, set by flow/nextpnr.sh; run flow/fabulous.sh directly for it)"
+else
+    "$REPO/flow/generated_tile_replay.sh" "$RUN" "$BUILD"
+fi
+
+if [[ "${1:-}" == "--update-log" ]]; then
+    cp "$NORM" "$REPO/design/fabulous/generator.log"
+    echo "updated design/fabulous/generator.log"
+elif ! diff -u "$REPO/design/fabulous/generator.log" "$NORM"; then
+    echo "generator log differs from committed design/fabulous/generator.log" >&2
+    exit 1
+else
+    echo "generator log matches committed copy"
+fi
