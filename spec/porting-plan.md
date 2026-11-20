@@ -72,6 +72,15 @@ Path mapping (`design/` and `sim/` in the sibling; `rtl/common/` and
 | `sim/*.v`, `sim/*.vh` | `verification/common/` |
 | `sim/bitstream/` | `verification/common/bitstream/` |
 
+**Amendment (2026-11-20, ADR-0005, issue #144):** the blinky flow closure is
+now also stamped: `flow/` (the scripts `flow/blinky.sh` sources or invokes)
+→ `flow/common/`, and `design/fabulous/generator.log` is stamped into
+`rtl/common/fabulous/` as the flow's model-drift diff target — the single
+exception to the "minus logs" exclusion below; every other log/`*results.txt`
+exclusion stands. `flow/` scripts are run unmodified from a throwaway staged
+layout (`flow/blinky.sh` in this repo, not vendored); the rest of the
+sibling's `flow/` remains deliberately not copied.
+
 The copied sources contain no sky130 reference (grepped at the pinned
 commit). Comments inside vendored files still use the sibling's paths; they are
 not edited.

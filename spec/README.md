@@ -22,6 +22,7 @@ citation namespace, so references carry the repo they mean:
   sits immediately before it. One qualifier covers every record number in
   the run that follows it (`` `sky130-fpga` ADR-0002, ADR-0003 `` names two
   sibling records).
-- Vendored files under `rtl/common/` and `verification/common/` are
+- Vendored files under `rtl/common/`, `verification/common/` and
+  `flow/common/` are
   `sky130-fpga`'s own text, held byte-identical by `reuse.lock.json`; they
   keep the sibling's citation usage and are exempt from this convention.
