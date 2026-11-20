@@ -109,6 +109,7 @@ fi
 # --- 1. extract: committed GDS -> SPEF (2026-11-05 options) -------------------
 scratch="$(mktemp -d)"
 klt extract layout/logic_tile_routed.gds \
+  --deck gf180mcu \
   --pdk gf180mcuD --pdk-root "$PDK_ROOT" \
   --parasitics --spef measurements/item5-24um/logic_tile_routed.spef \
   --def-net-names --def-net-connections layout/logic_tile_routed.def \
