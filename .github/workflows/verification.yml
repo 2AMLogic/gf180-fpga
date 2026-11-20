@@ -98,7 +98,8 @@ jobs:
         run: verification/lint_rtl.sh
 
   reuse-lock:
-    # Guards vendored rtl/common and verification/common (ADR-0001, ADR-0002):
+    # Guards vendored rtl/common, verification/common and flow/common (ADR-0001,
+    # ADR-0002, ADR-0005):
     # byte identity with the lock, and no unlisted vendored file.
     runs-on: ubuntu-24.04
     steps:
@@ -114,7 +115,11 @@ jobs:
           mkdir "$t/spec"
           cp spec/check_reuse_lock.py "$t/spec/"
           cp reuse.lock.json "$t/"
-          cp -r rtl verification "$t/"
+          # Copy every vendored root the lock names (derived, not hardcoded,
+          # so a newly vendored root is covered automatically).
+          for r in $(python3 -I -c 'import json;print("\n".join(sorted({f["path"].split("/")[0] for f in json.load(open("reuse.lock.json"))["files"]})))'); do
+            cp -r "$r" "$t/"
+          done
           f="$(python3 -I -c 'import json;print(json.load(open("reuse.lock.json"))["files"][0]["path"])')"
           python3 -I "$t/spec/check_reuse_lock.py"
           echo "// perturbed" >> "$t/$f"
