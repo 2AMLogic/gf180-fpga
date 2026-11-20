@@ -44,7 +44,7 @@ installed host-wide, and later runs reuse both.
 
 ### Measured wall clock and tool versions
 
-Machine class: shared dispatch worker, 16 vCPU Intel Xeon Platinum 848C,
+Machine class: shared dispatch worker, 16 vCPU Intel Xeon Platinum 8488C,
 Ubuntu 24.04, Python 3.12.3, fast network. The machine-readable record behind these
 figures — written by the command itself on every successful run — is
 [`records/blinky.json`](records/blinky.json); the committed copy is
