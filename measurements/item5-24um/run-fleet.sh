@@ -58,20 +58,53 @@ fi
 klt --version
 openroad -version || true
 
-# --- PDK: the image's bake-time root, asserted against the flow/pdk.json pin --
-# (pdk_revision_ok in flow/pdk-root.sh demands all four gf180mcu variants; the
-# heavy image ships gf180mcuD only, so this checks exactly what these runs
-# consume: gf180mcuD at the pinned open_pdks revision with the mcu7t5v0
-# library. The reports themselves record provenance.pdk.version.)
-PDK_ROOT="${PDK_ROOT:-/opt/pdk}"
+# --- PDK: the image's bake-time root if it carries the pin, else a ciel -----
+# bootstrap into a run-local store (the gf180-parasynth route_rerun.py pattern:
+# the deployed heavy AMI resolves no PDK_ROOT, and pdk_revision_ok in
+# flow/pdk-root.sh demands all four gf180mcu variants while an image ships a
+# subset -- so this checks exactly what these runs consume: gf180mcuD at the
+# pinned open_pdks revision with the mcu7t5v0 library, then falls back to
+# `ciel enable` with the repo's own pin. The reports themselves record
+# provenance.pdk.version.)
 rev="$(jq -er .open_pdks_revision flow/pdk.json)"
-lib="$(jq -er '.libraries[0]' flow/pdk.json)"
-src="$PDK_ROOT/gf180mcuD/SOURCES"
-[[ -f "$src" ]] || { echo "::error::no gf180mcuD under $PDK_ROOT" >&2; exit 2; }
-got="$(head -n1 "$src" | awk '{print $2}')"
-[[ "$got" == "$rev" ]] || { echo "::error::gf180mcuD is open_pdks $got, pin is $rev" >&2; exit 2; }
-[[ -d "$PDK_ROOT/gf180mcuD/libs.ref/$lib" ]] || { echo "::error::$lib missing under gf180mcuD" >&2; exit 2; }
-echo "PDK: $PDK_ROOT/gf180mcuD at open_pdks $rev ($lib present)"
+mapfile -t libs < <(jq -er '.libraries[]' flow/pdk.json)
+ciel_ver="$(jq -er .installer.version flow/pdk.json)"
+
+pdk_ok() {
+  local root="$1" src got l
+  src="$root/gf180mcuD/SOURCES"
+  [[ -f "$src" ]] || return 1
+  got="$(head -n1 "$src" | awk '{print $2}')"
+  [[ "$got" == "$rev" ]] || return 1
+  for l in "${libs[@]}"; do
+    [[ -d "$root/gf180mcuD/libs.ref/$l" ]] || return 1
+  done
+  return 0
+}
+
+PDK_ROOT="${PDK_ROOT:-/opt/pdk}"
+if pdk_ok "$PDK_ROOT"; then
+  echo "PDK: $PDK_ROOT/gf180mcuD at open_pdks $rev (image-baked)"
+else
+  command -v ciel >/dev/null 2>&1 || command -v uvx >/dev/null 2>&1 || {
+    echo "::error::neither a pinned PDK at $PDK_ROOT nor ciel/uvx to bootstrap one" >&2
+    exit 2
+  }
+  store="$(mktemp -d)/ciel-store"
+  if command -v ciel >/dev/null 2>&1; then
+    :
+  else
+    uvx --quiet --from "ciel==$ciel_ver" ciel --version >/dev/null
+    ciel() { uvx --quiet --from "ciel==$ciel_ver" ciel "$@"; }
+  fi
+  inc=()
+  for l in "${libs[@]}"; do inc+=(-l "$l"); done
+  echo "bootstrapping the pinned PDK into $store (ciel $ciel_ver, open_pdks $rev)"
+  ciel enable --pdk-root "$store" --pdk-family gf180mcu "${inc[@]}" "$rev"
+  PDK_ROOT="$store"
+  pdk_ok "$PDK_ROOT" || { echo "::error::bootstrapped PDK at $PDK_ROOT fails the pin check" >&2; exit 2; }
+  echo "PDK: $PDK_ROOT/gf180mcuD at open_pdks $rev (ciel bootstrapped)"
+fi
 
 # --- 1. extract: committed GDS -> SPEF (2026-11-05 options) -------------------
 scratch="$(mktemp -d)"
