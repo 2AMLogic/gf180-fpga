@@ -21,6 +21,7 @@ Judge-approved PRs under a hold (`loom:blocked` or `loom:operator`) — only a h
 `loom:important`; taken before unlabelled work.
 
 - **#161**: Item 5: bounded timing iteration for the two failing ss 1.62 V corners (synthesis is unconstrained and place-and-route targets tt_025C_5v00)
+- **#162**: Item 7 probe: emit per-corner SDFs from the routed tile with klt sta and run tb_logic_tile_routed SDF-annotated through klt functional-verification
 
 ## Ready
 
@@ -43,6 +44,7 @@ PRs waiting on Judge (`loom:review-requested`).
 
 - **#63**: feat(measurements): run six plusarg-free stamped benches through klt functional-verification
 - **#148**: Add generated cost-per-LUT4 estimate for the routed gf180mcu tile
+- **#167**: measurements: item5-timing-iteration — worst-path anatomy and six bounded variants at 20 ns; none closes 15/15
 
 ## Approved (Awaiting Merge)
 
@@ -79,10 +81,10 @@ _None._
 |------|-------|
 | Operator merge-risk holds | 2 |
 | Very important | 1 |
-| Important | 1 |
+| Important | 2 |
 | Ready (`loom:issue`) | 1 |
 | In Progress (`loom:building`) | 4 |
-| PRs awaiting review | 2 |
+| PRs awaiting review | 3 |
 | Approved PRs awaiting merge | 2 |
 | Curated | 7 |
 | Architect / Hermit proposals | 3 |
