@@ -35,10 +35,12 @@ per-cell-library table, keyed on `pdk.cell_library` — for
 endcap `gf180mcu_fd_sc_mcu7t5v0__endcap`), the effective value klt reports back
 as `power.tapcell_master` in `records/step0-par.json`. `flow/README.md`
 tabulates the same per-library value for the two smoke libraries. So the master
-this tile is built with is attested by the response, not held by the request;
+this tile is built with is attested by the response, not held by the request.
 klt 0.9.0 would let the request pin it (`library.tapcell.master`, which takes
-precedence over the built-in table), and whether this repo should do so is
-issue #93.
+precedence over the built-in table); this repo deliberately does not. The
+master stays tool-owned under the exact `klt_spec` pin and the pitch stays the
+one measured key — the decision and its rationale are ADR-0003
+(`spec/decisions/0003-tapcell-master-not-pinned.md`).
 
 ## Result: ladder step 0 closes, tap-distance clean (2026-11-14, klt 0.9.0)
 
