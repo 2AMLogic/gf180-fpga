@@ -1,0 +1,4701 @@
+{
+  "schema_version": 2,
+  "engine": "openroad",
+  "engine_version": "26Q4-1310-g98c6045c72",
+  "hdl_toplevel": "logic_tile_routed",
+  "status": "ok",
+  "def_path": {
+    "path": "layout/logic_tile_routed.def",
+    "scope": "repo"
+  },
+  "verilog_path": null,
+  "geometry_source": "routed",
+  "wire_load_model": null,
+  "wire_load_mode": null,
+  "macros": [],
+  "clock_mode": "ideal",
+  "clock_targets": {
+    "clocks": [
+      {
+        "port": "clk",
+        "period_ns": 20.0
+      }
+    ],
+    "clock_groups": []
+  },
+  "clock_uncertainty": {
+    "applied": false
+  },
+  "spef_path": {
+    "path": "measurements/item5-24um/logic_tile_routed.spef",
+    "scope": "repo"
+  },
+  "provenance": {
+    "klt_version": "0.9.0",
+    "klt_git_commit": "5dbbad05ff42265c92a6f3d2f20d1bbcd2957d49",
+    "klt_reinstall_spec": "klayout-tools==0.9.0",
+    "klayout_version": "0.30.12",
+    "pdk": {
+      "name": "gf180mcuD",
+      "source": "--pdk-root flag",
+      "version": "open_pdks f6eeac7dad085ffcc829ccfd721f7b4ce39edcf7"
+    },
+    "deck": null,
+    "input": {
+      "content_hash": "sha256:0b8fa71bfd1b285638a633ad422cfb8fa108dffc2a3f8604af86ac98529a388c",
+      "role": "layout"
+    }
+  },
+  "corners": [
+    {
+      "corner": "ff_125C_1v98",
+      "engine_log": {
+        "invocation_id": "0783392053b440a386eb5c0b278150e0",
+        "script_name": "sta_logic_tile_routed__ff_125C_1v98.tcl",
+        "script_path": {
+          "path": "measurements/item5-24um/.klt/sta/sta_logic_tile_routed__ff_125C_1v98.tcl",
+          "scope": "repo"
+        },
+        "script_sha256": "6a0d452875681e403ae5d399b7f6dbbf6907c6875935e037b1ac132beeb5b4b3",
+        "metrics_path": {
+          "path": "measurements/item5-24um/.klt/sta/logic_tile_routed__ff_125C_1v98_metrics.json",
+          "scope": "repo"
+        },
+        "outcome": "exited",
+        "returncode": 0,
+        "directory": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/0783392053b440a386eb5c0b278150e0",
+          "scope": "repo"
+        },
+        "stdout_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/0783392053b440a386eb5c0b278150e0/stdout.log",
+          "scope": "repo"
+        },
+        "stderr_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/0783392053b440a386eb5c0b278150e0/stderr.log",
+          "scope": "repo"
+        },
+        "metadata_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/0783392053b440a386eb5c0b278150e0/invocation.json",
+          "scope": "repo"
+        },
+        "retention_errors": []
+      },
+      "worst_slack_ns": 9.7368,
+      "total_negative_slack_ns": 0,
+      "worst_hold_slack_ns": 0.13357,
+      "total_negative_hold_slack_ns": 0,
+      "fmax_mhz": 97.4355,
+      "timing_status": "constrained",
+      "constraint_completeness": {
+        "status": "complete",
+        "unconstrained_endpoints": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "unclocked_registers": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "sample_limit": 20
+      },
+      "setup_violation_count": 0,
+      "hold_violation_count": 0,
+      "worst_setup_path": {
+        "status": "ok",
+        "check_type": "output_setup",
+        "engine_check_role": "output setup",
+        "startpoint": "cfg[132]",
+        "endpoint": "w_out[3]",
+        "slack_ns": 9.7368,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "worst_hold_path": {
+        "status": "ok",
+        "check_type": "output_hold",
+        "engine_check_role": "output hold",
+        "startpoint": "cfg[84]",
+        "endpoint": "e_out[1]",
+        "slack_ns": 0.13357,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "clock_skew_ns": 0,
+      "estimated_power_mw": 0.1445,
+      "power_basis": {
+        "activity_source": "engine_default",
+        "activity": null,
+        "duty": null,
+        "parasitics": "spef_annotated"
+      },
+      "spef_annotation": {
+        "nets_annotated": 333,
+        "nets_total": 369,
+        "design_nets_annotated": 333,
+        "design_nets_total": 369,
+        "design_nets_missing_sample": [
+          "g_slice[0].u_slice/_00_",
+          "g_slice[0].u_slice/_01_",
+          "g_slice[0].u_slice/_02_",
+          "g_slice[0].u_slice/_03_",
+          "g_slice[0].u_slice/_04_",
+          "g_slice[0].u_slice/_05_",
+          "g_slice[0].u_slice/_06_",
+          "g_slice[0].u_slice/_07_",
+          "g_slice[0].u_slice/ff_q",
+          "g_slice[1].u_slice/_00_",
+          "g_slice[1].u_slice/_01_",
+          "g_slice[1].u_slice/_02_",
+          "g_slice[1].u_slice/_03_",
+          "g_slice[1].u_slice/_04_",
+          "g_slice[1].u_slice/_05_",
+          "g_slice[1].u_slice/_06_",
+          "g_slice[1].u_slice/_07_",
+          "g_slice[1].u_slice/ff_q",
+          "g_slice[2].u_slice/_00_",
+          "g_slice[2].u_slice/_01_"
+        ],
+        "reader_warning_count": 1037,
+        "reader_warning_sample": [
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 394, pin bel_en[0] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 395, pin bel_en[1] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 396, pin bel_en[2] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 397, pin bel_en[3] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 398, pin bel_o[0] not found."
+        ],
+        "unannotated_driver_count": 36,
+        "partially_unannotated_driver_count": 140,
+        "floating_driver_count": 0,
+        "floating_driver_sample": [],
+        "unannotated_driver_sample": [
+          "g_slice\\[0\\].u_slice/_08_/Z",
+          "g_slice\\[0\\].u_slice/_09_/Z",
+          "g_slice\\[0\\].u_slice/_10_/Z",
+          "g_slice\\[0\\].u_slice/_11_/Z",
+          "g_slice\\[0\\].u_slice/_12_/Z",
+          "g_slice\\[0\\].u_slice/_14_/ZN",
+          "g_slice\\[0\\].u_slice/_15_/ZN",
+          "g_slice\\[0\\].u_slice/_16_/ZN",
+          "g_slice\\[0\\].u_slice/_17_/Q",
+          "g_slice\\[1\\].u_slice/_08_/Z",
+          "g_slice\\[1\\].u_slice/_09_/Z",
+          "g_slice\\[1\\].u_slice/_10_/Z",
+          "g_slice\\[1\\].u_slice/_11_/Z",
+          "g_slice\\[1\\].u_slice/_12_/Z",
+          "g_slice\\[1\\].u_slice/_14_/ZN",
+          "g_slice\\[1\\].u_slice/_15_/ZN",
+          "g_slice\\[1\\].u_slice/_16_/ZN",
+          "g_slice\\[1\\].u_slice/_17_/Q",
+          "g_slice\\[2\\].u_slice/_08_/Z",
+          "g_slice\\[2\\].u_slice/_09_/Z"
+        ],
+        "unannotated_driver_detail": [
+          {
+            "pin": "g_slice\\[0\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_10_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_11_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_12_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_14_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_15_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_16_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_17_/Q",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_10_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_11_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_12_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_14_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_15_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_16_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_17_/Q",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[2\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[2\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          }
+        ],
+        "partially_unannotated_driver_sample": [
+          "clkbuf_0_clk/Z",
+          "clkbuf_1_0__f_clk/I",
+          "clkbuf_1_1__f_clk/I",
+          "clkbuf_1_0__f_clk/Z",
+          "g_slice\\[2\\].u_slice/_17_/CLK",
+          "g_slice\\[3\\].u_slice/_17_/CLK",
+          "clkbuf_1_1__f_clk/Z",
+          "g_slice\\[0\\].u_slice/_17_/CLK",
+          "g_slice\\[1\\].u_slice/_17_/CLK",
+          "g_slice\\[0\\].u_slice/_13_/Z",
+          "u_sm/_120_/A1",
+          "u_sm/_130_/A1",
+          "u_sm/_138_/A1",
+          "u_sm/_146_/A1",
+          "u_sm/_154_/A1",
+          "u_sm/_162_/A1",
+          "u_sm/_170_/A1",
+          "u_sm/_178_/A1",
+          "u_sm/_186_/A1",
+          "u_sm/_194_/A1"
+        ],
+        "delay_changed": true,
+        "annotation_complete": false,
+        "annotation_warning": "only 333 of 369 nets in the linked design are named by this SPEF; read_spef discarded annotation for 1037 SPEF record(s) it could not resolve against the linked design (OpenSTA STA-1650/STA-1648 'not found' warnings); report_parasitic_annotation found 36 driver(s) with no parasitics attached after read_spef (first: g_slice\\[0\\].u_slice/_08_/Z, net_with_other_pins) -- the worst_slack_ns/etc. fields above are NOT a real-parasitics measurement to the extent annotation is missing."
+      },
+      "electrical_checks": {
+        "parasitics_source": "spef",
+        "max_transition": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "ns",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        },
+        "max_capacitance": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "pF",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        }
+      },
+      "clock_propagation": null,
+      "sdf": null,
+      "deck": {
+        "name": "gf180mcu_fd_sc_mcu7t5v0__ff_125C_1v98",
+        "content_hash": "sha256:8f6f05fc95a763da8c866e00f273cefacc1618bbd3054d5e45f57d6169ed86e6",
+        "released": false,
+        "path": {
+          "path": null,
+          "scope": "external"
+        }
+      }
+    },
+    {
+      "corner": "ff_125C_3v60",
+      "engine_log": {
+        "invocation_id": "8f2624bf86524c66b54dfb5430087e4f",
+        "script_name": "sta_logic_tile_routed__ff_125C_3v60.tcl",
+        "script_path": {
+          "path": "measurements/item5-24um/.klt/sta/sta_logic_tile_routed__ff_125C_3v60.tcl",
+          "scope": "repo"
+        },
+        "script_sha256": "c2288a76c647ec9ce0d7b6c9ce72a482d9451ccd67dfcb1e988734df2764aad4",
+        "metrics_path": {
+          "path": "measurements/item5-24um/.klt/sta/logic_tile_routed__ff_125C_3v60_metrics.json",
+          "scope": "repo"
+        },
+        "outcome": "exited",
+        "returncode": 0,
+        "directory": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/8f2624bf86524c66b54dfb5430087e4f",
+          "scope": "repo"
+        },
+        "stdout_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/8f2624bf86524c66b54dfb5430087e4f/stdout.log",
+          "scope": "repo"
+        },
+        "stderr_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/8f2624bf86524c66b54dfb5430087e4f/stderr.log",
+          "scope": "repo"
+        },
+        "metadata_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/8f2624bf86524c66b54dfb5430087e4f/invocation.json",
+          "scope": "repo"
+        },
+        "retention_errors": []
+      },
+      "worst_slack_ns": 14.7609,
+      "total_negative_slack_ns": 0,
+      "worst_hold_slack_ns": 0.078,
+      "total_negative_hold_slack_ns": 0,
+      "fmax_mhz": 190.871,
+      "timing_status": "constrained",
+      "constraint_completeness": {
+        "status": "complete",
+        "unconstrained_endpoints": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "unclocked_registers": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "sample_limit": 20
+      },
+      "setup_violation_count": 0,
+      "hold_violation_count": 0,
+      "worst_setup_path": {
+        "status": "ok",
+        "check_type": "output_setup",
+        "engine_check_role": "output setup",
+        "startpoint": "cfg[132]",
+        "endpoint": "w_out[3]",
+        "slack_ns": 14.76086,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "worst_hold_path": {
+        "status": "ok",
+        "check_type": "output_hold",
+        "engine_check_role": "output hold",
+        "startpoint": "cfg[84]",
+        "endpoint": "e_out[1]",
+        "slack_ns": 0.078,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "clock_skew_ns": 0,
+      "estimated_power_mw": 0.5214,
+      "power_basis": {
+        "activity_source": "engine_default",
+        "activity": null,
+        "duty": null,
+        "parasitics": "spef_annotated"
+      },
+      "spef_annotation": {
+        "nets_annotated": 333,
+        "nets_total": 369,
+        "design_nets_annotated": 333,
+        "design_nets_total": 369,
+        "design_nets_missing_sample": [
+          "g_slice[0].u_slice/_00_",
+          "g_slice[0].u_slice/_01_",
+          "g_slice[0].u_slice/_02_",
+          "g_slice[0].u_slice/_03_",
+          "g_slice[0].u_slice/_04_",
+          "g_slice[0].u_slice/_05_",
+          "g_slice[0].u_slice/_06_",
+          "g_slice[0].u_slice/_07_",
+          "g_slice[0].u_slice/ff_q",
+          "g_slice[1].u_slice/_00_",
+          "g_slice[1].u_slice/_01_",
+          "g_slice[1].u_slice/_02_",
+          "g_slice[1].u_slice/_03_",
+          "g_slice[1].u_slice/_04_",
+          "g_slice[1].u_slice/_05_",
+          "g_slice[1].u_slice/_06_",
+          "g_slice[1].u_slice/_07_",
+          "g_slice[1].u_slice/ff_q",
+          "g_slice[2].u_slice/_00_",
+          "g_slice[2].u_slice/_01_"
+        ],
+        "reader_warning_count": 1037,
+        "reader_warning_sample": [
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 394, pin bel_en[0] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 395, pin bel_en[1] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 396, pin bel_en[2] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 397, pin bel_en[3] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 398, pin bel_o[0] not found."
+        ],
+        "unannotated_driver_count": 36,
+        "partially_unannotated_driver_count": 140,
+        "floating_driver_count": 0,
+        "floating_driver_sample": [],
+        "unannotated_driver_sample": [
+          "g_slice\\[0\\].u_slice/_08_/Z",
+          "g_slice\\[0\\].u_slice/_09_/Z",
+          "g_slice\\[0\\].u_slice/_10_/Z",
+          "g_slice\\[0\\].u_slice/_11_/Z",
+          "g_slice\\[0\\].u_slice/_12_/Z",
+          "g_slice\\[0\\].u_slice/_14_/ZN",
+          "g_slice\\[0\\].u_slice/_15_/ZN",
+          "g_slice\\[0\\].u_slice/_16_/ZN",
+          "g_slice\\[0\\].u_slice/_17_/Q",
+          "g_slice\\[1\\].u_slice/_08_/Z",
+          "g_slice\\[1\\].u_slice/_09_/Z",
+          "g_slice\\[1\\].u_slice/_10_/Z",
+          "g_slice\\[1\\].u_slice/_11_/Z",
+          "g_slice\\[1\\].u_slice/_12_/Z",
+          "g_slice\\[1\\].u_slice/_14_/ZN",
+          "g_slice\\[1\\].u_slice/_15_/ZN",
+          "g_slice\\[1\\].u_slice/_16_/ZN",
+          "g_slice\\[1\\].u_slice/_17_/Q",
+          "g_slice\\[2\\].u_slice/_08_/Z",
+          "g_slice\\[2\\].u_slice/_09_/Z"
+        ],
+        "unannotated_driver_detail": [
+          {
+            "pin": "g_slice\\[0\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_10_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_11_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_12_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_14_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_15_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_16_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_17_/Q",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_10_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_11_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_12_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_14_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_15_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_16_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_17_/Q",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[2\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[2\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          }
+        ],
+        "partially_unannotated_driver_sample": [
+          "clkbuf_0_clk/Z",
+          "clkbuf_1_0__f_clk/I",
+          "clkbuf_1_1__f_clk/I",
+          "clkbuf_1_0__f_clk/Z",
+          "g_slice\\[2\\].u_slice/_17_/CLK",
+          "g_slice\\[3\\].u_slice/_17_/CLK",
+          "clkbuf_1_1__f_clk/Z",
+          "g_slice\\[0\\].u_slice/_17_/CLK",
+          "g_slice\\[1\\].u_slice/_17_/CLK",
+          "g_slice\\[0\\].u_slice/_13_/Z",
+          "u_sm/_120_/A1",
+          "u_sm/_130_/A1",
+          "u_sm/_138_/A1",
+          "u_sm/_146_/A1",
+          "u_sm/_154_/A1",
+          "u_sm/_162_/A1",
+          "u_sm/_170_/A1",
+          "u_sm/_178_/A1",
+          "u_sm/_186_/A1",
+          "u_sm/_194_/A1"
+        ],
+        "delay_changed": true,
+        "annotation_complete": false,
+        "annotation_warning": "only 333 of 369 nets in the linked design are named by this SPEF; read_spef discarded annotation for 1037 SPEF record(s) it could not resolve against the linked design (OpenSTA STA-1650/STA-1648 'not found' warnings); report_parasitic_annotation found 36 driver(s) with no parasitics attached after read_spef (first: g_slice\\[0\\].u_slice/_08_/Z, net_with_other_pins) -- the worst_slack_ns/etc. fields above are NOT a real-parasitics measurement to the extent annotation is missing."
+      },
+      "electrical_checks": {
+        "parasitics_source": "spef",
+        "max_transition": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "ns",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        },
+        "max_capacitance": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "pF",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        }
+      },
+      "clock_propagation": null,
+      "sdf": null,
+      "deck": {
+        "name": "gf180mcu_fd_sc_mcu7t5v0__ff_125C_3v60",
+        "content_hash": "sha256:f7d93ac4452c3388e27e8f88149c4f6a4ed1aaed344e93cec095914d374ed945",
+        "released": false,
+        "path": {
+          "path": null,
+          "scope": "external"
+        }
+      }
+    },
+    {
+      "corner": "ff_125C_5v50",
+      "engine_log": {
+        "invocation_id": "3d04c8e5ed804463b1f9d9b28389b89b",
+        "script_name": "sta_logic_tile_routed__ff_125C_5v50.tcl",
+        "script_path": {
+          "path": "measurements/item5-24um/.klt/sta/sta_logic_tile_routed__ff_125C_5v50.tcl",
+          "scope": "repo"
+        },
+        "script_sha256": "4846049fab05ad9619360faef7daee5a2c7cb9923f4d661b53ad5cd5aa6b1767",
+        "metrics_path": {
+          "path": "measurements/item5-24um/.klt/sta/logic_tile_routed__ff_125C_5v50_metrics.json",
+          "scope": "repo"
+        },
+        "outcome": "exited",
+        "returncode": 0,
+        "directory": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/3d04c8e5ed804463b1f9d9b28389b89b",
+          "scope": "repo"
+        },
+        "stdout_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/3d04c8e5ed804463b1f9d9b28389b89b/stdout.log",
+          "scope": "repo"
+        },
+        "stderr_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/3d04c8e5ed804463b1f9d9b28389b89b/stderr.log",
+          "scope": "repo"
+        },
+        "metadata_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/3d04c8e5ed804463b1f9d9b28389b89b/invocation.json",
+          "scope": "repo"
+        },
+        "retention_errors": []
+      },
+      "worst_slack_ns": 16.1971,
+      "total_negative_slack_ns": 0,
+      "worst_hold_slack_ns": 0.06136,
+      "total_negative_hold_slack_ns": 0,
+      "fmax_mhz": 262.954,
+      "timing_status": "constrained",
+      "constraint_completeness": {
+        "status": "complete",
+        "unconstrained_endpoints": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "unclocked_registers": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "sample_limit": 20
+      },
+      "setup_violation_count": 0,
+      "hold_violation_count": 0,
+      "worst_setup_path": {
+        "status": "ok",
+        "check_type": "output_setup",
+        "engine_check_role": "output setup",
+        "startpoint": "cfg[132]",
+        "endpoint": "w_out[3]",
+        "slack_ns": 16.19705,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "worst_hold_path": {
+        "status": "ok",
+        "check_type": "output_hold",
+        "engine_check_role": "output hold",
+        "startpoint": "cfg[84]",
+        "endpoint": "e_out[1]",
+        "slack_ns": 0.06136,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "clock_skew_ns": 0,
+      "estimated_power_mw": 1.2836,
+      "power_basis": {
+        "activity_source": "engine_default",
+        "activity": null,
+        "duty": null,
+        "parasitics": "spef_annotated"
+      },
+      "spef_annotation": {
+        "nets_annotated": 333,
+        "nets_total": 369,
+        "design_nets_annotated": 333,
+        "design_nets_total": 369,
+        "design_nets_missing_sample": [
+          "g_slice[0].u_slice/_00_",
+          "g_slice[0].u_slice/_01_",
+          "g_slice[0].u_slice/_02_",
+          "g_slice[0].u_slice/_03_",
+          "g_slice[0].u_slice/_04_",
+          "g_slice[0].u_slice/_05_",
+          "g_slice[0].u_slice/_06_",
+          "g_slice[0].u_slice/_07_",
+          "g_slice[0].u_slice/ff_q",
+          "g_slice[1].u_slice/_00_",
+          "g_slice[1].u_slice/_01_",
+          "g_slice[1].u_slice/_02_",
+          "g_slice[1].u_slice/_03_",
+          "g_slice[1].u_slice/_04_",
+          "g_slice[1].u_slice/_05_",
+          "g_slice[1].u_slice/_06_",
+          "g_slice[1].u_slice/_07_",
+          "g_slice[1].u_slice/ff_q",
+          "g_slice[2].u_slice/_00_",
+          "g_slice[2].u_slice/_01_"
+        ],
+        "reader_warning_count": 1037,
+        "reader_warning_sample": [
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 394, pin bel_en[0] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 395, pin bel_en[1] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 396, pin bel_en[2] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 397, pin bel_en[3] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 398, pin bel_o[0] not found."
+        ],
+        "unannotated_driver_count": 36,
+        "partially_unannotated_driver_count": 140,
+        "floating_driver_count": 0,
+        "floating_driver_sample": [],
+        "unannotated_driver_sample": [
+          "g_slice\\[0\\].u_slice/_08_/Z",
+          "g_slice\\[0\\].u_slice/_09_/Z",
+          "g_slice\\[0\\].u_slice/_10_/Z",
+          "g_slice\\[0\\].u_slice/_11_/Z",
+          "g_slice\\[0\\].u_slice/_12_/Z",
+          "g_slice\\[0\\].u_slice/_14_/ZN",
+          "g_slice\\[0\\].u_slice/_15_/ZN",
+          "g_slice\\[0\\].u_slice/_16_/ZN",
+          "g_slice\\[0\\].u_slice/_17_/Q",
+          "g_slice\\[1\\].u_slice/_08_/Z",
+          "g_slice\\[1\\].u_slice/_09_/Z",
+          "g_slice\\[1\\].u_slice/_10_/Z",
+          "g_slice\\[1\\].u_slice/_11_/Z",
+          "g_slice\\[1\\].u_slice/_12_/Z",
+          "g_slice\\[1\\].u_slice/_14_/ZN",
+          "g_slice\\[1\\].u_slice/_15_/ZN",
+          "g_slice\\[1\\].u_slice/_16_/ZN",
+          "g_slice\\[1\\].u_slice/_17_/Q",
+          "g_slice\\[2\\].u_slice/_08_/Z",
+          "g_slice\\[2\\].u_slice/_09_/Z"
+        ],
+        "unannotated_driver_detail": [
+          {
+            "pin": "g_slice\\[0\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_10_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_11_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_12_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_14_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_15_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_16_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_17_/Q",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_10_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_11_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_12_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_14_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_15_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_16_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_17_/Q",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[2\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[2\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          }
+        ],
+        "partially_unannotated_driver_sample": [
+          "clkbuf_0_clk/Z",
+          "clkbuf_1_0__f_clk/I",
+          "clkbuf_1_1__f_clk/I",
+          "clkbuf_1_0__f_clk/Z",
+          "g_slice\\[2\\].u_slice/_17_/CLK",
+          "g_slice\\[3\\].u_slice/_17_/CLK",
+          "clkbuf_1_1__f_clk/Z",
+          "g_slice\\[0\\].u_slice/_17_/CLK",
+          "g_slice\\[1\\].u_slice/_17_/CLK",
+          "g_slice\\[0\\].u_slice/_13_/Z",
+          "u_sm/_120_/A1",
+          "u_sm/_130_/A1",
+          "u_sm/_138_/A1",
+          "u_sm/_146_/A1",
+          "u_sm/_154_/A1",
+          "u_sm/_162_/A1",
+          "u_sm/_170_/A1",
+          "u_sm/_178_/A1",
+          "u_sm/_186_/A1",
+          "u_sm/_194_/A1"
+        ],
+        "delay_changed": true,
+        "annotation_complete": false,
+        "annotation_warning": "only 333 of 369 nets in the linked design are named by this SPEF; read_spef discarded annotation for 1037 SPEF record(s) it could not resolve against the linked design (OpenSTA STA-1650/STA-1648 'not found' warnings); report_parasitic_annotation found 36 driver(s) with no parasitics attached after read_spef (first: g_slice\\[0\\].u_slice/_08_/Z, net_with_other_pins) -- the worst_slack_ns/etc. fields above are NOT a real-parasitics measurement to the extent annotation is missing."
+      },
+      "electrical_checks": {
+        "parasitics_source": "spef",
+        "max_transition": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "ns",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        },
+        "max_capacitance": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "pF",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        }
+      },
+      "clock_propagation": null,
+      "sdf": null,
+      "deck": {
+        "name": "gf180mcu_fd_sc_mcu7t5v0__ff_125C_5v50",
+        "content_hash": "sha256:ed16198843afb3b0c4abbcdc109b55861273a773ba7eeaf01d9efe4059c43efe",
+        "released": false,
+        "path": {
+          "path": null,
+          "scope": "external"
+        }
+      }
+    },
+    {
+      "corner": "ff_n40C_1v98",
+      "engine_log": {
+        "invocation_id": "e8688883a8c04a799b7a3218a5e85683",
+        "script_name": "sta_logic_tile_routed__ff_n40C_1v98.tcl",
+        "script_path": {
+          "path": "measurements/item5-24um/.klt/sta/sta_logic_tile_routed__ff_n40C_1v98.tcl",
+          "scope": "repo"
+        },
+        "script_sha256": "8a22f5b49f70c8050ffa9bcd2d7e59a22fe71981c03c8e0ff33a284e4fc10a8c",
+        "metrics_path": {
+          "path": "measurements/item5-24um/.klt/sta/logic_tile_routed__ff_n40C_1v98_metrics.json",
+          "scope": "repo"
+        },
+        "outcome": "exited",
+        "returncode": 0,
+        "directory": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/e8688883a8c04a799b7a3218a5e85683",
+          "scope": "repo"
+        },
+        "stdout_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/e8688883a8c04a799b7a3218a5e85683/stdout.log",
+          "scope": "repo"
+        },
+        "stderr_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/e8688883a8c04a799b7a3218a5e85683/stderr.log",
+          "scope": "repo"
+        },
+        "metadata_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/e8688883a8c04a799b7a3218a5e85683/invocation.json",
+          "scope": "repo"
+        },
+        "retention_errors": []
+      },
+      "worst_slack_ns": 12.1698,
+      "total_negative_slack_ns": 0,
+      "worst_hold_slack_ns": 0.09132,
+      "total_negative_hold_slack_ns": 0,
+      "fmax_mhz": 127.71,
+      "timing_status": "constrained",
+      "constraint_completeness": {
+        "status": "complete",
+        "unconstrained_endpoints": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "unclocked_registers": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "sample_limit": 20
+      },
+      "setup_violation_count": 0,
+      "hold_violation_count": 0,
+      "worst_setup_path": {
+        "status": "ok",
+        "check_type": "output_setup",
+        "engine_check_role": "output setup",
+        "startpoint": "cfg[132]",
+        "endpoint": "w_out[3]",
+        "slack_ns": 12.16976,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "worst_hold_path": {
+        "status": "ok",
+        "check_type": "output_hold",
+        "engine_check_role": "output hold",
+        "startpoint": "cfg[84]",
+        "endpoint": "e_out[1]",
+        "slack_ns": 0.09132,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "clock_skew_ns": 0,
+      "estimated_power_mw": 0.1305,
+      "power_basis": {
+        "activity_source": "engine_default",
+        "activity": null,
+        "duty": null,
+        "parasitics": "spef_annotated"
+      },
+      "spef_annotation": {
+        "nets_annotated": 333,
+        "nets_total": 369,
+        "design_nets_annotated": 333,
+        "design_nets_total": 369,
+        "design_nets_missing_sample": [
+          "g_slice[0].u_slice/_00_",
+          "g_slice[0].u_slice/_01_",
+          "g_slice[0].u_slice/_02_",
+          "g_slice[0].u_slice/_03_",
+          "g_slice[0].u_slice/_04_",
+          "g_slice[0].u_slice/_05_",
+          "g_slice[0].u_slice/_06_",
+          "g_slice[0].u_slice/_07_",
+          "g_slice[0].u_slice/ff_q",
+          "g_slice[1].u_slice/_00_",
+          "g_slice[1].u_slice/_01_",
+          "g_slice[1].u_slice/_02_",
+          "g_slice[1].u_slice/_03_",
+          "g_slice[1].u_slice/_04_",
+          "g_slice[1].u_slice/_05_",
+          "g_slice[1].u_slice/_06_",
+          "g_slice[1].u_slice/_07_",
+          "g_slice[1].u_slice/ff_q",
+          "g_slice[2].u_slice/_00_",
+          "g_slice[2].u_slice/_01_"
+        ],
+        "reader_warning_count": 1037,
+        "reader_warning_sample": [
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 394, pin bel_en[0] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 395, pin bel_en[1] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 396, pin bel_en[2] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 397, pin bel_en[3] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 398, pin bel_o[0] not found."
+        ],
+        "unannotated_driver_count": 36,
+        "partially_unannotated_driver_count": 140,
+        "floating_driver_count": 0,
+        "floating_driver_sample": [],
+        "unannotated_driver_sample": [
+          "g_slice\\[0\\].u_slice/_08_/Z",
+          "g_slice\\[0\\].u_slice/_09_/Z",
+          "g_slice\\[0\\].u_slice/_10_/Z",
+          "g_slice\\[0\\].u_slice/_11_/Z",
+          "g_slice\\[0\\].u_slice/_12_/Z",
+          "g_slice\\[0\\].u_slice/_14_/ZN",
+          "g_slice\\[0\\].u_slice/_15_/ZN",
+          "g_slice\\[0\\].u_slice/_16_/ZN",
+          "g_slice\\[0\\].u_slice/_17_/Q",
+          "g_slice\\[1\\].u_slice/_08_/Z",
+          "g_slice\\[1\\].u_slice/_09_/Z",
+          "g_slice\\[1\\].u_slice/_10_/Z",
+          "g_slice\\[1\\].u_slice/_11_/Z",
+          "g_slice\\[1\\].u_slice/_12_/Z",
+          "g_slice\\[1\\].u_slice/_14_/ZN",
+          "g_slice\\[1\\].u_slice/_15_/ZN",
+          "g_slice\\[1\\].u_slice/_16_/ZN",
+          "g_slice\\[1\\].u_slice/_17_/Q",
+          "g_slice\\[2\\].u_slice/_08_/Z",
+          "g_slice\\[2\\].u_slice/_09_/Z"
+        ],
+        "unannotated_driver_detail": [
+          {
+            "pin": "g_slice\\[0\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_10_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_11_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_12_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_14_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_15_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_16_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_17_/Q",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_10_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_11_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_12_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_14_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_15_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_16_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_17_/Q",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[2\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[2\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          }
+        ],
+        "partially_unannotated_driver_sample": [
+          "clkbuf_0_clk/Z",
+          "clkbuf_1_0__f_clk/I",
+          "clkbuf_1_1__f_clk/I",
+          "clkbuf_1_0__f_clk/Z",
+          "g_slice\\[2\\].u_slice/_17_/CLK",
+          "g_slice\\[3\\].u_slice/_17_/CLK",
+          "clkbuf_1_1__f_clk/Z",
+          "g_slice\\[0\\].u_slice/_17_/CLK",
+          "g_slice\\[1\\].u_slice/_17_/CLK",
+          "g_slice\\[0\\].u_slice/_13_/Z",
+          "u_sm/_120_/A1",
+          "u_sm/_130_/A1",
+          "u_sm/_138_/A1",
+          "u_sm/_146_/A1",
+          "u_sm/_154_/A1",
+          "u_sm/_162_/A1",
+          "u_sm/_170_/A1",
+          "u_sm/_178_/A1",
+          "u_sm/_186_/A1",
+          "u_sm/_194_/A1"
+        ],
+        "delay_changed": true,
+        "annotation_complete": false,
+        "annotation_warning": "only 333 of 369 nets in the linked design are named by this SPEF; read_spef discarded annotation for 1037 SPEF record(s) it could not resolve against the linked design (OpenSTA STA-1650/STA-1648 'not found' warnings); report_parasitic_annotation found 36 driver(s) with no parasitics attached after read_spef (first: g_slice\\[0\\].u_slice/_08_/Z, net_with_other_pins) -- the worst_slack_ns/etc. fields above are NOT a real-parasitics measurement to the extent annotation is missing."
+      },
+      "electrical_checks": {
+        "parasitics_source": "spef",
+        "max_transition": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "ns",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        },
+        "max_capacitance": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "pF",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        }
+      },
+      "clock_propagation": null,
+      "sdf": null,
+      "deck": {
+        "name": "gf180mcu_fd_sc_mcu7t5v0__ff_n40C_1v98",
+        "content_hash": "sha256:6c427537164dd384d705239b242a351063affe4b36b78b1482585246fdaf124a",
+        "released": false,
+        "path": {
+          "path": null,
+          "scope": "external"
+        }
+      }
+    },
+    {
+      "corner": "ff_n40C_3v60",
+      "engine_log": {
+        "invocation_id": "d17d3eabfe334c4abe828d3019b4f365",
+        "script_name": "sta_logic_tile_routed__ff_n40C_3v60.tcl",
+        "script_path": {
+          "path": "measurements/item5-24um/.klt/sta/sta_logic_tile_routed__ff_n40C_3v60.tcl",
+          "scope": "repo"
+        },
+        "script_sha256": "9528c5e2011316c6ad95b5d01fb7f506e2c09be5badf304867ea7a0ff65a1c67",
+        "metrics_path": {
+          "path": "measurements/item5-24um/.klt/sta/logic_tile_routed__ff_n40C_3v60_metrics.json",
+          "scope": "repo"
+        },
+        "outcome": "exited",
+        "returncode": 0,
+        "directory": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/d17d3eabfe334c4abe828d3019b4f365",
+          "scope": "repo"
+        },
+        "stdout_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/d17d3eabfe334c4abe828d3019b4f365/stdout.log",
+          "scope": "repo"
+        },
+        "stderr_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/d17d3eabfe334c4abe828d3019b4f365/stderr.log",
+          "scope": "repo"
+        },
+        "metadata_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/d17d3eabfe334c4abe828d3019b4f365/invocation.json",
+          "scope": "repo"
+        },
+        "retention_errors": []
+      },
+      "worst_slack_ns": 16.3648,
+      "total_negative_slack_ns": 0,
+      "worst_hold_slack_ns": 0.05101,
+      "total_negative_hold_slack_ns": 0,
+      "fmax_mhz": 275.09,
+      "timing_status": "constrained",
+      "constraint_completeness": {
+        "status": "complete",
+        "unconstrained_endpoints": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "unclocked_registers": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "sample_limit": 20
+      },
+      "setup_violation_count": 0,
+      "hold_violation_count": 0,
+      "worst_setup_path": {
+        "status": "ok",
+        "check_type": "output_setup",
+        "engine_check_role": "output setup",
+        "startpoint": "cfg[132]",
+        "endpoint": "w_out[3]",
+        "slack_ns": 16.36482,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "worst_hold_path": {
+        "status": "ok",
+        "check_type": "output_hold",
+        "engine_check_role": "output hold",
+        "startpoint": "cfg[84]",
+        "endpoint": "e_out[1]",
+        "slack_ns": 0.05101,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "clock_skew_ns": 0,
+      "estimated_power_mw": 0.4823,
+      "power_basis": {
+        "activity_source": "engine_default",
+        "activity": null,
+        "duty": null,
+        "parasitics": "spef_annotated"
+      },
+      "spef_annotation": {
+        "nets_annotated": 333,
+        "nets_total": 369,
+        "design_nets_annotated": 333,
+        "design_nets_total": 369,
+        "design_nets_missing_sample": [
+          "g_slice[0].u_slice/_00_",
+          "g_slice[0].u_slice/_01_",
+          "g_slice[0].u_slice/_02_",
+          "g_slice[0].u_slice/_03_",
+          "g_slice[0].u_slice/_04_",
+          "g_slice[0].u_slice/_05_",
+          "g_slice[0].u_slice/_06_",
+          "g_slice[0].u_slice/_07_",
+          "g_slice[0].u_slice/ff_q",
+          "g_slice[1].u_slice/_00_",
+          "g_slice[1].u_slice/_01_",
+          "g_slice[1].u_slice/_02_",
+          "g_slice[1].u_slice/_03_",
+          "g_slice[1].u_slice/_04_",
+          "g_slice[1].u_slice/_05_",
+          "g_slice[1].u_slice/_06_",
+          "g_slice[1].u_slice/_07_",
+          "g_slice[1].u_slice/ff_q",
+          "g_slice[2].u_slice/_00_",
+          "g_slice[2].u_slice/_01_"
+        ],
+        "reader_warning_count": 1037,
+        "reader_warning_sample": [
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 394, pin bel_en[0] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 395, pin bel_en[1] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 396, pin bel_en[2] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 397, pin bel_en[3] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 398, pin bel_o[0] not found."
+        ],
+        "unannotated_driver_count": 36,
+        "partially_unannotated_driver_count": 140,
+        "floating_driver_count": 0,
+        "floating_driver_sample": [],
+        "unannotated_driver_sample": [
+          "g_slice\\[0\\].u_slice/_08_/Z",
+          "g_slice\\[0\\].u_slice/_09_/Z",
+          "g_slice\\[0\\].u_slice/_10_/Z",
+          "g_slice\\[0\\].u_slice/_11_/Z",
+          "g_slice\\[0\\].u_slice/_12_/Z",
+          "g_slice\\[0\\].u_slice/_14_/ZN",
+          "g_slice\\[0\\].u_slice/_15_/ZN",
+          "g_slice\\[0\\].u_slice/_16_/ZN",
+          "g_slice\\[0\\].u_slice/_17_/Q",
+          "g_slice\\[1\\].u_slice/_08_/Z",
+          "g_slice\\[1\\].u_slice/_09_/Z",
+          "g_slice\\[1\\].u_slice/_10_/Z",
+          "g_slice\\[1\\].u_slice/_11_/Z",
+          "g_slice\\[1\\].u_slice/_12_/Z",
+          "g_slice\\[1\\].u_slice/_14_/ZN",
+          "g_slice\\[1\\].u_slice/_15_/ZN",
+          "g_slice\\[1\\].u_slice/_16_/ZN",
+          "g_slice\\[1\\].u_slice/_17_/Q",
+          "g_slice\\[2\\].u_slice/_08_/Z",
+          "g_slice\\[2\\].u_slice/_09_/Z"
+        ],
+        "unannotated_driver_detail": [
+          {
+            "pin": "g_slice\\[0\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_10_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_11_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_12_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_14_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_15_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_16_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_17_/Q",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_10_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_11_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_12_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_14_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_15_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_16_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_17_/Q",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[2\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[2\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          }
+        ],
+        "partially_unannotated_driver_sample": [
+          "clkbuf_0_clk/Z",
+          "clkbuf_1_0__f_clk/I",
+          "clkbuf_1_1__f_clk/I",
+          "clkbuf_1_0__f_clk/Z",
+          "g_slice\\[2\\].u_slice/_17_/CLK",
+          "g_slice\\[3\\].u_slice/_17_/CLK",
+          "clkbuf_1_1__f_clk/Z",
+          "g_slice\\[0\\].u_slice/_17_/CLK",
+          "g_slice\\[1\\].u_slice/_17_/CLK",
+          "g_slice\\[0\\].u_slice/_13_/Z",
+          "u_sm/_120_/A1",
+          "u_sm/_130_/A1",
+          "u_sm/_138_/A1",
+          "u_sm/_146_/A1",
+          "u_sm/_154_/A1",
+          "u_sm/_162_/A1",
+          "u_sm/_170_/A1",
+          "u_sm/_178_/A1",
+          "u_sm/_186_/A1",
+          "u_sm/_194_/A1"
+        ],
+        "delay_changed": true,
+        "annotation_complete": false,
+        "annotation_warning": "only 333 of 369 nets in the linked design are named by this SPEF; read_spef discarded annotation for 1037 SPEF record(s) it could not resolve against the linked design (OpenSTA STA-1650/STA-1648 'not found' warnings); report_parasitic_annotation found 36 driver(s) with no parasitics attached after read_spef (first: g_slice\\[0\\].u_slice/_08_/Z, net_with_other_pins) -- the worst_slack_ns/etc. fields above are NOT a real-parasitics measurement to the extent annotation is missing."
+      },
+      "electrical_checks": {
+        "parasitics_source": "spef",
+        "max_transition": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "ns",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        },
+        "max_capacitance": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "pF",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        }
+      },
+      "clock_propagation": null,
+      "sdf": null,
+      "deck": {
+        "name": "gf180mcu_fd_sc_mcu7t5v0__ff_n40C_3v60",
+        "content_hash": "sha256:a222740b574d0699c8a416400bd9746ecb8556bc87a515ab7fb80f911e2cd74b",
+        "released": false,
+        "path": {
+          "path": null,
+          "scope": "external"
+        }
+      }
+    },
+    {
+      "corner": "ff_n40C_5v50",
+      "engine_log": {
+        "invocation_id": "cce40463b1a14de4a2c08e9e63d4b148",
+        "script_name": "sta_logic_tile_routed__ff_n40C_5v50.tcl",
+        "script_path": {
+          "path": "measurements/item5-24um/.klt/sta/sta_logic_tile_routed__ff_n40C_5v50.tcl",
+          "scope": "repo"
+        },
+        "script_sha256": "8c6387e16dcb38ba11949b0c2e5304bae920e5d977974e8b0bc8ae517b06070b",
+        "metrics_path": {
+          "path": "measurements/item5-24um/.klt/sta/logic_tile_routed__ff_n40C_5v50_metrics.json",
+          "scope": "repo"
+        },
+        "outcome": "exited",
+        "returncode": 0,
+        "directory": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/cce40463b1a14de4a2c08e9e63d4b148",
+          "scope": "repo"
+        },
+        "stdout_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/cce40463b1a14de4a2c08e9e63d4b148/stdout.log",
+          "scope": "repo"
+        },
+        "stderr_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/cce40463b1a14de4a2c08e9e63d4b148/stderr.log",
+          "scope": "repo"
+        },
+        "metadata_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/cce40463b1a14de4a2c08e9e63d4b148/invocation.json",
+          "scope": "repo"
+        },
+        "retention_errors": []
+      },
+      "worst_slack_ns": 17.3164,
+      "total_negative_slack_ns": 0,
+      "worst_hold_slack_ns": 0.03971,
+      "total_negative_hold_slack_ns": 0,
+      "fmax_mhz": 372.629,
+      "timing_status": "constrained",
+      "constraint_completeness": {
+        "status": "complete",
+        "unconstrained_endpoints": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "unclocked_registers": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "sample_limit": 20
+      },
+      "setup_violation_count": 0,
+      "hold_violation_count": 0,
+      "worst_setup_path": {
+        "status": "ok",
+        "check_type": "output_setup",
+        "engine_check_role": "output setup",
+        "startpoint": "cfg[132]",
+        "endpoint": "w_out[3]",
+        "slack_ns": 17.31637,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "worst_hold_path": {
+        "status": "ok",
+        "check_type": "output_hold",
+        "engine_check_role": "output hold",
+        "startpoint": "cfg[84]",
+        "endpoint": "e_out[1]",
+        "slack_ns": 0.03971,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "clock_skew_ns": 0,
+      "estimated_power_mw": 1.209,
+      "power_basis": {
+        "activity_source": "engine_default",
+        "activity": null,
+        "duty": null,
+        "parasitics": "spef_annotated"
+      },
+      "spef_annotation": {
+        "nets_annotated": 333,
+        "nets_total": 369,
+        "design_nets_annotated": 333,
+        "design_nets_total": 369,
+        "design_nets_missing_sample": [
+          "g_slice[0].u_slice/_00_",
+          "g_slice[0].u_slice/_01_",
+          "g_slice[0].u_slice/_02_",
+          "g_slice[0].u_slice/_03_",
+          "g_slice[0].u_slice/_04_",
+          "g_slice[0].u_slice/_05_",
+          "g_slice[0].u_slice/_06_",
+          "g_slice[0].u_slice/_07_",
+          "g_slice[0].u_slice/ff_q",
+          "g_slice[1].u_slice/_00_",
+          "g_slice[1].u_slice/_01_",
+          "g_slice[1].u_slice/_02_",
+          "g_slice[1].u_slice/_03_",
+          "g_slice[1].u_slice/_04_",
+          "g_slice[1].u_slice/_05_",
+          "g_slice[1].u_slice/_06_",
+          "g_slice[1].u_slice/_07_",
+          "g_slice[1].u_slice/ff_q",
+          "g_slice[2].u_slice/_00_",
+          "g_slice[2].u_slice/_01_"
+        ],
+        "reader_warning_count": 1037,
+        "reader_warning_sample": [
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 394, pin bel_en[0] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 395, pin bel_en[1] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 396, pin bel_en[2] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 397, pin bel_en[3] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 398, pin bel_o[0] not found."
+        ],
+        "unannotated_driver_count": 36,
+        "partially_unannotated_driver_count": 140,
+        "floating_driver_count": 0,
+        "floating_driver_sample": [],
+        "unannotated_driver_sample": [
+          "g_slice\\[0\\].u_slice/_08_/Z",
+          "g_slice\\[0\\].u_slice/_09_/Z",
+          "g_slice\\[0\\].u_slice/_10_/Z",
+          "g_slice\\[0\\].u_slice/_11_/Z",
+          "g_slice\\[0\\].u_slice/_12_/Z",
+          "g_slice\\[0\\].u_slice/_14_/ZN",
+          "g_slice\\[0\\].u_slice/_15_/ZN",
+          "g_slice\\[0\\].u_slice/_16_/ZN",
+          "g_slice\\[0\\].u_slice/_17_/Q",
+          "g_slice\\[1\\].u_slice/_08_/Z",
+          "g_slice\\[1\\].u_slice/_09_/Z",
+          "g_slice\\[1\\].u_slice/_10_/Z",
+          "g_slice\\[1\\].u_slice/_11_/Z",
+          "g_slice\\[1\\].u_slice/_12_/Z",
+          "g_slice\\[1\\].u_slice/_14_/ZN",
+          "g_slice\\[1\\].u_slice/_15_/ZN",
+          "g_slice\\[1\\].u_slice/_16_/ZN",
+          "g_slice\\[1\\].u_slice/_17_/Q",
+          "g_slice\\[2\\].u_slice/_08_/Z",
+          "g_slice\\[2\\].u_slice/_09_/Z"
+        ],
+        "unannotated_driver_detail": [
+          {
+            "pin": "g_slice\\[0\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_10_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_11_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_12_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_14_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_15_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_16_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_17_/Q",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_10_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_11_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_12_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_14_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_15_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_16_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_17_/Q",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[2\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[2\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          }
+        ],
+        "partially_unannotated_driver_sample": [
+          "clkbuf_0_clk/Z",
+          "clkbuf_1_0__f_clk/I",
+          "clkbuf_1_1__f_clk/I",
+          "clkbuf_1_0__f_clk/Z",
+          "g_slice\\[2\\].u_slice/_17_/CLK",
+          "g_slice\\[3\\].u_slice/_17_/CLK",
+          "clkbuf_1_1__f_clk/Z",
+          "g_slice\\[0\\].u_slice/_17_/CLK",
+          "g_slice\\[1\\].u_slice/_17_/CLK",
+          "g_slice\\[0\\].u_slice/_13_/Z",
+          "u_sm/_120_/A1",
+          "u_sm/_130_/A1",
+          "u_sm/_138_/A1",
+          "u_sm/_146_/A1",
+          "u_sm/_154_/A1",
+          "u_sm/_162_/A1",
+          "u_sm/_170_/A1",
+          "u_sm/_178_/A1",
+          "u_sm/_186_/A1",
+          "u_sm/_194_/A1"
+        ],
+        "delay_changed": true,
+        "annotation_complete": false,
+        "annotation_warning": "only 333 of 369 nets in the linked design are named by this SPEF; read_spef discarded annotation for 1037 SPEF record(s) it could not resolve against the linked design (OpenSTA STA-1650/STA-1648 'not found' warnings); report_parasitic_annotation found 36 driver(s) with no parasitics attached after read_spef (first: g_slice\\[0\\].u_slice/_08_/Z, net_with_other_pins) -- the worst_slack_ns/etc. fields above are NOT a real-parasitics measurement to the extent annotation is missing."
+      },
+      "electrical_checks": {
+        "parasitics_source": "spef",
+        "max_transition": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "ns",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        },
+        "max_capacitance": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "pF",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        }
+      },
+      "clock_propagation": null,
+      "sdf": null,
+      "deck": {
+        "name": "gf180mcu_fd_sc_mcu7t5v0__ff_n40C_5v50",
+        "content_hash": "sha256:6e04fbedf4279c89a73d6caebe55de27bd760f1aa7c24a4c015489724e4c2439",
+        "released": false,
+        "path": {
+          "path": null,
+          "scope": "external"
+        }
+      }
+    },
+    {
+      "corner": "ss_125C_1v62",
+      "engine_log": {
+        "invocation_id": "f11ee98a18a4496eaab9b09b0783f492",
+        "script_name": "sta_logic_tile_routed__ss_125C_1v62.tcl",
+        "script_path": {
+          "path": "measurements/item5-24um/.klt/sta/sta_logic_tile_routed__ss_125C_1v62.tcl",
+          "scope": "repo"
+        },
+        "script_sha256": "6495a0254f179e6bbd054483ea0fdb07510cbcaf813f59a5502b6d38faa74145",
+        "metrics_path": {
+          "path": "measurements/item5-24um/.klt/sta/logic_tile_routed__ss_125C_1v62_metrics.json",
+          "scope": "repo"
+        },
+        "outcome": "exited",
+        "returncode": 0,
+        "directory": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/f11ee98a18a4496eaab9b09b0783f492",
+          "scope": "repo"
+        },
+        "stdout_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/f11ee98a18a4496eaab9b09b0783f492/stdout.log",
+          "scope": "repo"
+        },
+        "stderr_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/f11ee98a18a4496eaab9b09b0783f492/stderr.log",
+          "scope": "repo"
+        },
+        "metadata_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/f11ee98a18a4496eaab9b09b0783f492/invocation.json",
+          "scope": "repo"
+        },
+        "retention_errors": []
+      },
+      "worst_slack_ns": -25.9176,
+      "total_negative_slack_ns": -468.886,
+      "worst_hold_slack_ns": 0.4179,
+      "total_negative_hold_slack_ns": 0,
+      "fmax_mhz": 21.7781,
+      "timing_status": "constrained",
+      "constraint_completeness": {
+        "status": "complete",
+        "unconstrained_endpoints": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "unclocked_registers": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "sample_limit": 20
+      },
+      "setup_violation_count": 20,
+      "hold_violation_count": 0,
+      "worst_setup_path": {
+        "status": "ok",
+        "check_type": "output_setup",
+        "engine_check_role": "output setup",
+        "startpoint": "cfg[132]",
+        "endpoint": "w_out[3]",
+        "slack_ns": -25.91763,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "worst_hold_path": {
+        "status": "ok",
+        "check_type": "output_hold",
+        "engine_check_role": "output hold",
+        "startpoint": "cfg[84]",
+        "endpoint": "e_out[1]",
+        "slack_ns": 0.4179,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "clock_skew_ns": 0,
+      "estimated_power_mw": 0.08,
+      "power_basis": {
+        "activity_source": "engine_default",
+        "activity": null,
+        "duty": null,
+        "parasitics": "spef_annotated"
+      },
+      "spef_annotation": {
+        "nets_annotated": 333,
+        "nets_total": 369,
+        "design_nets_annotated": 333,
+        "design_nets_total": 369,
+        "design_nets_missing_sample": [
+          "g_slice[0].u_slice/_00_",
+          "g_slice[0].u_slice/_01_",
+          "g_slice[0].u_slice/_02_",
+          "g_slice[0].u_slice/_03_",
+          "g_slice[0].u_slice/_04_",
+          "g_slice[0].u_slice/_05_",
+          "g_slice[0].u_slice/_06_",
+          "g_slice[0].u_slice/_07_",
+          "g_slice[0].u_slice/ff_q",
+          "g_slice[1].u_slice/_00_",
+          "g_slice[1].u_slice/_01_",
+          "g_slice[1].u_slice/_02_",
+          "g_slice[1].u_slice/_03_",
+          "g_slice[1].u_slice/_04_",
+          "g_slice[1].u_slice/_05_",
+          "g_slice[1].u_slice/_06_",
+          "g_slice[1].u_slice/_07_",
+          "g_slice[1].u_slice/ff_q",
+          "g_slice[2].u_slice/_00_",
+          "g_slice[2].u_slice/_01_"
+        ],
+        "reader_warning_count": 1037,
+        "reader_warning_sample": [
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 394, pin bel_en[0] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 395, pin bel_en[1] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 396, pin bel_en[2] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 397, pin bel_en[3] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 398, pin bel_o[0] not found."
+        ],
+        "unannotated_driver_count": 36,
+        "partially_unannotated_driver_count": 140,
+        "floating_driver_count": 0,
+        "floating_driver_sample": [],
+        "unannotated_driver_sample": [
+          "g_slice\\[0\\].u_slice/_08_/Z",
+          "g_slice\\[0\\].u_slice/_09_/Z",
+          "g_slice\\[0\\].u_slice/_10_/Z",
+          "g_slice\\[0\\].u_slice/_11_/Z",
+          "g_slice\\[0\\].u_slice/_12_/Z",
+          "g_slice\\[0\\].u_slice/_14_/ZN",
+          "g_slice\\[0\\].u_slice/_15_/ZN",
+          "g_slice\\[0\\].u_slice/_16_/ZN",
+          "g_slice\\[0\\].u_slice/_17_/Q",
+          "g_slice\\[1\\].u_slice/_08_/Z",
+          "g_slice\\[1\\].u_slice/_09_/Z",
+          "g_slice\\[1\\].u_slice/_10_/Z",
+          "g_slice\\[1\\].u_slice/_11_/Z",
+          "g_slice\\[1\\].u_slice/_12_/Z",
+          "g_slice\\[1\\].u_slice/_14_/ZN",
+          "g_slice\\[1\\].u_slice/_15_/ZN",
+          "g_slice\\[1\\].u_slice/_16_/ZN",
+          "g_slice\\[1\\].u_slice/_17_/Q",
+          "g_slice\\[2\\].u_slice/_08_/Z",
+          "g_slice\\[2\\].u_slice/_09_/Z"
+        ],
+        "unannotated_driver_detail": [
+          {
+            "pin": "g_slice\\[0\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_10_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_11_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_12_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_14_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_15_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_16_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_17_/Q",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_10_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_11_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_12_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_14_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_15_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_16_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_17_/Q",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[2\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[2\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          }
+        ],
+        "partially_unannotated_driver_sample": [
+          "clkbuf_0_clk/Z",
+          "clkbuf_1_0__f_clk/I",
+          "clkbuf_1_1__f_clk/I",
+          "clkbuf_1_0__f_clk/Z",
+          "g_slice\\[2\\].u_slice/_17_/CLK",
+          "g_slice\\[3\\].u_slice/_17_/CLK",
+          "clkbuf_1_1__f_clk/Z",
+          "g_slice\\[0\\].u_slice/_17_/CLK",
+          "g_slice\\[1\\].u_slice/_17_/CLK",
+          "g_slice\\[0\\].u_slice/_13_/Z",
+          "u_sm/_120_/A1",
+          "u_sm/_130_/A1",
+          "u_sm/_138_/A1",
+          "u_sm/_146_/A1",
+          "u_sm/_154_/A1",
+          "u_sm/_162_/A1",
+          "u_sm/_170_/A1",
+          "u_sm/_178_/A1",
+          "u_sm/_186_/A1",
+          "u_sm/_194_/A1"
+        ],
+        "delay_changed": true,
+        "annotation_complete": false,
+        "annotation_warning": "only 333 of 369 nets in the linked design are named by this SPEF; read_spef discarded annotation for 1037 SPEF record(s) it could not resolve against the linked design (OpenSTA STA-1650/STA-1648 'not found' warnings); report_parasitic_annotation found 36 driver(s) with no parasitics attached after read_spef (first: g_slice\\[0\\].u_slice/_08_/Z, net_with_other_pins) -- the worst_slack_ns/etc. fields above are NOT a real-parasitics measurement to the extent annotation is missing."
+      },
+      "electrical_checks": {
+        "parasitics_source": "spef",
+        "max_transition": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "ns",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        },
+        "max_capacitance": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "pF",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        }
+      },
+      "clock_propagation": null,
+      "sdf": null,
+      "deck": {
+        "name": "gf180mcu_fd_sc_mcu7t5v0__ss_125C_1v62",
+        "content_hash": "sha256:a87b443fa095c74d0eae599091a3d38415c69d1a14b9753a445b42eb269baf74",
+        "released": false,
+        "path": {
+          "path": null,
+          "scope": "external"
+        }
+      }
+    },
+    {
+      "corner": "ss_125C_3v00",
+      "engine_log": {
+        "invocation_id": "a5109796795b485fa32cfbafe55333ec",
+        "script_name": "sta_logic_tile_routed__ss_125C_3v00.tcl",
+        "script_path": {
+          "path": "measurements/item5-24um/.klt/sta/sta_logic_tile_routed__ss_125C_3v00.tcl",
+          "scope": "repo"
+        },
+        "script_sha256": "01052be21f81d5f4965a8315d740093a46e210653c1c224ee515fbaf344a59ca",
+        "metrics_path": {
+          "path": "measurements/item5-24um/.klt/sta/logic_tile_routed__ss_125C_3v00_metrics.json",
+          "scope": "repo"
+        },
+        "outcome": "exited",
+        "returncode": 0,
+        "directory": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/a5109796795b485fa32cfbafe55333ec",
+          "scope": "repo"
+        },
+        "stdout_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/a5109796795b485fa32cfbafe55333ec/stdout.log",
+          "scope": "repo"
+        },
+        "stderr_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/a5109796795b485fa32cfbafe55333ec/stderr.log",
+          "scope": "repo"
+        },
+        "metadata_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/a5109796795b485fa32cfbafe55333ec/invocation.json",
+          "scope": "repo"
+        },
+        "retention_errors": []
+      },
+      "worst_slack_ns": 6.63312,
+      "total_negative_slack_ns": 0,
+      "worst_hold_slack_ns": 0.16847,
+      "total_negative_hold_slack_ns": 0,
+      "fmax_mhz": 74.8118,
+      "timing_status": "constrained",
+      "constraint_completeness": {
+        "status": "complete",
+        "unconstrained_endpoints": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "unclocked_registers": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "sample_limit": 20
+      },
+      "setup_violation_count": 0,
+      "hold_violation_count": 0,
+      "worst_setup_path": {
+        "status": "ok",
+        "check_type": "output_setup",
+        "engine_check_role": "output setup",
+        "startpoint": "cfg[132]",
+        "endpoint": "w_out[3]",
+        "slack_ns": 6.63312,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "worst_hold_path": {
+        "status": "ok",
+        "check_type": "output_hold",
+        "engine_check_role": "output hold",
+        "startpoint": "cfg[84]",
+        "endpoint": "e_out[1]",
+        "slack_ns": 0.16847,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "clock_skew_ns": 0,
+      "estimated_power_mw": 0.3331,
+      "power_basis": {
+        "activity_source": "engine_default",
+        "activity": null,
+        "duty": null,
+        "parasitics": "spef_annotated"
+      },
+      "spef_annotation": {
+        "nets_annotated": 333,
+        "nets_total": 369,
+        "design_nets_annotated": 333,
+        "design_nets_total": 369,
+        "design_nets_missing_sample": [
+          "g_slice[0].u_slice/_00_",
+          "g_slice[0].u_slice/_01_",
+          "g_slice[0].u_slice/_02_",
+          "g_slice[0].u_slice/_03_",
+          "g_slice[0].u_slice/_04_",
+          "g_slice[0].u_slice/_05_",
+          "g_slice[0].u_slice/_06_",
+          "g_slice[0].u_slice/_07_",
+          "g_slice[0].u_slice/ff_q",
+          "g_slice[1].u_slice/_00_",
+          "g_slice[1].u_slice/_01_",
+          "g_slice[1].u_slice/_02_",
+          "g_slice[1].u_slice/_03_",
+          "g_slice[1].u_slice/_04_",
+          "g_slice[1].u_slice/_05_",
+          "g_slice[1].u_slice/_06_",
+          "g_slice[1].u_slice/_07_",
+          "g_slice[1].u_slice/ff_q",
+          "g_slice[2].u_slice/_00_",
+          "g_slice[2].u_slice/_01_"
+        ],
+        "reader_warning_count": 1037,
+        "reader_warning_sample": [
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 394, pin bel_en[0] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 395, pin bel_en[1] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 396, pin bel_en[2] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 397, pin bel_en[3] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 398, pin bel_o[0] not found."
+        ],
+        "unannotated_driver_count": 36,
+        "partially_unannotated_driver_count": 140,
+        "floating_driver_count": 0,
+        "floating_driver_sample": [],
+        "unannotated_driver_sample": [
+          "g_slice\\[0\\].u_slice/_08_/Z",
+          "g_slice\\[0\\].u_slice/_09_/Z",
+          "g_slice\\[0\\].u_slice/_10_/Z",
+          "g_slice\\[0\\].u_slice/_11_/Z",
+          "g_slice\\[0\\].u_slice/_12_/Z",
+          "g_slice\\[0\\].u_slice/_14_/ZN",
+          "g_slice\\[0\\].u_slice/_15_/ZN",
+          "g_slice\\[0\\].u_slice/_16_/ZN",
+          "g_slice\\[0\\].u_slice/_17_/Q",
+          "g_slice\\[1\\].u_slice/_08_/Z",
+          "g_slice\\[1\\].u_slice/_09_/Z",
+          "g_slice\\[1\\].u_slice/_10_/Z",
+          "g_slice\\[1\\].u_slice/_11_/Z",
+          "g_slice\\[1\\].u_slice/_12_/Z",
+          "g_slice\\[1\\].u_slice/_14_/ZN",
+          "g_slice\\[1\\].u_slice/_15_/ZN",
+          "g_slice\\[1\\].u_slice/_16_/ZN",
+          "g_slice\\[1\\].u_slice/_17_/Q",
+          "g_slice\\[2\\].u_slice/_08_/Z",
+          "g_slice\\[2\\].u_slice/_09_/Z"
+        ],
+        "unannotated_driver_detail": [
+          {
+            "pin": "g_slice\\[0\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_10_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_11_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_12_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_14_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_15_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_16_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_17_/Q",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_10_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_11_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_12_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_14_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_15_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_16_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_17_/Q",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[2\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[2\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          }
+        ],
+        "partially_unannotated_driver_sample": [
+          "clkbuf_0_clk/Z",
+          "clkbuf_1_0__f_clk/I",
+          "clkbuf_1_1__f_clk/I",
+          "clkbuf_1_0__f_clk/Z",
+          "g_slice\\[2\\].u_slice/_17_/CLK",
+          "g_slice\\[3\\].u_slice/_17_/CLK",
+          "clkbuf_1_1__f_clk/Z",
+          "g_slice\\[0\\].u_slice/_17_/CLK",
+          "g_slice\\[1\\].u_slice/_17_/CLK",
+          "g_slice\\[0\\].u_slice/_13_/Z",
+          "u_sm/_120_/A1",
+          "u_sm/_130_/A1",
+          "u_sm/_138_/A1",
+          "u_sm/_146_/A1",
+          "u_sm/_154_/A1",
+          "u_sm/_162_/A1",
+          "u_sm/_170_/A1",
+          "u_sm/_178_/A1",
+          "u_sm/_186_/A1",
+          "u_sm/_194_/A1"
+        ],
+        "delay_changed": true,
+        "annotation_complete": false,
+        "annotation_warning": "only 333 of 369 nets in the linked design are named by this SPEF; read_spef discarded annotation for 1037 SPEF record(s) it could not resolve against the linked design (OpenSTA STA-1650/STA-1648 'not found' warnings); report_parasitic_annotation found 36 driver(s) with no parasitics attached after read_spef (first: g_slice\\[0\\].u_slice/_08_/Z, net_with_other_pins) -- the worst_slack_ns/etc. fields above are NOT a real-parasitics measurement to the extent annotation is missing."
+      },
+      "electrical_checks": {
+        "parasitics_source": "spef",
+        "max_transition": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "ns",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        },
+        "max_capacitance": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "pF",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        }
+      },
+      "clock_propagation": null,
+      "sdf": null,
+      "deck": {
+        "name": "gf180mcu_fd_sc_mcu7t5v0__ss_125C_3v00",
+        "content_hash": "sha256:5d2f37ba6f43e33aeba26dc1da55c96394a862eeec4148043f1d48bdf65ccea6",
+        "released": false,
+        "path": {
+          "path": null,
+          "scope": "external"
+        }
+      }
+    },
+    {
+      "corner": "ss_125C_4v50",
+      "engine_log": {
+        "invocation_id": "b485950738a64b4984d1a23afcff9e40",
+        "script_name": "sta_logic_tile_routed__ss_125C_4v50.tcl",
+        "script_path": {
+          "path": "measurements/item5-24um/.klt/sta/sta_logic_tile_routed__ss_125C_4v50.tcl",
+          "scope": "repo"
+        },
+        "script_sha256": "75532b97cff2f18f7d9f172691f4acc55a95bedfedab3931f9c510cc43c4091e",
+        "metrics_path": {
+          "path": "measurements/item5-24um/.klt/sta/logic_tile_routed__ss_125C_4v50_metrics.json",
+          "scope": "repo"
+        },
+        "outcome": "exited",
+        "returncode": 0,
+        "directory": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/b485950738a64b4984d1a23afcff9e40",
+          "scope": "repo"
+        },
+        "stdout_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/b485950738a64b4984d1a23afcff9e40/stdout.log",
+          "scope": "repo"
+        },
+        "stderr_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/b485950738a64b4984d1a23afcff9e40/stderr.log",
+          "scope": "repo"
+        },
+        "metadata_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/b485950738a64b4984d1a23afcff9e40/invocation.json",
+          "scope": "repo"
+        },
+        "retention_errors": []
+      },
+      "worst_slack_ns": 11.6746,
+      "total_negative_slack_ns": 0,
+      "worst_hold_slack_ns": 0.11711,
+      "total_negative_hold_slack_ns": 0,
+      "fmax_mhz": 120.115,
+      "timing_status": "constrained",
+      "constraint_completeness": {
+        "status": "complete",
+        "unconstrained_endpoints": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "unclocked_registers": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "sample_limit": 20
+      },
+      "setup_violation_count": 0,
+      "hold_violation_count": 0,
+      "worst_setup_path": {
+        "status": "ok",
+        "check_type": "output_setup",
+        "engine_check_role": "output setup",
+        "startpoint": "cfg[132]",
+        "endpoint": "w_out[3]",
+        "slack_ns": 11.67464,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "worst_hold_path": {
+        "status": "ok",
+        "check_type": "output_hold",
+        "engine_check_role": "output hold",
+        "startpoint": "cfg[84]",
+        "endpoint": "e_out[1]",
+        "slack_ns": 0.11711,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "clock_skew_ns": 0,
+      "estimated_power_mw": 0.796,
+      "power_basis": {
+        "activity_source": "engine_default",
+        "activity": null,
+        "duty": null,
+        "parasitics": "spef_annotated"
+      },
+      "spef_annotation": {
+        "nets_annotated": 333,
+        "nets_total": 369,
+        "design_nets_annotated": 333,
+        "design_nets_total": 369,
+        "design_nets_missing_sample": [
+          "g_slice[0].u_slice/_00_",
+          "g_slice[0].u_slice/_01_",
+          "g_slice[0].u_slice/_02_",
+          "g_slice[0].u_slice/_03_",
+          "g_slice[0].u_slice/_04_",
+          "g_slice[0].u_slice/_05_",
+          "g_slice[0].u_slice/_06_",
+          "g_slice[0].u_slice/_07_",
+          "g_slice[0].u_slice/ff_q",
+          "g_slice[1].u_slice/_00_",
+          "g_slice[1].u_slice/_01_",
+          "g_slice[1].u_slice/_02_",
+          "g_slice[1].u_slice/_03_",
+          "g_slice[1].u_slice/_04_",
+          "g_slice[1].u_slice/_05_",
+          "g_slice[1].u_slice/_06_",
+          "g_slice[1].u_slice/_07_",
+          "g_slice[1].u_slice/ff_q",
+          "g_slice[2].u_slice/_00_",
+          "g_slice[2].u_slice/_01_"
+        ],
+        "reader_warning_count": 1037,
+        "reader_warning_sample": [
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 394, pin bel_en[0] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 395, pin bel_en[1] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 396, pin bel_en[2] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 397, pin bel_en[3] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 398, pin bel_o[0] not found."
+        ],
+        "unannotated_driver_count": 36,
+        "partially_unannotated_driver_count": 140,
+        "floating_driver_count": 0,
+        "floating_driver_sample": [],
+        "unannotated_driver_sample": [
+          "g_slice\\[0\\].u_slice/_08_/Z",
+          "g_slice\\[0\\].u_slice/_09_/Z",
+          "g_slice\\[0\\].u_slice/_10_/Z",
+          "g_slice\\[0\\].u_slice/_11_/Z",
+          "g_slice\\[0\\].u_slice/_12_/Z",
+          "g_slice\\[0\\].u_slice/_14_/ZN",
+          "g_slice\\[0\\].u_slice/_15_/ZN",
+          "g_slice\\[0\\].u_slice/_16_/ZN",
+          "g_slice\\[0\\].u_slice/_17_/Q",
+          "g_slice\\[1\\].u_slice/_08_/Z",
+          "g_slice\\[1\\].u_slice/_09_/Z",
+          "g_slice\\[1\\].u_slice/_10_/Z",
+          "g_slice\\[1\\].u_slice/_11_/Z",
+          "g_slice\\[1\\].u_slice/_12_/Z",
+          "g_slice\\[1\\].u_slice/_14_/ZN",
+          "g_slice\\[1\\].u_slice/_15_/ZN",
+          "g_slice\\[1\\].u_slice/_16_/ZN",
+          "g_slice\\[1\\].u_slice/_17_/Q",
+          "g_slice\\[2\\].u_slice/_08_/Z",
+          "g_slice\\[2\\].u_slice/_09_/Z"
+        ],
+        "unannotated_driver_detail": [
+          {
+            "pin": "g_slice\\[0\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_10_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_11_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_12_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_14_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_15_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_16_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_17_/Q",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_10_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_11_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_12_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_14_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_15_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_16_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_17_/Q",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[2\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[2\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          }
+        ],
+        "partially_unannotated_driver_sample": [
+          "clkbuf_0_clk/Z",
+          "clkbuf_1_0__f_clk/I",
+          "clkbuf_1_1__f_clk/I",
+          "clkbuf_1_0__f_clk/Z",
+          "g_slice\\[2\\].u_slice/_17_/CLK",
+          "g_slice\\[3\\].u_slice/_17_/CLK",
+          "clkbuf_1_1__f_clk/Z",
+          "g_slice\\[0\\].u_slice/_17_/CLK",
+          "g_slice\\[1\\].u_slice/_17_/CLK",
+          "g_slice\\[0\\].u_slice/_13_/Z",
+          "u_sm/_120_/A1",
+          "u_sm/_130_/A1",
+          "u_sm/_138_/A1",
+          "u_sm/_146_/A1",
+          "u_sm/_154_/A1",
+          "u_sm/_162_/A1",
+          "u_sm/_170_/A1",
+          "u_sm/_178_/A1",
+          "u_sm/_186_/A1",
+          "u_sm/_194_/A1"
+        ],
+        "delay_changed": true,
+        "annotation_complete": false,
+        "annotation_warning": "only 333 of 369 nets in the linked design are named by this SPEF; read_spef discarded annotation for 1037 SPEF record(s) it could not resolve against the linked design (OpenSTA STA-1650/STA-1648 'not found' warnings); report_parasitic_annotation found 36 driver(s) with no parasitics attached after read_spef (first: g_slice\\[0\\].u_slice/_08_/Z, net_with_other_pins) -- the worst_slack_ns/etc. fields above are NOT a real-parasitics measurement to the extent annotation is missing."
+      },
+      "electrical_checks": {
+        "parasitics_source": "spef",
+        "max_transition": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "ns",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        },
+        "max_capacitance": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "pF",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        }
+      },
+      "clock_propagation": null,
+      "sdf": null,
+      "deck": {
+        "name": "gf180mcu_fd_sc_mcu7t5v0__ss_125C_4v50",
+        "content_hash": "sha256:4c2657ae12581bc18ed408f3fda0accd10b855118b9993070dbb360dfa3aa874",
+        "released": false,
+        "path": {
+          "path": null,
+          "scope": "external"
+        }
+      }
+    },
+    {
+      "corner": "ss_n40C_1v62",
+      "engine_log": {
+        "invocation_id": "328e041aba9d4c79aae39b483ba495a9",
+        "script_name": "sta_logic_tile_routed__ss_n40C_1v62.tcl",
+        "script_path": {
+          "path": "measurements/item5-24um/.klt/sta/sta_logic_tile_routed__ss_n40C_1v62.tcl",
+          "scope": "repo"
+        },
+        "script_sha256": "b3ad7772d63f9c1636ee8f4e45b4f081345be334e6b8fc4f88c86311d019a5da",
+        "metrics_path": {
+          "path": "measurements/item5-24um/.klt/sta/logic_tile_routed__ss_n40C_1v62_metrics.json",
+          "scope": "repo"
+        },
+        "outcome": "exited",
+        "returncode": 0,
+        "directory": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/328e041aba9d4c79aae39b483ba495a9",
+          "scope": "repo"
+        },
+        "stdout_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/328e041aba9d4c79aae39b483ba495a9/stdout.log",
+          "scope": "repo"
+        },
+        "stderr_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/328e041aba9d4c79aae39b483ba495a9/stderr.log",
+          "scope": "repo"
+        },
+        "metadata_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/328e041aba9d4c79aae39b483ba495a9/invocation.json",
+          "scope": "repo"
+        },
+        "retention_errors": []
+      },
+      "worst_slack_ns": -24.5025,
+      "total_negative_slack_ns": -442.318,
+      "worst_hold_slack_ns": 0.32408,
+      "total_negative_hold_slack_ns": 0,
+      "fmax_mhz": 22.4706,
+      "timing_status": "constrained",
+      "constraint_completeness": {
+        "status": "complete",
+        "unconstrained_endpoints": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "unclocked_registers": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "sample_limit": 20
+      },
+      "setup_violation_count": 20,
+      "hold_violation_count": 0,
+      "worst_setup_path": {
+        "status": "ok",
+        "check_type": "output_setup",
+        "engine_check_role": "output setup",
+        "startpoint": "cfg[132]",
+        "endpoint": "w_out[3]",
+        "slack_ns": -24.50253,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "worst_hold_path": {
+        "status": "ok",
+        "check_type": "output_hold",
+        "engine_check_role": "output hold",
+        "startpoint": "cfg[84]",
+        "endpoint": "e_out[1]",
+        "slack_ns": 0.32408,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "clock_skew_ns": 0,
+      "estimated_power_mw": 0.0827,
+      "power_basis": {
+        "activity_source": "engine_default",
+        "activity": null,
+        "duty": null,
+        "parasitics": "spef_annotated"
+      },
+      "spef_annotation": {
+        "nets_annotated": 333,
+        "nets_total": 369,
+        "design_nets_annotated": 333,
+        "design_nets_total": 369,
+        "design_nets_missing_sample": [
+          "g_slice[0].u_slice/_00_",
+          "g_slice[0].u_slice/_01_",
+          "g_slice[0].u_slice/_02_",
+          "g_slice[0].u_slice/_03_",
+          "g_slice[0].u_slice/_04_",
+          "g_slice[0].u_slice/_05_",
+          "g_slice[0].u_slice/_06_",
+          "g_slice[0].u_slice/_07_",
+          "g_slice[0].u_slice/ff_q",
+          "g_slice[1].u_slice/_00_",
+          "g_slice[1].u_slice/_01_",
+          "g_slice[1].u_slice/_02_",
+          "g_slice[1].u_slice/_03_",
+          "g_slice[1].u_slice/_04_",
+          "g_slice[1].u_slice/_05_",
+          "g_slice[1].u_slice/_06_",
+          "g_slice[1].u_slice/_07_",
+          "g_slice[1].u_slice/ff_q",
+          "g_slice[2].u_slice/_00_",
+          "g_slice[2].u_slice/_01_"
+        ],
+        "reader_warning_count": 1037,
+        "reader_warning_sample": [
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 394, pin bel_en[0] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 395, pin bel_en[1] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 396, pin bel_en[2] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 397, pin bel_en[3] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 398, pin bel_o[0] not found."
+        ],
+        "unannotated_driver_count": 36,
+        "partially_unannotated_driver_count": 140,
+        "floating_driver_count": 0,
+        "floating_driver_sample": [],
+        "unannotated_driver_sample": [
+          "g_slice\\[0\\].u_slice/_08_/Z",
+          "g_slice\\[0\\].u_slice/_09_/Z",
+          "g_slice\\[0\\].u_slice/_10_/Z",
+          "g_slice\\[0\\].u_slice/_11_/Z",
+          "g_slice\\[0\\].u_slice/_12_/Z",
+          "g_slice\\[0\\].u_slice/_14_/ZN",
+          "g_slice\\[0\\].u_slice/_15_/ZN",
+          "g_slice\\[0\\].u_slice/_16_/ZN",
+          "g_slice\\[0\\].u_slice/_17_/Q",
+          "g_slice\\[1\\].u_slice/_08_/Z",
+          "g_slice\\[1\\].u_slice/_09_/Z",
+          "g_slice\\[1\\].u_slice/_10_/Z",
+          "g_slice\\[1\\].u_slice/_11_/Z",
+          "g_slice\\[1\\].u_slice/_12_/Z",
+          "g_slice\\[1\\].u_slice/_14_/ZN",
+          "g_slice\\[1\\].u_slice/_15_/ZN",
+          "g_slice\\[1\\].u_slice/_16_/ZN",
+          "g_slice\\[1\\].u_slice/_17_/Q",
+          "g_slice\\[2\\].u_slice/_08_/Z",
+          "g_slice\\[2\\].u_slice/_09_/Z"
+        ],
+        "unannotated_driver_detail": [
+          {
+            "pin": "g_slice\\[0\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_10_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_11_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_12_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_14_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_15_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_16_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_17_/Q",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_10_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_11_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_12_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_14_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_15_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_16_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_17_/Q",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[2\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[2\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          }
+        ],
+        "partially_unannotated_driver_sample": [
+          "clkbuf_0_clk/Z",
+          "clkbuf_1_0__f_clk/I",
+          "clkbuf_1_1__f_clk/I",
+          "clkbuf_1_0__f_clk/Z",
+          "g_slice\\[2\\].u_slice/_17_/CLK",
+          "g_slice\\[3\\].u_slice/_17_/CLK",
+          "clkbuf_1_1__f_clk/Z",
+          "g_slice\\[0\\].u_slice/_17_/CLK",
+          "g_slice\\[1\\].u_slice/_17_/CLK",
+          "g_slice\\[0\\].u_slice/_13_/Z",
+          "u_sm/_120_/A1",
+          "u_sm/_130_/A1",
+          "u_sm/_138_/A1",
+          "u_sm/_146_/A1",
+          "u_sm/_154_/A1",
+          "u_sm/_162_/A1",
+          "u_sm/_170_/A1",
+          "u_sm/_178_/A1",
+          "u_sm/_186_/A1",
+          "u_sm/_194_/A1"
+        ],
+        "delay_changed": true,
+        "annotation_complete": false,
+        "annotation_warning": "only 333 of 369 nets in the linked design are named by this SPEF; read_spef discarded annotation for 1037 SPEF record(s) it could not resolve against the linked design (OpenSTA STA-1650/STA-1648 'not found' warnings); report_parasitic_annotation found 36 driver(s) with no parasitics attached after read_spef (first: g_slice\\[0\\].u_slice/_08_/Z, net_with_other_pins) -- the worst_slack_ns/etc. fields above are NOT a real-parasitics measurement to the extent annotation is missing."
+      },
+      "electrical_checks": {
+        "parasitics_source": "spef",
+        "max_transition": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "ns",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        },
+        "max_capacitance": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "pF",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        }
+      },
+      "clock_propagation": null,
+      "sdf": null,
+      "deck": {
+        "name": "gf180mcu_fd_sc_mcu7t5v0__ss_n40C_1v62",
+        "content_hash": "sha256:0d5f11c4bda8614a0879a5696654a9e5e72189a7addd41ffe954727550dc83c8",
+        "released": false,
+        "path": {
+          "path": null,
+          "scope": "external"
+        }
+      }
+    },
+    {
+      "corner": "ss_n40C_3v00",
+      "engine_log": {
+        "invocation_id": "d5dfe091a6a94a09a32cbd5d82944743",
+        "script_name": "sta_logic_tile_routed__ss_n40C_3v00.tcl",
+        "script_path": {
+          "path": "measurements/item5-24um/.klt/sta/sta_logic_tile_routed__ss_n40C_3v00.tcl",
+          "scope": "repo"
+        },
+        "script_sha256": "e7609cf5a7b0dd438420770a6dceb449e9a8bf71888465faa76b8e13b61717ad",
+        "metrics_path": {
+          "path": "measurements/item5-24um/.klt/sta/logic_tile_routed__ss_n40C_3v00_metrics.json",
+          "scope": "repo"
+        },
+        "outcome": "exited",
+        "returncode": 0,
+        "directory": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/d5dfe091a6a94a09a32cbd5d82944743",
+          "scope": "repo"
+        },
+        "stdout_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/d5dfe091a6a94a09a32cbd5d82944743/stdout.log",
+          "scope": "repo"
+        },
+        "stderr_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/d5dfe091a6a94a09a32cbd5d82944743/stderr.log",
+          "scope": "repo"
+        },
+        "metadata_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/d5dfe091a6a94a09a32cbd5d82944743/invocation.json",
+          "scope": "repo"
+        },
+        "retention_errors": []
+      },
+      "worst_slack_ns": 10.5126,
+      "total_negative_slack_ns": 0,
+      "worst_hold_slack_ns": 0.11347,
+      "total_negative_hold_slack_ns": 0,
+      "fmax_mhz": 105.403,
+      "timing_status": "constrained",
+      "constraint_completeness": {
+        "status": "complete",
+        "unconstrained_endpoints": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "unclocked_registers": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "sample_limit": 20
+      },
+      "setup_violation_count": 0,
+      "hold_violation_count": 0,
+      "worst_setup_path": {
+        "status": "ok",
+        "check_type": "output_setup",
+        "engine_check_role": "output setup",
+        "startpoint": "cfg[132]",
+        "endpoint": "w_out[3]",
+        "slack_ns": 10.51259,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "worst_hold_path": {
+        "status": "ok",
+        "check_type": "output_hold",
+        "engine_check_role": "output hold",
+        "startpoint": "cfg[84]",
+        "endpoint": "e_out[1]",
+        "slack_ns": 0.11347,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "clock_skew_ns": 0,
+      "estimated_power_mw": 0.3114,
+      "power_basis": {
+        "activity_source": "engine_default",
+        "activity": null,
+        "duty": null,
+        "parasitics": "spef_annotated"
+      },
+      "spef_annotation": {
+        "nets_annotated": 333,
+        "nets_total": 369,
+        "design_nets_annotated": 333,
+        "design_nets_total": 369,
+        "design_nets_missing_sample": [
+          "g_slice[0].u_slice/_00_",
+          "g_slice[0].u_slice/_01_",
+          "g_slice[0].u_slice/_02_",
+          "g_slice[0].u_slice/_03_",
+          "g_slice[0].u_slice/_04_",
+          "g_slice[0].u_slice/_05_",
+          "g_slice[0].u_slice/_06_",
+          "g_slice[0].u_slice/_07_",
+          "g_slice[0].u_slice/ff_q",
+          "g_slice[1].u_slice/_00_",
+          "g_slice[1].u_slice/_01_",
+          "g_slice[1].u_slice/_02_",
+          "g_slice[1].u_slice/_03_",
+          "g_slice[1].u_slice/_04_",
+          "g_slice[1].u_slice/_05_",
+          "g_slice[1].u_slice/_06_",
+          "g_slice[1].u_slice/_07_",
+          "g_slice[1].u_slice/ff_q",
+          "g_slice[2].u_slice/_00_",
+          "g_slice[2].u_slice/_01_"
+        ],
+        "reader_warning_count": 1037,
+        "reader_warning_sample": [
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 394, pin bel_en[0] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 395, pin bel_en[1] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 396, pin bel_en[2] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 397, pin bel_en[3] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 398, pin bel_o[0] not found."
+        ],
+        "unannotated_driver_count": 36,
+        "partially_unannotated_driver_count": 140,
+        "floating_driver_count": 0,
+        "floating_driver_sample": [],
+        "unannotated_driver_sample": [
+          "g_slice\\[0\\].u_slice/_08_/Z",
+          "g_slice\\[0\\].u_slice/_09_/Z",
+          "g_slice\\[0\\].u_slice/_10_/Z",
+          "g_slice\\[0\\].u_slice/_11_/Z",
+          "g_slice\\[0\\].u_slice/_12_/Z",
+          "g_slice\\[0\\].u_slice/_14_/ZN",
+          "g_slice\\[0\\].u_slice/_15_/ZN",
+          "g_slice\\[0\\].u_slice/_16_/ZN",
+          "g_slice\\[0\\].u_slice/_17_/Q",
+          "g_slice\\[1\\].u_slice/_08_/Z",
+          "g_slice\\[1\\].u_slice/_09_/Z",
+          "g_slice\\[1\\].u_slice/_10_/Z",
+          "g_slice\\[1\\].u_slice/_11_/Z",
+          "g_slice\\[1\\].u_slice/_12_/Z",
+          "g_slice\\[1\\].u_slice/_14_/ZN",
+          "g_slice\\[1\\].u_slice/_15_/ZN",
+          "g_slice\\[1\\].u_slice/_16_/ZN",
+          "g_slice\\[1\\].u_slice/_17_/Q",
+          "g_slice\\[2\\].u_slice/_08_/Z",
+          "g_slice\\[2\\].u_slice/_09_/Z"
+        ],
+        "unannotated_driver_detail": [
+          {
+            "pin": "g_slice\\[0\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_10_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_11_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_12_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_14_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_15_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_16_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_17_/Q",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_10_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_11_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_12_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_14_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_15_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_16_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_17_/Q",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[2\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[2\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          }
+        ],
+        "partially_unannotated_driver_sample": [
+          "clkbuf_0_clk/Z",
+          "clkbuf_1_0__f_clk/I",
+          "clkbuf_1_1__f_clk/I",
+          "clkbuf_1_0__f_clk/Z",
+          "g_slice\\[2\\].u_slice/_17_/CLK",
+          "g_slice\\[3\\].u_slice/_17_/CLK",
+          "clkbuf_1_1__f_clk/Z",
+          "g_slice\\[0\\].u_slice/_17_/CLK",
+          "g_slice\\[1\\].u_slice/_17_/CLK",
+          "g_slice\\[0\\].u_slice/_13_/Z",
+          "u_sm/_120_/A1",
+          "u_sm/_130_/A1",
+          "u_sm/_138_/A1",
+          "u_sm/_146_/A1",
+          "u_sm/_154_/A1",
+          "u_sm/_162_/A1",
+          "u_sm/_170_/A1",
+          "u_sm/_178_/A1",
+          "u_sm/_186_/A1",
+          "u_sm/_194_/A1"
+        ],
+        "delay_changed": true,
+        "annotation_complete": false,
+        "annotation_warning": "only 333 of 369 nets in the linked design are named by this SPEF; read_spef discarded annotation for 1037 SPEF record(s) it could not resolve against the linked design (OpenSTA STA-1650/STA-1648 'not found' warnings); report_parasitic_annotation found 36 driver(s) with no parasitics attached after read_spef (first: g_slice\\[0\\].u_slice/_08_/Z, net_with_other_pins) -- the worst_slack_ns/etc. fields above are NOT a real-parasitics measurement to the extent annotation is missing."
+      },
+      "electrical_checks": {
+        "parasitics_source": "spef",
+        "max_transition": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "ns",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        },
+        "max_capacitance": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "pF",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        }
+      },
+      "clock_propagation": null,
+      "sdf": null,
+      "deck": {
+        "name": "gf180mcu_fd_sc_mcu7t5v0__ss_n40C_3v00",
+        "content_hash": "sha256:08847da4bb78d75ba004e79bb1540dd43fa8d4ed694b84ed5c182d0809520a93",
+        "released": false,
+        "path": {
+          "path": null,
+          "scope": "external"
+        }
+      }
+    },
+    {
+      "corner": "ss_n40C_4v50",
+      "engine_log": {
+        "invocation_id": "a660a8bb91074eeda7312c73ab56df24",
+        "script_name": "sta_logic_tile_routed__ss_n40C_4v50.tcl",
+        "script_path": {
+          "path": "measurements/item5-24um/.klt/sta/sta_logic_tile_routed__ss_n40C_4v50.tcl",
+          "scope": "repo"
+        },
+        "script_sha256": "8be78c6d887cc27eb41c3c2c923e395ccf88bfd1d02a6c0f731bbd0fcb0110b4",
+        "metrics_path": {
+          "path": "measurements/item5-24um/.klt/sta/logic_tile_routed__ss_n40C_4v50_metrics.json",
+          "scope": "repo"
+        },
+        "outcome": "exited",
+        "returncode": 0,
+        "directory": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/a660a8bb91074eeda7312c73ab56df24",
+          "scope": "repo"
+        },
+        "stdout_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/a660a8bb91074eeda7312c73ab56df24/stdout.log",
+          "scope": "repo"
+        },
+        "stderr_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/a660a8bb91074eeda7312c73ab56df24/stderr.log",
+          "scope": "repo"
+        },
+        "metadata_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/a660a8bb91074eeda7312c73ab56df24/invocation.json",
+          "scope": "repo"
+        },
+        "retention_errors": []
+      },
+      "worst_slack_ns": 14.1953,
+      "total_negative_slack_ns": 0,
+      "worst_hold_slack_ns": 0.07878,
+      "total_negative_hold_slack_ns": 0,
+      "fmax_mhz": 172.276,
+      "timing_status": "constrained",
+      "constraint_completeness": {
+        "status": "complete",
+        "unconstrained_endpoints": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "unclocked_registers": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "sample_limit": 20
+      },
+      "setup_violation_count": 0,
+      "hold_violation_count": 0,
+      "worst_setup_path": {
+        "status": "ok",
+        "check_type": "output_setup",
+        "engine_check_role": "output setup",
+        "startpoint": "cfg[132]",
+        "endpoint": "w_out[3]",
+        "slack_ns": 14.19535,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "worst_hold_path": {
+        "status": "ok",
+        "check_type": "output_hold",
+        "engine_check_role": "output hold",
+        "startpoint": "cfg[84]",
+        "endpoint": "e_out[1]",
+        "slack_ns": 0.07878,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "clock_skew_ns": 0,
+      "estimated_power_mw": 0.7528,
+      "power_basis": {
+        "activity_source": "engine_default",
+        "activity": null,
+        "duty": null,
+        "parasitics": "spef_annotated"
+      },
+      "spef_annotation": {
+        "nets_annotated": 333,
+        "nets_total": 369,
+        "design_nets_annotated": 333,
+        "design_nets_total": 369,
+        "design_nets_missing_sample": [
+          "g_slice[0].u_slice/_00_",
+          "g_slice[0].u_slice/_01_",
+          "g_slice[0].u_slice/_02_",
+          "g_slice[0].u_slice/_03_",
+          "g_slice[0].u_slice/_04_",
+          "g_slice[0].u_slice/_05_",
+          "g_slice[0].u_slice/_06_",
+          "g_slice[0].u_slice/_07_",
+          "g_slice[0].u_slice/ff_q",
+          "g_slice[1].u_slice/_00_",
+          "g_slice[1].u_slice/_01_",
+          "g_slice[1].u_slice/_02_",
+          "g_slice[1].u_slice/_03_",
+          "g_slice[1].u_slice/_04_",
+          "g_slice[1].u_slice/_05_",
+          "g_slice[1].u_slice/_06_",
+          "g_slice[1].u_slice/_07_",
+          "g_slice[1].u_slice/ff_q",
+          "g_slice[2].u_slice/_00_",
+          "g_slice[2].u_slice/_01_"
+        ],
+        "reader_warning_count": 1037,
+        "reader_warning_sample": [
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 394, pin bel_en[0] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 395, pin bel_en[1] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 396, pin bel_en[2] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 397, pin bel_en[3] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 398, pin bel_o[0] not found."
+        ],
+        "unannotated_driver_count": 36,
+        "partially_unannotated_driver_count": 140,
+        "floating_driver_count": 0,
+        "floating_driver_sample": [],
+        "unannotated_driver_sample": [
+          "g_slice\\[0\\].u_slice/_08_/Z",
+          "g_slice\\[0\\].u_slice/_09_/Z",
+          "g_slice\\[0\\].u_slice/_10_/Z",
+          "g_slice\\[0\\].u_slice/_11_/Z",
+          "g_slice\\[0\\].u_slice/_12_/Z",
+          "g_slice\\[0\\].u_slice/_14_/ZN",
+          "g_slice\\[0\\].u_slice/_15_/ZN",
+          "g_slice\\[0\\].u_slice/_16_/ZN",
+          "g_slice\\[0\\].u_slice/_17_/Q",
+          "g_slice\\[1\\].u_slice/_08_/Z",
+          "g_slice\\[1\\].u_slice/_09_/Z",
+          "g_slice\\[1\\].u_slice/_10_/Z",
+          "g_slice\\[1\\].u_slice/_11_/Z",
+          "g_slice\\[1\\].u_slice/_12_/Z",
+          "g_slice\\[1\\].u_slice/_14_/ZN",
+          "g_slice\\[1\\].u_slice/_15_/ZN",
+          "g_slice\\[1\\].u_slice/_16_/ZN",
+          "g_slice\\[1\\].u_slice/_17_/Q",
+          "g_slice\\[2\\].u_slice/_08_/Z",
+          "g_slice\\[2\\].u_slice/_09_/Z"
+        ],
+        "unannotated_driver_detail": [
+          {
+            "pin": "g_slice\\[0\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_10_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_11_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_12_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_14_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_15_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_16_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_17_/Q",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_10_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_11_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_12_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_14_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_15_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_16_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_17_/Q",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[2\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[2\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          }
+        ],
+        "partially_unannotated_driver_sample": [
+          "clkbuf_0_clk/Z",
+          "clkbuf_1_0__f_clk/I",
+          "clkbuf_1_1__f_clk/I",
+          "clkbuf_1_0__f_clk/Z",
+          "g_slice\\[2\\].u_slice/_17_/CLK",
+          "g_slice\\[3\\].u_slice/_17_/CLK",
+          "clkbuf_1_1__f_clk/Z",
+          "g_slice\\[0\\].u_slice/_17_/CLK",
+          "g_slice\\[1\\].u_slice/_17_/CLK",
+          "g_slice\\[0\\].u_slice/_13_/Z",
+          "u_sm/_120_/A1",
+          "u_sm/_130_/A1",
+          "u_sm/_138_/A1",
+          "u_sm/_146_/A1",
+          "u_sm/_154_/A1",
+          "u_sm/_162_/A1",
+          "u_sm/_170_/A1",
+          "u_sm/_178_/A1",
+          "u_sm/_186_/A1",
+          "u_sm/_194_/A1"
+        ],
+        "delay_changed": true,
+        "annotation_complete": false,
+        "annotation_warning": "only 333 of 369 nets in the linked design are named by this SPEF; read_spef discarded annotation for 1037 SPEF record(s) it could not resolve against the linked design (OpenSTA STA-1650/STA-1648 'not found' warnings); report_parasitic_annotation found 36 driver(s) with no parasitics attached after read_spef (first: g_slice\\[0\\].u_slice/_08_/Z, net_with_other_pins) -- the worst_slack_ns/etc. fields above are NOT a real-parasitics measurement to the extent annotation is missing."
+      },
+      "electrical_checks": {
+        "parasitics_source": "spef",
+        "max_transition": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "ns",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        },
+        "max_capacitance": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "pF",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        }
+      },
+      "clock_propagation": null,
+      "sdf": null,
+      "deck": {
+        "name": "gf180mcu_fd_sc_mcu7t5v0__ss_n40C_4v50",
+        "content_hash": "sha256:d1c2695498b2b0aec8520e9090799b5597fef0f6be992b0f23aa899c7163df76",
+        "released": false,
+        "path": {
+          "path": null,
+          "scope": "external"
+        }
+      }
+    },
+    {
+      "corner": "tt_025C_1v80",
+      "engine_log": {
+        "invocation_id": "6097757255964edcab6dd58478100caa",
+        "script_name": "sta_logic_tile_routed__tt_025C_1v80.tcl",
+        "script_path": {
+          "path": "measurements/item5-24um/.klt/sta/sta_logic_tile_routed__tt_025C_1v80.tcl",
+          "scope": "repo"
+        },
+        "script_sha256": "ffd896436255788c58ff663ab1c1c321b48263268704285eceea6816a11c0fe6",
+        "metrics_path": {
+          "path": "measurements/item5-24um/.klt/sta/logic_tile_routed__tt_025C_1v80_metrics.json",
+          "scope": "repo"
+        },
+        "outcome": "exited",
+        "returncode": 0,
+        "directory": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/6097757255964edcab6dd58478100caa",
+          "scope": "repo"
+        },
+        "stdout_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/6097757255964edcab6dd58478100caa/stdout.log",
+          "scope": "repo"
+        },
+        "stderr_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/6097757255964edcab6dd58478100caa/stderr.log",
+          "scope": "repo"
+        },
+        "metadata_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/6097757255964edcab6dd58478100caa/invocation.json",
+          "scope": "repo"
+        },
+        "retention_errors": []
+      },
+      "worst_slack_ns": 2.11697,
+      "total_negative_slack_ns": 0,
+      "worst_hold_slack_ns": 0.18078,
+      "total_negative_hold_slack_ns": 0,
+      "fmax_mhz": 55.9189,
+      "timing_status": "constrained",
+      "constraint_completeness": {
+        "status": "complete",
+        "unconstrained_endpoints": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "unclocked_registers": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "sample_limit": 20
+      },
+      "setup_violation_count": 0,
+      "hold_violation_count": 0,
+      "worst_setup_path": {
+        "status": "ok",
+        "check_type": "output_setup",
+        "engine_check_role": "output setup",
+        "startpoint": "cfg[132]",
+        "endpoint": "w_out[3]",
+        "slack_ns": 2.11697,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "worst_hold_path": {
+        "status": "ok",
+        "check_type": "output_hold",
+        "engine_check_role": "output hold",
+        "startpoint": "cfg[84]",
+        "endpoint": "e_out[1]",
+        "slack_ns": 0.18078,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "clock_skew_ns": 0,
+      "estimated_power_mw": 0.1073,
+      "power_basis": {
+        "activity_source": "engine_default",
+        "activity": null,
+        "duty": null,
+        "parasitics": "spef_annotated"
+      },
+      "spef_annotation": {
+        "nets_annotated": 333,
+        "nets_total": 369,
+        "design_nets_annotated": 333,
+        "design_nets_total": 369,
+        "design_nets_missing_sample": [
+          "g_slice[0].u_slice/_00_",
+          "g_slice[0].u_slice/_01_",
+          "g_slice[0].u_slice/_02_",
+          "g_slice[0].u_slice/_03_",
+          "g_slice[0].u_slice/_04_",
+          "g_slice[0].u_slice/_05_",
+          "g_slice[0].u_slice/_06_",
+          "g_slice[0].u_slice/_07_",
+          "g_slice[0].u_slice/ff_q",
+          "g_slice[1].u_slice/_00_",
+          "g_slice[1].u_slice/_01_",
+          "g_slice[1].u_slice/_02_",
+          "g_slice[1].u_slice/_03_",
+          "g_slice[1].u_slice/_04_",
+          "g_slice[1].u_slice/_05_",
+          "g_slice[1].u_slice/_06_",
+          "g_slice[1].u_slice/_07_",
+          "g_slice[1].u_slice/ff_q",
+          "g_slice[2].u_slice/_00_",
+          "g_slice[2].u_slice/_01_"
+        ],
+        "reader_warning_count": 1037,
+        "reader_warning_sample": [
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 394, pin bel_en[0] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 395, pin bel_en[1] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 396, pin bel_en[2] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 397, pin bel_en[3] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 398, pin bel_o[0] not found."
+        ],
+        "unannotated_driver_count": 36,
+        "partially_unannotated_driver_count": 140,
+        "floating_driver_count": 0,
+        "floating_driver_sample": [],
+        "unannotated_driver_sample": [
+          "g_slice\\[0\\].u_slice/_08_/Z",
+          "g_slice\\[0\\].u_slice/_09_/Z",
+          "g_slice\\[0\\].u_slice/_10_/Z",
+          "g_slice\\[0\\].u_slice/_11_/Z",
+          "g_slice\\[0\\].u_slice/_12_/Z",
+          "g_slice\\[0\\].u_slice/_14_/ZN",
+          "g_slice\\[0\\].u_slice/_15_/ZN",
+          "g_slice\\[0\\].u_slice/_16_/ZN",
+          "g_slice\\[0\\].u_slice/_17_/Q",
+          "g_slice\\[1\\].u_slice/_08_/Z",
+          "g_slice\\[1\\].u_slice/_09_/Z",
+          "g_slice\\[1\\].u_slice/_10_/Z",
+          "g_slice\\[1\\].u_slice/_11_/Z",
+          "g_slice\\[1\\].u_slice/_12_/Z",
+          "g_slice\\[1\\].u_slice/_14_/ZN",
+          "g_slice\\[1\\].u_slice/_15_/ZN",
+          "g_slice\\[1\\].u_slice/_16_/ZN",
+          "g_slice\\[1\\].u_slice/_17_/Q",
+          "g_slice\\[2\\].u_slice/_08_/Z",
+          "g_slice\\[2\\].u_slice/_09_/Z"
+        ],
+        "unannotated_driver_detail": [
+          {
+            "pin": "g_slice\\[0\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_10_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_11_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_12_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_14_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_15_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_16_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_17_/Q",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_10_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_11_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_12_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_14_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_15_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_16_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_17_/Q",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[2\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[2\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          }
+        ],
+        "partially_unannotated_driver_sample": [
+          "clkbuf_0_clk/Z",
+          "clkbuf_1_0__f_clk/I",
+          "clkbuf_1_1__f_clk/I",
+          "clkbuf_1_0__f_clk/Z",
+          "g_slice\\[2\\].u_slice/_17_/CLK",
+          "g_slice\\[3\\].u_slice/_17_/CLK",
+          "clkbuf_1_1__f_clk/Z",
+          "g_slice\\[0\\].u_slice/_17_/CLK",
+          "g_slice\\[1\\].u_slice/_17_/CLK",
+          "g_slice\\[0\\].u_slice/_13_/Z",
+          "u_sm/_120_/A1",
+          "u_sm/_130_/A1",
+          "u_sm/_138_/A1",
+          "u_sm/_146_/A1",
+          "u_sm/_154_/A1",
+          "u_sm/_162_/A1",
+          "u_sm/_170_/A1",
+          "u_sm/_178_/A1",
+          "u_sm/_186_/A1",
+          "u_sm/_194_/A1"
+        ],
+        "delay_changed": true,
+        "annotation_complete": false,
+        "annotation_warning": "only 333 of 369 nets in the linked design are named by this SPEF; read_spef discarded annotation for 1037 SPEF record(s) it could not resolve against the linked design (OpenSTA STA-1650/STA-1648 'not found' warnings); report_parasitic_annotation found 36 driver(s) with no parasitics attached after read_spef (first: g_slice\\[0\\].u_slice/_08_/Z, net_with_other_pins) -- the worst_slack_ns/etc. fields above are NOT a real-parasitics measurement to the extent annotation is missing."
+      },
+      "electrical_checks": {
+        "parasitics_source": "spef",
+        "max_transition": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "ns",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        },
+        "max_capacitance": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "pF",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        }
+      },
+      "clock_propagation": null,
+      "sdf": null,
+      "deck": {
+        "name": "gf180mcu_fd_sc_mcu7t5v0__tt_025C_1v80",
+        "content_hash": "sha256:9000042dd82b66d81d671cfc82120f27fe4721abbdfcbd0330e8f95f4ca45726",
+        "released": false,
+        "path": {
+          "path": null,
+          "scope": "external"
+        }
+      }
+    },
+    {
+      "corner": "tt_025C_3v30",
+      "engine_log": {
+        "invocation_id": "2ba9ed84c62b4adc906182c6cb5e7b65",
+        "script_name": "sta_logic_tile_routed__tt_025C_3v30.tcl",
+        "script_path": {
+          "path": "measurements/item5-24um/.klt/sta/sta_logic_tile_routed__tt_025C_3v30.tcl",
+          "scope": "repo"
+        },
+        "script_sha256": "12ee1eb1b3556e9e5b97e19daee88fd2da168c909e363ab9e9c1f9c94aaaa668",
+        "metrics_path": {
+          "path": "measurements/item5-24um/.klt/sta/logic_tile_routed__tt_025C_3v30_metrics.json",
+          "scope": "repo"
+        },
+        "outcome": "exited",
+        "returncode": 0,
+        "directory": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/2ba9ed84c62b4adc906182c6cb5e7b65",
+          "scope": "repo"
+        },
+        "stdout_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/2ba9ed84c62b4adc906182c6cb5e7b65/stdout.log",
+          "scope": "repo"
+        },
+        "stderr_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/2ba9ed84c62b4adc906182c6cb5e7b65/stderr.log",
+          "scope": "repo"
+        },
+        "metadata_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/2ba9ed84c62b4adc906182c6cb5e7b65/invocation.json",
+          "scope": "repo"
+        },
+        "retention_errors": []
+      },
+      "worst_slack_ns": 13.5344,
+      "total_negative_slack_ns": 0,
+      "worst_hold_slack_ns": 0.08627,
+      "total_negative_hold_slack_ns": 0,
+      "fmax_mhz": 154.664,
+      "timing_status": "constrained",
+      "constraint_completeness": {
+        "status": "complete",
+        "unconstrained_endpoints": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "unclocked_registers": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "sample_limit": 20
+      },
+      "setup_violation_count": 0,
+      "hold_violation_count": 0,
+      "worst_setup_path": {
+        "status": "ok",
+        "check_type": "output_setup",
+        "engine_check_role": "output setup",
+        "startpoint": "cfg[132]",
+        "endpoint": "w_out[3]",
+        "slack_ns": 13.53439,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "worst_hold_path": {
+        "status": "ok",
+        "check_type": "output_hold",
+        "engine_check_role": "output hold",
+        "startpoint": "cfg[84]",
+        "endpoint": "e_out[1]",
+        "slack_ns": 0.08627,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "clock_skew_ns": 0,
+      "estimated_power_mw": 0.3979,
+      "power_basis": {
+        "activity_source": "engine_default",
+        "activity": null,
+        "duty": null,
+        "parasitics": "spef_annotated"
+      },
+      "spef_annotation": {
+        "nets_annotated": 333,
+        "nets_total": 369,
+        "design_nets_annotated": 333,
+        "design_nets_total": 369,
+        "design_nets_missing_sample": [
+          "g_slice[0].u_slice/_00_",
+          "g_slice[0].u_slice/_01_",
+          "g_slice[0].u_slice/_02_",
+          "g_slice[0].u_slice/_03_",
+          "g_slice[0].u_slice/_04_",
+          "g_slice[0].u_slice/_05_",
+          "g_slice[0].u_slice/_06_",
+          "g_slice[0].u_slice/_07_",
+          "g_slice[0].u_slice/ff_q",
+          "g_slice[1].u_slice/_00_",
+          "g_slice[1].u_slice/_01_",
+          "g_slice[1].u_slice/_02_",
+          "g_slice[1].u_slice/_03_",
+          "g_slice[1].u_slice/_04_",
+          "g_slice[1].u_slice/_05_",
+          "g_slice[1].u_slice/_06_",
+          "g_slice[1].u_slice/_07_",
+          "g_slice[1].u_slice/ff_q",
+          "g_slice[2].u_slice/_00_",
+          "g_slice[2].u_slice/_01_"
+        ],
+        "reader_warning_count": 1037,
+        "reader_warning_sample": [
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 394, pin bel_en[0] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 395, pin bel_en[1] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 396, pin bel_en[2] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 397, pin bel_en[3] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 398, pin bel_o[0] not found."
+        ],
+        "unannotated_driver_count": 36,
+        "partially_unannotated_driver_count": 140,
+        "floating_driver_count": 0,
+        "floating_driver_sample": [],
+        "unannotated_driver_sample": [
+          "g_slice\\[0\\].u_slice/_08_/Z",
+          "g_slice\\[0\\].u_slice/_09_/Z",
+          "g_slice\\[0\\].u_slice/_10_/Z",
+          "g_slice\\[0\\].u_slice/_11_/Z",
+          "g_slice\\[0\\].u_slice/_12_/Z",
+          "g_slice\\[0\\].u_slice/_14_/ZN",
+          "g_slice\\[0\\].u_slice/_15_/ZN",
+          "g_slice\\[0\\].u_slice/_16_/ZN",
+          "g_slice\\[0\\].u_slice/_17_/Q",
+          "g_slice\\[1\\].u_slice/_08_/Z",
+          "g_slice\\[1\\].u_slice/_09_/Z",
+          "g_slice\\[1\\].u_slice/_10_/Z",
+          "g_slice\\[1\\].u_slice/_11_/Z",
+          "g_slice\\[1\\].u_slice/_12_/Z",
+          "g_slice\\[1\\].u_slice/_14_/ZN",
+          "g_slice\\[1\\].u_slice/_15_/ZN",
+          "g_slice\\[1\\].u_slice/_16_/ZN",
+          "g_slice\\[1\\].u_slice/_17_/Q",
+          "g_slice\\[2\\].u_slice/_08_/Z",
+          "g_slice\\[2\\].u_slice/_09_/Z"
+        ],
+        "unannotated_driver_detail": [
+          {
+            "pin": "g_slice\\[0\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_10_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_11_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_12_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_14_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_15_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_16_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_17_/Q",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_10_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_11_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_12_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_14_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_15_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_16_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_17_/Q",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[2\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[2\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          }
+        ],
+        "partially_unannotated_driver_sample": [
+          "clkbuf_0_clk/Z",
+          "clkbuf_1_0__f_clk/I",
+          "clkbuf_1_1__f_clk/I",
+          "clkbuf_1_0__f_clk/Z",
+          "g_slice\\[2\\].u_slice/_17_/CLK",
+          "g_slice\\[3\\].u_slice/_17_/CLK",
+          "clkbuf_1_1__f_clk/Z",
+          "g_slice\\[0\\].u_slice/_17_/CLK",
+          "g_slice\\[1\\].u_slice/_17_/CLK",
+          "g_slice\\[0\\].u_slice/_13_/Z",
+          "u_sm/_120_/A1",
+          "u_sm/_130_/A1",
+          "u_sm/_138_/A1",
+          "u_sm/_146_/A1",
+          "u_sm/_154_/A1",
+          "u_sm/_162_/A1",
+          "u_sm/_170_/A1",
+          "u_sm/_178_/A1",
+          "u_sm/_186_/A1",
+          "u_sm/_194_/A1"
+        ],
+        "delay_changed": true,
+        "annotation_complete": false,
+        "annotation_warning": "only 333 of 369 nets in the linked design are named by this SPEF; read_spef discarded annotation for 1037 SPEF record(s) it could not resolve against the linked design (OpenSTA STA-1650/STA-1648 'not found' warnings); report_parasitic_annotation found 36 driver(s) with no parasitics attached after read_spef (first: g_slice\\[0\\].u_slice/_08_/Z, net_with_other_pins) -- the worst_slack_ns/etc. fields above are NOT a real-parasitics measurement to the extent annotation is missing."
+      },
+      "electrical_checks": {
+        "parasitics_source": "spef",
+        "max_transition": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "ns",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        },
+        "max_capacitance": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "pF",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        }
+      },
+      "clock_propagation": null,
+      "sdf": null,
+      "deck": {
+        "name": "gf180mcu_fd_sc_mcu7t5v0__tt_025C_3v30",
+        "content_hash": "sha256:f9dee07cf158324934b0c59144d970a2e8313f43533ede6283ec3c136f82fe53",
+        "released": false,
+        "path": {
+          "path": null,
+          "scope": "external"
+        }
+      }
+    },
+    {
+      "corner": "tt_025C_5v00",
+      "engine_log": {
+        "invocation_id": "2b4faacc7f0a4f11acbb2689b1fb6832",
+        "script_name": "sta_logic_tile_routed__tt_025C_5v00.tcl",
+        "script_path": {
+          "path": "measurements/item5-24um/.klt/sta/sta_logic_tile_routed__tt_025C_5v00.tcl",
+          "scope": "repo"
+        },
+        "script_sha256": "14402e7402f4bd171efbd0a90f9115d36c88d60f192c7e90ebe511a93af81e3e",
+        "metrics_path": {
+          "path": "measurements/item5-24um/.klt/sta/logic_tile_routed__tt_025C_5v00_metrics.json",
+          "scope": "repo"
+        },
+        "outcome": "exited",
+        "returncode": 0,
+        "directory": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/2b4faacc7f0a4f11acbb2689b1fb6832",
+          "scope": "repo"
+        },
+        "stdout_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/2b4faacc7f0a4f11acbb2689b1fb6832/stdout.log",
+          "scope": "repo"
+        },
+        "stderr_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/2b4faacc7f0a4f11acbb2689b1fb6832/stderr.log",
+          "scope": "repo"
+        },
+        "metadata_path": {
+          "path": "measurements/item5-24um/.klt/sta/openroad-logs/2b4faacc7f0a4f11acbb2689b1fb6832/invocation.json",
+          "scope": "repo"
+        },
+        "retention_errors": []
+      },
+      "worst_slack_ns": 15.6274,
+      "total_negative_slack_ns": 0,
+      "worst_hold_slack_ns": 0.06357,
+      "total_negative_hold_slack_ns": 0,
+      "fmax_mhz": 228.696,
+      "timing_status": "constrained",
+      "constraint_completeness": {
+        "status": "complete",
+        "unconstrained_endpoints": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "unclocked_registers": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "sample_limit": 20
+      },
+      "setup_violation_count": 0,
+      "hold_violation_count": 0,
+      "worst_setup_path": {
+        "status": "ok",
+        "check_type": "output_setup",
+        "engine_check_role": "output setup",
+        "startpoint": "cfg[132]",
+        "endpoint": "w_out[3]",
+        "slack_ns": 15.62738,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "worst_hold_path": {
+        "status": "ok",
+        "check_type": "output_hold",
+        "engine_check_role": "output hold",
+        "startpoint": "cfg[84]",
+        "endpoint": "e_out[1]",
+        "slack_ns": 0.06357,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "clock_skew_ns": 0,
+      "estimated_power_mw": 0.9773,
+      "power_basis": {
+        "activity_source": "engine_default",
+        "activity": null,
+        "duty": null,
+        "parasitics": "spef_annotated"
+      },
+      "spef_annotation": {
+        "nets_annotated": 333,
+        "nets_total": 369,
+        "design_nets_annotated": 333,
+        "design_nets_total": 369,
+        "design_nets_missing_sample": [
+          "g_slice[0].u_slice/_00_",
+          "g_slice[0].u_slice/_01_",
+          "g_slice[0].u_slice/_02_",
+          "g_slice[0].u_slice/_03_",
+          "g_slice[0].u_slice/_04_",
+          "g_slice[0].u_slice/_05_",
+          "g_slice[0].u_slice/_06_",
+          "g_slice[0].u_slice/_07_",
+          "g_slice[0].u_slice/ff_q",
+          "g_slice[1].u_slice/_00_",
+          "g_slice[1].u_slice/_01_",
+          "g_slice[1].u_slice/_02_",
+          "g_slice[1].u_slice/_03_",
+          "g_slice[1].u_slice/_04_",
+          "g_slice[1].u_slice/_05_",
+          "g_slice[1].u_slice/_06_",
+          "g_slice[1].u_slice/_07_",
+          "g_slice[1].u_slice/ff_q",
+          "g_slice[2].u_slice/_00_",
+          "g_slice[2].u_slice/_01_"
+        ],
+        "reader_warning_count": 1037,
+        "reader_warning_sample": [
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 394, pin bel_en[0] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 395, pin bel_en[1] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 396, pin bel_en[2] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 397, pin bel_en[3] not found.",
+          "[WARNING STA-1656] measurements/item5-24um/logic_tile_routed.spef line 398, pin bel_o[0] not found."
+        ],
+        "unannotated_driver_count": 36,
+        "partially_unannotated_driver_count": 140,
+        "floating_driver_count": 0,
+        "floating_driver_sample": [],
+        "unannotated_driver_sample": [
+          "g_slice\\[0\\].u_slice/_08_/Z",
+          "g_slice\\[0\\].u_slice/_09_/Z",
+          "g_slice\\[0\\].u_slice/_10_/Z",
+          "g_slice\\[0\\].u_slice/_11_/Z",
+          "g_slice\\[0\\].u_slice/_12_/Z",
+          "g_slice\\[0\\].u_slice/_14_/ZN",
+          "g_slice\\[0\\].u_slice/_15_/ZN",
+          "g_slice\\[0\\].u_slice/_16_/ZN",
+          "g_slice\\[0\\].u_slice/_17_/Q",
+          "g_slice\\[1\\].u_slice/_08_/Z",
+          "g_slice\\[1\\].u_slice/_09_/Z",
+          "g_slice\\[1\\].u_slice/_10_/Z",
+          "g_slice\\[1\\].u_slice/_11_/Z",
+          "g_slice\\[1\\].u_slice/_12_/Z",
+          "g_slice\\[1\\].u_slice/_14_/ZN",
+          "g_slice\\[1\\].u_slice/_15_/ZN",
+          "g_slice\\[1\\].u_slice/_16_/ZN",
+          "g_slice\\[1\\].u_slice/_17_/Q",
+          "g_slice\\[2\\].u_slice/_08_/Z",
+          "g_slice\\[2\\].u_slice/_09_/Z"
+        ],
+        "unannotated_driver_detail": [
+          {
+            "pin": "g_slice\\[0\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_10_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_11_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_12_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_14_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_15_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_16_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[0\\].u_slice/_17_/Q",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_10_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_11_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_12_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_14_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_15_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_16_/ZN",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[1\\].u_slice/_17_/Q",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[2\\].u_slice/_08_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          },
+          {
+            "pin": "g_slice\\[2\\].u_slice/_09_/Z",
+            "net_status": "net_with_other_pins",
+            "net": null
+          }
+        ],
+        "partially_unannotated_driver_sample": [
+          "clkbuf_0_clk/Z",
+          "clkbuf_1_0__f_clk/I",
+          "clkbuf_1_1__f_clk/I",
+          "clkbuf_1_0__f_clk/Z",
+          "g_slice\\[2\\].u_slice/_17_/CLK",
+          "g_slice\\[3\\].u_slice/_17_/CLK",
+          "clkbuf_1_1__f_clk/Z",
+          "g_slice\\[0\\].u_slice/_17_/CLK",
+          "g_slice\\[1\\].u_slice/_17_/CLK",
+          "g_slice\\[0\\].u_slice/_13_/Z",
+          "u_sm/_120_/A1",
+          "u_sm/_130_/A1",
+          "u_sm/_138_/A1",
+          "u_sm/_146_/A1",
+          "u_sm/_154_/A1",
+          "u_sm/_162_/A1",
+          "u_sm/_170_/A1",
+          "u_sm/_178_/A1",
+          "u_sm/_186_/A1",
+          "u_sm/_194_/A1"
+        ],
+        "delay_changed": true,
+        "annotation_complete": false,
+        "annotation_warning": "only 333 of 369 nets in the linked design are named by this SPEF; read_spef discarded annotation for 1037 SPEF record(s) it could not resolve against the linked design (OpenSTA STA-1650/STA-1648 'not found' warnings); report_parasitic_annotation found 36 driver(s) with no parasitics attached after read_spef (first: g_slice\\[0\\].u_slice/_08_/Z, net_with_other_pins) -- the worst_slack_ns/etc. fields above are NOT a real-parasitics measurement to the extent annotation is missing."
+      },
+      "electrical_checks": {
+        "parasitics_source": "spef",
+        "max_transition": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "ns",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        },
+        "max_capacitance": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "pF",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        }
+      },
+      "clock_propagation": null,
+      "sdf": null,
+      "deck": {
+        "name": "gf180mcu_fd_sc_mcu7t5v0__tt_025C_5v00",
+        "content_hash": "sha256:330aa9439255e3870ad7adfb987cd4d7bcfa7b6f9fb0cd0a712400e9bd80e38a",
+        "released": false,
+        "path": {
+          "path": null,
+          "scope": "external"
+        }
+      }
+    }
+  ]
+}

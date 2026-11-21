@@ -1,0 +1,6 @@
+# run-fleet.sh's PDK bootstrap: when the batch image resolves no PDK_ROOT,
+# the script `ciel enable`s the pinned open_pdks revision into a run-local
+# store; ciel itself comes from here, installed by the repo-script runner
+# into a job-local venv (never the host). The version is flow/pdk.json's
+# installer pin -- bump it there first.
+ciel==2.6.1

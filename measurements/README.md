@@ -105,9 +105,10 @@ the SPEF, `item5/extract.report.json`, the two `item5/sta-*.request.json`
 records and this README are cited by no manifest entry. `item5/summarize_sta.py --check` does regenerate-and-compare
 `item5/setup-paths.md` against the two committed reports, but nothing in CI
 invokes it, and it too reads only the reports — never the stream they were
-measured on. A re-run
-against `ecf5be0a…` belongs to issue #27, which owns item 5, and would land as
-a new record rather than an edit to these.
+measured on. A re-run against `ecf5be0a…` has since landed as
+`item5-24um/` (issue #160, the measurement carve-out from #27 — see its
+section below); these records stay as recorded, and #27 keeps the item 5
+decision and grade.
 
 ### Why these numbers and `layout/records/step0-par.json` disagree (leading hypothesis, not measured)
 
@@ -177,6 +178,63 @@ Either way the `klt sta` result stands as recorded: item 5 is `unmet`.
   testbench, so it was not used; the plain-Verilog runner's result is cited
   instead. This is a tool-capability gap, not a substitute for the cocotb
   report the item text names.
+
+A re-run against `ecf5be0a…` landed as `item5-24um/` (issue #160, the
+measurement carve-out from #27); the records above stay as recorded. #27
+keeps the item 5 decision and grade.
+
+## item5-24um/ — item 5 re-measured on the committed 24 µm stream (issue #160)
+
+The same pre-registration as `item5/` — 20 ns on `clk`, I/O delays 0, ideal
+clock, all 15 `gf180mcu_fd_sc_mcu7t5v0` corners, not re-tuned — re-run
+against the **committed** stream: every report's
+`provenance.input.content_hash` pins `layout/logic_tile_routed.gds`
+(`ecf5be0a…`) or `layout/logic_tile_routed.def` (`0b8fa71b…`). Tools: klt
+**0.9.0** (the `flow/pdk.json` pin; the 2026-11-05 set ran a 0.9.1 dev
+build), OpenROAD `26Q4-1310-g98c6045c72`, gf180mcuD at open_pdks
+`f6eeac7…`. Run on the batch fleet's heavy image via `repo-script-submit.py`
+(job `rs-20261120T230454Z-3a7acf33-s00`, 2026-11-20; the deployed AMI
+resolves no `PDK_ROOT`, so the job bootstrapped the pinned PDK with ciel
+into a run-local store) by `run-fleet.sh` + `requirements-fleet.txt` in this
+directory; nothing ran on a dispatch host.
+
+| File | What |
+| --- | --- |
+| `item5-24um/sta-lef-only.{request,report}.json` | `klt sta`, 15 corners, no parasitics; request byte-identical to `item5/`'s |
+| `item5-24um/extract.report.json`, `item5-24um/logic_tile_routed.spef` | `klt extract --deck gf180mcu --parasitics --spef --def-net-names --def-net-connections`, full-shape record (convention below) |
+| `item5-24um/sta-spef.{request,report}.json` | `klt sta` with that SPEF |
+| `item5-24um/sta-noncfg-{lef-only,spef}.{request,report}.json` | diagnostic, not graded and not manifest-cited: the graded failing corners only, with `constraints.false_path_from` over all 158 `cfg[*]` inputs, so each corner's reported worst path is the worst path **not** starting at a `cfg` port (issue #160 step 6, at the pin — klt#2968) |
+| `item5-24um/setup-paths.md` | per-corner table, `item5/summarize_sta.py --reports-dir measurements/item5-24um` |
+
+### Result (as found, 2026-11-20)
+
+**Item 5 is still not met**; the graded runs carry no `false_path_from` or
+any other exclusion.
+
+- LEF-only: 15/15 `constrained`; setup violated at `ss_125C_1v62`
+  (WNS -25.41 ns, 20 endpoints) and `ss_n40C_1v62` (-24.08 ns, 20
+  endpoints); hold slack >= 0.031 ns everywhere.
+- SPEF-annotated: same two corners, -25.92 / -24.50 ns; hold slack >=
+  0.040 ns. Every corner is marginally worse than the superseded 40 µm set
+  — the 24 µm stream's parasitics.
+- The LEF-only per-corner numbers are numerically identical to the
+  superseded set's at all 15 corners. That run annotates no routed
+  parasitics and the signal netlist did not change between streams, so
+  moving the DEF does not move it; the stream binding is still real — the
+  report's `provenance.input.content_hash` pins `0b8fa71b…`.
+- The SPEF annotation is partial again, **333 of 369 design nets** — the
+  same 36 slice-internal hierarchical nets unannotated (`spef_annotation`
+  in the report; a lower bound on parasitic impact, not a post-route
+  claim). The extract itself sees 1001 parasitic nets on this stream
+  (369 on the 40 µm stream): the denser tapcell grid's physical nets.
+- Non-`cfg` worst paths at the failing corners (diagnostic runs): `s_in[0]`
+  → `n_out[0]` at -24.83 ns (`ss_125C_1v62`) / -23.62 ns (`ss_n40C_1v62`)
+  LEF-only, and `s_in[0]` → `w_out[3]` at -25.34 / -24.05 ns with the
+  SPEF. Excluding every `cfg[*]` startpoint does not close either corner.
+  Reported evidence for #27 and #161; no conclusion is drawn here about
+  whether configuration paths should be timed.
+
+`manifests/gf180-fpga.json` entry `"5"` cites these two graded reports.
 
 ## Extract record shape — convention for future records (2026-11-15)
 

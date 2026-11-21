@@ -20,12 +20,12 @@
     },
     "5": [
       {
-        "file": "measurements/item5/sta-lef-only.report.json",
-        "content_hash": "sha256:b707b647568c1656de06532edd9b4af63ce56b7435cb04ab8022fb0fcfe48de2"
+        "file": "measurements/item5-24um/sta-lef-only.report.json",
+        "content_hash": "sha256:31b0d78761f12ffe429287344cb87cec038e3499d8d1b149593480fcc16d2521"
       },
       {
-        "file": "measurements/item5/sta-spef.report.json",
-        "content_hash": "sha256:8fc107117f40eda1e2d908f34ed3ddcd1ff15df21ebbc1d62c68ef9f423848d3"
+        "file": "measurements/item5-24um/sta-spef.report.json",
+        "content_hash": "sha256:bb282e8427494b506dfbcda56e7728e26596f2cdfc8dd5a39c89e8b0b7dcf932"
       }
     ],
     "6": {

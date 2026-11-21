@@ -289,20 +289,20 @@
       "citation": null,
       "citations_graded": [
         {
-          "citation": "measurements/item5/sta-lef-only.report.json",
+          "citation": "measurements/item5-24um/sta-lef-only.report.json",
           "status": "unmet",
           "reason": "check_failed"
         },
         {
-          "citation": "measurements/item5/sta-spef.report.json",
+          "citation": "measurements/item5-24um/sta-spef.report.json",
           "status": "unmet",
           "reason": "check_failed"
         }
       ],
       "detail": {
         "failed_citations": [
-          "measurements/item5/sta-lef-only.report.json",
-          "measurements/item5/sta-spef.report.json"
+          "measurements/item5-24um/sta-lef-only.report.json",
+          "measurements/item5-24um/sta-spef.report.json"
         ]
       }
     },

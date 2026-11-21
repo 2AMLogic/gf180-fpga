@@ -1,0 +1,22 @@
+{
+  "schema": "klt.sta.request/1",
+  "def": "../../layout/logic_tile_routed.def",
+  "hdl_toplevel": "logic_tile_routed",
+  "pdk": {
+    "cell_library": "gf180mcu_fd_sc_mcu7t5v0",
+    "corners": [
+      "ff_125C_1v98", "ff_125C_3v60", "ff_125C_5v50",
+      "ff_n40C_1v98", "ff_n40C_3v60", "ff_n40C_5v50",
+      "ss_125C_1v62", "ss_125C_3v00", "ss_125C_4v50",
+      "ss_n40C_1v62", "ss_n40C_3v00", "ss_n40C_4v50",
+      "tt_025C_1v80", "tt_025C_3v30", "tt_025C_5v00"
+    ]
+  },
+  "constraints": {
+    "clock_port": "clk",
+    "clock_period_ns": 20,
+    "input_delay_ns": 0,
+    "output_delay_ns": 0
+  },
+  "geometry_source": "routed"
+}
