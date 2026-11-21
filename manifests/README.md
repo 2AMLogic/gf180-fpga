@@ -40,9 +40,15 @@ since that job has no gf180mcu PDK or OpenROAD: it re-attests from the committed
 stream and confirms the envelope still binds to it. The regeneration claim itself
 is verified wherever the PDK is set up, with `layout/run-par.sh --check`.
 
+Write mode (`run-signoff.sh` with no flag) requires the pinned gf180mcu PDK on the
+host: item 1's inventory declares a `local_only` check that re-runs
+`flow/tile/run-synth.sh --check`. It runs `flow/setup-pdk.sh --verify` first and
+exits 2 with a message naming the PDK, before modifying any envelope, manifest pin
+or record. `--check` (CI) needs no PDK and is unchanged.
+
 ## klt pin
 
 The pin is the PyPI release `klayout-tools==0.9.0` (`klt 0.9.0`, tag `v0.9.0`,
-commit `5dbbad05ff42`), run via `uvx --from klayout-tools==0.9.0`; `--attest`
+commit `5dbbad05ff42`), run via `uvx --from` the `klt_spec` in `flow/pdk.json` (see `flow/klt.sh`); `--attest`
 (items 1, 2, 9, 10) ships in it. The committed record embeds the producing build, so regenerate
 with exactly that pin, and move the pin only together with a regenerated record.

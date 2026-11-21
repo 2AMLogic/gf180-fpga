@@ -8,9 +8,14 @@ logic tile and a small demonstration fabric — designed by AI agents driving
 description format, and the open-source cocotb + Icarus, Yosys, nextpnr and
 OpenROAD flow.
 
-**Status: specification phase, spec ratified.** The tile RTL, FABulous
-description and bitstream-level tests are vendored from `sky130-fpga`; nothing
-is designed, placed or verified in this repo yet.
+**Status: spec ratified; routed tile DRC-clean, LVS-matched and supply-ERC'd.**
+The tile RTL, FABulous description and bitstream-level tests are vendored from
+`sky130-fpga`. Tile DRC is clean on the curated gf180mcu deck
+([#55](../../issues/55) closed it: 46 → 0 violations); the PDK-native deck
+crosscheck ([#23](../../issues/23)), fabric-level DRC
+([#53](../../issues/53)) and timing at the two ss 1.62 V corners
+([#27](../../issues/27)) are open. The graded state of every T1 item is
+in [`manifests/gf180-fpga.signoff.json`](manifests/gf180-fpga.signoff.json).
 
 **Built agent-native.** Every specification, decision record, testbench, and
 line of documentation here is produced by AI agents working from a ratified
@@ -68,7 +73,7 @@ Maturity ladder: framework and port plan → tile spec ratified → tile RTL
 and fabric description passing bitstream-level tests → tile layout
 DRC/LVS-clean → tile timing characterized → demonstration fabric assembled
 and re-verified → shuttle seat → measured silicon.
-**Current position: target spec ratified; nothing designed or verified here yet.**
+**Current position: target spec ratified; routed tile DRC-clean (curated deck), LVS-matched and supply-ERC'd; native-deck DRC crosscheck, fabric-level DRC and ss 1.62 V timing open — see [`manifests/gf180-fpga.signoff.json`](manifests/gf180-fpga.signoff.json).**
 
 ## Tool flow
 
@@ -79,6 +84,11 @@ and re-verified → shuttle seat → measured silicon.
   the fabric.
 - **Physical design**: OpenROAD place-and-route; layout, DRC, LVS and STA
   through klayout-tools (`klt`).
+- **One-command demo**: `./flow/blinky.sh` takes a blinky from RTL to a
+  bitstream to a simulated blink, open tools only, from a clean clone — the
+  newcomer's path, with the measured wall clock and tool versions in
+  [`flow/README.md`](flow/README.md) (experimental single-tile harness; a
+  functional bitstream-level result, no timing claim).
 
 ## Repo layout
 
@@ -88,7 +98,7 @@ rtl/           tile RTL + fabric description (shared material under rtl/common/)
 verification/  bitstream-level testbenches + results (shared material under verification/common/)
 reuse.lock.json  vendored files: source commit + sha256 (spec/check_reuse_lock.py)
 layout/        tile GDS, routed DEF, DRC/LVS reports (klayout-tools driven)
-measurements/  silicon characterization (empty until tape-out)
+measurements/  characterization data (item5/); silicon measurements empty until tape-out
 ```
 
 ## License

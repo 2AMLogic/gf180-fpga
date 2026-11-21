@@ -6,10 +6,13 @@ set -uo pipefail
 
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 pdk="$here/../pdk.json"
-export PDK_ROOT="${PDK_ROOT:-$here/../.pdk-root}"
+source "$here/../pdk-root.sh" || exit 2
+PDK_ROOT="$(pdk_root_resolve)" || exit 2
+export PDK_ROOT
 export PDK="${PDK:-$(jq -er .smoke_variant "$pdk")}"
 
 "$here/../setup-pdk.sh" --verify || exit 2
+source "$here/../klt.sh" || exit 2
 
 rc=0
 for lib in mcu7t5v0 mcu9t5v0; do

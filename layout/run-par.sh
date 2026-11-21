@@ -12,10 +12,13 @@ set -uo pipefail
 
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 root="$(git -C "$here" rev-parse --show-toplevel)"
-export PDK_ROOT="${PDK_ROOT:-$root/flow/.pdk-root}"
+source "$root/flow/pdk-root.sh" || exit 2
+PDK_ROOT="$(pdk_root_resolve)" || exit 2
+export PDK_ROOT
 export PDK="${PDK:-$(jq -er .smoke_variant "$root/flow/pdk.json")}"
 "$root/flow/setup-pdk.sh" --verify || exit 2
 cd "$root" || exit 1
+source "$root/flow/klt.sh" || exit 2
 
 if [[ "${1:-}" == "--check" ]]; then
   klt place-and-route --check layout/records/step0-par.json layout/par.json
@@ -23,9 +26,13 @@ if [[ "${1:-}" == "--check" ]]; then
 fi
 
 # Tile core: 190 sites x 27 rows of the 7-track library (106.40 x 105.84 um).
+# Last argument is power.tapcell.distance_um: the staggered tap-column spacing,
+# about twice the worst-case Comp-to-tap distance it yields, so 24 um keeps the
+# routed tile under the 15 um MV limit of comp.tap_distance.{nwell,psub}.mv.1
+# (40 um gave 19.75 um measured and 46 DRC violations, issue #55).
 python3 -I layout/make-request.py layout/par.json ../flow/tile/netlist/logic_tile_routed_synth.v \
   gf180mcu_fd_sc_mcu7t5v0 GF018hv5v_mcu_sc7 gf180mcu_7t_6M \
-  gf180mcu_fd_sc_mcu7t5v0__filltie 0.56 3.92 190 27 || exit 1
+  0.56 3.92 190 27 24 || exit 1
 
 rm -rf layout/.klt
 mkdir -p layout/records
@@ -45,6 +52,6 @@ sed -i -e "s#$root/##g" -e "s#$pdk_root#\$PDK_ROOT#g" layout/records/step0-par.j
 klt env-provenance scan layout/records/step0-par.json
 
 # 2x2 abutment: neighbour placed one tile pitch over on each axis.
-kbin="$(dirname "$(readlink -f "$(command -v klt)")")"
+kbin="$(klt_bin_dir)" || exit 1
 PATH="$kbin:$PATH" "$kbin/python" -I layout/abut-check.py layout/logic_tile_routed.gds \
   layout/.klt/abut > layout/records/abutment.json || exit 1

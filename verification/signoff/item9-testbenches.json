@@ -31,7 +31,7 @@
         "role": "testbench",
         "path": "verification/common/tb_logic_tile_bitstream.v",
         "passed": true,
-        "content_hash": "sha256:20b42058541902130769c0e4791462fc585e4edcd7632a2b0635ebd20d43e1f9"
+        "content_hash": "sha256:660d2697e9b9292dfca7692cb65b2623d3466589513efce4a4b8bd658909e81a"
       },
       {
         "check": "present",
@@ -89,7 +89,6 @@
         "role": "tools",
         "passed": true,
         "value": {
-          "cocotb": "2.0.1",
           "icarus": "13.0"
         }
       }
@@ -105,7 +104,7 @@
         "path": "verification/signoff/item9-inventory.json",
         "scope": "repo"
       },
-      "content_hash": "sha256:f08810d1ab0c79c693cd6586d4b37bbfff076e2eca949af384245901ba9271ed"
+      "content_hash": "sha256:c79267c1ea5b1a9029357ae571aa25970da1e72e37d16fdefdfce2adda9aa499"
     }
   }
 }

@@ -9,6 +9,7 @@
 set -uo pipefail
 
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$here/../klt.sh" || exit 2
 src="$here/../../rtl/common/fabulous"
 ver="$(sed -n "s/^FAB_PROJ_VERSION='\(.*\)'/\1/p" "$src/.FABulous/.env")"
 scratch="$(mktemp -d)"

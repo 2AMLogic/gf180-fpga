@@ -23,10 +23,12 @@ PDK, tile-scoped, designed and verified by AI agents. A port of
   proposal in an issue and move on.
 - **Scope discipline: designed once.** `sky130-fpga` is the master by
   lineage. Its architecture (tile spec, framework choice, decision records)
-  is inherited and cited, not re-argued. Its PDK-independent material —
-  tile RTL, the FABulous tile/fabric description, bitstream-level test
-  logic — is taken as stamped copies under `rtl/common/` (and the matching
-  test directory) via `reuse.lock.json` at a pushed commit, never
+  is inherited and cited, not re-argued — cite a sibling decision record as
+  `` `sky130-fpga` ADR-NNNN `` and let a bare `ADR-NNNN` mean this repo's
+  `spec/decisions/` (convention in `spec/README.md`). Its PDK-independent
+  material — tile RTL, the FABulous tile/fabric description, bitstream-level
+  test logic — is taken as stamped copies under `rtl/common/` (and the
+  matching test directory) via `reuse.lock.json` at a pushed commit, never
   re-written. A vendored file diverges only with a decision record. What is
   re-derived here is device-level and physical: placement, routing, DRC/LVS
   and timing. Findings that bear on the master (a description defect, a
@@ -51,7 +53,7 @@ Work is coordinated through `loom:` labels on issues and pull requests, and the 
 <!-- END LOOM ORCHESTRATION -->
 
 <!-- BEGIN REPO-SKILLS -->
-This repository has [Repo Skills](https://github.com/rjwalters/repo) v0.25.1 installed —
+This repository has [Repo Skills](https://github.com/rjwalters/repo) v0.26.1 installed —
 general repository hygiene and environment commands invoked as `/repo:<command>`. Run
 `/repo:help` for the command list, or see `.claude/skills/repo/SKILL.md` for the full
 guide. Hygiene commands apply safe, reversible fixes by default and report each

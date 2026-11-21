@@ -21,7 +21,8 @@ Every statement about `2AMLogic/sky130-fpga` below was read from this commit
 Issue #2 was written against `bf673ae65ed58221c6d2b896c3e2fed58f394702`;
 `main` had moved by the time of this read, and the newer commit is the one
 vendored and cited. Files read there: `spec/tile-spec.md`,
-`spec/framework-gaps.md`, `spec/decisions/0001`–`0006`, `spec/tile-spec.json`,
+`spec/framework-gaps.md`, `sky130-fpga` `spec/decisions/0001`–`0006`,
+`spec/tile-spec.json`,
 the tile RTL and FABulous description under `design/`, `flow/` (read, not
 copied) and `sim/`.
 
@@ -32,14 +33,14 @@ This repo's own base is `main` @ `88ab5c8`.
 | Item | Sibling source | Status at `42a8db0` |
 |---|---|---|
 | Tile architecture: 4× LUT4, 1 FF per LUT (output-only), no carry in v1, 4 general-purpose tracks per edge, single tile type, 2×2 to 4×4 demonstration fabric, open FABulous-generated bitstream | `spec/tile-spec.md` (summary table) | The document itself is marked **Draft**; only its switch-matrix track count and timing rows are marked ratified. Inherited as the architectural intent. |
-| Framework choice: FABulous tile/fabric description format | ADR-0001 | Accepted |
+| Framework choice: FABulous tile/fabric description format | `sky130-fpga` ADR-0001 | Accepted |
 | Scope rules (tile is the scope; fabric growth, new tile types and wider routing are declined) | `CLAUDE.md`, `spec/tile-spec.md` "Out of scope" | In force here via this repo's `CLAUDE.md` |
-| Timing *claim shape* (setup/hold-clean at every library corner at a stated period; no Fmax unless bisected from characterized data) | ADR-0002, ADR-0003 | `Proposed — ratified upon this PR merging`. Only the shape is inherited; **no number** is. |
-| G1 tile-description discrepancies | ADR-0004 | **Proposed** — pending operator ratification at `42a8db0` |
-| IO and constant handling for the nextpnr flow | ADR-0005 | **Proposed** — pending operator ratification at `42a8db0` |
-| LUT pin-assignment policy | ADR-0006 | **Proposed** — pending operator ratification at `42a8db0` |
+| Timing *claim shape* (setup/hold-clean at every library corner at a stated period; no Fmax unless bisected from characterized data) | `sky130-fpga` ADR-0002, ADR-0003 | `Proposed — ratified upon this PR merging`. Only the shape is inherited; **no number** is. |
+| G1 tile-description discrepancies | `sky130-fpga` ADR-0004 | **Proposed** — pending operator ratification at `42a8db0` |
+| IO and constant handling for the nextpnr flow | `sky130-fpga` ADR-0005 | **Proposed** — pending operator ratification at `42a8db0` |
+| LUT pin-assignment policy | `sky130-fpga` ADR-0006 | **Proposed** — pending operator ratification at `42a8db0` |
 
-ADRs 0004–0006 are inherited **as Proposed**. This port makes no decision on
+`sky130-fpga` ADRs 0004–0006 are inherited **as Proposed**. This port makes no decision on
 them; any vendored file whose behavior depends on them (the same-index
 stand-in matrix, the harness pad overlay, the pin policy) carries that status
 with it.
@@ -70,6 +71,15 @@ Path mapping (`design/` and `sim/` in the sibling; `rtl/common/` and
 | `design/gen/` | `rtl/common/gen/` |
 | `sim/*.v`, `sim/*.vh` | `verification/common/` |
 | `sim/bitstream/` | `verification/common/bitstream/` |
+
+**Amendment (2026-11-20, ADR-0005, issue #144):** the blinky flow closure is
+now also stamped: `flow/` (the scripts `flow/blinky.sh` sources or invokes)
+→ `flow/common/`, and `design/fabulous/generator.log` is stamped into
+`rtl/common/fabulous/` as the flow's model-drift diff target — the single
+exception to the "minus logs" exclusion below; every other log/`*results.txt`
+exclusion stands. `flow/` scripts are run unmodified from a throwaway staged
+layout (`flow/blinky.sh` in this repo, not vendored); the rest of the
+sibling's `flow/` remains deliberately not copied.
 
 The copied sources contain no sky130 reference (grepped at the pinned
 commit). Comments inside vendored files still use the sibling's paths; they are
@@ -108,7 +118,7 @@ not edited.
    RTL/model files rather than cells, so no PDK-specific change is expected.
    Confirming needs a generator run, which belongs with the harness work (#4).
    Deferred; any change to a vendored file needs a decision record. See
-   ADR 0001 here.
+   ADR-0001.
 2. **Will the 4-track switch matrix route on the chosen stack?** Cannot be
    answered by a spec. Deferred with a named experiment and fallback ladder in
    `target-spec.md` ("Routing-closure fallback ladder").
@@ -121,7 +131,7 @@ The sibling's `spec/framework-gaps.md` states: tile RTL implemented and
 BEL-level tested; BEL-only layout DRC/LVS-clean; BEL timing characterized;
 bitstream-level verification of the ratified fabric **not done** (only an
 experimental single-tile harness test exists, on a same-index stand-in matrix
-with ADR-0004/0005 Proposed); the composed-tile layout, DRC/LVS/ERC and STA are
+with `sky130-fpga` ADR-0004/0005 Proposed); the composed-tile layout, DRC/LVS/ERC and STA are
 **experimental observations, not signoff**; the SDF-annotated gate-level
 re-simulation leg is blocked on a klayout-tools defect. G5 (bitstream-level
 functional verification of the ratified fabric, inter-tile routing) and G6

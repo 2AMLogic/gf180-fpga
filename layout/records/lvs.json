@@ -75,49 +75,49 @@
     },
     {
       "cell": "gf180mcu_fd_sc_mcu7t5v0__fill_1",
-      "instance_count": 80,
+      "instance_count": 90,
       "pin_count": 2,
       "resolution_source": "in_cell_labels",
       "lef_path": null
     },
     {
       "cell": "gf180mcu_fd_sc_mcu7t5v0__fill_16",
-      "instance_count": 44,
+      "instance_count": 29,
       "pin_count": 2,
       "resolution_source": "in_cell_labels",
       "lef_path": null
     },
     {
       "cell": "gf180mcu_fd_sc_mcu7t5v0__fill_2",
-      "instance_count": 74,
+      "instance_count": 70,
       "pin_count": 2,
       "resolution_source": "in_cell_labels",
       "lef_path": null
     },
     {
       "cell": "gf180mcu_fd_sc_mcu7t5v0__fill_32",
-      "instance_count": 4,
+      "instance_count": 7,
       "pin_count": 2,
       "resolution_source": "in_cell_labels",
       "lef_path": null
     },
     {
       "cell": "gf180mcu_fd_sc_mcu7t5v0__fill_4",
-      "instance_count": 75,
+      "instance_count": 80,
       "pin_count": 2,
       "resolution_source": "in_cell_labels",
       "lef_path": null
     },
     {
       "cell": "gf180mcu_fd_sc_mcu7t5v0__fill_8",
-      "instance_count": 66,
+      "instance_count": 74,
       "pin_count": 2,
       "resolution_source": "in_cell_labels",
       "lef_path": null
     },
     {
       "cell": "gf180mcu_fd_sc_mcu7t5v0__filltie",
-      "instance_count": 29,
+      "instance_count": 58,
       "pin_count": 2,
       "resolution_source": "in_cell_labels",
       "lef_path": null
@@ -239,7 +239,7 @@
       "corroborated": true,
       "reason": null
     },
-    "instance_count": 618,
+    "instance_count": 654,
     "expected_nets": null,
     "unchecked_expected_pins": [],
     "excluded_pins": [],
@@ -305,7 +305,7 @@
     "engine": "klayout",
     "engine_version": "0.30.12",
     "netgen_binary": null,
-    "layout_sha256": "d71889f054b5087bd607cfc69a02e23e60b7c6601f6be586c91ca02b582d634a",
+    "layout_sha256": "ecf5be0a2415d1ef744c227c6086a36ff2009b7dfe76907a166f1eea2f56b662",
     "reference_sha256": "0e6d3f577ebaa68685fe373263b4019d4cb6bdb9d7be68c794bd9b897a595727",
     "extracted_netlist": null
   },
@@ -339,7 +339,7 @@
       "options_hash": "sha256:6a7dc7660a470994263c5ca8ace6d8ac8c605d77e6876a9c5490949de6e7cb05"
     },
     "input": {
-      "content_hash": "sha256:d71889f054b5087bd607cfc69a02e23e60b7c6601f6be586c91ca02b582d634a",
+      "content_hash": "sha256:ecf5be0a2415d1ef744c227c6086a36ff2009b7dfe76907a166f1eea2f56b662",
       "role": "layout"
     },
     "klayout_version_mismatch": false,
