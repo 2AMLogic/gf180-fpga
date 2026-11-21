@@ -1,0 +1,18 @@
+{
+ "sources": [
+  "../../../verification/common/tb_switch_matrix.v",
+  "../../../rtl/common/rtl/logic_tile_switch_matrix.v"
+ ],
+ "hdl_toplevel": "tb_switch_matrix",
+ "engine": "icarus",
+ "testbench": {
+  "verilog_top": "tb_switch_matrix",
+  "pass_marker": "PASS: tb_switch_matrix",
+  "fail_marker": "FAIL"
+ },
+ "options": {
+  "includes": [
+   "../../../verification/common"
+  ]
+ }
+}

@@ -1,0 +1,15 @@
+{
+ "sources": [
+  "../../../verification/common/tb_logic_tile_routed.v",
+  "../../../rtl/common/rtl/logic_tile_routed.v",
+  "../../../rtl/common/rtl/logic_tile_switch_matrix.v",
+  "../../../rtl/common/rtl/lut4_slice.v"
+ ],
+ "hdl_toplevel": "tb_logic_tile_routed",
+ "engine": "icarus",
+ "testbench": {
+  "verilog_top": "tb_logic_tile_routed",
+  "pass_marker": "PASS: tb_logic_tile_routed",
+  "fail_marker": "FAIL"
+ }
+}
