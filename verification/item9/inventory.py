@@ -10,7 +10,8 @@ bench cannot be silently left out of the inventory.
 
 Also fails if verification/signoff/item9-inventory.json (the attested copy)
 diverges from the files that own the facts it restates: the bench set, the
-cold-start argv, the PDK revision and the Icarus version.
+cold-start argv, the PDK revision and the Icarus version (pinned once in the
+setup-icarus composite action both CI jobs share).
 """
 import json
 import re
@@ -23,27 +24,62 @@ TABLE = HERE / "benches.json"
 OUT = HERE / "INVENTORY.md"
 SIGNED_OFF = ROOT / "verification" / "signoff" / "item9-inventory.json"
 WORKFLOW = ROOT / ".github" / "workflows" / "verification.yml"
+ACTION = ROOT / ".github" / "actions" / "setup-icarus" / "action.yml"
 COLD_START = "python3 -I verification/runner.py --vvp verification/item9/benches.json"
 COLD_START_TOOLS = {"icarus"}   # tools the attested argv invokes
 
 
-def workflow_pins():
-    """Parse the two pins asserted against out of the CI workflow.
+def icarus_pin():
+    """Read the single CI Icarus pin from the shared setup-icarus action.
 
-    Returns (icarus_version, cold_start_argv), or None after printing an
-    error naming the pattern it could not find: a scan that silently skips
-    would guard nothing while still passing.
+    Both CI jobs get their Icarus build from ACTION, whose icarus-version
+    input default is the one place the version is declared; the attested pin
+    is asserted against it. Returns the version string, or None after
+    printing an error naming the pattern it could not find: a scan that
+    silently skips would guard nothing while still passing.
+    """
+    rel = ACTION.relative_to(ROOT)
+    if not ACTION.is_file():
+        print(f"ERROR: {rel} not found; cannot check the Icarus pin", file=sys.stderr)
+        return None
+    lines = ACTION.read_text().splitlines()
+    start = None
+    for i, line in enumerate(lines):
+        if re.match(r"^[ \t]*icarus-version:[ \t]*$", line):
+            start = i
+            break
+    if start is None:
+        print(f"ERROR: icarus-version input not found in {rel}; cannot check the Icarus pin", file=sys.stderr)
+        return None
+    indent = re.match(r"^[ \t]*", lines[start]).group(0)
+    default = None
+    for line in lines[start + 1:]:
+        if not line.strip():
+            continue
+        if len(line) - len(line.lstrip()) <= len(indent):
+            break   # left the icarus-version input block without a default
+        s = line.strip()
+        if s.startswith("default:"):
+            default = s[len("default:"):].strip().strip("\"'")
+            break
+    if default is None:
+        print(f"ERROR: icarus-version input in {rel} has no default; cannot check the Icarus pin", file=sys.stderr)
+        return None
+    if not default:
+        print(f"ERROR: icarus-version default in {rel} has an empty value; cannot check the Icarus pin", file=sys.stderr)
+        return None
+    return default
+
+
+def cold_start_argv():
+    """Parse the cold-start argv asserted against out of the CI workflow.
+
+    Returns the argv list, or None after printing an error naming the
+    pattern it could not find: a scan that silently skips would guard
+    nothing while still passing.
     """
     rel = WORKFLOW.relative_to(ROOT)
     text = WORKFLOW.read_text()
-    m = re.search(r"^[ \t]*ICARUS_VERSION:[ \t]*(.+?)[ \t]*$", text, re.MULTILINE)
-    if not m:
-        print(f"ERROR: ICARUS_VERSION env line not found in {rel}; cannot check the Icarus pin", file=sys.stderr)
-        return None
-    icarus = m.group(1).strip().strip("\"'")
-    if not icarus:
-        print(f"ERROR: ICARUS_VERSION env line in {rel} has an empty value; cannot check the Icarus pin", file=sys.stderr)
-        return None
     lines = text.splitlines()
     start = None
     for i, line in enumerate(lines):
@@ -63,7 +99,7 @@ def workflow_pins():
             if not value or value in ("|", ">"):
                 print(f"ERROR: 'Stamped benches' run: in {rel} is not a single-line command; cannot check the cold-start argv", file=sys.stderr)
                 return None
-            return icarus, value.split()
+            return value.split()
     print(f"ERROR: 'Stamped benches' step in {rel} has no run: line; cannot check the cold-start argv", file=sys.stderr)
     return None
 
@@ -78,10 +114,10 @@ def main(argv):
         for d in ("verification/common", "rtl/common")
         for p in (ROOT / d).rglob("tb_*.v")
     }
-    wf = workflow_pins()
-    if wf is None:
+    icarus = icarus_pin()
+    wf_argv = cold_start_argv()
+    if icarus is None or wf_argv is None:
         return 1
-    wf_icarus, wf_argv = wf
     attested = json.loads(SIGNED_OFF.read_text())
 
     run_benches = {r["bench"] for r in runs}
@@ -102,8 +138,8 @@ def main(argv):
         problems.append("verification.yml 'Stamped benches' run line diverges from inventory.py COLD_START")
     if attested["pins"]["pdk"]["revision"] != pdk["open_pdks_revision"]:
         problems.append("item9-inventory.json pins.pdk.revision diverges from flow/pdk.json open_pdks_revision")
-    if attested["pins"]["tools"].get("icarus") != wf_icarus:
-        problems.append("item9-inventory.json pins.tools.icarus diverges from verification.yml ICARUS_VERSION")
+    if attested["pins"]["tools"].get("icarus") != icarus:
+        problems.append("item9-inventory.json pins.tools.icarus diverges from the setup-icarus action pin (.github/actions/setup-icarus/action.yml)")
     tools = set(attested["pins"]["tools"])
     for extra in sorted(tools - COLD_START_TOOLS):
         problems.append(f"item9-inventory.json pins a tool the cold start never invokes: {extra}")
@@ -131,7 +167,7 @@ def main(argv):
         "## Pins",
         "",
         f"- PDK: {pdk['pdk_family']} @ open_pdks `{pdk['open_pdks_revision']}` (`flow/pdk.json`)",
-        f"- Icarus Verilog {wf_icarus} (`verification.yml`)",
+        f"- Icarus Verilog {icarus} (`.github/actions/setup-icarus/action.yml`, the one CI pin)",
         "",
         "These benches are RTL-level and use no PDK data; the PDK pin is recorded",
         "for the flow they belong to, not because the simulation reads it.",

@@ -90,3 +90,70 @@ this key was removed in the same commit, leaving the unconditional guard that
   individually, and the check-mode reproduction covers the whole evidence
   set. This entry is historical and still names the old inventory hash for
   the run it describes.
+
+### 2026-11-20: the two CI Icarus builds share one composite action and one pin (#154)
+
+`verification.yml` and `signoff.yml` each carried an identical 18-line
+cache-and-build recipe for Icarus Verilog and declared the version
+independently (`ICARUS_VERSION: "13.0"` in both `env:` blocks), so the pins
+could drift apart with no check noticing — the item-9 guard read only the
+verification workflow's pin. Both jobs now call
+`.github/actions/setup-icarus/action.yml` (cache lookup, build on a miss,
+PATH setup); the action's `icarus-version` input default is the one CI pin,
+the cache key `icarus-13.0-ubuntu-24.04` is unchanged, and the action
+exports `ICARUS_VERSION` so verification's two result checks compare the
+observed simulator version against the shared pin instead of a hardcoded
+`"13.0"`.
+
+- `verification/item9/inventory.py` now reads the pin from the action
+  (`icarus_pin()`, fail-loudly: missing file, missing input, missing
+  default, empty default) and still asserts the attested
+  `pins.tools.icarus` against it independently.
+  `verification/item9/test-inventory-guard.sh` cases (g) and (p) were
+  retargeted to the action and (s)/(t) added for the new paths — baseline
+  plus 20 cases, live 2026-11-20. `INVENTORY.md` was regenerated (the pin
+  source line names the action now); `item9-inventory.json` itself is
+  unchanged.
+- Item 10 inventory hash moved from
+  `sha256:fc4bbb86801aa01289ba82f8a875a9bbbf8ee1f1870b68fbb84766c783eb8404`
+  to `sha256:9c235d5a0e8ff03010555d541ff3e868a588e468cb83491ad29ddcaad7c24ebc`
+  (hygiene list gained `.github/actions/setup-icarus/action.yml` and the
+  description line names it; re-derived with `sha256sum`, not copied).
+- Command: the exact `manifests/run-signoff.sh` write-mode steps for the
+  affected item, run individually on this PDK-equipped host (item 1's
+  `local_only` leg not re-run; its envelope is unchanged):
+  `klt signoff --attest 10 --inventory
+  verification/signoff/item10-inventory.json -o
+  verification/signoff/item10-repo-hygiene.json --format json` (pinned
+  klayout-tools 0.9.0 via `flow/klt.sh`), then the
+  `manifests/run-signoff.sh:121-133` inline pin rewrite for
+  `manifests/gf180-fpga.json`, then `klt signoff --manifest
+  manifests/gf180-fpga.json --tiers-doc
+  manifests/design-evidence-tiers.md --format json >
+  manifests/gf180-fpga.signoff.json` (exit 3: some T1 items unmet, the
+  honest state before and after).
+- Result: item 10 stays `met`, now `8/8 attestation checks passed`; items
+  1, 2 and 9 envelopes and their inputs are untouched; `t1_met_count`
+  stays 7. All four pins of the inventory hash were checked equal after
+  the rewrite. `manifests/run-signoff.sh --check` then exits 0:
+  "Committed item 1, 2, 9 and 10 envelopes and signoff record reproduce"
+  (live, 2026-11-20; `attest item 9: cold_start ok in 70.1s`, Icarus
+  13.0 on PATH). No evidence was relaxed; the entries above are
+  historical.
+
+## 2026-11-20 — Re-attestation after merging `origin/main` (e5b862b) into the #154 branch
+
+- Why: `main` gained the `blinky` job and moved
+  `verification/common/tb_logic_tile_bitstream.v` (item 9 testbench hash).
+  The merged `.github/workflows/verification.yml` hashes to a value neither
+  side attested, so the item 10 envelope was re-rendered, not textually
+  merged. The `blinky` job's own duplicate Icarus cache/build steps (which
+  read the workflow-level `ICARUS_VERSION` this PR deletes) were replaced by
+  `./.github/actions/setup-icarus`.
+- Command: `manifests/run-signoff.sh` (write mode, PDK-equipped host, pinned
+  klayout-tools via `flow/klt.sh`); item 2 stream unchanged, regeneration
+  claim carried over.
+- Result: `manifests/run-signoff.sh --check` exits 0 ("Committed item 1, 2, 9
+  and 10 envelopes and signoff record reproduce"); `inventory.py --check`
+  reports up to date; `test-inventory-guard.sh` passes baseline + 20 cases.
+  No evidence was relaxed; earlier entries are historical.
