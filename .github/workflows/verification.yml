@@ -9,9 +9,6 @@ on:
 permissions:
   contents: read
 
-env:
-  ICARUS_VERSION: "13.0"
-
 jobs:
   verification:
     runs-on: ubuntu-24.04
@@ -20,42 +17,27 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Cache Icarus Verilog
-        id: icarus-cache
-        uses: actions/cache@v4
-        with:
-          path: ~/icarus
-          key: icarus-${{ env.ICARUS_VERSION }}-ubuntu-24.04
-      - name: Build pinned Icarus Verilog
-        if: steps.icarus-cache.outputs.cache-hit != 'true'
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends build-essential autoconf gperf flex bison
-          tag="v$(echo "$ICARUS_VERSION" | tr . _)"
-          git clone --depth 1 --branch "$tag" https://github.com/steveicarus/iverilog.git /tmp/iverilog
-          cd /tmp/iverilog
-          sh autoconf.sh
-          ./configure --prefix="$HOME/icarus"
-          make -j2
-          make install
+      # The pinned Icarus build shared with the signoff job: one cache, one
+      # build recipe, one version pin (.github/actions/setup-icarus). The
+      # action exports ICARUS_VERSION; the asserts below compare the observed
+      # simulator version against it.
+      - uses: ./.github/actions/setup-icarus
       - name: Install Verilator
         run: sudo apt-get install -y --no-install-recommends verilator
       - name: Install pinned Python deps
-        run: |
-          echo "$HOME/icarus/bin" >> "$GITHUB_PATH"
-          pip install -r verification/requirements.txt
+        run: pip install -r verification/requirements.txt
       - name: Smoke test and negative control
         # runner exits 0 only if the good DUT passes AND the negative control fails
         run: python3 verification/runner.py verification/smoke
       - name: Assert negative control failed
         run: |
           python3 - <<'PY'
-          import json, sys
+          import json, os, sys
           r = json.load(open("verification/smoke/sim_build/result.json"))
           print(json.dumps(r["tools"]))
           nc = r["legs"]["negative_control"]
           assert nc["expected"] == "fail" and any(t["result"] == "fail" for t in nc["tests"]), "negative control did not fail"
-          assert r["tools"]["icarus"] == "13.0", f"unexpected Icarus {r['tools']['icarus']}"
+          assert r["tools"]["icarus"] == os.environ["ICARUS_VERSION"], f"unexpected Icarus {r['tools']['icarus']}"
           PY
       - name: Stamped benches (item 9 cold start) with negative control
         # plain-Verilog benches from verification/common; exits 0 only if every
@@ -64,10 +46,10 @@ jobs:
       - name: Assert item-9 results and negative controls
         run: |
           python3 -I - <<'PY'
-          import json
+          import json, os
           r = json.load(open("verification/item9/sim_build/result.json"))
           assert r["overall"] == "pass", "item-9 run failed"
-          assert r["tools"]["icarus"] == "13.0", f"unexpected Icarus {r['tools']['icarus']}"
+          assert r["tools"]["icarus"] == os.environ["ICARUS_VERSION"], f"unexpected Icarus {r['tools']['icarus']}"
           assert r["runs"], "no bench ran"
           assert all(e["good"]["result"] == "pass" for e in r["runs"]), "a bench failed"
           ncs = [e["negative_control"] for e in r["runs"] if "negative_control" in e]
@@ -168,29 +150,13 @@ jobs:
         with:
           path: flow/build/dl
           key: blinky-oss-cad-${{ steps.pins.outputs.oss_tarball }}-${{ steps.pins.outputs.oss_sha256 }}
-      - name: Cache pinned Icarus Verilog
-        id: icarus-cache
-        uses: actions/cache@v4
-        with:
-          path: ~/icarus
-          key: icarus-${{ env.ICARUS_VERSION }}-ubuntu-24.04
-      - name: Build pinned Icarus Verilog
-        if: steps.icarus-cache.outputs.cache-hit != 'true'
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends build-essential autoconf gperf flex bison
-          tag="v$(echo "$ICARUS_VERSION" | tr . _)"
-          git clone --depth 1 --branch "$tag" https://github.com/steveicarus/iverilog.git /tmp/iverilog
-          cd /tmp/iverilog
-          sh autoconf.sh
-          ./configure --prefix="$HOME/icarus"
-          make -j2
-          make install
+      # The pinned Icarus build shared with the verification and signoff jobs
+      # (.github/actions/setup-icarus): one cache, one recipe, one version pin.
+      - uses: ./.github/actions/setup-icarus
       - name: Install runner prerequisites (pinned uv, python3-tk for FABulous)
         # python3-tk: FABulous 2.2.0 imports tkinter at module load, and the
         # venv flow/fabulous.sh builds uses the runner's system python3.
         run: |
-          echo "$HOME/icarus/bin" >> "$GITHUB_PATH"
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends python3-tk
           python3 -m venv "$RUNNER_TEMP/uv-venv"

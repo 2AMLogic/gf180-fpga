@@ -15,7 +15,7 @@ negative control, tool versions, commit). A missing simulator exits 2.
 ## Pins
 
 - PDK: gf180mcu @ open_pdks `f6eeac7dad085ffcc829ccfd721f7b4ce39edcf7` (`flow/pdk.json`)
-- Icarus Verilog 13.0 (`verification.yml`)
+- Icarus Verilog 13.0 (`.github/actions/setup-icarus/action.yml`, the one CI pin)
 
 These benches are RTL-level and use no PDK data; the PDK pin is recorded
 for the flow they belong to, not because the simulation reads it.

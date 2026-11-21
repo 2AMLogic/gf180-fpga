@@ -2,12 +2,13 @@
   "schema_version": 1,
   "kind": "t1-attestation-inventory",
   "t1_item": 10,
-  "description": "Repo hygiene (T1 item 10): README, LICENSE and the CI workflows exist, and the README and package.json say nothing the repo cannot back.",
+  "description": "Repo hygiene (T1 item 10): README, LICENSE, the CI workflows and the shared setup-icarus action exist, and the README and package.json say nothing the repo cannot back.",
   "hygiene": [
-    "README.md",
-    "LICENSE",
+    ".github/actions/setup-icarus/action.yml",
     ".github/workflows/signoff.yml",
-    ".github/workflows/verification.yml"
+    ".github/workflows/verification.yml",
+    "LICENSE",
+    "README.md"
   ],
   "checks": [
     {
