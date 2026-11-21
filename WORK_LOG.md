@@ -2,6 +2,11 @@
 
 Chronological record of merged PRs and closed issues (maintained by the Guide role; newest first).
 
+### 2026-11-21
+
+- **PR #164**: measurements: item5-24um — 15-corner STA re-measured on the committed 24 um stream (item 5 unmet)
+- **Issue #160** (closed): Item 5: re-measure 15-corner STA (LEF-only and SPEF) on the committed 24 um-pitch tile; the records on main are bound to the superseded stream (measurement carve-out from #27)
+
 ### 2026-11-20
 
 - **PR #153**: feat: one-command blinky demo from the stamped sky130-fpga flow
