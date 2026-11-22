@@ -32,11 +32,21 @@
 # workflow-local pin scan: an ICARUS_VERSION env declaration and an
 # icarus-version override in signoff.yml, a copied Icarus cache key in
 # verification.yml and an iverilog clone in a .yaml workflow the guard
-# has never seen (discovery + the second extension); (y) is the passing
-# control: a comment naming the forbidden declaration and an unrelated
-# cache key must not trip it. With them every ERROR: site in
-# inventory.py -- 18 distinct sites -- is netted by the 24 perturbation
-# cases plus the control.
+# has never seen (discovery + the second extension); (z1)-(z2)
+# (issue #170) net the scan's own fail-closed arms -- the workflows
+# directory absent, and present but holding no *.yml or *.yaml -- plus
+# the fail-loud workflow read that makes them reachable (measured on
+# 368ce3c: before it, both perturbations crashed in cold_start_argv()
+# before the arms ran); (y) is the passing control: a comment naming
+# the forbidden declaration and an unrelated cache key must not trip
+# it. With them every ERROR: site in inventory.py -- 25 distinct
+# sites -- is netted by the 26 perturbation cases plus the control.
+#
+# Declared limits of the workflow-local pin predicates (issue #170;
+# each is a weaker variant of a netted shape and reopens no #158 hole):
+# - `restore-keys:` with an Icarus value: not matched (only `key:` is).
+# - flow-mapping `env: {ICARUS_VERSION: ...}`: not matched (the declaration predicate anchors ICARUS_VERSION at line start after indent).
+# - line-continued `git clone ... \` with the URL on the next line: not matched (clone and repo slug must share a line).
 #
 # Hermetic: no PDK, no Icarus, no network. inventory.py reads only JSON,
 # Markdown, YAML and tb_*.v filenames and resolves ROOT from its own
@@ -279,6 +289,25 @@ EOF
 expect_fail "(x) iverilog clone in a new .yaml workflow" \
   ".github/workflows/stale.yaml" "clones steveicarus/iverilog"
 
+# (z1) the workflows directory absent altogether -- the first
+# fail-closed arm of workflow_local_pins(); before the read guard this
+# perturbation crashed in cold_start_argv() and never reached the arm
+stage_fixture
+rm -rf "$work/.github/workflows"
+expect_fail "(z1) .github/workflows directory removed" \
+  ".github/workflows/verification.yml not found; cannot check the cold-start argv" \
+  ".github/workflows not found; cannot check for workflow-local Icarus pins"
+
+# (z2) the workflows directory present but holding no *.yml or *.yaml
+# -- the second fail-closed arm of workflow_local_pins(); removing
+# verification.yml is what empties the directory, so the workflow read
+# guard fires alongside it
+stage_fixture
+rm -f "$work"/.github/workflows/*.yml "$work"/.github/workflows/*.yaml
+expect_fail "(z2) no *.yml or *.yaml workflow left in .github/workflows" \
+  ".github/workflows/verification.yml not found; cannot check the cold-start argv" \
+  "no *.yml or *.yaml workflow under .github/workflows; cannot check for workflow-local Icarus pins"
+
 # (y) passing control: a comment naming the forbidden declaration and an
 # unrelated cache key must not trip the scan -- only a live declaration
 # is a violation
@@ -299,4 +328,4 @@ grep -q "inventory up to date" <<<"$out" \
   || fail "[(y) comment and unrelated cache key]: --check passed but did not report 'inventory up to date'"
 echo "ok [(y) comment and unrelated cache key pass] inventory up to date"
 
-echo "test-inventory-guard: baseline + 24 perturbation cases + 1 passing control passed"
+echo "test-inventory-guard: baseline + 26 perturbation cases + 1 passing control passed"
