@@ -12,6 +12,13 @@ Also fails if verification/signoff/item9-inventory.json (the attested copy)
 diverges from the files that own the facts it restates: the bench set, the
 cold-start argv, the PDK revision and the Icarus version (pinned once in the
 setup-icarus composite action both CI jobs share).
+
+Also fails if a workflow under .github/workflows declares a second Icarus
+pin of its own: an ICARUS_VERSION declaration, an icarus-version override
+at a setup-icarus call site, a workflow-local Icarus cache key or a clone
+of steveicarus/iverilog. The setup-icarus action owns all four, so the
+declaration itself is the violation even when its value matches the action
+default (#158).
 """
 import json
 import re
@@ -24,7 +31,9 @@ TABLE = HERE / "benches.json"
 OUT = HERE / "INVENTORY.md"
 SIGNED_OFF = ROOT / "verification" / "signoff" / "item9-inventory.json"
 WORKFLOW = ROOT / ".github" / "workflows" / "verification.yml"
+WORKFLOWS_DIR = ROOT / ".github" / "workflows"
 ACTION = ROOT / ".github" / "actions" / "setup-icarus" / "action.yml"
+IVERILOG_REPO = "steveicarus/iverilog"
 COLD_START = "python3 -I verification/runner.py --vvp verification/item9/benches.json"
 COLD_START_TOOLS = {"icarus"}   # tools the attested argv invokes
 
@@ -69,6 +78,55 @@ def icarus_pin():
         print(f"ERROR: icarus-version default in {rel} has an empty value; cannot check the Icarus pin", file=sys.stderr)
         return None
     return default
+
+
+def _code_text(line):
+    """Drop the comment tail so a comment naming a forbidden setting is
+    not itself a declaration: '#' at line start or after whitespace opens
+    a YAML or shell comment in every context the scan matches.
+    """
+    m = re.search(r"(?:^|[ \t])#", line)
+    return line if m is None else line[:m.start()]
+
+
+def workflow_local_pins():
+    """Scan the CI workflows for a second Icarus pin or a copied setup recipe.
+
+    The single CI Icarus pin is the setup-icarus action's icarus-version
+    input default, and the action owns the cache, the iverilog clone and
+    the ICARUS_VERSION export. A workflow that declares ICARUS_VERSION,
+    overrides the icarus-version input at a call site, keys its own
+    Icarus cache or clones iverilog itself is a second pin or a stale
+    copy of the recipe (#158), and fails even when its value matches the
+    action default. Reads of the exported variable (the result asserts),
+    comments and unrelated cache steps do not match. Returns problem
+    strings naming the workflow and line; a missing or empty workflows
+    directory is itself a problem, a scan that silently skips would
+    guard nothing while still passing.
+    """
+    rel_dir = WORKFLOWS_DIR.relative_to(ROOT)
+    if not WORKFLOWS_DIR.is_dir():
+        return [f"{rel_dir} not found; cannot check for workflow-local Icarus pins"]
+    workflows = sorted(
+        p for p in WORKFLOWS_DIR.iterdir()
+        if p.is_file() and p.suffix in (".yml", ".yaml")
+    )
+    if not workflows:
+        return [f"no *.yml or *.yaml workflow under {rel_dir}; cannot check for workflow-local Icarus pins"]
+    problems = []
+    for wf in workflows:
+        rel = wf.relative_to(ROOT)
+        for n, raw in enumerate(wf.read_text().splitlines(), 1):
+            line = _code_text(raw)
+            if re.match(r"^[ \t]*ICARUS_VERSION[ \t]*:", line) or re.search(r"\bICARUS_VERSION=", line):
+                problems.append(f"{rel}:{n}: workflow-local ICARUS_VERSION declaration; the setup-icarus action owns the pin")
+            elif re.match(r"^[ \t]*icarus-version[ \t]*:", line):
+                problems.append(f"{rel}:{n}: caller override of the setup-icarus icarus-version input; change the action default, do not override it")
+            elif (m := re.match(r"^[ \t]*key[ \t]*:[ \t]*(.*)$", line)) and "icarus" in m.group(1).lower():
+                problems.append(f"{rel}:{n}: workflow-local Icarus cache key; the setup-icarus action owns the cache")
+            elif IVERILOG_REPO in line and "clone" in line:
+                problems.append(f"{rel}:{n}: workflow clones {IVERILOG_REPO} itself; the setup-icarus action owns the build")
+    return problems
 
 
 def cold_start_argv():
@@ -145,6 +203,7 @@ def main(argv):
         problems.append(f"item9-inventory.json pins a tool the cold start never invokes: {extra}")
     for missing in sorted(COLD_START_TOOLS - tools):
         problems.append(f"item9-inventory.json is missing a pin for {missing}")
+    problems.extend(workflow_local_pins())
     if problems:
         print("\n".join(f"ERROR: {p}" for p in problems), file=sys.stderr)
         return 1

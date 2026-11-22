@@ -28,8 +28,15 @@
 # (block scalar, missing run line). (g) and (p) were retargeted to the
 # shared setup-icarus action when the single CI Icarus pin moved there
 # (#154), and (s)-(t) extend the net to the new action-parsing paths
-# (no default, action file deleted). With them every ERROR: site in
-# inventory.py -- 18 distinct sites -- is netted by the 20 cases.
+# (no default, action file deleted). (u)-(x) (issue #158) net the
+# workflow-local pin scan: an ICARUS_VERSION env declaration and an
+# icarus-version override in signoff.yml, a copied Icarus cache key in
+# verification.yml and an iverilog clone in a .yaml workflow the guard
+# has never seen (discovery + the second extension); (y) is the passing
+# control: a comment naming the forbidden declaration and an unrelated
+# cache key must not trip it. With them every ERROR: site in
+# inventory.py -- 18 distinct sites -- is netted by the 24 perturbation
+# cases plus the control.
 #
 # Hermetic: no PDK, no Icarus, no network. inventory.py reads only JSON,
 # Markdown, YAML and tb_*.v filenames and resolves ROOT from its own
@@ -43,6 +50,7 @@ work="$(mktemp -d)"; trap 'rm -rf "$work"' EXIT
 inv="$work/verification/item9/inventory.py"
 attested="$work/verification/signoff/item9-inventory.json"
 wf="$work/.github/workflows/verification.yml"
+signoff="$work/.github/workflows/signoff.yml"
 action="$work/.github/actions/setup-icarus/action.yml"
 benches="$work/verification/item9/benches.json"
 invmd="$work/verification/item9/INVENTORY.md"
@@ -61,25 +69,35 @@ stage_fixture() {
   cp "$root/verification/item9/benches.json" "$root/verification/item9/INVENTORY.md" \
      "$work/verification/item9/"
   cp "$root/verification/signoff/item9-inventory.json" "$attested"
-  cp "$root/.github/workflows/verification.yml" "$wf"
+  # Every workflow the guard scans, both extensions, so a violation can
+  # be staged outside verification.yml and new workflow files are picked
+  # up as the guard itself would pick them up.
+  for f in "$root"/.github/workflows/*.yml "$root"/.github/workflows/*.yaml; do
+    if [[ -f "$f" ]]; then cp "$f" "$work/.github/workflows/"; fi
+  done
   cp "$root/.github/actions/setup-icarus/action.yml" "$action"
   cp "$root/flow/pdk.json" "$work/flow/"
   (cd "$root" && find verification/common rtl/common -type f -name 'tb_*.v' -print0 \
     | xargs -0 -r cp --parents -t "$work")
 }
 
-# expect_fail <case-label> <required stderr substring>
-# --check must exit non-zero AND stderr must name the diverged field.
-# Substring, not exact match: case (j) legitimately emits two ERROR lines.
+# expect_fail <case-label> <required stderr substring> [<substring>...]
+# --check must exit non-zero AND stderr must name every required
+# substring: the assertion and, for the workflow-local pin cases, the
+# workflow that carries the violation. Substring, not exact match: case
+# (j) legitimately emits two ERROR lines.
 expect_fail() {
-  local label="$1" want="$2" out rc
+  local label="$1" want out rc
+  shift
   out="$(python3 -I "$inv" --check 2>&1 1>/dev/null)" && rc=0 || rc=$?
   [[ "$rc" -ne 0 ]] \
     || fail "[$label]: expected --check to fail, it exited 0"
-  grep -qF -- "$want" <<<"$out" \
-    || fail "[$label]: --check exited $rc but its stderr lacks the required substring '$want'; observed stderr:
+  for want in "$@"; do
+    grep -qF -- "$want" <<<"$out" \
+      || fail "[$label]: --check exited $rc but its stderr lacks the required substring '$want'; observed stderr:
 $out"
-  echo "ok [$label] exit $rc, matched: $want"
+  done
+  echo "ok [$label] exit $rc, matched: $*"
 }
 
 # Baseline: an unperturbed copy must pass. A baseline that does not pass
@@ -213,4 +231,72 @@ stage_fixture
 rm "$action"
 expect_fail "(t) setup-icarus action deleted" "action.yml not found"
 
-echo "test-inventory-guard: baseline + 20 perturbation cases passed"
+# (u) a workflow-local ICARUS_VERSION env declaration in signoff.yml --
+# the second-pin shape that slipped through #155's review cycle (#158);
+# the value is irrelevant, the declaration itself is the violation
+stage_fixture
+sed -i 's/^jobs:/env:\n  ICARUS_VERSION: "12.0"\njobs:/' "$signoff"
+expect_fail "(u) workflow-local ICARUS_VERSION in signoff.yml" \
+  ".github/workflows/signoff.yml" "workflow-local ICARUS_VERSION declaration"
+
+# (v) a caller override of the shared action's icarus-version input, with
+# the action's own default as the value: a duplicate that matches today
+# and would silently keep signoff pinned after a future default bump
+stage_fixture
+sed -i 's|^\([ \t]*- uses: \./\.github/actions/setup-icarus\)$|\1\n        with:\n          icarus-version: "13.0"|' "$signoff"
+expect_fail "(v) icarus-version override equals the action default" \
+  ".github/workflows/signoff.yml" "caller override of the setup-icarus icarus-version input"
+
+# (w) a copied Icarus cache step keyed on a workflow-local ICARUS_VERSION
+# in verification.yml -- the stale recipe shape #153 reintroduced
+stage_fixture
+cat >> "$wf" <<'EOF'
+      - name: Cache Icarus Verilog
+        uses: actions/cache@v4
+        with:
+          path: ~/icarus
+          key: icarus-${{ env.ICARUS_VERSION }}-ubuntu-24.04
+EOF
+expect_fail "(w) copied Icarus cache key in verification.yml" \
+  ".github/workflows/verification.yml" "workflow-local Icarus cache key"
+
+# (x) a stale clone recipe in a workflow the guard has never seen, with a
+# .yaml extension and no env declaration at all: discovery of new files,
+# the second extension, and the env-less stale recipe in one case
+stage_fixture
+cat > "$work/.github/workflows/stale.yaml" <<'EOF'
+name: stale-recipe
+on:
+  workflow_dispatch:
+jobs:
+  stale:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Icarus Verilog
+        run: git clone --depth 1 --branch v13_0 https://github.com/steveicarus/iverilog.git /tmp/iverilog
+EOF
+expect_fail "(x) iverilog clone in a new .yaml workflow" \
+  ".github/workflows/stale.yaml" "clones steveicarus/iverilog"
+
+# (y) passing control: a comment naming the forbidden declaration and an
+# unrelated cache key must not trip the scan -- only a live declaration
+# is a violation
+stage_fixture
+cat >> "$wf" <<'EOF'
+      # ICARUS_VERSION: keep the pin in the setup-icarus action; a
+      # workflow must not declare it, and icarus-version must not be
+      # overridden at a call site.
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: pip-${{ hashFiles('verification/requirements.txt') }}
+EOF
+out="$(python3 -I "$inv" --check 2>"$work/y.stderr")" \
+  || fail "[(y) comment and unrelated cache key]: expected --check to pass, exited $? with: $(cat "$work/y.stderr")"
+grep -q "inventory up to date" <<<"$out" \
+  || fail "[(y) comment and unrelated cache key]: --check passed but did not report 'inventory up to date'"
+echo "ok [(y) comment and unrelated cache key pass] inventory up to date"
+
+echo "test-inventory-guard: baseline + 24 perturbation cases + 1 passing control passed"
