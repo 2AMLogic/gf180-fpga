@@ -137,6 +137,9 @@ def cold_start_argv():
     nothing while still passing.
     """
     rel = WORKFLOW.relative_to(ROOT)
+    if not WORKFLOW.is_file():
+        print(f"ERROR: {rel} not found; cannot check the cold-start argv", file=sys.stderr)
+        return None
     text = WORKFLOW.read_text()
     lines = text.splitlines()
     start = None
@@ -174,13 +177,21 @@ def main(argv):
     }
     icarus = icarus_pin()
     wf_argv = cold_start_argv()
+    # Run the workflow-local pin scan before the early return so its two
+    # fail-closed arms (workflows directory absent, or holding no
+    # *.yml/*.yaml) execute even when the pin or argv could not be read:
+    # those shapes remove verification.yml, and a scan that silently
+    # skipped would guard nothing while still passing (#170).
+    pin_problems = workflow_local_pins()
     if icarus is None or wf_argv is None:
+        if pin_problems:
+            print("\n".join(f"ERROR: {p}" for p in pin_problems), file=sys.stderr)
         return 1
     attested = json.loads(SIGNED_OFF.read_text())
 
     run_benches = {r["bench"] for r in runs}
     excl_benches = {e["bench"] for e in excluded}
-    problems = []
+    problems = list(pin_problems)
     if run_benches & excl_benches:
         problems.append(f"both run and excluded: {sorted(run_benches & excl_benches)}")
     for missing in sorted(on_disk - run_benches - excl_benches):
@@ -203,7 +214,6 @@ def main(argv):
         problems.append(f"item9-inventory.json pins a tool the cold start never invokes: {extra}")
     for missing in sorted(COLD_START_TOOLS - tools):
         problems.append(f"item9-inventory.json is missing a pin for {missing}")
-    problems.extend(workflow_local_pins())
     if problems:
         print("\n".join(f"ERROR: {p}" for p in problems), file=sys.stderr)
         return 1
