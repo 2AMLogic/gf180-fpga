@@ -24,7 +24,6 @@ cd "$(dirname "${BASH_SOURCE[0]}")/.."
 source flow/klt.sh
 
 MANIFEST="manifests/gf180-fpga.json"
-TIERS_DOC="manifests/design-evidence-tiers.md"
 RECORD="manifests/gf180-fpga.signoff.json"
 # item number : inventory (item 2: the committed layout stream) : envelope
 ATTESTED=(
@@ -86,7 +85,7 @@ attest_args() { # $1 = item, $2 = inventory-or-stream
 
 render() { # $1 = manifest, $2 = output
   local rc=0
-  klt signoff --manifest "$1" --tiers-doc "$TIERS_DOC" --format json > "$2" || rc=$?
+  klt signoff --manifest "$1" --format json > "$2" || rc=$?
   if [[ $rc -ne 0 && $rc -ne 3 ]]; then
     echo "::error::klt signoff exited $rc (expected 0 or 3): manifest, tier doc or cited evidence is broken" >&2
     exit 1
