@@ -39,6 +39,10 @@ jobs:
           assert nc["expected"] == "fail" and any(t["result"] == "fail" for t in nc["tests"]), "negative control did not fail"
           assert r["tools"]["icarus"] == os.environ["ICARUS_VERSION"], f"unexpected Icarus {r['tools']['icarus']}"
           PY
+      - name: Runner CLI regression check
+        # Retired --dut/--broken/--module/--toplevel (incl. bare --broken) must
+        # fail before simulation; --broken-only and --good-only must still pass.
+        run: verification/test-runner-cli.sh
       - name: Stamped benches (item 9 cold start) with negative control
         # plain-Verilog benches from verification/common; exits 0 only if every
         # bench passes AND each negative control (broken DUT outside common/) fails

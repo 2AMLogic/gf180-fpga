@@ -215,7 +215,11 @@ def main_vvp(args) -> int:
 
 
 def main() -> int:
-    p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawTextHelpFormatter)
+    p = argparse.ArgumentParser(
+        description=__doc__,
+        formatter_class=argparse.RawTextHelpFormatter,
+        allow_abbrev=False,
+    )
     p.add_argument("test_dir", type=Path, nargs="?", help="test directory (see convention above)")
     p.add_argument("--vvp", type=Path, help="plain-Verilog bench table (see above); replaces test_dir")
     p.add_argument("--timeout", type=int, default=300, help="per-bench vvp timeout in seconds (--vvp)")
