@@ -72,18 +72,7 @@ cocotb/Icarus/Verilator/Python versions that actually ran, and the commit.
 `smoke/` is the reference instance. The negative control must be a DUT that
 the tests are *expected to fail on*; never fix it.
 
-## Wiring a vendored test
-
-Vendored tests live under `common/<name>/` (see `common/README.md`). Because
-their DUT is real RTL, point the runner at it instead of a local copy:
-
-```sh
-python3 verification/runner.py verification/common/<name> \
-    --dut rtl/<file>.v --broken verification/common/<name>/negative_control/<file>_broken.v
-```
-
-`--module`, `--toplevel` override the `test_NAME` / `NAME` defaults. Add the
-invocation to `.github/workflows/verification.yml` alongside the smoke step.
+Vendored benches are wired through the `--vvp` table; see `item9/benches.json` and `common/README.md`.
 
 ## RTL lint
 

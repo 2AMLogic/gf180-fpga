@@ -24,9 +24,6 @@ Test directory convention (NAME = directory name):
     <test_dir>/NAME.v                          good DUT, toplevel NAME
     <test_dir>/negative_control/NAME_broken.v  broken DUT, same toplevel
 
-Override with --module/--toplevel/--dut/--broken (e.g. to point a vendored
-test at DUT sources under rtl/).
-
 Plain-Verilog mode (--vvp TABLE): the stamped benches under verification/common/
 are self-checking Verilog, not cocotb. `--vvp verification/item9/benches.json`
 compiles each table entry with iverilog and runs it under vvp. A run passes only
@@ -222,10 +219,6 @@ def main() -> int:
     p.add_argument("test_dir", type=Path, nargs="?", help="test directory (see convention above)")
     p.add_argument("--vvp", type=Path, help="plain-Verilog bench table (see above); replaces test_dir")
     p.add_argument("--timeout", type=int, default=300, help="per-bench vvp timeout in seconds (--vvp)")
-    p.add_argument("--module", help="cocotb module (default test_NAME)")
-    p.add_argument("--toplevel", help="HDL toplevel (default NAME)")
-    p.add_argument("--dut", type=Path, help="good DUT source (default <test_dir>/NAME.v)")
-    p.add_argument("--broken", type=Path, help="broken DUT source (default negative_control/NAME_broken.v)")
     p.add_argument("--seed", type=int, help="random seed (default: random, recorded in result)")
     p.add_argument("--good-only", action="store_true", help="run only the good leg")
     p.add_argument("--broken-only", action="store_true", help="run only the negative-control leg")
@@ -244,10 +237,10 @@ def main() -> int:
 
     args.test_dir = args.test_dir.resolve()
     name = args.test_dir.name
-    args.module = args.module or f"test_{name}"
-    args.toplevel = args.toplevel or name
-    dut = (args.dut or args.test_dir / f"{name}.v").resolve()
-    broken = (args.broken or args.test_dir / "negative_control" / f"{name}_broken.v").resolve()
+    args.module = f"test_{name}"
+    args.toplevel = name
+    dut = (args.test_dir / f"{name}.v").resolve()
+    broken = (args.test_dir / "negative_control" / f"{name}_broken.v").resolve()
     seed = args.seed if args.seed is not None else random.randrange(2**32)
 
     if shutil.which("iverilog") is None:
