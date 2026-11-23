@@ -41,7 +41,6 @@ Issues currently being built (`loom:building`).
 PRs waiting on Judge (`loom:review-requested`).
 
 - **#63**: feat(measurements): run six plusarg-free stamped benches through klt functional-verification
-- **#148**: Add generated cost-per-LUT4 estimate for the routed gf180mcu tile
 - **#167**: measurements: item5-timing-iteration — worst-path anatomy and six bounded variants at 20 ns; none closes 15/15
 
 ## Approved (Awaiting Merge)
@@ -81,7 +80,7 @@ _None._
 | Important | 2 |
 | Ready (`loom:issue`) | 1 |
 | In Progress (`loom:building`) | 3 |
-| PRs awaiting review | 3 |
+| PRs awaiting review | 2 |
 | Approved PRs awaiting merge | 1 |
 | Curated | 7 |
 | Architect / Hermit proposals | 3 |

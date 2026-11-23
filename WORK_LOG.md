@@ -2,6 +2,11 @@
 
 Chronological record of merged PRs and closed issues (maintained by the Guide role; newest first).
 
+### 2026-11-23
+
+- **PR #172**: guard(item9): fail loudly on a missing workflow and net the scan's fail-closed arms
+- **Issue #170** (closed): Item-9 guard: two new ERROR sites are unnetted and the header's site count is stale
+
 ### 2026-11-22
 
 - **PR #169**: guard(item9): reject workflow-local Icarus pins and copied setup recipes
