@@ -4,6 +4,8 @@ Chronological record of merged PRs and closed issues (maintained by the Guide ro
 
 ### 2026-11-23
 
+- **PR #176**: signoff: stop vendoring the design-evidence tier ladder (ADR-0006)
+- **Issue #89** (closed): Stop vendoring design-evidence-tiers.md: the pinned klt bundles the ladder, and the two pins have drifted (0.8.0 vs 0.9.0)
 - **PR #172**: guard(item9): fail loudly on a missing workflow and net the scan's fail-closed arms
 - **Issue #170** (closed): Item-9 guard: two new ERROR sites are unnetted and the header's site count is stale
 
