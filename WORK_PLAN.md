@@ -33,6 +33,7 @@ Human-approved issues ready for implementation (`loom:issue`).
 Issues currently being built (`loom:building`).
 
 - **#86**: Remove the superseded cocotb wiring path: runner.py --dut/--broken/--module/--toplevel and the stale verification/README.md section
+- **#92**: Restore PDK-free CI coverage for signoff write mode
 - **#93**: Decide whether par.json should pin the tapcell master (library.tapcell.master) rather than inherit klt's per-library default
 - **#143**: Publish a cost-per-LUT estimate for the fabric
 - **#161**: Item 5: bounded timing iteration for the two failing ss 1.62 V corners (synthesis is unconstrained and place-and-route targets tt_025C_5v00)
@@ -42,7 +43,6 @@ Issues currently being built (`loom:building`).
 PRs waiting on Judge (`loom:review-requested`).
 
 - **#63**: feat(measurements): run six plusarg-free stamped benches through klt functional-verification
-- **#148**: Add generated cost-per-LUT4 estimate for the routed gf180mcu tile
 - **#167**: measurements: item5-timing-iteration — worst-path anatomy and six bounded variants at 20 ns; none closes 15/15
 - **#174**: refactor(verification): drop the superseded cocotb wiring path
 
@@ -51,6 +51,7 @@ PRs waiting on Judge (`loom:review-requested`).
 PRs that passed review and are queued for Champion auto-merge (`loom:pr`).
 
 - **#111**: docs(spec): keep the tapcell master tool-owned, record ADR-0003
+- **#179**: test: run signoff write-mode sandbox test in a PDK-free workflow
 
 ## Proposed
 
@@ -60,6 +61,7 @@ Issues carrying `loom:curated`.
 - **#27**: T1 item 5 (corner verification): klt sta on the routed tile at all 15 mcu7t5v0 corners plus klt functional-verification of the stamped bitstream-level tests *(curated)*
 - **#62**: Run PDK-dependent checks after klt single-sourcing (PR #61) *(curated)*
 - **#86**: Remove the superseded cocotb wiring path: runner.py --dut/--broken/--module/--toplevel and the stale verification/README.md section *(curated)*
+- **#92**: Restore PDK-free CI coverage for signoff write mode *(curated)*
 - **#93**: Decide whether par.json should pin the tapcell master (library.tapcell.master) rather than inherit klt's per-library default *(curated)*
 - **#102**: Decide on bumping klt_spec 0.9.0 -> 0.9.2: it unblocks the #4986 crosscheck envelope and the #5006 Verilog-bench evidence *(curated)*
 - **#143**: Publish a cost-per-LUT estimate for the fabric *(curated)*
@@ -67,7 +69,6 @@ Issues carrying `loom:curated`.
 
 ## Proposed (Architect / Hermit)
 
-- **#92**: Restore PDK-free CI coverage for signoff write mode *(hermit)*
 - **#177**: Remove unused Verilator install from the verification CI job and runner.py version probe *(hermit)*
 
 ## Epics
@@ -82,10 +83,10 @@ _None._
 | Very important | 1 |
 | Important | 2 |
 | Ready (`loom:issue`) | 1 |
-| In Progress (`loom:building`) | 4 |
-| PRs awaiting review | 4 |
-| Approved PRs awaiting merge | 1 |
-| Curated | 8 |
-| Architect / Hermit proposals | 2 |
+| In Progress (`loom:building`) | 5 |
+| PRs awaiting review | 3 |
+| Approved PRs awaiting merge | 2 |
+| Curated | 9 |
+| Architect / Hermit proposals | 1 |
 | Active epics | 0 |
 <!-- guide:plan-body:end -->
