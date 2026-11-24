@@ -9,15 +9,16 @@ This block's T1 state is graded by `klt signoff --manifest`, not read by hand.
   item is `no_evidence` until its
   evidence lands (tracker: #6). Each evidence PR adds its citation here and
   regenerates the record in the same diff.
-- `design-evidence-tiers.md` — the checklist the grader parses, vendored
-  byte-identical from `2AMLogic/klayout-tools` at
-  tag `v0.8.0` (`c572046be644e0407f693f2410f3abb799d68a3a`, `docs/design-evidence-tiers.md`,
-  sha256 `a26b90262320d0fbd32b3f549a02b6300832706041797a559d8bf6bdb62efdc7`).
-  To bump it, copy the new revision over this file, update the tag and hash
-  here, and regenerate.
+- The T1 checklist is no longer vendored here: it comes from the pinned klt
+  alone (`klt_spec` in `flow/pdk.json`), whose wheel bundles the ladder as
+  package data when `--tiers-doc` is omitted. The document is
+  [`docs/design-evidence-tiers.md` in `2AMLogic/klayout-tools`](https://github.com/2AMLogic/klayout-tools/blob/v0.9.0/docs/design-evidence-tiers.md)
+  at the tag the pin names (v0.9.0 today); the revision actually graded
+  against is identified by `source_doc` / `source_doc_content_hash` in the
+  record. Vendoring it was removed by operator ruling (2026-11-23); see
+  ADR-0006.
 - `gf180-fpga.signoff.json` — the verdict of record: the output of
-  `klt signoff --manifest manifests/gf180-fpga.json --tiers-doc
-  manifests/design-evidence-tiers.md --format json`.
+  `klt signoff --manifest manifests/gf180-fpga.json --format json`.
 - `run-signoff.sh` — regenerates the item 1, 2, 9 and 10 envelopes, the manifest's
   pins and the record; `--check` is what CI runs and fails on any drift.
 
