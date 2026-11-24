@@ -2,6 +2,25 @@
 
 Chronological record of merged PRs and closed issues (maintained by the Guide role; newest first).
 
+### 2026-11-23
+
+- **PR #176**: signoff: stop vendoring the design-evidence tier ladder (ADR-0006)
+- **Issue #89** (closed): Stop vendoring design-evidence-tiers.md: the pinned klt bundles the ladder, and the two pins have drifted (0.8.0 vs 0.9.0)
+- **PR #172**: guard(item9): fail loudly on a missing workflow and net the scan's fail-closed arms
+- **Issue #170** (closed): Item-9 guard: two new ERROR sites are unnetted and the header's site count is stale
+
+### 2026-11-22
+
+- **PR #169**: guard(item9): reject workflow-local Icarus pins and copied setup recipes
+- **Issue #158** (closed): Make the Item-9 guard reject workflow-local Icarus pins and copied setup steps
+
+### 2026-11-21
+
+- **PR #155**: ci: share one pinned Icarus build between verification and signoff
+- **Issue #154** (closed): Share the pinned Icarus build between verification and signoff
+- **PR #164**: measurements: item5-24um — 15-corner STA re-measured on the committed 24 um stream (item 5 unmet)
+- **Issue #160** (closed): Item 5: re-measure 15-corner STA (LEF-only and SPEF) on the committed 24 um-pitch tile; the records on main are bound to the superseded stream (measurement carve-out from #27)
+
 ### 2026-11-20
 
 - **PR #153**: feat: one-command blinky demo from the stamped sky130-fpga flow

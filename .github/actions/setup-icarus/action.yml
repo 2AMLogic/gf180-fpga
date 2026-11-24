@@ -1,0 +1,50 @@
+name: setup-icarus
+description: >-
+  Cache, build on a cache miss, and put on PATH the pinned Icarus Verilog
+  build shared by the verification and signoff jobs. The icarus-version
+  input default is the single CI version pin: verification/item9/inventory.py
+  asserts the attested pin against it, and the action exports it as
+  ICARUS_VERSION for the later result checks.
+
+inputs:
+  icarus-version:
+    description: >-
+      The one CI Icarus Verilog pin. Call sites do not override it; change
+      the default here and regenerate the affected item-9/10 evidence in the
+      same change.
+    required: false
+    default: "13.0"
+
+runs:
+  using: composite
+  steps:
+    - name: Cache Icarus Verilog
+      id: icarus-cache
+      uses: actions/cache@v4
+      with:
+        path: ~/icarus
+        key: icarus-${{ inputs.icarus-version }}-ubuntu-24.04
+
+    - name: Build pinned Icarus Verilog
+      if: steps.icarus-cache.outputs.cache-hit != 'true'
+      shell: bash
+      env:
+        PINNED_ICARUS_VERSION: ${{ inputs.icarus-version }}
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y --no-install-recommends build-essential autoconf gperf flex bison
+        tag="v$(echo "$PINNED_ICARUS_VERSION" | tr . _)"
+        git clone --depth 1 --branch "$tag" https://github.com/steveicarus/iverilog.git /tmp/iverilog
+        cd /tmp/iverilog
+        sh autoconf.sh
+        ./configure --prefix="$HOME/icarus"
+        make -j2
+        make install
+
+    - name: Put Icarus Verilog on PATH and export the pin
+      shell: bash
+      env:
+        PINNED_ICARUS_VERSION: ${{ inputs.icarus-version }}
+      run: |
+        echo "$HOME/icarus/bin" >> "$GITHUB_PATH"
+        echo "ICARUS_VERSION=$PINNED_ICARUS_VERSION" >> "$GITHUB_ENV"
