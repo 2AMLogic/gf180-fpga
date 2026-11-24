@@ -107,6 +107,10 @@ results.xml
 /.loom-local/
 # <<< loom-managed <<<
 
+# loom-daemon token-pool state (Codex ranking probe exhaustion timestamps)
+# written into the primary checkout at runtime; not builder contamination.
+/.loom/account-ranking.*
+
 # Repo Skills machine-local install metadata (absolute source path + timestamp)
 .claude/skills/repo/.install-local.json
 sim_build/
