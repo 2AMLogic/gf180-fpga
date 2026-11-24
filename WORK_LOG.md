@@ -2,6 +2,19 @@
 
 Chronological record of merged PRs and closed issues (maintained by the Guide role; newest first).
 
+### 2026-11-24
+
+- **Issue #86** (closed): Remove the superseded cocotb wiring path: runner.py --dut/--broken/--module/--toplevel and the stale verification/README.md section
+- **PR #174**: refactor(verification): drop the superseded cocotb wiring path
+- **Issue #161** (closed): Item 5: bounded timing iteration for the two failing ss 1.62 V corners (synthesis is unconstrained and place-and-route targets tt_025C_5v00)
+- **PR #167**: measurements: item5-timing-iteration — worst-path anatomy and six bounded variants at 20 ns; none closes 15/15
+- **Issue #183** (closed): Give the remaining verification.yml jobs a timeout-minutes
+- **PR #184**: ci: add timeout-minutes to remaining verification.yml jobs
+- **Issue #180** (closed): Pin the signoff-write-test runner image and give the job a timeout
+- **PR #182**: ci: pin signoff-write-test to ubuntu-24.04 and add job timeout
+- **Issue #92** (closed): Restore PDK-free CI coverage for signoff write mode
+- **PR #179**: test: run signoff write-mode sandbox test in a PDK-free workflow
+
 ### 2026-11-23
 
 - **PR #176**: signoff: stop vendoring the design-evidence tier ladder (ADR-0006)
