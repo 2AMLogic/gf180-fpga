@@ -1,3 +1,4 @@
 # Pinned verification toolchain (Python side). See verification/README.md
-# for the Icarus Verilog / Verilator versions this was verified against.
+# for the Icarus Verilog version this was verified against; Verilator is a
+# lint-only dependency (verification/lint_rtl.sh, CI's rtl-lint job).
 cocotb==2.0.1

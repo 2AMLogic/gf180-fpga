@@ -54,12 +54,12 @@ and `--check`ed in CI.
 |---|---|---|
 | cocotb | 2.0.1 | `requirements.txt` |
 | Icarus Verilog | 13.0 | CI builds this version (`.github/actions/setup-icarus/action.yml`, shared by both CI jobs); host-verified |
-| Verilator | 5.050 (lint) | host-verified; CI installs the distro package and records its version |
+| Verilator | 5.050 (lint) | host-verified; installed only by the `rtl-lint` CI job for `lint_rtl.sh` |
 
 cocotb 2.0.1 was run against Icarus 13.0 and Python 3.12.3 and works with
 this harness. Every run writes `<test_dir>/sim_build/result.json` with
 per-test pass/fail for each leg, the seed (`--seed N` reproduces it), the
-cocotb/Icarus/Verilator/Python versions that actually ran, and the commit.
+cocotb/Icarus/Python versions that actually ran, and the commit.
 
 ## Test directory convention
 
