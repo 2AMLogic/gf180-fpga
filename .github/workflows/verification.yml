@@ -12,6 +12,7 @@ permissions:
 jobs:
   verification:
     runs-on: ubuntu-24.04
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -72,6 +73,7 @@ jobs:
 
   rtl-lint:
     runs-on: ubuntu-24.04
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
       - name: Install Verilator
@@ -84,6 +86,7 @@ jobs:
     # ADR-0002, ADR-0005):
     # byte identity with the lock, and no unlisted vendored file.
     runs-on: ubuntu-24.04
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
       - name: Verify vendored files against reuse.lock.json
@@ -118,6 +121,7 @@ jobs:
     # fixture roots instead of a store, ciel/uvx stubbed to a recorder that
     # fails, so "no network fetch" is asserted rather than timed. No PDK.
     runs-on: ubuntu-24.04
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
       - name: PDK root resolution order
