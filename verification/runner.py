@@ -69,7 +69,6 @@ def tool_versions() -> dict[str, str | None]:
     return {
         "cocotb": cocotb_version,
         "icarus": _cmd_version(["iverilog", "-V"], r"version (\S+)"),
-        "verilator": _cmd_version(["verilator", "--version"], r"Verilator (\S+)"),
         "python": sys.version.split()[0],
     }
 

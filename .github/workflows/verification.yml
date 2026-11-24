@@ -23,8 +23,6 @@ jobs:
       # action exports ICARUS_VERSION; the asserts below compare the observed
       # simulator version against it.
       - uses: ./.github/actions/setup-icarus
-      - name: Install Verilator
-        run: sudo apt-get install -y --no-install-recommends verilator
       - name: Install pinned Python deps
         run: pip install -r verification/requirements.txt
       - name: Smoke test and negative control
