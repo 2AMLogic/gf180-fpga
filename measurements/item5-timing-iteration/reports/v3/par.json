@@ -1,0 +1,3291 @@
+{
+  "schema_version": 1,
+  "engine": "openroad",
+  "engine_version": "26Q3-1510-g6cb3f2b704",
+  "engine_logs": [
+    {
+      "invocation_id": "6d71b0476df74c7b95fcedda5fd9f786",
+      "script_name": "pnr_logic_tile_routed_floorplan.tcl",
+      "script_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/pnr_logic_tile_routed_floorplan.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "d0e6e6c8e2a58f31df2562c0fe2c4b2bed74941a57ec1df64963bcd900a6ac9a",
+      "metrics_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/logic_tile_routed_floorplan_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/6d71b0476df74c7b95fcedda5fd9f786",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/6d71b0476df74c7b95fcedda5fd9f786/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/6d71b0476df74c7b95fcedda5fd9f786/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/6d71b0476df74c7b95fcedda5fd9f786/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "6151fbcf60274dfea16a9aa449cd4270",
+      "script_name": "pnr_logic_tile_routed_place.tcl",
+      "script_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/pnr_logic_tile_routed_place.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "1c7baa44b7d05198e5b02a15ed916fb337ac2387868cd940985f4fbf0619cee8",
+      "metrics_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/logic_tile_routed_place_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/6151fbcf60274dfea16a9aa449cd4270",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/6151fbcf60274dfea16a9aa449cd4270/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/6151fbcf60274dfea16a9aa449cd4270/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/6151fbcf60274dfea16a9aa449cd4270/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "5bda446fd55648a9a539757b7fd5d786",
+      "script_name": "pnr_logic_tile_routed_cts.tcl",
+      "script_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/pnr_logic_tile_routed_cts.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "6fe575de5500dbb77d3d0402370a2fa1bb95a0d513f6c55975b13602d92f793a",
+      "metrics_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/logic_tile_routed_cts_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/5bda446fd55648a9a539757b7fd5d786",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/5bda446fd55648a9a539757b7fd5d786/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/5bda446fd55648a9a539757b7fd5d786/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/5bda446fd55648a9a539757b7fd5d786/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "b6e627e0a5c046d2a10e447e39219e42",
+      "script_name": "pnr_logic_tile_routed_route.tcl",
+      "script_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/pnr_logic_tile_routed_route.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "50c0075b3c995137d60950c655021c933af100928033a59d0e015d510c24a401",
+      "metrics_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/logic_tile_routed_route_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/b6e627e0a5c046d2a10e447e39219e42",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/b6e627e0a5c046d2a10e447e39219e42/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/b6e627e0a5c046d2a10e447e39219e42/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/b6e627e0a5c046d2a10e447e39219e42/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "32622cbde61a4984a8e794831f18e3a8",
+      "script_name": "pnr_logic_tile_routed_route_corners.tcl",
+      "script_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/pnr_logic_tile_routed_route_corners.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "0cf9d0f53c4e1751250af16aef108b36aeab521f970d016454d164b6ae517beb",
+      "metrics_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/logic_tile_routed_route_corners_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/32622cbde61a4984a8e794831f18e3a8",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/32622cbde61a4984a8e794831f18e3a8/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/32622cbde61a4984a8e794831f18e3a8/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/32622cbde61a4984a8e794831f18e3a8/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "a20aa722612646afa53194f383373193",
+      "script_name": "pnr_logic_tile_routed_route_corner_ff_125C_1v98.tcl",
+      "script_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/pnr_logic_tile_routed_route_corner_ff_125C_1v98.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "4eb0630750066332a6ddfab85d655319ade87681094f3b346183029badf51535",
+      "metrics_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/logic_tile_routed_route_corner_ff_125C_1v98_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/a20aa722612646afa53194f383373193",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/a20aa722612646afa53194f383373193/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/a20aa722612646afa53194f383373193/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/a20aa722612646afa53194f383373193/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "a054783d3ec74f6a9d9ec81f91886a89",
+      "script_name": "pnr_logic_tile_routed_route_corner_ff_125C_3v60.tcl",
+      "script_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/pnr_logic_tile_routed_route_corner_ff_125C_3v60.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "e17f4164f2b7a1e49f220ba671f1b9537e287d73bcb18604f5c0ea5949df8c65",
+      "metrics_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/logic_tile_routed_route_corner_ff_125C_3v60_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/a054783d3ec74f6a9d9ec81f91886a89",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/a054783d3ec74f6a9d9ec81f91886a89/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/a054783d3ec74f6a9d9ec81f91886a89/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/a054783d3ec74f6a9d9ec81f91886a89/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "e335a4161cc64c659adbbd855b3dc904",
+      "script_name": "pnr_logic_tile_routed_route_corner_ff_125C_5v50.tcl",
+      "script_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/pnr_logic_tile_routed_route_corner_ff_125C_5v50.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "3fdbdec797d802c46dc3196dc3b93338b1ff57f757a8cb56fa6f555fbbf87b11",
+      "metrics_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/logic_tile_routed_route_corner_ff_125C_5v50_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/e335a4161cc64c659adbbd855b3dc904",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/e335a4161cc64c659adbbd855b3dc904/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/e335a4161cc64c659adbbd855b3dc904/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/e335a4161cc64c659adbbd855b3dc904/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "c05563ce091b4ab98e75e40f3963fb5f",
+      "script_name": "pnr_logic_tile_routed_route_corner_ff_n40C_1v98.tcl",
+      "script_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/pnr_logic_tile_routed_route_corner_ff_n40C_1v98.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "9928b87f51ec03828103bd74e60923edcf37dc2131e22bf9a3af07f2a2934661",
+      "metrics_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/logic_tile_routed_route_corner_ff_n40C_1v98_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/c05563ce091b4ab98e75e40f3963fb5f",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/c05563ce091b4ab98e75e40f3963fb5f/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/c05563ce091b4ab98e75e40f3963fb5f/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/c05563ce091b4ab98e75e40f3963fb5f/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "01f0d7b57d7148f0958f4f12b5451c72",
+      "script_name": "pnr_logic_tile_routed_route_corner_ff_n40C_3v60.tcl",
+      "script_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/pnr_logic_tile_routed_route_corner_ff_n40C_3v60.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "caf66f4f6196a75b5623419cad4df9e21a9d2af24ab65756c58e332a318dbe49",
+      "metrics_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/logic_tile_routed_route_corner_ff_n40C_3v60_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/01f0d7b57d7148f0958f4f12b5451c72",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/01f0d7b57d7148f0958f4f12b5451c72/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/01f0d7b57d7148f0958f4f12b5451c72/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/01f0d7b57d7148f0958f4f12b5451c72/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "defccb8c866e4b9f97cedb04538a9d1e",
+      "script_name": "pnr_logic_tile_routed_route_corner_ff_n40C_5v50.tcl",
+      "script_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/pnr_logic_tile_routed_route_corner_ff_n40C_5v50.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "033dc4447a650797c838c6dfe45203b36b579acfc2a1880f912f09bfef7bd249",
+      "metrics_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/logic_tile_routed_route_corner_ff_n40C_5v50_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/defccb8c866e4b9f97cedb04538a9d1e",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/defccb8c866e4b9f97cedb04538a9d1e/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/defccb8c866e4b9f97cedb04538a9d1e/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/defccb8c866e4b9f97cedb04538a9d1e/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "5cf63a40434e4f6a91acee44adc3ff59",
+      "script_name": "pnr_logic_tile_routed_route_corner_ss_125C_1v62.tcl",
+      "script_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/pnr_logic_tile_routed_route_corner_ss_125C_1v62.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "f912e329c20064c2f05454fc79037d2fd4ae337151cc9f082f12ffefd1c0a26b",
+      "metrics_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/logic_tile_routed_route_corner_ss_125C_1v62_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/5cf63a40434e4f6a91acee44adc3ff59",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/5cf63a40434e4f6a91acee44adc3ff59/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/5cf63a40434e4f6a91acee44adc3ff59/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/5cf63a40434e4f6a91acee44adc3ff59/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "46bf272834474242baf0e1d6c21acb42",
+      "script_name": "pnr_logic_tile_routed_route_corner_ss_125C_3v00.tcl",
+      "script_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/pnr_logic_tile_routed_route_corner_ss_125C_3v00.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "7bd8e40a0e1be46362c81297cccec1ac0c8aaaf71a16e5d592130398ba615a7f",
+      "metrics_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/logic_tile_routed_route_corner_ss_125C_3v00_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/46bf272834474242baf0e1d6c21acb42",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/46bf272834474242baf0e1d6c21acb42/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/46bf272834474242baf0e1d6c21acb42/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/46bf272834474242baf0e1d6c21acb42/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "0c210e1b6f9d42c0a3c96a0bcb7754f9",
+      "script_name": "pnr_logic_tile_routed_route_corner_ss_125C_4v50.tcl",
+      "script_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/pnr_logic_tile_routed_route_corner_ss_125C_4v50.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "ae88da73e814c3372278fc3ae2ffc8960c9aa18d62b4db9b674cb1e896cb26b3",
+      "metrics_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/logic_tile_routed_route_corner_ss_125C_4v50_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/0c210e1b6f9d42c0a3c96a0bcb7754f9",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/0c210e1b6f9d42c0a3c96a0bcb7754f9/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/0c210e1b6f9d42c0a3c96a0bcb7754f9/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/0c210e1b6f9d42c0a3c96a0bcb7754f9/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "834632cd81b5482c9ec3a47cb4c63c45",
+      "script_name": "pnr_logic_tile_routed_route_corner_ss_n40C_1v62.tcl",
+      "script_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/pnr_logic_tile_routed_route_corner_ss_n40C_1v62.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "bdb18fe638d9304a0eaec374e4e2d11fb10a3e105017e5326cae6c6357b41498",
+      "metrics_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/logic_tile_routed_route_corner_ss_n40C_1v62_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/834632cd81b5482c9ec3a47cb4c63c45",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/834632cd81b5482c9ec3a47cb4c63c45/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/834632cd81b5482c9ec3a47cb4c63c45/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/834632cd81b5482c9ec3a47cb4c63c45/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "e183518f43db4bdcbd385a590722fbab",
+      "script_name": "pnr_logic_tile_routed_route_corner_ss_n40C_3v00.tcl",
+      "script_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/pnr_logic_tile_routed_route_corner_ss_n40C_3v00.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "e0bf1703880ac1b8577a94981367446d20c5dde7cfbfa4d4a805a3a112d1af92",
+      "metrics_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/logic_tile_routed_route_corner_ss_n40C_3v00_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/e183518f43db4bdcbd385a590722fbab",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/e183518f43db4bdcbd385a590722fbab/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/e183518f43db4bdcbd385a590722fbab/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/e183518f43db4bdcbd385a590722fbab/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "5219a4c7545642d0909fcf83e7b7eda8",
+      "script_name": "pnr_logic_tile_routed_route_corner_ss_n40C_4v50.tcl",
+      "script_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/pnr_logic_tile_routed_route_corner_ss_n40C_4v50.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "d215867022f8730ab3a89a9a726ca636defa2b00b423293604187c9b410ad17f",
+      "metrics_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/logic_tile_routed_route_corner_ss_n40C_4v50_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/5219a4c7545642d0909fcf83e7b7eda8",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/5219a4c7545642d0909fcf83e7b7eda8/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/5219a4c7545642d0909fcf83e7b7eda8/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/5219a4c7545642d0909fcf83e7b7eda8/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "c23ca0fe321346d6922e3f109b7fb824",
+      "script_name": "pnr_logic_tile_routed_route_corner_tt_025C_1v80.tcl",
+      "script_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/pnr_logic_tile_routed_route_corner_tt_025C_1v80.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "fa4e2955f3cabda767951325b376af9bc0d664b412d4b3391c55f8e981030b84",
+      "metrics_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/logic_tile_routed_route_corner_tt_025C_1v80_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/c23ca0fe321346d6922e3f109b7fb824",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/c23ca0fe321346d6922e3f109b7fb824/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/c23ca0fe321346d6922e3f109b7fb824/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/c23ca0fe321346d6922e3f109b7fb824/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "28cb8b8278ab497a87a0114a02f0034b",
+      "script_name": "pnr_logic_tile_routed_route_corner_tt_025C_3v30.tcl",
+      "script_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/pnr_logic_tile_routed_route_corner_tt_025C_3v30.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "a8e4daf95e41cbb8974ea9ddc97384d0556ede4b5b89b6a51acec391ffbbcfe2",
+      "metrics_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/logic_tile_routed_route_corner_tt_025C_3v30_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/28cb8b8278ab497a87a0114a02f0034b",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/28cb8b8278ab497a87a0114a02f0034b/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/28cb8b8278ab497a87a0114a02f0034b/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/28cb8b8278ab497a87a0114a02f0034b/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    },
+    {
+      "invocation_id": "5fe551858860448ebd979c9ef2cf9789",
+      "script_name": "pnr_logic_tile_routed_route_corner_tt_025C_5v00.tcl",
+      "script_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/pnr_logic_tile_routed_route_corner_tt_025C_5v00.tcl",
+        "scope": "repo"
+      },
+      "script_sha256": "e1ad3efdf0be5418e07628e6b8c776a3dedfad407cc5465bfb81d287c0307012",
+      "metrics_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/logic_tile_routed_route_corner_tt_025C_5v00_metrics.json",
+        "scope": "repo"
+      },
+      "outcome": "exited",
+      "returncode": 0,
+      "directory": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/5fe551858860448ebd979c9ef2cf9789",
+        "scope": "repo"
+      },
+      "stdout_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/5fe551858860448ebd979c9ef2cf9789/stdout.log",
+        "scope": "repo"
+      },
+      "stderr_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/5fe551858860448ebd979c9ef2cf9789/stderr.log",
+        "scope": "repo"
+      },
+      "metadata_path": {
+        "path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/openroad-logs/5fe551858860448ebd979c9ef2cf9789/invocation.json",
+        "scope": "repo"
+      },
+      "retention_errors": []
+    }
+  ],
+  "hdl_toplevel": "logic_tile_routed",
+  "netlist": {
+    "path": "measurements/item5-timing-iteration/work/v1/logic_tile_routed_synth.v",
+    "scope": "repo"
+  },
+  "status": "ok",
+  "stage_reached": "route",
+  "seed": 1,
+  "power_basis": {
+    "activity_source": "engine_default",
+    "activity": null,
+    "duty": null,
+    "parasitics": "estimate_only"
+  },
+  "applied": {
+    "placement_density": 0.6,
+    "route_congestion_iterations": null,
+    "route_allow_congestion": false,
+    "signal_layers": "Metal2-Metal4"
+  },
+  "coverage": {
+    "metal_density_fill": {
+      "status": "unsupported",
+      "inserted": false,
+      "reason": "no metal density fill is inserted at any stage; standard-cell gap fillers are not metal fill"
+    },
+    "density_compliance": {
+      "status": "unsupported",
+      "evaluated": false,
+      "reason": "metal density rules are not evaluated by place-and-route; a zero route_drc_violation_count does not imply density compliance"
+    }
+  },
+  "interconnect_corner": "nom",
+  "die_area_um2": 13368.8,
+  "core_area_um2": 11261.4,
+  "utilization_pct": 62.4172,
+  "wirelength_um": 18282,
+  "worst_slack_ns": 3.38959,
+  "total_negative_slack_ns": 0,
+  "fmax_mhz": 60.2032,
+  "setup_violation_count": 0,
+  "hold_violation_count": 0,
+  "nominal_hold_slack_ns": 8.68071,
+  "antenna_violation_count": 0,
+  "route_drc_violation_count": 0,
+  "estimated_power_mw": 0.1066,
+  "clock_skew_ns": 0,
+  "worst_setup_slack_ns": 3.38959,
+  "worst_hold_slack_ns": 0.61774,
+  "corners": [
+    {
+      "name": "ff_125C_1v98",
+      "setup_slack_ns": 16.0367,
+      "hold_slack_ns": 2.31201,
+      "total_negative_setup_slack_ns": 0,
+      "total_negative_hold_slack_ns": 0,
+      "timing_status": "constrained",
+      "max_transition_violation_count": 0,
+      "max_capacitance_violation_count": 0,
+      "max_transition_violation_count_vs_library": 0,
+      "max_capacitance_violation_count_vs_library": 0
+    },
+    {
+      "name": "ff_125C_3v60",
+      "setup_slack_ns": 18.0333,
+      "hold_slack_ns": 1.20446,
+      "total_negative_setup_slack_ns": 0,
+      "total_negative_hold_slack_ns": 0,
+      "timing_status": "constrained",
+      "max_transition_violation_count": 0,
+      "max_capacitance_violation_count": 0,
+      "max_transition_violation_count_vs_library": 0,
+      "max_capacitance_violation_count_vs_library": 0
+    },
+    {
+      "name": "ff_125C_5v50",
+      "setup_slack_ns": 18.611,
+      "hold_slack_ns": 0.87185,
+      "total_negative_setup_slack_ns": 0,
+      "total_negative_hold_slack_ns": 0,
+      "timing_status": "constrained",
+      "max_transition_violation_count": 0,
+      "max_capacitance_violation_count": 0,
+      "max_transition_violation_count_vs_library": 0,
+      "max_capacitance_violation_count_vs_library": 0
+    },
+    {
+      "name": "ff_n40C_1v98",
+      "setup_slack_ns": 17.0616,
+      "hold_slack_ns": 1.69887,
+      "total_negative_setup_slack_ns": 0,
+      "total_negative_hold_slack_ns": 0,
+      "timing_status": "constrained",
+      "max_transition_violation_count": 0,
+      "max_capacitance_violation_count": 0,
+      "max_transition_violation_count_vs_library": 0,
+      "max_capacitance_violation_count_vs_library": 0
+    },
+    {
+      "name": "ff_n40C_3v60",
+      "setup_slack_ns": 18.6586,
+      "hold_slack_ns": 0.84602,
+      "total_negative_setup_slack_ns": 0,
+      "total_negative_hold_slack_ns": 0,
+      "timing_status": "constrained",
+      "max_transition_violation_count": 0,
+      "max_capacitance_violation_count": 0,
+      "max_transition_violation_count_vs_library": 0,
+      "max_capacitance_violation_count_vs_library": 0
+    },
+    {
+      "name": "ff_n40C_5v50",
+      "setup_slack_ns": 19.0442,
+      "hold_slack_ns": 0.61774,
+      "total_negative_setup_slack_ns": 0,
+      "total_negative_hold_slack_ns": 0,
+      "timing_status": "constrained",
+      "max_transition_violation_count": 0,
+      "max_capacitance_violation_count": 0,
+      "max_transition_violation_count_vs_library": 0,
+      "max_capacitance_violation_count_vs_library": 0
+    },
+    {
+      "name": "ss_125C_1v62",
+      "setup_slack_ns": 3.38959,
+      "hold_slack_ns": 8.6918,
+      "total_negative_setup_slack_ns": 0,
+      "total_negative_hold_slack_ns": 0,
+      "timing_status": "constrained",
+      "max_transition_violation_count": 0,
+      "max_capacitance_violation_count": 0,
+      "max_transition_violation_count_vs_library": 0,
+      "max_capacitance_violation_count_vs_library": 0
+    },
+    {
+      "name": "ss_125C_3v00",
+      "setup_slack_ns": 14.9628,
+      "hold_slack_ns": 2.9976,
+      "total_negative_setup_slack_ns": 0,
+      "total_negative_hold_slack_ns": 0,
+      "timing_status": "constrained",
+      "max_transition_violation_count": 0,
+      "max_capacitance_violation_count": 0,
+      "max_transition_violation_count_vs_library": 0,
+      "max_capacitance_violation_count_vs_library": 0
+    },
+    {
+      "name": "ss_125C_4v50",
+      "setup_slack_ns": 16.9309,
+      "hold_slack_ns": 1.88821,
+      "total_negative_setup_slack_ns": 0,
+      "total_negative_hold_slack_ns": 0,
+      "timing_status": "constrained",
+      "max_transition_violation_count": 0,
+      "max_capacitance_violation_count": 0,
+      "max_transition_violation_count_vs_library": 0,
+      "max_capacitance_violation_count_vs_library": 0
+    },
+    {
+      "name": "ss_n40C_1v62",
+      "setup_slack_ns": 4.61393,
+      "hold_slack_ns": 7.7096,
+      "total_negative_setup_slack_ns": 0,
+      "total_negative_hold_slack_ns": 0,
+      "timing_status": "constrained",
+      "max_transition_violation_count": 0,
+      "max_capacitance_violation_count": 0,
+      "max_transition_violation_count_vs_library": 0,
+      "max_capacitance_violation_count_vs_library": 0
+    },
+    {
+      "name": "ss_n40C_3v00",
+      "setup_slack_ns": 16.5151,
+      "hold_slack_ns": 2.0902,
+      "total_negative_setup_slack_ns": 0,
+      "total_negative_hold_slack_ns": 0,
+      "timing_status": "constrained",
+      "max_transition_violation_count": 0,
+      "max_capacitance_violation_count": 0,
+      "max_transition_violation_count_vs_library": 0,
+      "max_capacitance_violation_count_vs_library": 0
+    },
+    {
+      "name": "ss_n40C_4v50",
+      "setup_slack_ns": 17.9103,
+      "hold_slack_ns": 1.30348,
+      "total_negative_setup_slack_ns": 0,
+      "total_negative_hold_slack_ns": 0,
+      "timing_status": "constrained",
+      "max_transition_violation_count": 0,
+      "max_capacitance_violation_count": 0,
+      "max_transition_violation_count_vs_library": 0,
+      "max_capacitance_violation_count_vs_library": 0
+    },
+    {
+      "name": "tt_025C_1v80",
+      "setup_slack_ns": 13.4133,
+      "hold_slack_ns": 3.60649,
+      "total_negative_setup_slack_ns": 0,
+      "total_negative_hold_slack_ns": 0,
+      "timing_status": "constrained",
+      "max_transition_violation_count": 0,
+      "max_capacitance_violation_count": 0,
+      "max_transition_violation_count_vs_library": 0,
+      "max_capacitance_violation_count_vs_library": 0
+    },
+    {
+      "name": "tt_025C_3v30",
+      "setup_slack_ns": 17.5586,
+      "hold_slack_ns": 1.48476,
+      "total_negative_setup_slack_ns": 0,
+      "total_negative_hold_slack_ns": 0,
+      "timing_status": "constrained",
+      "max_transition_violation_count": 0,
+      "max_capacitance_violation_count": 0,
+      "max_transition_violation_count_vs_library": 0,
+      "max_capacitance_violation_count_vs_library": 0
+    },
+    {
+      "name": "tt_025C_5v00",
+      "setup_slack_ns": 18.3901,
+      "hold_slack_ns": 1.00844,
+      "total_negative_setup_slack_ns": 0,
+      "total_negative_hold_slack_ns": 0,
+      "timing_status": "constrained",
+      "max_transition_violation_count": 0,
+      "max_capacitance_violation_count": 0,
+      "max_transition_violation_count_vs_library": 0,
+      "max_capacitance_violation_count_vs_library": 0
+    }
+  ],
+  "congestion": {
+    "global_route": {
+      "total_overflow": 0,
+      "max_horizontal_overflow": 0,
+      "max_vertical_overflow": 0,
+      "usage_pct": 28.51,
+      "max_layer_usage_pct": 46.74,
+      "overflow_per_layer": {
+        "Metal1": {
+          "resource": 0,
+          "demand": 0,
+          "usage_pct": 0.0,
+          "max_horizontal_overflow": 0,
+          "max_vertical_overflow": 0,
+          "total_overflow": 0
+        },
+        "Metal2": {
+          "resource": 2268,
+          "demand": 1060,
+          "usage_pct": 46.74,
+          "max_horizontal_overflow": 0,
+          "max_vertical_overflow": 0,
+          "total_overflow": 0
+        },
+        "Metal3": {
+          "resource": 2585,
+          "demand": 893,
+          "usage_pct": 34.55,
+          "max_horizontal_overflow": 0,
+          "max_vertical_overflow": 0,
+          "total_overflow": 0
+        },
+        "Metal4": {
+          "resource": 2124,
+          "demand": 36,
+          "usage_pct": 1.69,
+          "max_horizontal_overflow": 0,
+          "max_vertical_overflow": 0,
+          "total_overflow": 0
+        }
+      },
+      "routed_net_count": 367,
+      "max_gcell_usage_pct": null
+    },
+    "detailed_route": {
+      "first_iteration_drc_violation_count": 243,
+      "iteration_count": 4,
+      "drc_violations_per_iteration": [
+        243,
+        95,
+        68,
+        0
+      ],
+      "converged": true
+    },
+    "completeness": {
+      "signal_net_count": 363,
+      "unrouted_net_count": 0,
+      "partially_routed_net_count": null
+    },
+    "placement": {
+      "total_routing_overflow": 0.0,
+      "overflowed_tile_count": 0,
+      "final_weighted_congestion": 0.8099
+    },
+    "null_reasons": {
+      "global_route.max_gcell_usage_pct": "OpenROAD's global router reports usage per routing layer, not per GCell",
+      "completeness.partially_routed_net_count": "OpenROAD exposes no per-net connectivity check; only nets with no routed wire at all are counted"
+    }
+  },
+  "max_transition_violation_count": 0,
+  "max_capacitance_violation_count": 0,
+  "max_transition_violation_count_vs_library": 0,
+  "max_capacitance_violation_count_vs_library": 0,
+  "timing_status": "constrained",
+  "stages": [
+    {
+      "name": "floorplan",
+      "die_area_um2": 13368.8,
+      "core_area_um2": 11261.4,
+      "utilization_pct": 62.0663,
+      "worst_slack_ns": 4.73185,
+      "total_negative_slack_ns": 0,
+      "timing_status": "constrained"
+    },
+    {
+      "name": "place",
+      "die_area_um2": 13368.8,
+      "core_area_um2": 11261.4,
+      "utilization_pct": 61.5984,
+      "worst_slack_ns": 4.45041,
+      "total_negative_slack_ns": 0,
+      "wirelength_um": 16055.4,
+      "fmax_mhz": 64.3104,
+      "estimated_power_mw": 0.0844,
+      "setup_violation_count": 0,
+      "hold_violation_count": 0,
+      "nominal_hold_slack_ns": 8.38549,
+      "timing_status": "constrained"
+    },
+    {
+      "name": "cts",
+      "die_area_um2": 13368.8,
+      "core_area_um2": 11261.4,
+      "utilization_pct": 62.4172,
+      "worst_slack_ns": 3.84734,
+      "total_negative_slack_ns": 0,
+      "wirelength_um": 16136.9,
+      "fmax_mhz": 61.9093,
+      "estimated_power_mw": 0.1037,
+      "clock_skew_ns": 0,
+      "setup_violation_count": 0,
+      "hold_violation_count": 0,
+      "nominal_hold_slack_ns": 8.47788,
+      "timing_status": "constrained"
+    },
+    {
+      "name": "route",
+      "die_area_um2": 13368.8,
+      "core_area_um2": 11261.4,
+      "utilization_pct": 62.4172,
+      "worst_slack_ns": 3.38959,
+      "total_negative_slack_ns": 0,
+      "wirelength_um": 18282,
+      "fmax_mhz": 60.2032,
+      "estimated_power_mw": 0.1066,
+      "clock_skew_ns": 0,
+      "setup_violation_count": 0,
+      "hold_violation_count": 0,
+      "nominal_hold_slack_ns": 8.68071,
+      "antenna_violation_count": 0,
+      "route_drc_violation_count": 0,
+      "worst_setup_slack_ns": 3.38959,
+      "worst_hold_slack_ns": 0.61774,
+      "corners": [
+        {
+          "name": "ff_125C_1v98",
+          "setup_slack_ns": 16.0367,
+          "hold_slack_ns": 2.31201,
+          "total_negative_setup_slack_ns": 0,
+          "total_negative_hold_slack_ns": 0,
+          "timing_status": "constrained",
+          "max_transition_violation_count": 0,
+          "max_capacitance_violation_count": 0,
+          "max_transition_violation_count_vs_library": 0,
+          "max_capacitance_violation_count_vs_library": 0
+        },
+        {
+          "name": "ff_125C_3v60",
+          "setup_slack_ns": 18.0333,
+          "hold_slack_ns": 1.20446,
+          "total_negative_setup_slack_ns": 0,
+          "total_negative_hold_slack_ns": 0,
+          "timing_status": "constrained",
+          "max_transition_violation_count": 0,
+          "max_capacitance_violation_count": 0,
+          "max_transition_violation_count_vs_library": 0,
+          "max_capacitance_violation_count_vs_library": 0
+        },
+        {
+          "name": "ff_125C_5v50",
+          "setup_slack_ns": 18.611,
+          "hold_slack_ns": 0.87185,
+          "total_negative_setup_slack_ns": 0,
+          "total_negative_hold_slack_ns": 0,
+          "timing_status": "constrained",
+          "max_transition_violation_count": 0,
+          "max_capacitance_violation_count": 0,
+          "max_transition_violation_count_vs_library": 0,
+          "max_capacitance_violation_count_vs_library": 0
+        },
+        {
+          "name": "ff_n40C_1v98",
+          "setup_slack_ns": 17.0616,
+          "hold_slack_ns": 1.69887,
+          "total_negative_setup_slack_ns": 0,
+          "total_negative_hold_slack_ns": 0,
+          "timing_status": "constrained",
+          "max_transition_violation_count": 0,
+          "max_capacitance_violation_count": 0,
+          "max_transition_violation_count_vs_library": 0,
+          "max_capacitance_violation_count_vs_library": 0
+        },
+        {
+          "name": "ff_n40C_3v60",
+          "setup_slack_ns": 18.6586,
+          "hold_slack_ns": 0.84602,
+          "total_negative_setup_slack_ns": 0,
+          "total_negative_hold_slack_ns": 0,
+          "timing_status": "constrained",
+          "max_transition_violation_count": 0,
+          "max_capacitance_violation_count": 0,
+          "max_transition_violation_count_vs_library": 0,
+          "max_capacitance_violation_count_vs_library": 0
+        },
+        {
+          "name": "ff_n40C_5v50",
+          "setup_slack_ns": 19.0442,
+          "hold_slack_ns": 0.61774,
+          "total_negative_setup_slack_ns": 0,
+          "total_negative_hold_slack_ns": 0,
+          "timing_status": "constrained",
+          "max_transition_violation_count": 0,
+          "max_capacitance_violation_count": 0,
+          "max_transition_violation_count_vs_library": 0,
+          "max_capacitance_violation_count_vs_library": 0
+        },
+        {
+          "name": "ss_125C_1v62",
+          "setup_slack_ns": 3.38959,
+          "hold_slack_ns": 8.6918,
+          "total_negative_setup_slack_ns": 0,
+          "total_negative_hold_slack_ns": 0,
+          "timing_status": "constrained",
+          "max_transition_violation_count": 0,
+          "max_capacitance_violation_count": 0,
+          "max_transition_violation_count_vs_library": 0,
+          "max_capacitance_violation_count_vs_library": 0
+        },
+        {
+          "name": "ss_125C_3v00",
+          "setup_slack_ns": 14.9628,
+          "hold_slack_ns": 2.9976,
+          "total_negative_setup_slack_ns": 0,
+          "total_negative_hold_slack_ns": 0,
+          "timing_status": "constrained",
+          "max_transition_violation_count": 0,
+          "max_capacitance_violation_count": 0,
+          "max_transition_violation_count_vs_library": 0,
+          "max_capacitance_violation_count_vs_library": 0
+        },
+        {
+          "name": "ss_125C_4v50",
+          "setup_slack_ns": 16.9309,
+          "hold_slack_ns": 1.88821,
+          "total_negative_setup_slack_ns": 0,
+          "total_negative_hold_slack_ns": 0,
+          "timing_status": "constrained",
+          "max_transition_violation_count": 0,
+          "max_capacitance_violation_count": 0,
+          "max_transition_violation_count_vs_library": 0,
+          "max_capacitance_violation_count_vs_library": 0
+        },
+        {
+          "name": "ss_n40C_1v62",
+          "setup_slack_ns": 4.61393,
+          "hold_slack_ns": 7.7096,
+          "total_negative_setup_slack_ns": 0,
+          "total_negative_hold_slack_ns": 0,
+          "timing_status": "constrained",
+          "max_transition_violation_count": 0,
+          "max_capacitance_violation_count": 0,
+          "max_transition_violation_count_vs_library": 0,
+          "max_capacitance_violation_count_vs_library": 0
+        },
+        {
+          "name": "ss_n40C_3v00",
+          "setup_slack_ns": 16.5151,
+          "hold_slack_ns": 2.0902,
+          "total_negative_setup_slack_ns": 0,
+          "total_negative_hold_slack_ns": 0,
+          "timing_status": "constrained",
+          "max_transition_violation_count": 0,
+          "max_capacitance_violation_count": 0,
+          "max_transition_violation_count_vs_library": 0,
+          "max_capacitance_violation_count_vs_library": 0
+        },
+        {
+          "name": "ss_n40C_4v50",
+          "setup_slack_ns": 17.9103,
+          "hold_slack_ns": 1.30348,
+          "total_negative_setup_slack_ns": 0,
+          "total_negative_hold_slack_ns": 0,
+          "timing_status": "constrained",
+          "max_transition_violation_count": 0,
+          "max_capacitance_violation_count": 0,
+          "max_transition_violation_count_vs_library": 0,
+          "max_capacitance_violation_count_vs_library": 0
+        },
+        {
+          "name": "tt_025C_1v80",
+          "setup_slack_ns": 13.4133,
+          "hold_slack_ns": 3.60649,
+          "total_negative_setup_slack_ns": 0,
+          "total_negative_hold_slack_ns": 0,
+          "timing_status": "constrained",
+          "max_transition_violation_count": 0,
+          "max_capacitance_violation_count": 0,
+          "max_transition_violation_count_vs_library": 0,
+          "max_capacitance_violation_count_vs_library": 0
+        },
+        {
+          "name": "tt_025C_3v30",
+          "setup_slack_ns": 17.5586,
+          "hold_slack_ns": 1.48476,
+          "total_negative_setup_slack_ns": 0,
+          "total_negative_hold_slack_ns": 0,
+          "timing_status": "constrained",
+          "max_transition_violation_count": 0,
+          "max_capacitance_violation_count": 0,
+          "max_transition_violation_count_vs_library": 0,
+          "max_capacitance_violation_count_vs_library": 0
+        },
+        {
+          "name": "tt_025C_5v00",
+          "setup_slack_ns": 18.3901,
+          "hold_slack_ns": 1.00844,
+          "total_negative_setup_slack_ns": 0,
+          "total_negative_hold_slack_ns": 0,
+          "timing_status": "constrained",
+          "max_transition_violation_count": 0,
+          "max_capacitance_violation_count": 0,
+          "max_transition_violation_count_vs_library": 0,
+          "max_capacitance_violation_count_vs_library": 0
+        }
+      ],
+      "max_transition_violation_count": 0,
+      "max_capacitance_violation_count": 0,
+      "max_transition_violation_count_vs_library": 0,
+      "max_capacitance_violation_count_vs_library": 0,
+      "congestion": {
+        "global_route": {
+          "total_overflow": 0,
+          "max_horizontal_overflow": 0,
+          "max_vertical_overflow": 0,
+          "usage_pct": 28.51,
+          "max_layer_usage_pct": 46.74,
+          "overflow_per_layer": {
+            "Metal1": {
+              "resource": 0,
+              "demand": 0,
+              "usage_pct": 0.0,
+              "max_horizontal_overflow": 0,
+              "max_vertical_overflow": 0,
+              "total_overflow": 0
+            },
+            "Metal2": {
+              "resource": 2268,
+              "demand": 1060,
+              "usage_pct": 46.74,
+              "max_horizontal_overflow": 0,
+              "max_vertical_overflow": 0,
+              "total_overflow": 0
+            },
+            "Metal3": {
+              "resource": 2585,
+              "demand": 893,
+              "usage_pct": 34.55,
+              "max_horizontal_overflow": 0,
+              "max_vertical_overflow": 0,
+              "total_overflow": 0
+            },
+            "Metal4": {
+              "resource": 2124,
+              "demand": 36,
+              "usage_pct": 1.69,
+              "max_horizontal_overflow": 0,
+              "max_vertical_overflow": 0,
+              "total_overflow": 0
+            }
+          },
+          "routed_net_count": 367,
+          "max_gcell_usage_pct": null
+        },
+        "detailed_route": {
+          "first_iteration_drc_violation_count": 243,
+          "iteration_count": 4,
+          "drc_violations_per_iteration": [
+            243,
+            95,
+            68,
+            0
+          ],
+          "converged": true
+        },
+        "completeness": {
+          "signal_net_count": 363,
+          "unrouted_net_count": 0,
+          "partially_routed_net_count": null
+        },
+        "placement": {
+          "total_routing_overflow": 0.0,
+          "overflowed_tile_count": 0,
+          "final_weighted_congestion": 0.8099
+        },
+        "null_reasons": {
+          "global_route.max_gcell_usage_pct": "OpenROAD's global router reports usage per routing layer, not per GCell",
+          "completeness.partially_routed_net_count": "OpenROAD exposes no per-net connectivity check; only nets with no routed wire at all are counted"
+        }
+      },
+      "timing_status": "constrained"
+    }
+  ],
+  "macros": [],
+  "def_path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/logic_tile_routed.def",
+  "pins": [
+    {
+      "name": "VDD",
+      "edge": "north",
+      "x_um": 58.8,
+      "y_um": 93.52,
+      "layer": "Metal5"
+    },
+    {
+      "name": "VSS",
+      "edge": "south",
+      "x_um": 58.8,
+      "y_um": 48.72,
+      "layer": "Metal5"
+    },
+    {
+      "name": "cfg[0]",
+      "edge": "north",
+      "x_um": 5.04,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[100]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 3.92,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[101]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 49.84,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[102]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 48.72,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[103]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 47.6,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[104]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 46.48,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[105]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 45.36,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[106]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 44.24,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[107]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 43.12,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[108]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 42.0,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[109]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 40.88,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[10]",
+      "edge": "north",
+      "x_um": 44.24,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[110]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 39.76,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[111]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 38.64,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[112]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 37.52,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[113]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 36.4,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[114]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 35.28,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[115]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 34.16,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[116]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 33.04,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[117]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 31.92,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[118]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 30.8,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[119]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 29.68,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[11]",
+      "edge": "north",
+      "x_um": 27.44,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[120]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 28.56,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[121]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 27.44,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[122]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 108.08,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[123]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 68.88,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[124]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 70.0,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[125]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 71.12,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[126]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 72.24,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[127]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 73.36,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[128]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 74.48,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[129]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 75.6,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[12]",
+      "edge": "north",
+      "x_um": 21.84,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[130]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 76.72,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[131]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 77.84,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[132]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 78.96,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[133]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 80.08,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[134]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 81.2,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[135]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 82.32,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[136]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 83.44,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[137]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 84.56,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[138]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 85.68,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[139]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 86.8,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[13]",
+      "edge": "north",
+      "x_um": 12.88,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[140]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 87.92,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[141]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 89.04,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[142]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 90.16,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[143]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 91.28,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[144]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 92.4,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[145]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 93.52,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[146]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 94.64,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[147]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 95.76,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[148]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 96.88,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[149]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 98.0,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[14]",
+      "edge": "north",
+      "x_um": 26.32,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[150]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 99.12,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[151]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 100.24,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[152]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 101.36,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[153]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 102.48,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[154]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 103.6,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[155]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 104.72,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[156]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 105.84,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[157]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 106.96,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[15]",
+      "edge": "north",
+      "x_um": 35.28,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[16]",
+      "edge": "north",
+      "x_um": 46.48,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[17]",
+      "edge": "north",
+      "x_um": 11.76,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[18]",
+      "edge": "north",
+      "x_um": 45.36,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[19]",
+      "edge": "north",
+      "x_um": 48.72,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[1]",
+      "edge": "north",
+      "x_um": 24.08,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[20]",
+      "edge": "north",
+      "x_um": 10.64,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[21]",
+      "edge": "north",
+      "x_um": 39.76,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[22]",
+      "edge": "north",
+      "x_um": 6.16,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[23]",
+      "edge": "north",
+      "x_um": 43.12,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[24]",
+      "edge": "north",
+      "x_um": 25.2,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[25]",
+      "edge": "north",
+      "x_um": 9.52,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[26]",
+      "edge": "north",
+      "x_um": 7.28,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[27]",
+      "edge": "north",
+      "x_um": 40.88,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[28]",
+      "edge": "north",
+      "x_um": 20.72,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[29]",
+      "edge": "north",
+      "x_um": 36.4,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[2]",
+      "edge": "north",
+      "x_um": 50.96,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[30]",
+      "edge": "north",
+      "x_um": 19.6,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[31]",
+      "edge": "north",
+      "x_um": 28.56,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[32]",
+      "edge": "north",
+      "x_um": 33.04,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[33]",
+      "edge": "north",
+      "x_um": 18.48,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[34]",
+      "edge": "north",
+      "x_um": 34.16,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[35]",
+      "edge": "north",
+      "x_um": 42.0,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[36]",
+      "edge": "north",
+      "x_um": 17.36,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[37]",
+      "edge": "north",
+      "x_um": 47.6,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[38]",
+      "edge": "north",
+      "x_um": 30.8,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[39]",
+      "edge": "north",
+      "x_um": 37.52,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[3]",
+      "edge": "north",
+      "x_um": 16.24,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[40]",
+      "edge": "north",
+      "x_um": 8.4,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[41]",
+      "edge": "north",
+      "x_um": 31.92,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[42]",
+      "edge": "south",
+      "x_um": 112.56,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[43]",
+      "edge": "south",
+      "x_um": 83.44,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[44]",
+      "edge": "south",
+      "x_um": 111.44,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[45]",
+      "edge": "south",
+      "x_um": 104.72,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[46]",
+      "edge": "south",
+      "x_um": 81.2,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[47]",
+      "edge": "south",
+      "x_um": 93.52,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[48]",
+      "edge": "south",
+      "x_um": 71.12,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[49]",
+      "edge": "south",
+      "x_um": 105.84,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[4]",
+      "edge": "north",
+      "x_um": 22.96,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[50]",
+      "edge": "south",
+      "x_um": 94.64,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[51]",
+      "edge": "south",
+      "x_um": 78.96,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[52]",
+      "edge": "south",
+      "x_um": 77.84,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[53]",
+      "edge": "south",
+      "x_um": 95.76,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[54]",
+      "edge": "south",
+      "x_um": 110.32,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[55]",
+      "edge": "south",
+      "x_um": 99.12,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[56]",
+      "edge": "south",
+      "x_um": 96.88,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[57]",
+      "edge": "south",
+      "x_um": 82.32,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[58]",
+      "edge": "south",
+      "x_um": 92.4,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[59]",
+      "edge": "south",
+      "x_um": 98.0,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[5]",
+      "edge": "north",
+      "x_um": 15.12,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[60]",
+      "edge": "south",
+      "x_um": 76.72,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[61]",
+      "edge": "south",
+      "x_um": 90.16,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[62]",
+      "edge": "south",
+      "x_um": 106.96,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[63]",
+      "edge": "south",
+      "x_um": 85.68,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[64]",
+      "edge": "south",
+      "x_um": 75.6,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[65]",
+      "edge": "south",
+      "x_um": 100.24,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[66]",
+      "edge": "south",
+      "x_um": 73.36,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[67]",
+      "edge": "south",
+      "x_um": 84.56,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[68]",
+      "edge": "south",
+      "x_um": 74.48,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[69]",
+      "edge": "south",
+      "x_um": 101.36,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[6]",
+      "edge": "north",
+      "x_um": 38.64,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[70]",
+      "edge": "south",
+      "x_um": 80.08,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[71]",
+      "edge": "south",
+      "x_um": 108.08,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[72]",
+      "edge": "south",
+      "x_um": 72.24,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[73]",
+      "edge": "south",
+      "x_um": 102.48,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[74]",
+      "edge": "south",
+      "x_um": 87.92,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[75]",
+      "edge": "south",
+      "x_um": 89.04,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[76]",
+      "edge": "south",
+      "x_um": 109.2,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[77]",
+      "edge": "south",
+      "x_um": 103.6,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[78]",
+      "edge": "south",
+      "x_um": 86.8,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[79]",
+      "edge": "south",
+      "x_um": 91.28,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[7]",
+      "edge": "north",
+      "x_um": 29.68,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[80]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 26.32,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[81]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 25.2,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[82]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 24.08,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[83]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 22.96,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[84]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 21.84,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[85]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 20.72,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[86]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 19.6,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[87]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 18.48,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[88]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 17.36,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[89]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 16.24,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[8]",
+      "edge": "north",
+      "x_um": 49.84,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "cfg[90]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 15.12,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[91]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 14.0,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[92]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 12.88,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[93]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 11.76,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[94]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 10.64,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[95]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 9.52,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[96]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 8.4,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[97]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 7.28,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[98]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 6.16,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[99]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 5.04,
+      "layer": "Metal3"
+    },
+    {
+      "name": "cfg[9]",
+      "edge": "north",
+      "x_um": 14.0,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "clk",
+      "edge": "south",
+      "x_um": 61.04,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "e_in[0]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 59.92,
+      "layer": "Metal3"
+    },
+    {
+      "name": "e_in[1]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 61.04,
+      "layer": "Metal3"
+    },
+    {
+      "name": "e_in[2]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 62.16,
+      "layer": "Metal3"
+    },
+    {
+      "name": "e_in[3]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 63.28,
+      "layer": "Metal3"
+    },
+    {
+      "name": "e_out[0]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 50.96,
+      "layer": "Metal3"
+    },
+    {
+      "name": "e_out[1]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 52.08,
+      "layer": "Metal3"
+    },
+    {
+      "name": "e_out[2]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 53.2,
+      "layer": "Metal3"
+    },
+    {
+      "name": "e_out[3]",
+      "edge": "east",
+      "x_um": 117.34,
+      "y_um": 54.32,
+      "layer": "Metal3"
+    },
+    {
+      "name": "n_in[0]",
+      "edge": "north",
+      "x_um": 62.16,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "n_in[1]",
+      "edge": "north",
+      "x_um": 63.28,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "n_in[2]",
+      "edge": "north",
+      "x_um": 64.4,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "n_in[3]",
+      "edge": "north",
+      "x_um": 65.52,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "n_out[0]",
+      "edge": "north",
+      "x_um": 53.2,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "n_out[1]",
+      "edge": "north",
+      "x_um": 54.32,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "n_out[2]",
+      "edge": "north",
+      "x_um": 55.44,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "n_out[3]",
+      "edge": "north",
+      "x_um": 56.56,
+      "y_um": 113.42,
+      "layer": "Metal2"
+    },
+    {
+      "name": "s_in[0]",
+      "edge": "south",
+      "x_um": 53.2,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "s_in[1]",
+      "edge": "south",
+      "x_um": 54.32,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "s_in[2]",
+      "edge": "south",
+      "x_um": 55.44,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "s_in[3]",
+      "edge": "south",
+      "x_um": 56.56,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "s_out[0]",
+      "edge": "south",
+      "x_um": 62.16,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "s_out[1]",
+      "edge": "south",
+      "x_um": 63.28,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "s_out[2]",
+      "edge": "south",
+      "x_um": 64.4,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "s_out[3]",
+      "edge": "south",
+      "x_um": 65.52,
+      "y_um": 0.26,
+      "layer": "Metal2"
+    },
+    {
+      "name": "w_in[0]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 50.96,
+      "layer": "Metal3"
+    },
+    {
+      "name": "w_in[1]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 52.08,
+      "layer": "Metal3"
+    },
+    {
+      "name": "w_in[2]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 53.2,
+      "layer": "Metal3"
+    },
+    {
+      "name": "w_in[3]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 54.32,
+      "layer": "Metal3"
+    },
+    {
+      "name": "w_out[0]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 59.92,
+      "layer": "Metal3"
+    },
+    {
+      "name": "w_out[1]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 61.04,
+      "layer": "Metal3"
+    },
+    {
+      "name": "w_out[2]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 62.16,
+      "layer": "Metal3"
+    },
+    {
+      "name": "w_out[3]",
+      "edge": "west",
+      "x_um": 0.26,
+      "y_um": 63.28,
+      "layer": "Metal3"
+    }
+  ],
+  "pin_abutment": [
+    {
+      "entries": [
+        0,
+        1
+      ],
+      "shared": "x",
+      "tolerance_um": 0.01,
+      "pairs": [
+        {
+          "a": "n_out[3]",
+          "b": "s_in[3]",
+          "a_um": 56.56,
+          "b_um": 56.56,
+          "delta_um": 0.0,
+          "aligned": true
+        },
+        {
+          "a": "n_out[2]",
+          "b": "s_in[2]",
+          "a_um": 55.44,
+          "b_um": 55.44,
+          "delta_um": 0.0,
+          "aligned": true
+        },
+        {
+          "a": "n_out[1]",
+          "b": "s_in[1]",
+          "a_um": 54.32,
+          "b_um": 54.32,
+          "delta_um": 0.0,
+          "aligned": true
+        },
+        {
+          "a": "n_out[0]",
+          "b": "s_in[0]",
+          "a_um": 53.2,
+          "b_um": 53.2,
+          "delta_um": 0.0,
+          "aligned": true
+        }
+      ],
+      "aligned": true,
+      "reason": null
+    },
+    {
+      "entries": [
+        0,
+        3
+      ],
+      "shared": "x",
+      "tolerance_um": 0.01,
+      "pairs": [
+        {
+          "a": "n_out[3]",
+          "b": "s_out[3]",
+          "a_um": 56.56,
+          "b_um": 65.52,
+          "delta_um": 8.96,
+          "aligned": false
+        },
+        {
+          "a": "n_out[2]",
+          "b": "s_out[2]",
+          "a_um": 55.44,
+          "b_um": 64.4,
+          "delta_um": 8.96,
+          "aligned": false
+        },
+        {
+          "a": "n_out[1]",
+          "b": "s_out[1]",
+          "a_um": 54.32,
+          "b_um": 63.28,
+          "delta_um": 8.96,
+          "aligned": false
+        },
+        {
+          "a": "n_out[0]",
+          "b": "s_out[0]",
+          "a_um": 53.2,
+          "b_um": 62.16,
+          "delta_um": 8.96,
+          "aligned": false
+        }
+      ],
+      "aligned": false,
+      "reason": null
+    },
+    {
+      "entries": [
+        0,
+        9
+      ],
+      "shared": "x",
+      "tolerance_um": 0.01,
+      "pairs": [],
+      "aligned": null,
+      "reason": "entries match 4 and 38 ports; cannot pair them"
+    },
+    {
+      "entries": [
+        0,
+        12
+      ],
+      "shared": "x",
+      "tolerance_um": 0.01,
+      "pairs": [],
+      "aligned": null,
+      "reason": "entries match 4 and 1 ports; cannot pair them"
+    },
+    {
+      "entries": [
+        1,
+        2
+      ],
+      "shared": "x",
+      "tolerance_um": 0.01,
+      "pairs": [
+        {
+          "a": "s_in[3]",
+          "b": "n_in[3]",
+          "a_um": 56.56,
+          "b_um": 65.52,
+          "delta_um": 8.96,
+          "aligned": false
+        },
+        {
+          "a": "s_in[2]",
+          "b": "n_in[2]",
+          "a_um": 55.44,
+          "b_um": 64.4,
+          "delta_um": 8.96,
+          "aligned": false
+        },
+        {
+          "a": "s_in[1]",
+          "b": "n_in[1]",
+          "a_um": 54.32,
+          "b_um": 63.28,
+          "delta_um": 8.96,
+          "aligned": false
+        },
+        {
+          "a": "s_in[0]",
+          "b": "n_in[0]",
+          "a_um": 53.2,
+          "b_um": 62.16,
+          "delta_um": 8.96,
+          "aligned": false
+        }
+      ],
+      "aligned": false,
+      "reason": null
+    },
+    {
+      "entries": [
+        1,
+        8
+      ],
+      "shared": "x",
+      "tolerance_um": 0.01,
+      "pairs": [],
+      "aligned": null,
+      "reason": "entries match 4 and 42 ports; cannot pair them"
+    },
+    {
+      "entries": [
+        2,
+        3
+      ],
+      "shared": "x",
+      "tolerance_um": 0.01,
+      "pairs": [
+        {
+          "a": "n_in[3]",
+          "b": "s_out[3]",
+          "a_um": 65.52,
+          "b_um": 65.52,
+          "delta_um": 0.0,
+          "aligned": true
+        },
+        {
+          "a": "n_in[2]",
+          "b": "s_out[2]",
+          "a_um": 64.4,
+          "b_um": 64.4,
+          "delta_um": 0.0,
+          "aligned": true
+        },
+        {
+          "a": "n_in[1]",
+          "b": "s_out[1]",
+          "a_um": 63.28,
+          "b_um": 63.28,
+          "delta_um": 0.0,
+          "aligned": true
+        },
+        {
+          "a": "n_in[0]",
+          "b": "s_out[0]",
+          "a_um": 62.16,
+          "b_um": 62.16,
+          "delta_um": 0.0,
+          "aligned": true
+        }
+      ],
+      "aligned": true,
+      "reason": null
+    },
+    {
+      "entries": [
+        2,
+        9
+      ],
+      "shared": "x",
+      "tolerance_um": 0.01,
+      "pairs": [],
+      "aligned": null,
+      "reason": "entries match 4 and 38 ports; cannot pair them"
+    },
+    {
+      "entries": [
+        2,
+        12
+      ],
+      "shared": "x",
+      "tolerance_um": 0.01,
+      "pairs": [],
+      "aligned": null,
+      "reason": "entries match 4 and 1 ports; cannot pair them"
+    },
+    {
+      "entries": [
+        3,
+        8
+      ],
+      "shared": "x",
+      "tolerance_um": 0.01,
+      "pairs": [],
+      "aligned": null,
+      "reason": "entries match 4 and 42 ports; cannot pair them"
+    },
+    {
+      "entries": [
+        4,
+        5
+      ],
+      "shared": "y",
+      "tolerance_um": 0.01,
+      "pairs": [
+        {
+          "a": "e_out[3]",
+          "b": "w_in[3]",
+          "a_um": 54.32,
+          "b_um": 54.32,
+          "delta_um": 0.0,
+          "aligned": true
+        },
+        {
+          "a": "e_out[2]",
+          "b": "w_in[2]",
+          "a_um": 53.2,
+          "b_um": 53.2,
+          "delta_um": 0.0,
+          "aligned": true
+        },
+        {
+          "a": "e_out[1]",
+          "b": "w_in[1]",
+          "a_um": 52.08,
+          "b_um": 52.08,
+          "delta_um": 0.0,
+          "aligned": true
+        },
+        {
+          "a": "e_out[0]",
+          "b": "w_in[0]",
+          "a_um": 50.96,
+          "b_um": 50.96,
+          "delta_um": 0.0,
+          "aligned": true
+        }
+      ],
+      "aligned": true,
+      "reason": null
+    },
+    {
+      "entries": [
+        4,
+        7
+      ],
+      "shared": "y",
+      "tolerance_um": 0.01,
+      "pairs": [
+        {
+          "a": "e_out[3]",
+          "b": "w_out[3]",
+          "a_um": 54.32,
+          "b_um": 63.28,
+          "delta_um": 8.96,
+          "aligned": false
+        },
+        {
+          "a": "e_out[2]",
+          "b": "w_out[2]",
+          "a_um": 53.2,
+          "b_um": 62.16,
+          "delta_um": 8.96,
+          "aligned": false
+        },
+        {
+          "a": "e_out[1]",
+          "b": "w_out[1]",
+          "a_um": 52.08,
+          "b_um": 61.04,
+          "delta_um": 8.96,
+          "aligned": false
+        },
+        {
+          "a": "e_out[0]",
+          "b": "w_out[0]",
+          "a_um": 50.96,
+          "b_um": 59.92,
+          "delta_um": 8.96,
+          "aligned": false
+        }
+      ],
+      "aligned": false,
+      "reason": null
+    },
+    {
+      "entries": [
+        4,
+        11
+      ],
+      "shared": "y",
+      "tolerance_um": 0.01,
+      "pairs": [],
+      "aligned": null,
+      "reason": "entries match 4 and 36 ports; cannot pair them"
+    },
+    {
+      "entries": [
+        5,
+        6
+      ],
+      "shared": "y",
+      "tolerance_um": 0.01,
+      "pairs": [
+        {
+          "a": "w_in[3]",
+          "b": "e_in[3]",
+          "a_um": 54.32,
+          "b_um": 63.28,
+          "delta_um": 8.96,
+          "aligned": false
+        },
+        {
+          "a": "w_in[2]",
+          "b": "e_in[2]",
+          "a_um": 53.2,
+          "b_um": 62.16,
+          "delta_um": 8.96,
+          "aligned": false
+        },
+        {
+          "a": "w_in[1]",
+          "b": "e_in[1]",
+          "a_um": 52.08,
+          "b_um": 61.04,
+          "delta_um": 8.96,
+          "aligned": false
+        },
+        {
+          "a": "w_in[0]",
+          "b": "e_in[0]",
+          "a_um": 50.96,
+          "b_um": 59.92,
+          "delta_um": 8.96,
+          "aligned": false
+        }
+      ],
+      "aligned": false,
+      "reason": null
+    },
+    {
+      "entries": [
+        5,
+        10
+      ],
+      "shared": "y",
+      "tolerance_um": 0.01,
+      "pairs": [],
+      "aligned": null,
+      "reason": "entries match 4 and 42 ports; cannot pair them"
+    },
+    {
+      "entries": [
+        6,
+        7
+      ],
+      "shared": "y",
+      "tolerance_um": 0.01,
+      "pairs": [
+        {
+          "a": "e_in[3]",
+          "b": "w_out[3]",
+          "a_um": 63.28,
+          "b_um": 63.28,
+          "delta_um": 0.0,
+          "aligned": true
+        },
+        {
+          "a": "e_in[2]",
+          "b": "w_out[2]",
+          "a_um": 62.16,
+          "b_um": 62.16,
+          "delta_um": 0.0,
+          "aligned": true
+        },
+        {
+          "a": "e_in[1]",
+          "b": "w_out[1]",
+          "a_um": 61.04,
+          "b_um": 61.04,
+          "delta_um": 0.0,
+          "aligned": true
+        },
+        {
+          "a": "e_in[0]",
+          "b": "w_out[0]",
+          "a_um": 59.92,
+          "b_um": 59.92,
+          "delta_um": 0.0,
+          "aligned": true
+        }
+      ],
+      "aligned": true,
+      "reason": null
+    },
+    {
+      "entries": [
+        6,
+        11
+      ],
+      "shared": "y",
+      "tolerance_um": 0.01,
+      "pairs": [],
+      "aligned": null,
+      "reason": "entries match 4 and 36 ports; cannot pair them"
+    },
+    {
+      "entries": [
+        7,
+        10
+      ],
+      "shared": "y",
+      "tolerance_um": 0.01,
+      "pairs": [],
+      "aligned": null,
+      "reason": "entries match 4 and 42 ports; cannot pair them"
+    },
+    {
+      "entries": [
+        8,
+        9
+      ],
+      "shared": "x",
+      "tolerance_um": 0.01,
+      "pairs": [],
+      "aligned": null,
+      "reason": "entries match 42 and 38 ports; cannot pair them"
+    },
+    {
+      "entries": [
+        8,
+        12
+      ],
+      "shared": "x",
+      "tolerance_um": 0.01,
+      "pairs": [],
+      "aligned": null,
+      "reason": "entries match 42 and 1 ports; cannot pair them"
+    },
+    {
+      "entries": [
+        10,
+        11
+      ],
+      "shared": "y",
+      "tolerance_um": 0.01,
+      "pairs": [],
+      "aligned": null,
+      "reason": "entries match 42 and 36 ports; cannot pair them"
+    }
+  ],
+  "instance_groups": [],
+  "unrouted_def_path": null,
+  "gds_path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/logic_tile_routed.gds",
+  "layer_map": {
+    "path": "$PDK_ROOT/gf180mcuD/libs.tech/klayout/tech/gf180mcu.map",
+    "resolution": "family"
+  },
+  "def_net_names": {
+    "single_pin_markers": 0,
+    "unresolved_single_pin_nets": []
+  },
+  "min_area_repair": {
+    "status": "skipped",
+    "reason": "the curated deck for PDK variant 'gf180mcuD' carries no plain minimum-area rule on any routed-net layer",
+    "patches": 0,
+    "repaired": 0,
+    "remaining": 0,
+    "rules": [],
+    "unrepaired": []
+  },
+  "via_pad_trim": {
+    "status": "skipped",
+    "reason": "PDK family of 'gf180mcuD' is not ASAP7; no-op",
+    "cells_touched": 0,
+    "pads_trimmed": 0,
+    "pads_shrunk": 0,
+    "pads_left": 0
+  },
+  "gds_dbu_um": 0.0005,
+  "verilog_path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/logic_tile_routed.v",
+  "spef_sta": null,
+  "power": {
+    "preset": "gf180mcu_7t_6M",
+    "connects_overridden": false,
+    "pdn": true,
+    "global_connect": true,
+    "power_net": "VDD",
+    "ground_net": "VSS",
+    "tapcell_master": "gf180mcu_fd_sc_mcu7t5v0__filltie",
+    "tapless": false,
+    "endcap_master": "gf180mcu_fd_sc_mcu7t5v0__endcap",
+    "tapcell_distance_um": 24,
+    "filler_masters": [
+      "gf180mcu_fd_sc_mcu7t5v0__fill_64",
+      "gf180mcu_fd_sc_mcu7t5v0__fill_32",
+      "gf180mcu_fd_sc_mcu7t5v0__fill_16",
+      "gf180mcu_fd_sc_mcu7t5v0__fill_8",
+      "gf180mcu_fd_sc_mcu7t5v0__fill_4",
+      "gf180mcu_fd_sc_mcu7t5v0__fill_2",
+      "gf180mcu_fd_sc_mcu7t5v0__fill_1"
+    ],
+    "straps": [
+      {
+        "layer": "Metal1",
+        "spacing_um": null
+      },
+      {
+        "layer": "Metal4",
+        "spacing_um": 0.56
+      },
+      {
+        "layer": "Metal5",
+        "spacing_um": null
+      }
+    ],
+    "connects": [
+      {
+        "layers": [
+          "Metal1",
+          "Metal4"
+        ],
+        "max_columns": 5,
+        "ongrid": [
+          "Metal2",
+          "Metal3",
+          "Metal4"
+        ],
+        "split_cuts": null
+      },
+      {
+        "layers": [
+          "Metal4",
+          "Metal5"
+        ],
+        "max_columns": null,
+        "ongrid": null,
+        "split_cuts": null
+      }
+    ],
+    "row_rail": {
+      "emitted": false,
+      "layer": null,
+      "power_net": null,
+      "ground_net": null,
+      "filler_masters": []
+    },
+    "placed": {
+      "evidence": "def",
+      "def_path": "measurements/item5-timing-iteration/requests/.klt/place-and-route/logic_tile_routed.def",
+      "unavailable_reason": null,
+      "status": "complete",
+      "missing": [],
+      "components": 679,
+      "tapcells": 58,
+      "endcaps": 54,
+      "fillers": 375,
+      "special_nets": [
+        {
+          "name": "VDD",
+          "use": "POWER",
+          "followpin_segments": 14,
+          "stripe_segments": 89,
+          "other_segments": 0,
+          "stripe_layers": [
+            "Metal5",
+            "Metal4",
+            "Metal3",
+            "Metal2",
+            "Metal1"
+          ],
+          "vias": 86
+        },
+        {
+          "name": "VSS",
+          "use": "GROUND",
+          "followpin_segments": 14,
+          "stripe_segments": 89,
+          "other_segments": 0,
+          "stripe_layers": [
+            "Metal5",
+            "Metal4",
+            "Metal3",
+            "Metal2",
+            "Metal1"
+          ],
+          "vias": 86
+        }
+      ]
+    }
+  },
+  "warnings": [],
+  "provenance": {
+    "klt_version": "0.9.0",
+    "klt_git_commit": "5dbbad05ff42265c92a6f3d2f20d1bbcd2957d49",
+    "klt_reinstall_spec": "klayout-tools==0.9.0",
+    "klayout_version": "0.30.12",
+    "pdk": {
+      "name": "gf180mcuD",
+      "source": "PDK_ROOT environment variable",
+      "version": "open_pdks f6eeac7dad085ffcc829ccfd721f7b4ce39edcf7",
+      "ambiguous_sources": [
+        "search root: ~/.volare"
+      ]
+    },
+    "deck": {
+      "name": "gf180mcu_fd_sc_mcu7t5v0__ss_125C_1v62",
+      "content_hash": "sha256:a87b443fa095c74d0eae599091a3d38415c69d1a14b9753a445b42eb269baf74",
+      "released": false,
+      "path": {
+        "path": null,
+        "scope": "external"
+      }
+    },
+    "input": {
+      "content_hash": "sha256:afcdf5c7c62c49945e07dc6d620fd6cf2145ae338b5bf0ab4d71f5742b14ee22",
+      "role": "netlist"
+    }
+  }
+}

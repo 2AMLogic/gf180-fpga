@@ -1,0 +1,137 @@
+{
+  "schema_version": 2,
+  "engine": "yosys",
+  "engine_version": "0.67+post",
+  "hdl_toplevel": "logic_tile_routed",
+  "parameters": {},
+  "defines": {},
+  "run_id": "run-3b44624d77f2454c9becac1473d99907",
+  "status": "ok",
+  "instance_count": 193,
+  "area_um2": 8419.2192,
+  "sequential_area_um2": 316.1088,
+  "instance_counts_by_type": {
+    "gf180mcu_fd_sc_mcu9t5v0__and2_1": 16,
+    "gf180mcu_fd_sc_mcu9t5v0__aoi211_2": 4,
+    "gf180mcu_fd_sc_mcu9t5v0__aoi21_1": 15,
+    "gf180mcu_fd_sc_mcu9t5v0__aoi21_2": 1,
+    "gf180mcu_fd_sc_mcu9t5v0__aoi22_1": 16,
+    "gf180mcu_fd_sc_mcu9t5v0__buf_4": 1,
+    "gf180mcu_fd_sc_mcu9t5v0__buf_8": 2,
+    "gf180mcu_fd_sc_mcu9t5v0__clkbuf_2": 1,
+    "gf180mcu_fd_sc_mcu9t5v0__clkinv_1": 36,
+    "gf180mcu_fd_sc_mcu9t5v0__dffq_1": 4,
+    "gf180mcu_fd_sc_mcu9t5v0__mux2_1": 20,
+    "gf180mcu_fd_sc_mcu9t5v0__mux4_1": 46,
+    "gf180mcu_fd_sc_mcu9t5v0__mux4_2": 11,
+    "gf180mcu_fd_sc_mcu9t5v0__nor2_1": 20
+  },
+  "macros": [],
+  "macro_instance_counts_by_type": {},
+  "macro_instance_count": 0,
+  "cells_without_area": [],
+  "leakage_power_nw": null,
+  "leakage_by_type_nw": null,
+  "timing": {
+    "source": "abc_stime",
+    "wire_load": null,
+    "critical_path_ps": 1528.45,
+    "delay_target_ps": null,
+    "regions": [
+      {
+        "module": "lut4_slice",
+        "critical_path_ps": 1528.45
+      },
+      {
+        "module": "logic_tile_switch_matrix",
+        "critical_path_ps": 1140.19
+      }
+    ]
+  },
+  "clock_targets": {
+    "clocks": [],
+    "delay_target_ps": null,
+    "delay_target_basis": "none",
+    "per_clock_enforced": false
+  },
+  "sta": null,
+  "sta_unavailable_reason": "the optional klt_statime_native extension is not installed (it is not shipped with the published klayout-tools package), so no gate-level static timing analysis was attempted -- from a repo checkout, run `uv sync --group statime` (or `maturin develop --release` inside native/statime/) and re-run to populate `sta`; from an installed package, `klt sta` with a `verilog` request gives a netlist-level timing estimate (needs OpenSTA)",
+  "structural": {
+    "latches": 0,
+    "expected_latches": 0,
+    "unexpected_latches": 0,
+    "comb_loops": 0,
+    "multi_driven": 0,
+    "has_critical": false
+  },
+  "cell_exclusions": {
+    "mode": "additive",
+    "requested": [],
+    "library_defaults": [],
+    "effective": [],
+    "validated": null,
+    "engine_supports_dont_use": null
+  },
+  "abc_constr": {
+    "source": "builtin",
+    "driving_cell": "gf180mcu_fd_sc_mcu9t5v0__buf_4",
+    "load_ff": 13.43
+  },
+  "warnings": {
+    "total": 0,
+    "by_category": {},
+    "representatives": []
+  },
+  "memory_mapping": {
+    "status": "none_detected",
+    "reason": null,
+    "modules": [],
+    "script_path": {
+      "path": "measurements/item5-timing-iteration/requests/.klt/synthesize/run-3b44624d77f2454c9becac1473d99907/logic_tile_routed_memory_evidence.ys",
+      "scope": "repo"
+    }
+  },
+  "blackbox_modules": [],
+  "netlist_path": {
+    "path": "measurements/item5-timing-iteration/requests/.klt/synthesize/run-3b44624d77f2454c9becac1473d99907/logic_tile_routed_synth.v",
+    "scope": "repo"
+  },
+  "netlist_sha256": "787893b70e138b9f52c8387eda58fcf87fe1f7e5e8c83443070d5875c4900095",
+  "script_path": {
+    "path": "measurements/item5-timing-iteration/requests/.klt/synthesize/run-3b44624d77f2454c9becac1473d99907/synth_logic_tile_routed.ys",
+    "scope": "repo"
+  },
+  "run_script_path": {
+    "path": "measurements/item5-timing-iteration/requests/.klt/synthesize/run-3b44624d77f2454c9becac1473d99907/synth_logic_tile_routed.run.ys",
+    "scope": "repo"
+  },
+  "provenance": {
+    "klt_version": "0.9.0",
+    "klt_git_commit": "5dbbad05ff42265c92a6f3d2f20d1bbcd2957d49",
+    "klt_reinstall_spec": "klayout-tools==0.9.0",
+    "klayout_version": "0.30.12",
+    "pdk": {
+      "name": "gf180mcuD",
+      "source": "PDK_ROOT environment variable",
+      "version": "open_pdks f6eeac7dad085ffcc829ccfd721f7b4ce39edcf7",
+      "ambiguous_sources": [
+        "search root: ~/.volare"
+      ]
+    },
+    "deck": {
+      "name": "gf180mcu_fd_sc_mcu9t5v0__tt_025C_5v00",
+      "content_hash": "sha256:84a68abb02893c4a03624466e4f55cba284ad9db0326255bb667fece652d8c60",
+      "released": false
+    },
+    "input": {
+      "content_hash": "sha256:bbfe750e4ede7c0b136352bc991bfbd28640ef59eaede4a1f752204db425cd56",
+      "role": "source"
+    },
+    "parameters": {},
+    "defines": {}
+  },
+  "equivalence": null,
+  "restructuring": null,
+  "arithmetic": null,
+  "baseline": null
+}

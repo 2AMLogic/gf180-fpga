@@ -236,6 +236,28 @@ any other exclusion.
 
 `manifests/gf180-fpga.json` entry `"5"` cites these two graded reports.
 
+## item5-timing-iteration/ — bounded timing iteration (issue #161)
+
+The design iteration #27's item-5 decision waits on, run 2026-11-21 at
+klt 0.9.0 (the pin) on dispatch worker `loom-worker-1` (OpenROAD
+`26Q3-1510-g6cb3f2b704`; its v0 control re-run of the graded request is
+bit-identical to the `item5-24um` fleet records at all 15 corners, so the
+two engines agree on this design). One record: [`item5-timing-iteration/findings.md`](item5-timing-iteration/findings.md)
+— baseline anatomy (7-level all-minimal-drive `mux4` chain, 79 % of the
+45.9 ns SPEF arrival — 80 % of 45.4 ns LEF — in the four `mux4` stages,
+cell-delay-dominated: LEF→SPEF
+moves the arrival ~1.1 %), six single-change variants at 20 ns across all
+15 corners, and the outcome: **nothing closes 15/15**; best is the 9-track
+library comparison at −19.85 ns (`ss_125C_1v62`, LEF; −20.03 SPEF),
+utilization 64 % → 78 %, hold clean everywhere. The record also measures
+*why* the committed P&R never repaired the failing paths: with no output
+delay its slow-corner in-flow STA sees +3.60 ns / TNS 0 (`corners[ss_125C_1v62].setup_slack_ns` = +3.08 ns) and idles
+(confirming the constraint-set hypothesis above), while adding I/O delays
+0 engages `repair_timing` for ~3 ns of recovery. Requests, per-variant
+reports (synth/P&R/15-corner STA), the v6 SPEF phase and the reproducing
+`run-all.sh` live in that directory. No committed record, layout, spec row
+or pin is changed by it; the #27 decision is not taken there.
+
 ## Extract record shape — convention for future records (2026-11-15)
 
 A `klt extract --parasitics --spef` record committed **alongside its SPEF**

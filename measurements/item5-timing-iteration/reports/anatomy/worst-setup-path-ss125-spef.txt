@@ -1,0 +1,62 @@
+===KLT_STA_DELAY_POST_BEGIN===
+Startpoint: cfg[84] (input port clocked by clk)
+Endpoint: e_out[1] (output port clocked by clk)
+Path Group: clk
+Path Type: min
+
+      Delay        Time   Description
+-----------------------------------------------------------------
+   0.000000    0.000000   clock clk (rise edge)
+   0.000000    0.000000   clock network delay (ideal)
+   0.000000    0.000000 ^ input external delay
+   0.000000    0.000000 ^ cfg[84] (in)
+   0.417900    0.417900 v u_sm/_151_/ZN (gf180mcu_fd_sc_mcu7t5v0__aoi21_2)
+   0.000000    0.417900 v e_out[1] (out)
+               0.417900   data arrival time
+
+   0.000000    0.000000   clock clk (rise edge)
+   0.000000    0.000000   clock network delay (ideal)
+   0.000000    0.000000   clock reconvergence pessimism
+   0.000000    0.000000   output external delay
+               0.000000   data required time
+-----------------------------------------------------------------
+               0.000000   data required time
+              -0.417900   data arrival time
+-----------------------------------------------------------------
+               0.417900   slack (MET)
+
+
+Startpoint: cfg[132] (input port clocked by clk)
+Endpoint: w_out[3] (output port clocked by clk)
+Path Group: clk
+Path Type: max
+
+      Delay        Time   Description
+-----------------------------------------------------------------
+   0.000000    0.000000   clock clk (rise edge)
+   0.000000    0.000000   clock network delay (ideal)
+   0.000000    0.000000 v input external delay
+   0.000000    0.000000 v cfg[132] (in)
+  10.814439   10.814439 v u_sm/_248_/Z (gf180mcu_fd_sc_mcu7t5v0__mux4_1)
+   9.567465   20.381903 v g_slice[2].u_slice/_08_/Z (gf180mcu_fd_sc_mcu7t5v0__mux4_1)
+   8.156631   28.538534 v g_slice[2].u_slice/_12_/Z (gf180mcu_fd_sc_mcu7t5v0__mux4_2)
+   5.454329   33.992863 v g_slice[2].u_slice/_13_/Z (gf180mcu_fd_sc_mcu7t5v0__mux2_2)
+   7.905850   41.898712 v u_sm/_229_/Z (gf180mcu_fd_sc_mcu7t5v0__mux4_1)
+   2.356067   44.254780 ^ u_sm/_230_/ZN (gf180mcu_fd_sc_mcu7t5v0__nor2_1)
+   1.662855   45.917637 v u_sm/_231_/ZN (gf180mcu_fd_sc_mcu7t5v0__aoi21_1)
+   0.000000   45.917637 v w_out[3] (out)
+              45.917637   data arrival time
+
+  20.000000   20.000000   clock clk (rise edge)
+   0.000000   20.000000   clock network delay (ideal)
+   0.000000   20.000000   clock reconvergence pessimism
+   0.000000   20.000000   output external delay
+              20.000000   data required time
+-----------------------------------------------------------------
+              20.000000   data required time
+             -45.917637   data arrival time
+-----------------------------------------------------------------
+             -25.917635   slack (VIOLATED)
+
+
+===KLT_STA_DELAY_POST_END===
