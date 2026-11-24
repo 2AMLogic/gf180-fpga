@@ -1,0 +1,20 @@
+name: signoff-write-test
+
+# PDK-free sandbox test of manifests/run-signoff.sh write mode. Stubs klt, the
+# PDK verifier and layout/run-par.sh itself, so no PDK or EDA tools are needed.
+on:
+  pull_request:
+  merge_group:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  write-mode:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run write-mode sandbox test
+        run: bash verification/signoff/test_run_signoff_write.sh

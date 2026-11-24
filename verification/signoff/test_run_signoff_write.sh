@@ -13,6 +13,8 @@ h="sha256:$(sha256sum "$work/layout/logic_tile_routed.gds" | cut -d' ' -f1)"
 printf '{"provenance":{"input":{"content_hash":"%s"}}}\n' "$h" > "$work/layout/records/item2-attest.json"
 printf '{"evidence":{}}\n' > "$work/manifests/gf180-fpga.json"
 printf '#!/usr/bin/env bash\nexit 1\n' > "$work/layout/run-par.sh"; chmod +x "$work/layout/run-par.sh"
+# stub PDK verifier: the write-mode preflight calls `flow/setup-pdk.sh --verify`
+printf '#!/usr/bin/env bash\n[[ "$#" -eq 1 && "$1" == "--verify" ]]\n' > "$work/flow/setup-pdk.sh"; chmod +x "$work/flow/setup-pdk.sh"
 # stub klt: --attest writes an envelope bound to the stream/inventory; signoff renders {}
 cat > "$work/flow/klt.sh" <<'STUB'
 klt() {
