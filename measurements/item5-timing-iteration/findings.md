@@ -42,7 +42,8 @@ own `report_checks` delay fingerprint (emitted around `read_spef`), so the
 `anatomy` phase ran the committed stream at the single corner
 `ss_125C_1v62` with the committed `item5-24um` SPEF and preserved klt's
 engine output verbatim
-(`reports/anatomy/worst-setup-path-ss125-{lef,spef}.txt`; request
+(`reports/anatomy/sta-spef.report.json`,
+`reports/anatomy/worst-setup-path-ss125-{lef,spef}.txt`; request
 `requests/sta-anatomy.request.json`). The worst setup path:
 
 | # | stage (pin) | cell (drive) | stage delay, LEF (ns) | cumulative (ns) |
@@ -87,24 +88,26 @@ endpoints at `ss_125C_1v62`, all `output_setup` checks, arrivals
 
 Every graded STA request is the committed constraint set; variants change
 only what the named knob controls. P&R seed 1 and the explicit floorplan
-(core 106.40 × 105.84 µm) are held fixed everywhere.
+(core 106.40 × 105.84 µm, core area = 11261.4 µm²) are held fixed everywhere.
 
-| variant | one change from base | cell area (µm²) | util (%) | in-flow P&R STA (its own corner) |
+| variant | one change from base | synth cell area (µm²) | util (%) | in-flow P&R STA (its own corner) |
 |---|---|---:|---:|---|
 | v1 | synthesis: `pdk.corner ss_125C_1v62`, `clock_period_ns 20` (ABC `-D 20000`); P&R as committed (tt) | 6497.79 | 62.42 | +18.39 ns (tt, idle) |
-| v2 | P&R `pdk.corner ss_125C_1v62` on the committed netlist | 6809.51 | 64.33 | **+3.40 ns, TNS 0 — repair never engaged** |
+| v2 | P&R `pdk.corner ss_125C_1v62` on the committed netlist | 6809.51 | 64.33 | **+3.60 ns, TNS 0 — repair never engaged** |
 | v3 | v1 + v2 together | 6497.79 | 62.42 | +3.39 ns, TNS 0 — idle |
 | v4 | v2 + `input/output_delay_ns 0` in the P&R request, so `repair_timing` sees the failing `output_setup` paths | 6809.51 | 68.13 | −25.12 ns, TNS −454.9 — engaged |
 | v5 | v3 + the same I/O delays | 6497.79 | 65.65 | −25.10 ns, TNS −452.5 — engaged |
 | v6 | the 9-track library `gf180mcu_fd_sc_mcu9t5v0` (synthesis tt/period-null and P&R tt as committed, library swapped; same core = 190 × 21 sites of 0.56 × 5.04 µm; tapcell 24 µm) | 8419.22 | 78.37 | +18.70 ns (tt, idle) |
 
-Committed baseline (v0): cell area 6809.51 µm², util 64.33 %, 0 route DRC
-violations — all variants also closed routing with **0 DRC violations**.
+Committed baseline (v0): core area 11261.4 µm², synth cell area 6809.51 µm²,
+util 64.33 %, 0 route DRC violations — all variants share core area
+11261.4 µm² and closed routing with **0 DRC violations**.
 
 **Why v2 did nothing, measured.** The committed P&R constraints carry no
 output delay, so in-flow STA has no `output_setup` checks at the output
-ports; at the slow corner its worst path is an internal one with +3.40 ns
-slack and TNS 0, so `repair_timing` had nothing to fix and the routed
+ports; at the slow corner its worst path is an internal one with +3.60 ns
+slack (`worst_slack_ns`; `corners[ss_125C_1v62].setup_slack_ns` = +3.08 ns)
+and TNS 0, so `repair_timing` had nothing to fix and the routed
 result is bit-identical to baseline at **all 15 corners**. Adding I/O
 delays 0 (v4/v5) makes in-flow STA see the graded condition (−25.1 ns, TNS
 −455) and repair then recovers ~2.9–3.0 ns. This confirms — this time by

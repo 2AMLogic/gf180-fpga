@@ -7,6 +7,8 @@
 #   reports/v0/sta-lef-only.report.json        control: the committed stream
 #                                               re-measured on THIS host's
 #                                               engine (15 corners, LEF-only)
+#   reports/anatomy/{sta-spef.report.json,     single-corner anatomy on the
+#     worst-setup-path-ss125-{lef,spef}.txt}    committed stream at ss_125C_1v62
 #   reports/vN/{synth.json,par.json,           one dir per variant (issue #161
 #     sta-lef-only.report.json}                step 2): synth where the variant
 #                                               re-synthesizes, the P&R record,
@@ -45,7 +47,7 @@
 # Usage (from anywhere in the repo checkout):
 #   measurements/item5-timing-iteration/run-all.sh TREE PHASE [ARG]
 #     TREE  scratch tree to build (safely re-created each invocation)
-#     PHASE control | variant V1..V6 | spef VN | summary
+#     PHASE control | anatomy | variant v1..v6 | spef vN | summary
 set -euo pipefail
 
 src_here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -98,11 +100,17 @@ rel_root="$here_rel"
 stamp() { date -u +"%Y-%m-%dT%H:%M:%SZ"; }
 say() { echo "[$(stamp)] $*"; }
 
+clear_req_klt() {
+  chmod -R u+w "$here_rel/requests/.klt" 2>/dev/null || true
+  rm -rf "$here_rel/requests/.klt"
+}
+
 keep_klt() {  # keep_klt NAME STEP -- preserve klt's engine logs under work/
   local name="$1" step="$2"
   if [[ -d "$here_rel/requests/.klt" ]]; then
-    mkdir -p "$rel_root/work/$name/klt/$step"
     chmod -R u+w "$rel_root/work/$name/klt/$step" 2>/dev/null || true
+    rm -rf "$rel_root/work/$name/klt/$step"
+    mkdir -p "$rel_root/work/$name/klt/$step"
     cp -r "$here_rel/requests/.klt/." "$rel_root/work/$name/klt/$step/"
     chmod -R u+w "$rel_root/work/$name/klt/$step"
     rm -rf "$here_rel/requests/.klt"
@@ -115,19 +123,21 @@ fixup() {  # committed-record discipline (run-par.sh): repo-relative paths,
   sed -i -e "s#$TREE/##g" -e "s#$pdk_root#\\\$PDK_ROOT#g" "$1"
 }
 
-run_sta() {  # run_sta NAME REQUEST
-  local name="$1" request="$2"
-  say "sta $name"
+run_sta() {  # run_sta NAME REQUEST [REPORT_FILENAME]
+  local name="$1" request="$2" out_name="${3:-sta-lef-only.report.json}"
+  say "sta $name ($out_name)"
+  clear_req_klt
   mkdir -p "$rel_root/reports/$name"
-  klt sta "$request" "${sta_flags[@]}" > "$rel_root/reports/$name/sta-lef-only.report.json"
-  jq -er '.status' "$rel_root/reports/$name/sta-lef-only.report.json" >/dev/null
-  fixup "$rel_root/reports/$name/sta-lef-only.report.json"
+  klt sta "$request" "${sta_flags[@]}" > "$rel_root/reports/$name/$out_name"
+  jq -er '.status' "$rel_root/reports/$name/$out_name" >/dev/null
+  fixup "$rel_root/reports/$name/$out_name"
   keep_klt "$name" sta
 }
 
 run_synth() {  # run_synth NAME REQUEST -> netlist at work/NAME/…_synth.v
   local name="$1" request="$2"
   say "synthesize $name"
+  clear_req_klt
   mkdir -p "$rel_root/reports/$name" "$rel_root/work/$name"
   klt synthesize --format json "$request" > "$rel_root/reports/$name/synth.json"
   fixup "$rel_root/reports/$name/synth.json"
@@ -140,6 +150,7 @@ run_synth() {  # run_synth NAME REQUEST -> netlist at work/NAME/…_synth.v
 run_par() {  # run_par NAME REQUEST -> routed DEF/GDS at work/NAME/
   local name="$1" request="$2"
   say "place-and-route $name"
+  clear_req_klt
   mkdir -p "$rel_root/reports/$name" "$rel_root/work/$name"
   klt place-and-route --format json "$request" > "$rel_root/reports/$name/par.json"
   fixup "$rel_root/reports/$name/par.json"
@@ -171,7 +182,10 @@ out = Path("measurements/item5-timing-iteration/requests/sta-anatomy.request.jso
 out.write_text(json.dumps(req, indent=2) + "\n")
 print(f"anatomy request: {out}")
 PY
-    run_sta anatomy "$req_rel/sta-anatomy.request.json"
+    chmod -R u+w "$rel_root/work/anatomy/klt" 2>/dev/null || true
+    rm -rf "$rel_root/work/anatomy/klt" "$rel_root/reports/anatomy/sta-lef-only.report.json"
+    clear_req_klt
+    run_sta anatomy "$req_rel/sta-anatomy.request.json" sta-spef.report.json
     # transcribe klt's own report_checks worst-setup blocks (pre- and
     # post-read_spef) from the preserved engine stdout, verbatim
     so="$(find "$rel_root/work/anatomy/klt" -path '*openroad-logs/*/stdout.log' | head -n1)"
@@ -179,6 +193,7 @@ PY
       > "$rel_root/reports/anatomy/worst-setup-path-ss125-lef.txt"
     awk '/KLT_STA_DELAY_POST_BEGIN/,/KLT_STA_DELAY_POST_END/{print}' "$so" \
       > "$rel_root/reports/anatomy/worst-setup-path-ss125-spef.txt"
+    grep -q 'gf180mcu_fd_sc_mcu7t5v0' "$rel_root/reports/anatomy/worst-setup-path-ss125-spef.txt"
     echo "anatomy blocks: $(grep -c 'Startpoint:' "$rel_root/reports/anatomy/worst-setup-path-ss125-spef.txt") paths (spef)"
     ;;
   variant)
@@ -203,6 +218,7 @@ PY
   spef)  # run-all.sh TREE spef VN -- extract + SPEF STA on variant VN's stream
     [[ "$ARG" =~ ^v[0-9]+$ ]] || { echo "::error::spef needs a variant name" >&2; exit 2; }
     say "extract $ARG"
+    clear_req_klt
     scratch_sp="$(mktemp -d)/logic_tile_routed.sp"
     klt extract "$rel_root/work/$ARG/logic_tile_routed.gds" \
       --deck gf180mcu --pdk gf180mcuD --pdk-root "$PDK_ROOT" \
@@ -224,6 +240,7 @@ out.write_text(json.dumps(req, indent=2) + "\n")
 print(f"spef request: {out}")
 PY
     say "sta $ARG spef"
+    clear_req_klt
     klt sta "$req_rel/sta-$ARG-spef.request.json" "${sta_flags[@]}" \
       > "$rel_root/reports/$ARG/sta-spef.report.json"
     fixup "$rel_root/reports/$ARG/sta-spef.report.json"

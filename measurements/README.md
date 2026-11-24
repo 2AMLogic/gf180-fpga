@@ -243,14 +243,15 @@ klt 0.9.0 (the pin) on dispatch worker `loom-worker-1` (OpenROAD
 `26Q3-1510-g6cb3f2b704`; its v0 control re-run of the graded request is
 bit-identical to the `item5-24um` fleet records at all 15 corners, so the
 two engines agree on this design). One record: [`item5-timing-iteration/findings.md`](item5-timing-iteration/findings.md)
-— baseline anatomy (7-level all-minimal-drive `mux4` chain, 79 % of a
-45.4 ns arrival in the four `mux4` stages, cell-delay-dominated: LEF→SPEF
+— baseline anatomy (7-level all-minimal-drive `mux4` chain, 79 % of the
+45.9 ns SPEF arrival — 80 % of 45.4 ns LEF — in the four `mux4` stages,
+cell-delay-dominated: LEF→SPEF
 moves the arrival ~1.1 %), six single-change variants at 20 ns across all
 15 corners, and the outcome: **nothing closes 15/15**; best is the 9-track
 library comparison at −19.85 ns (`ss_125C_1v62`, LEF; −20.03 SPEF),
 utilization 64 % → 78 %, hold clean everywhere. The record also measures
 *why* the committed P&R never repaired the failing paths: with no output
-delay its slow-corner in-flow STA sees +3.40 ns / TNS 0 and idles
+delay its slow-corner in-flow STA sees +3.60 ns / TNS 0 (`corners[ss_125C_1v62].setup_slack_ns` = +3.08 ns) and idles
 (confirming the constraint-set hypothesis above), while adding I/O delays
 0 engages `repair_timing` for ~3 ns of recovery. Requests, per-variant
 reports (synth/P&R/15-corner STA), the v6 SPEF phase and the reproducing
