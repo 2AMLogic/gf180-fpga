@@ -60,7 +60,7 @@ Issues carrying `loom:curated`.
 
 ## Proposed (Architect / Hermit)
 
-- **#177**: Remove unused Verilator install from the verification CI job and runner.py version probe *(hermit)*
+_None._
 
 ## Epics
 
@@ -78,6 +78,6 @@ _None._
 | PRs awaiting review | 2 |
 | Approved PRs awaiting merge | 1 |
 | Curated | 6 |
-| Architect / Hermit proposals | 1 |
+| Architect / Hermit proposals | 0 |
 | Active epics | 0 |
 <!-- guide:plan-body:end -->
