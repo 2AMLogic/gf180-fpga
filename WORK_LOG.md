@@ -4,6 +4,10 @@ Chronological record of merged PRs and closed issues (maintained by the Guide ro
 
 ### 2026-11-24
 
+- **PR #189**: chore: gitignore daemon-written .loom/account-ranking.* state
+- **Issue #188** (closed): chore: gitignore daemon-written .loom/account-ranking.* state
+- **PR #187**: ci: remove unused Verilator install and probe from Icarus verification path
+- **Issue #177** (closed): Remove unused Verilator install from the verification CI job and runner.py version probe
 - **Issue #86** (closed): Remove the superseded cocotb wiring path: runner.py --dut/--broken/--module/--toplevel and the stale verification/README.md section
 - **PR #174**: refactor(verification): drop the superseded cocotb wiring path
 - **Issue #161** (closed): Item 5: bounded timing iteration for the two failing ss 1.62 V corners (synthesis is unconstrained and place-and-route targets tt_025C_5v00)
