@@ -1,0 +1,14 @@
+{
+ "sources": [
+  "../../../rtl/common/fabulous/tb_lut4_ff_bel_equiv.v",
+  "../../../rtl/common/fabulous/Tile/LOGIC4/lut4_ff_bel.v",
+  "../../../rtl/common/rtl/lut4_slice.v"
+ ],
+ "hdl_toplevel": "tb",
+ "engine": "icarus",
+ "testbench": {
+  "verilog_top": "tb",
+  "pass_marker": "PASS: lut4_ff_bel",
+  "fail_marker": "FAIL"
+ }
+}

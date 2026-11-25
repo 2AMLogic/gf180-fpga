@@ -1,0 +1,43 @@
+{
+  "schema_version": 2,
+  "engine": "icarus",
+  "hdl_toplevel": "tb_logic_tile_routed",
+  "testbench": "tb_logic_tile_routed",
+  "status": "pass",
+  "test_count": 1,
+  "passed_count": 1,
+  "failed_count": 0,
+  "skipped_count": 0,
+  "tests": [
+    {
+      "name": "tb_logic_tile_routed",
+      "status": "passed",
+      "sim_time_ns": null,
+      "real_time_s": null
+    }
+  ],
+  "coverage": null,
+  "trace": null,
+  "environment": {
+    "engine": "icarus",
+    "engine_version": "13.0",
+    "tools": [],
+    "cocotb_version": null,
+    "results_xml": {
+      "path": null,
+      "scope": "absent"
+    },
+    "test_log": {
+      "path": null,
+      "scope": "external"
+    },
+    "build_log": {
+      "path": null,
+      "scope": "external"
+    },
+    "random_seed": null,
+    "source_defines": {},
+    "initial_state": null,
+    "sdf": null
+  }
+}
