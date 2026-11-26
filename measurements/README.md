@@ -174,9 +174,13 @@ Either way the `klt sta` result stands as recorded: item 5 is `unmet`.
   (918 reader warnings, see `spef_annotation` in the report). The SPEF run is
   therefore a lower bound on parasitic impact, not a full post-route claim.
 - **Functional:** the 23 stamped bench runs pass (0 failures, negative control
-  fails as required). `klt functional-verification` takes only a cocotb
-  testbench, so it was not used; the plain-Verilog runner's result is cited
-  instead. This is a tool-capability gap, not a substitute for the cocotb
+  fails as required). `klt functional-verification` was not used: the gap is
+  not that it takes only a cocotb testbench — its Verilog-bench path exists —
+  but that, at the 0.9.0 pin this record was produced with, that path rejects
+  `testbench.plusargs` (2AMLogic/klayout-tools#5006), and these benches need
+  the `+bin=`, `+map=`, `+wiring=` and `+design=` plusargs that only
+  `verification/runner.py` supplies; the plain-Verilog runner's result is
+  cited instead. This is a tool-capability gap, not a substitute for the cocotb
   report the item text names.
 
 A re-run against `ecf5be0a…` landed as `item5-24um/` (issue #160, the
@@ -239,7 +243,7 @@ any other exclusion.
 ## item5-timing-iteration/ — bounded timing iteration (issue #161)
 
 The design iteration #27's item-5 decision waits on, run 2026-11-21 at
-klt 0.9.0 (the pin) on dispatch worker `loom-worker-1` (OpenROAD
+klt 0.9.0 (the pin then) on dispatch worker `loom-worker-1` (OpenROAD
 `26Q3-1510-g6cb3f2b704`; its v0 control re-run of the graded request is
 bit-identical to the `item5-24um` fleet records at all 15 corners, so the
 two engines agree on this design). One record: [`item5-timing-iteration/findings.md`](item5-timing-iteration/findings.md)

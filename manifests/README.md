@@ -12,8 +12,8 @@ This block's T1 state is graded by `klt signoff --manifest`, not read by hand.
 - The T1 checklist is no longer vendored here: it comes from the pinned klt
   alone (`klt_spec` in `flow/pdk.json`), whose wheel bundles the ladder as
   package data when `--tiers-doc` is omitted. The document is
-  [`docs/design-evidence-tiers.md` in `2AMLogic/klayout-tools`](https://github.com/2AMLogic/klayout-tools/blob/v0.9.0/docs/design-evidence-tiers.md)
-  at the tag the pin names (v0.9.0 today); the revision actually graded
+  [`docs/design-evidence-tiers.md` in `2AMLogic/klayout-tools`](https://github.com/2AMLogic/klayout-tools/blob/v0.9.2/docs/design-evidence-tiers.md)
+  at the tag the pin names (v0.9.2 today); the revision actually graded
   against is identified by `source_doc` / `source_doc_content_hash` in the
   record. Vendoring it was removed by operator ruling (2026-11-23); see
   ADR-0006.
@@ -49,7 +49,7 @@ or record. `--check` (CI) needs no PDK and is unchanged.
 
 ## klt pin
 
-The pin is the PyPI release `klayout-tools==0.9.0` (`klt 0.9.0`, tag `v0.9.0`,
-commit `5dbbad05ff42`), run via `uvx --from` the `klt_spec` in `flow/pdk.json` (see `flow/klt.sh`); `--attest`
+The pin is the PyPI release `klayout-tools==0.9.2` (`klt 0.9.2`, tag `v0.9.2`,
+commit `046ba74652fc`), run via `uvx --from` the `klt_spec` in `flow/pdk.json` (see `flow/klt.sh`); `--attest`
 (items 1, 2, 9, 10) ships in it. The committed record embeds the producing build, so regenerate
 with exactly that pin, and move the pin only together with a regenerated record.

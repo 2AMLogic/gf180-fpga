@@ -179,15 +179,18 @@ Four klayout-tools gaps this repo filed are now closed upstream. This section
 records, per gap, whether the fix is in the pinned release and whether it is in
 the latest release — so the cost of a pin bump can be read off a table instead
 of guessed. It changes no pin: the bump itself, and retiring any workaround, are
-separate decisions.
+separate decisions. (2026-11-26: the bump has since been taken — issue #102
+moved `klt_spec` to 0.9.2; the column labels below are relabelled so they still
+say which column is the pin. The probes themselves are unchanged 2026-11-14
+records.)
 
 **Environments.** Both columns were probed in throwaway `uvx` environments;
 nothing was installed host-wide.
 
 | Column | How it was entered | `klt --version` printed |
 | --- | --- | --- |
-| Pinned | `source flow/klt.sh` (`klt_spec` = `klayout-tools==0.9.0`) | `klt 0.9.0` |
-| Latest | `uvx --from "klayout-tools==0.9.2" --with "$KLAYOUT_SPEC" klt` | `klt 0.9.2` |
+| Pinned at probe time (the 0.9.0 column; the pin moved to 0.9.2 by issue #102 on 2026-11-26) | `source flow/klt.sh` (`klt_spec` = `klayout-tools==0.9.0` at probe time; enter the 0.9.0 column today with `uvx --from "klayout-tools==0.9.0"`) | `klt 0.9.0` |
+| Latest at probe time (the 0.9.2 column — the pin since issue #102) | `uvx --from "klayout-tools==0.9.2" --with "$KLAYOUT_SPEC" klt` | `klt 0.9.2` |
 
 **The host `klt` was not used for any cell.** It is
 `klt 0.9.2.dev1029+g76f47afa48f1` (`/home/ubuntu/.local/bin/klt`) — a
@@ -217,7 +220,7 @@ provides the capability, or `absent`, and gives the tier that settled it:
 qualified field or branch in the installed source; **T3** = a committed record
 in this repo whose `provenance.klt_version` is that column's version.
 
-| Upstream gap | Capability probed for | klt `0.9.0` (the pin) | klt `0.9.2` (latest) |
+| Upstream gap | Capability probed for | klt `0.9.0` (the pin at probe time; superseded by issue #102) | klt `0.9.2` (the pin since issue #102) |
 | --- | --- | --- | --- |
 | [#4802](https://github.com/2AMLogic/klayout-tools/issues/4802) | signal-layer cap echoed as `applied.signal_layers` | **present** — `applied.signal_layers` (`place_and_route.py:2475`) — T2, corroborated T3 | **present** — `applied.signal_layers` (`place_and_route.py:2435`) — T2 |
 | [#4803](https://github.com/2AMLogic/klayout-tools/issues/4803) | `klt interface-check` pairs complementary pin names | **present** — `--pair A_REGEX=B_TEMPLATE` — T1 | **present** — `--pair A_REGEX=B_TEMPLATE` — T1 |
@@ -389,7 +392,7 @@ check"; the #4986 envelope is § "DRC (T1 item 3, issue #23)"; the open-item
 entry is § "Open". The 2026-11-14 text below is kept as written; this note is
 the only thing added.
 
-**Already retired at the current pin (0.9.0), no bump involved.** #4802: the
+**Already retired at the then-pin 0.9.0 — the pin is 0.9.2 since issue #102, and both fixes are in 0.9.2 as well — no bump for these two involved.** #4802: the
 budget is enforced by the request today — `layout/make-request.py:104` caps the
 router, and `layout/README.md:106` records that it is "now enforced by the
 request, not evidenced after the fact" with `layout/README.md:119` noting the fix

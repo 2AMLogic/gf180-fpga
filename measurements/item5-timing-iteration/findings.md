@@ -10,7 +10,7 @@ pending on #27; it produces the measured evidence that decision waits on.
   All runs local and serial, in a scratch tree built by
   [`run-all.sh`](run-all.sh) laid out like this repo (the `run-synth.sh`
   discipline); nothing under `layout/`, `flow/` or `rtl/` was written.
-- **Tools**: `klt 0.9.0` (the `flow/pdk.json` pin, via `flow/klt.sh`/uvx),
+- **Tools**: `klt 0.9.0` (the `flow/pdk.json` pin at run time, via `flow/klt.sh`/uvx),
   KLayout `0.30.12`, OpenROAD `26Q3-1510-g6cb3f2b704`, PDK `gf180mcuD`
   at open_pdks `f6eeac7…` (`flow/setup-pdk.sh --verify` clean). Every
   report's `provenance.klt_version` is `0.9.0`.
