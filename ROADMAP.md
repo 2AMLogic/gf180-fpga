@@ -14,8 +14,9 @@ tests → **tile layout DRC/LVS-clean (LVS yes, DRC no)** → tile timing
 characterized → fabric assembled → shuttle seat → measured silicon.
 
 T1 checklist ([`design-evidence-tiers.md` in `2AMLogic/klayout-tools` at the
-pinned tag `v0.9.0`](https://github.com/2AMLogic/klayout-tools/blob/v0.9.0/docs/design-evidence-tiers.md),
-tracker [#6](../../issues/6)), as graded by `klt signoff` 0.9.0: **6 met,
+pinned tag `v0.9.2`](https://github.com/2AMLogic/klayout-tools/blob/v0.9.2/docs/design-evidence-tiers.md),
+tracker [#6](../../issues/6)), as graded by `klt signoff` 0.9.2 — the graded
+verdict is unchanged across the 0.9.0 → 0.9.2 pin bump (issue #102): **6 met,
 1 not applicable, 4 unmet.**
 
 | Item | State | Evidence or gap |

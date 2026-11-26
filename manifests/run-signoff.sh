@@ -16,7 +16,7 @@
 # exits before touching any envelope, manifest pin or record if the PDK is
 # missing. --check (CI) is unaffected and needs no PDK.
 #
-# klt pin: klt_spec in flow/pdk.json, the PyPI release klayout-tools 0.9.0 (carries `klt signoff --attest`, incl. item 2),
+# klt pin: klt_spec in flow/pdk.json, the PyPI release klayout-tools 0.9.2 (carries `klt signoff --attest`, incl. item 2),
 # run through a throwaway uvx environment. See manifests/README.md.
 set -euo pipefail
 
