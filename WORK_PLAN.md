@@ -33,7 +33,6 @@ Issues currently being built (`loom:building`).
 
 - **#93**: Decide whether par.json should pin the tapcell master (library.tapcell.master) rather than inherit klt's per-library default
 - **#143**: Publish a cost-per-LUT estimate for the fabric
-- **#196**: Compare vendored FABulous inputs directly before recording generator success
 
 ## PRs Awaiting Review
 
@@ -73,7 +72,7 @@ _None._
 | Very important | 1 |
 | Important | 1 |
 | Ready (`loom:issue`) | 1 |
-| In Progress (`loom:building`) | 3 |
+| In Progress (`loom:building`) | 2 |
 | PRs awaiting review | 1 |
 | Approved PRs awaiting merge | 1 |
 | Curated | 5 |
