@@ -174,9 +174,13 @@ record's `klt env-provenance scan` printed `clean: 0 leak(s) in 1 file(s)`,
 and `git status --short -- rtl/common/fabulous` stayed empty. Seven runs that
 day, three with the plain command, all passed the guard. The committed record
 differs from the previous one only in tile order. FABulous takes the five
-tiles from a `set`, so Python's hash seed can change their generation order
-between runs (#201). The summary lists the tiles in that order, and each
-tile's log block moves with it.
+tiles from a `set`, so Python's hash seed used to change their generation
+order between runs (#201); that was the historical observation, and the
+summary listed the tiles in that order with each tile's log block moving
+with it. The wrapper now pins `PYTHONHASHSEED=0` for the generator run
+(overriding any value exported by the caller) and records the value in the
+record header (`# PYTHONHASHSEED=0 ...`), so the tile order, and with it
+the record, is reproducible run to run.
 
 `flow/tile/attest/item1.json` is the item-1 inventory; the passing envelope is
 `flow/tile/records/item1-attest.json` (`klt signoff --attest 1 --inventory

@@ -45,6 +45,7 @@ for a in "$@"; do
   prev="$a"
 done
 printf 'INFO | Running at: %s\n' "$PWD" > "$log"
+printf '%s\n' "${PYTHONHASHSEED-unset}" > "${FAB_SEED_LOG:-/dev/null}"
 case "${FAB_STUB_MODE:-clean}" in
   clean) ;;
   extra) mkdir generated && printf 'new output\n' > generated/new_file.v ;;
@@ -130,5 +131,22 @@ chmod +x "$work/bin/cp"
 run_wrapper clean
 [[ $RUN_RC -eq 3 ]] || fail "failed copy: expected exit 3, got $RUN_RC"
 [[ ! -e $record ]] || fail "failed copy: record written"
+rm "$work/bin/cp"
+
+# 9. the generator sees a pinned PYTHONHASHSEED whatever the caller exports,
+#    and the record names the pin
+for caller in unset 1 random; do
+  rm -f "$work/seen-seed"
+  rc=0
+  rm -rf "$work/flow/tile/records"
+  ( cd "$work" && unset PYTHONHASHSEED && \
+    if [[ $caller != unset ]]; then export PYTHONHASHSEED=$caller; fi && \
+    FAB_SEED_LOG="$work/seen-seed" KLT_CALL_LOG="$work/klt-calls" \
+    PATH="$work/bin:$PATH" timeout 5 bash flow/tile/run-fabulous.sh ) \
+    >"$work/stdout" 2>"$work/stderr" || rc=$?
+  [[ $rc -eq 0 ]] || fail "caller seed $caller: expected exit 0, got $rc: $(cat "$work/stderr")"
+  [[ "$(cat "$work/seen-seed")" == 0 ]] || fail "caller seed $caller: generator saw PYTHONHASHSEED=$(cat "$work/seen-seed"), want 0"
+  grep -q '^# PYTHONHASHSEED=0 ' "$record" || fail "caller seed $caller: record header does not name the pin"
+done
 
 echo "ok"
