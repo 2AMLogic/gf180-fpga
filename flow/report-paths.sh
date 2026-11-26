@@ -20,6 +20,12 @@
 # No local here=... below: this file is sourced, and each writer keeps its own.
 # shellcheck shell=bash
 
+# Match a directory as klt encodes it inside a JSON string. Quote both ERE
+# metacharacters and the delimiter of the sed substitutions below.
+_report_path_pattern() {
+  jq -nr --arg path "$1" '$path | tojson[1:-1]' | sed 's/[][\\.^$*+?(){}|#]/\\&/g'
+}
+
 # report_path_rewrite <repo> <pdk_root> [<scratch>] -- [<file>...]
 #   <repo>      the checkout toplevel, as `git rev-parse --show-toplevel` prints it
 #   <pdk_root>  the resolved $PDK_ROOT, canonicalised (`cd "$PDK_ROOT" && pwd`)
@@ -28,7 +34,7 @@
 #   Returns 2 and rewrites nothing when <repo> or <pdk_root> is empty: an empty
 #   pattern would prefix every line of the record with $PDK_ROOT.
 report_path_rewrite() {
-  local repo="${1:-}" pdk_root="${2:-}" scratch="${3:-}"
+  local repo="${1:-}" pdk_root="${2:-}" scratch=""
   if [[ -z "$repo" || -z "$pdk_root" ]]; then
     echo "report_path_rewrite: <repo> and <pdk_root> are required" >&2
     return 2
@@ -42,8 +48,15 @@ report_path_rewrite() {
     fi
     shift
   fi
-  local expr=( -e "s#$pdk_root#\$PDK_ROOT#g" )
-  [[ -n "$scratch" ]] && expr+=( -e "s#$scratch/##g" )
-  expr+=( -e "s#$repo/##g" )
-  if [[ $# -eq 0 ]]; then sed "${expr[@]}"; else sed -i "${expr[@]}" "$@"; fi
+  local start='(^|["[:space:]])' pdk_pattern repo_pattern scratch_pattern
+  pdk_pattern="$(_report_path_pattern "$pdk_root")" || return
+  repo_pattern="$(_report_path_pattern "$repo")" || return
+  local expr=( -e "s#$start${pdk_pattern%/}/#\\1\$PDK_ROOT/#g"
+               -e "s#$start$pdk_pattern(\"|$)#\\1\$PDK_ROOT\\2#g" )
+  if [[ -n "$scratch" ]]; then
+    scratch_pattern="$(_report_path_pattern "$scratch")" || return
+    expr+=( -e "s#$start${scratch_pattern%/}/#\\1#g" )
+  fi
+  expr+=( -e "s#$start${repo_pattern%/}/#\\1#g" )
+  if [[ $# -eq 0 ]]; then sed -E "${expr[@]}"; else sed -Ei "${expr[@]}" -- "$@"; fi
 }

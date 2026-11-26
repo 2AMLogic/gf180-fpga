@@ -28,13 +28,12 @@ work="$(mktemp -d)"; trap 'rm -rf "$work"' EXIT
 
 fail() { echo "FAIL: $*" >&2; exit 1; }
 
-# Three unrelated prefixes: a checkout whose PDK sits at the default install
-# target, an external store, and a per-run scratch directory.
-checkout="$work/checkout"
+# These prefixes appear only in report text. The writer test below uses real
+# temporary directories.
+checkout=/checkout
 local_pdk="$checkout/flow/.pdk-root"
-external_pdk="$work/external-pdk"
-scratch="$work/scratch"
-mkdir -p "$local_pdk" "$external_pdk" "$scratch"
+external_pdk=/external-pdk
+scratch=/scratch
 layer_map="gf180mcuD/libs.tech/klayout/tech/gf180mcu.map"
 
 # report <pdk_root> -> the issue's sample: a layer-map path and a request path
@@ -107,6 +106,14 @@ source "$root/flow/report-paths.sh"
 out="$(report_path_rewrite "$checkout" "$local_pdk" <<<"$(report "$local_pdk")")"
 [[ "$out" == "$want" ]] || fail "checkout-local PDK: record is not the reference form: $out"
 
+# Only the PDK directory itself and its children take the symbolic prefix.
+out="$(report_path_rewrite "$checkout" "$local_pdk" -- <<EOF
+["$local_pdk", "$local_pdk/map", "$local_pdk-backup/map", "$checkout/flow/Xpdk-root/map"]
+EOF
+)"
+[[ "$out" == '["$PDK_ROOT", "$PDK_ROOT/map", "flow/.pdk-root-backup/map", "flow/Xpdk-root/map"]' ]] \
+  || fail "PDK directory boundary: $out"
+
 # ---------------------------------------------------------------- 2. an external PDK
 out="$(report_path_rewrite "$checkout" "$external_pdk" <<<"$(report "$external_pdk")")"
 [[ "$out" == "$want" ]] || fail "external PDK: record is not the reference form: $out"
@@ -134,9 +141,16 @@ out="$(report_path_rewrite "$checkout" "$external_pdk" <<<"$in")"
 
 # A scratch directory under the checkout loses its own prefix first.
 nested="$checkout/tmp/run-0"
-mkdir -p "$nested"
 out="$(report_path_rewrite "$checkout" "$local_pdk" "$nested" <<<"$(synth_report "$local_pdk" "$nested")")"
 [[ "$out" == "$synth_want" ]] || fail "scratch inside the checkout: record is not the reference form: $out"
+
+# The checkout and scratch arguments are literal directories, too.
+out="$(report_path_rewrite '/repo.v1' '/pdk[0]#1' '/scratch.v1' <<'EOF'
+["/repo.v1/a", "/repoXv1/a", "/other/repo.v1/a", "/scratch.v1/b", "/scratchXv1/b", "/pdk[0]#1/map", "/pdk0#1/map"]
+EOF
+)"
+[[ "$out" == '["a", "/repoXv1/a", "/other/repo.v1/a", "b", "/scratchXv1/b", "$PDK_ROOT/map", "/pdk0#1/map"]' ]] \
+  || fail "literal directory names: $out"
 
 # ---------------------------------------------------------------- 5. in place
 # The smoke and P&R writers rewrite the record where klt wrote it.
@@ -150,6 +164,11 @@ for f in a b; do
     || fail "in place: $f.json was not rewritten: $(cat "$work/rec/$f.json")"
 done
 [[ "$(ls "$work/rec")" == $'a.json\nb.json' ]] || fail "in place: left a file behind: $(ls "$work/rec")"
+
+printf '["%s/build--/layout/par.json", "--/file"]\n' "$checkout" > "$work/no-scratch.json"
+report_path_rewrite "$checkout" "$local_pdk" -- "$work/no-scratch.json"
+jq -e '. == ["build--/layout/par.json", "--/file"]' "$work/no-scratch.json" > /dev/null \
+  || fail "no scratch argument: --/ in a directory name was stripped"
 
 # ---------------------------------------------------------------- 6. a refused call rewrites nothing
 # An empty <pdk_root> would otherwise become an empty pattern, which prefixes
@@ -196,9 +215,11 @@ done
 # location: the issue's check, on the real record.
 record="$root/layout/records/step0-par.json"
 for pdk in "$local_pdk" "$external_pdk"; do
-  sed -e "s#\"\(\"path\": \"\)\(layout/\|flow/\)#\"\1$checkout/\2#g" -e "s#\\\$PDK_ROOT#$pdk#g" \
+  sed -E -e "s#\"(layout|flow)/#\"$checkout/\\1/#g" -e "s#\\\$PDK_ROOT#$pdk#g" \
     "$record" > "$work/raw-par.json"
-  cmp -s "$work/raw-par.json" "$record" && fail "round trip: the record was not un-rewritten (pdk=$pdk)"
+  jq -e --arg checkout "$checkout" --arg map "$pdk/$layer_map" \
+    '.netlist.path == ($checkout + "/flow/tile/netlist/logic_tile_routed_synth.v") and .layer_map.path == $map' \
+    "$work/raw-par.json" > /dev/null || fail "round trip: netlist or layer map was not expanded (pdk=$pdk)"
   report_path_rewrite "$checkout" "$pdk" < "$work/raw-par.json" | cmp -s - "$record" \
     || fail "round trip: the P&R record did not come back byte for byte (pdk=$pdk)"
 done
@@ -216,6 +237,7 @@ done
 # <root>/<variant>/SOURCES and the library directories (flow/test-pdk-root.sh),
 # so a store of nearly empty directories stands in for the 3.6 GB one.
 tree="$work/e2e"
+external_pdk="$work/external-pdk"
 mkdir -p "$tree/flow/tile" "$tree/rtl" "$work/home"
 cp "$root/flow/report-paths.sh" "$root/flow/pdk-root.sh" "$root/flow/setup-pdk.sh" \
    "$root/flow/pdk.json" "$tree/flow/"
