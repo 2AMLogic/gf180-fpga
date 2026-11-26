@@ -91,6 +91,13 @@ and exits 2 if any variant's `SOURCES` revision differs from the pin in
 `flow/pdk.json`, or a candidate library is missing. `--verify` checks without
 installing. A stale install at another revision is refused, never used.
 
+Each stage logs klt's real exit status as `<library> <stage> exit=<status>`.
+A stage that fails leaves its record as it was (an earlier record stays byte
+for byte; none is created) and makes the script exit non-zero, after the
+other library and the provenance scan have run. Those paths are
+regression-tested without a PDK in `flow/smoke/test-run-smoke.sh` (CI
+`smoke-runner` workflow).
+
 ### Which PDK root is used
 
 `flow/pdk-root.sh` is the one place that decides, for `setup-pdk.sh` and for

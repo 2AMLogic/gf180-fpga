@@ -1,0 +1,24 @@
+name: smoke-runner
+
+# Regression for issue #209: flow/smoke/run-smoke.sh must exit non-zero when a
+# klt stage fails, and must leave the failed stage's record untouched.
+# Hermetic: PDK verification and klt are stubbed, so no PDK and no network.
+# A workflow of its own because .github/workflows/verification.yml is hashed
+# by the item 10 attestation (verification/signoff/item10-inventory.json).
+on:
+  pull_request:
+  merge_group:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-runner:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Smoke runner failure propagation
+        run: flow/smoke/test-run-smoke.sh
