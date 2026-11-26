@@ -4,6 +4,8 @@ Chronological record of merged PRs and closed issues (maintained by the Guide ro
 
 ### 2026-11-26
 
+- **PR #213**: fix(verification): reject bench tables that expand to no runs
+- **Issue #211** (closed): Reject empty bench tables and corpus indexes in the item-9 runner
 - **Issue #209** (closed): run-smoke.sh exits 0 and leaves empty records when klt place-and-route fails
 - **PR #210**: fix(flow): propagate smoke stage failures without truncating records
 - **Issue #205** (closed): Share the report path rewrite so checkout-local PDKs record $PDK_ROOT
