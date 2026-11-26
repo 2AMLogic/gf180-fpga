@@ -115,6 +115,7 @@ build_fixture() {
   done
   mkdir -p "$rec" "$repo/flow"
   cp "$root/flow/smoke/run-smoke.sh" "$smoke/"
+  cp "$root/flow/report-paths.sh" "$repo/flow/"
   echo '{"_comment": "not a stage record"}' > "$rec/toolchain.json"
   # The runner's PDK preamble, stubbed: $PDK_ROOT resolves to a directory
   # outside the checkout and setup-pdk.sh --verify succeeds.

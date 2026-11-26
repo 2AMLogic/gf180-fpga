@@ -15,6 +15,7 @@ export PDK="${PDK:-$(jq -er .smoke_variant "$pdk")}"
 
 "$here/../setup-pdk.sh" --verify || exit 2
 source "$here/../klt.sh" || exit 2
+source "$here/../report-paths.sh" || exit 2
 
 repo="$(git -C "$here" rev-parse --show-toplevel)"
 pdk_root="$(cd "$PDK_ROOT" && pwd)"
@@ -44,7 +45,7 @@ stage() {
   # repo-relative paths and a symbolic $PDK_ROOT only (klt env-provenance scan).
   # Rewritten into a second scratch file and renamed into place, so <record>
   # is only ever replaced by a complete document.
-  sed -e "s#$repo/##g" -e "s#$pdk_root#\$PDK_ROOT#g" "$raw" > "$raw.normalized" \
+  report_path_rewrite "$repo" "$pdk_root" < "$raw" > "$raw.normalized" \
     && mv "$raw.normalized" "$record" && return 0
   echo "run-smoke: $lib $cmd record not published: ${record#"$here"/}" >&2
   return 1
