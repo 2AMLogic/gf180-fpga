@@ -4,6 +4,8 @@ Chronological record of merged PRs and closed issues (maintained by the Guide ro
 
 ### 2026-11-26
 
+- **PR #202**: chore(flow): record the FABulous generator run under the fixed guard
+
 - **PR #198**: fix(flow): compare each vendored FABulous input directly before writing the generator record
 - **Issue #196** (closed): Compare vendored FABulous inputs directly before recording generator success
 - **Issue #102** (closed): Decide on bumping klt_spec 0.9.0 -> 0.9.2: it unblocks the #4986 crosscheck envelope and the #5006 Verilog-bench evidence
