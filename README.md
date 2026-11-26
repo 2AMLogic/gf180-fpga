@@ -16,6 +16,8 @@ crosscheck ([#23](../../issues/23)), fabric-level DRC
 ([#53](../../issues/53)) and timing at the two ss 1.62 V corners
 ([#27](../../issues/27)) are open. The graded state of every T1 item is
 in [`manifests/gf180-fpga.signoff.json`](manifests/gf180-fpga.signoff.json).
+Measured tile area and an estimated shuttle cost per LUT4:
+[`measurements/cost-per-lut.md`](measurements/cost-per-lut.md).
 
 **Built agent-native.** Every specification, decision record, testbench, and
 line of documentation here is produced by AI agents working from a ratified
