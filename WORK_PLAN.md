@@ -33,7 +33,7 @@ Issues currently being built (`loom:building`).
 
 - **#93**: Decide whether par.json should pin the tapcell master (library.tapcell.master) rather than inherit klt's per-library default
 - **#143**: Publish a cost-per-LUT estimate for the fabric
-- **#205**: Share the report path rewrite so checkout-local PDKs record $PDK_ROOT
+- **#211**: Reject empty bench tables and corpus indexes in the item-9 runner
 
 ## PRs Awaiting Review
 
