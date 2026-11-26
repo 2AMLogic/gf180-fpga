@@ -2,6 +2,11 @@
 
 Chronological record of merged PRs and closed issues (maintained by the Guide role; newest first).
 
+### 2026-11-26
+
+- **Issue #102** (closed): Decide on bumping klt_spec 0.9.0 -> 0.9.2: it unblocks the #4986 crosscheck envelope and the #5006 Verilog-bench evidence
+- **PR #195**: chore(flow): bump klt pin to klayout-tools 0.9.2 and regenerate the signoff record
+
 ### 2026-11-24
 
 - **PR #189**: chore: gitignore daemon-written .loom/account-ranking.* state

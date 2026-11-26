@@ -33,12 +33,12 @@ Issues currently being built (`loom:building`).
 
 - **#93**: Decide whether par.json should pin the tapcell master (library.tapcell.master) rather than inherit klt's per-library default
 - **#143**: Publish a cost-per-LUT estimate for the fabric
+- **#196**: Compare vendored FABulous inputs directly before recording generator success
 
 ## PRs Awaiting Review
 
 PRs waiting on Judge (`loom:review-requested`).
 
-- **#63**: feat(measurements): run six plusarg-free stamped benches through klt functional-verification
 - **#148**: Add generated cost-per-LUT4 estimate for the routed gf180mcu tile
 
 ## Approved (Awaiting Merge)
@@ -60,7 +60,6 @@ Issues carrying `loom:curated`.
 ## Proposed (Architect / Hermit)
 
 - **#193**: Replay the committed anatomy request and stage only its SPEF *(hermit)*
-- **#196**: Compare vendored FABulous inputs directly before recording generator success *(hermit)*
 
 ## Epics
 
@@ -74,10 +73,10 @@ _None._
 | Very important | 1 |
 | Important | 1 |
 | Ready (`loom:issue`) | 1 |
-| In Progress (`loom:building`) | 2 |
-| PRs awaiting review | 2 |
+| In Progress (`loom:building`) | 3 |
+| PRs awaiting review | 1 |
 | Approved PRs awaiting merge | 1 |
 | Curated | 5 |
-| Architect / Hermit proposals | 2 |
+| Architect / Hermit proposals | 1 |
 | Active epics | 0 |
 <!-- guide:plan-body:end -->
