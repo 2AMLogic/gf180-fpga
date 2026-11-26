@@ -51,14 +51,22 @@ stage() {
   return 1
 }
 
+# klt reports the output path relative to the checkout. Read this invocation's
+# scratch response so a cached netlist from another run cannot be staged.
+stage_netlist() {
+  local netlist
+  netlist="$(jq -er '.netlist_path | select(.scope == "repo") | .path | strings' "$1")" || return 1
+  mkdir -p netlist && cp -- "$repo/$netlist" netlist/smoke_lut4_synth.v
+}
+
 rc=0
 for lib in mcu7t5v0 mcu9t5v0; do
   ( cd "$here/$lib" || exit 1
     stage "$lib" synthesize synth.json "$here/records/$lib.synth.json" || exit 1
-    # klt names the netlist dir by run id; pin a stable copy for the P&R request.
-    mkdir -p netlist
-    cp "$(ls -t .klt/synthesize/run-*/smoke_lut4_synth.v | head -n1)" netlist/smoke_lut4_synth.v \
-      || { echo "run-smoke: $lib netlist stage failed; place-and-route skipped" >&2; exit 1; }
+    if ! stage_netlist "$scratch/$lib.synthesize.json"; then
+      echo "run-smoke: $lib netlist stage failed; place-and-route skipped" >&2
+      exit 1
+    fi
     stage "$lib" place-and-route par.json "$here/records/$lib.par.json" || exit 1 ) || rc=1
 done
 

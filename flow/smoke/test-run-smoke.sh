@@ -65,8 +65,16 @@ case "${1:-}" in
       fi
       exit "${KLT_FAIL_STATUS:-17}"
     fi
+    echo '{'
+    if [[ "$cmd" == synthesize ]]; then
+      run=".klt/synthesize/run-current"
+      printf '  "netlist_path": {"scope": "repo", "path": "flow/smoke/%s/%s/smoke_lut4_synth.v"},\n' "$lib" "$run"
+      if [[ "$lib" != $no_netlist_lib ]]; then
+        mkdir -p "$run"
+        echo "// netlist left by the klt stub for $lib" > "$run/smoke_lut4_synth.v"
+      fi
+    fi
     cat <<DOC
-{
   "schema_version": 1,
   "command": "$cmd",
   "status": "ok",
@@ -75,11 +83,6 @@ case "${1:-}" in
   "layer_map": "$PDK_ROOT/gf180mcuD/libs.tech/klayout/tech/gf180mcu.map"
 }
 DOC
-    if [[ "$cmd" == synthesize && "$lib" != $no_netlist_lib ]]; then
-      run=".klt/synthesize/run-$RANDOM"
-      mkdir -p "$run"
-      echo "// netlist left by the klt stub for $lib" > "$run/smoke_lut4_synth.v"
-    fi
     ;;
   env-provenance)
     [[ "${2:-}" == scan && $# -ge 3 ]] || { echo "klt-stub: unexpected argv: $*" >&2; exit 2; }
@@ -172,8 +175,11 @@ expected_record() {
     *.par.json) cmd=place-and-route request=par.json ;;
     *) fail "no such record kind: $1" ;;
   esac
+  echo '{'
+  if [[ "$cmd" == synthesize ]]; then
+    printf '  "netlist_path": {"scope": "repo", "path": "flow/smoke/%s/.klt/synthesize/run-current/smoke_lut4_synth.v"},\n' "$lib"
+  fi
   cat <<EOF
-{
   "schema_version": 1,
   "command": "$cmd",
   "status": "ok",
@@ -403,16 +409,26 @@ failure_position() {
 # 5. synthesis exits 0 but leaves no netlist: the netlist from an earlier run
 # is not routed, place-and-route is skipped for that library, exit non-zero.
 netlist_missing() {
-  build_fixture
-  run_runner KLT_NO_NETLIST_LIB=mcu7t5v0
-  [[ $RUN_RC -ne 0 ]] || fail "no netlist: runner exited 0 although none was staged"
-  grep -qF 'run-smoke: mcu7t5v0 netlist stage failed; place-and-route skipped' "$work/stderr" \
-    || fail "no netlist: stderr does not say place-and-route was skipped"
-  expect_calls 'mcu7t5v0 synthesize' 'mcu9t5v0 synthesize' 'mcu9t5v0 place-and-route'
-  expect_netlist_untouched mcu7t5v0
-  expect_published mcu7t5v0.synth.json mcu9t5v0.synth.json mcu9t5v0.par.json
-  expect_absent mcu7t5v0.par.json
-  expect_files_added mcu7t5v0.synth.json mcu9t5v0.synth.json mcu9t5v0.par.json
+  local previous="$smoke/mcu7t5v0/.klt/synthesize/run-previous" prior_record
+  for prior_record in present absent; do
+    build_fixture
+    mkdir -p "$previous"
+    echo '// previous run' > "$previous/smoke_lut4_synth.v"
+    if [[ $prior_record == present ]]; then seed mcu7t5v0.par.json; fi
+    run_runner KLT_NO_NETLIST_LIB=mcu7t5v0
+    [[ $RUN_RC -ne 0 ]] || fail "runner exited 0 although the current synthesis netlist was missing"
+    grep -qF 'run-smoke: mcu7t5v0 netlist stage failed; place-and-route skipped' "$work/stderr" \
+      || fail "no netlist: stderr does not say place-and-route was skipped"
+    expect_calls 'mcu7t5v0 synthesize' 'mcu9t5v0 synthesize' 'mcu9t5v0 place-and-route'
+    expect_netlist_untouched mcu7t5v0
+    expect_published mcu7t5v0.synth.json mcu9t5v0.synth.json mcu9t5v0.par.json
+    if [[ $prior_record == present ]]; then
+      expect_intact mcu7t5v0.par.json
+    else
+      expect_absent mcu7t5v0.par.json
+    fi
+    expect_files_added mcu7t5v0.synth.json mcu9t5v0.synth.json mcu9t5v0.par.json
+  done
 }
 
 # 6. both libraries succeed: four normalized records at their existing paths,
