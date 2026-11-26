@@ -21,6 +21,7 @@ check=0
 
 "$here/../setup-pdk.sh" --verify || exit 2
 source "$here/../klt.sh" || exit 2
+source "$here/../report-paths.sh" || exit 2
 
 repo="$(git -C "$here" rev-parse --show-toplevel)"
 pdk_root="$(cd "$PDK_ROOT" && pwd)"
@@ -48,6 +49,6 @@ mkdir -p "$here/netlist" "$here/records"
 cp "$net" "$here/netlist/logic_tile_routed_synth.v"
 # Records are committed evidence: repo-relative paths, symbolic $PDK_ROOT,
 # and no per-run scratch location (klt env-provenance scan).
-sed -e "s#$scratch/##g" -e "s#$repo/##g" -e "s#$pdk_root#\$PDK_ROOT#g" \
-  "$scratch/resp.json" > "$here/records/synth.json"
+report_path_rewrite "$repo" "$pdk_root" "$scratch" \
+  < "$scratch/resp.json" > "$here/records/synth.json"
 klt env-provenance scan "$here/records/synth.json"
