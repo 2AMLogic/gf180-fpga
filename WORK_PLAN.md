@@ -33,6 +33,7 @@ Issues currently being built (`loom:building`).
 
 - **#93**: Decide whether par.json should pin the tapcell master (library.tapcell.master) rather than inherit klt's per-library default
 - **#143**: Publish a cost-per-LUT estimate for the fabric
+- **#205**: Share the report path rewrite so checkout-local PDKs record $PDK_ROOT
 
 ## PRs Awaiting Review
 
@@ -55,6 +56,7 @@ Issues carrying `loom:curated`.
 - **#62**: Run PDK-dependent checks after klt single-sourcing (PR #61) *(curated)*
 - **#93**: Decide whether par.json should pin the tapcell master (library.tapcell.master) rather than inherit klt's per-library default *(curated)*
 - **#143**: Publish a cost-per-LUT estimate for the fabric *(curated)*
+- **#197**: Re-run flow/tile/run-fabulous.sh with the corrected input guard and commit the fresh record *(curated)*
 
 ## Proposed (Architect / Hermit)
 
@@ -72,10 +74,10 @@ _None._
 | Very important | 1 |
 | Important | 1 |
 | Ready (`loom:issue`) | 1 |
-| In Progress (`loom:building`) | 2 |
+| In Progress (`loom:building`) | 3 |
 | PRs awaiting review | 1 |
 | Approved PRs awaiting merge | 1 |
-| Curated | 5 |
+| Curated | 6 |
 | Architect / Hermit proposals | 1 |
 | Active epics | 0 |
 <!-- guide:plan-body:end -->
