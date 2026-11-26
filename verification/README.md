@@ -38,7 +38,10 @@ table of benches, DUT sources and plusargs; the runner, CI and
 verdict counts as a failure. Entries with a `negative_control` are re-run
 against a deliberately broken DUT kept in `item9/negative_control/` (outside
 `common/`) and must fail at simulation: a control that fails to compile
-counts as a failure of the run, not as caught. Results (per run, plus excluded benches with reasons)
+counts as a failure of the run, not as caught. A table with no entries, or
+with an entry whose `cases_from` index holds no cases, is an error (exit 2)
+before any simulation: a verdict over zero runs is never reported as a pass
+(`verification/test-runner-cli.sh` covers both). Results (per run, plus excluded benches with reasons)
 go to `item9/sim_build/result.json`.
 
 Benches whose inputs are not in the stamp are listed as `not runnable: input

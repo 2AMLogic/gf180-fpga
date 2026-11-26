@@ -30,7 +30,9 @@ compiles each table entry with iverilog and runs it under vvp. A run passes only
 if vvp exits 0, prints a `PASS:` line and no line starting `FAIL` or `ERROR`; a
 bench that ends without a verdict (e.g. an early $finish) counts as a failure.
 Entries with a `negative_control` are re-run against the broken DUT and must
-FAIL. Needs no cocotb.
+FAIL. Needs no cocotb. The table must yield at least one run: a table with no
+entries, or a `cases_from` index that holds no cases, is an error (exit 2)
+before any simulation -- a verdict over zero runs is never a pass.
 """
 
 from __future__ import annotations
@@ -113,18 +115,30 @@ def run_leg(args, dut: Path, sub: str, seed: int) -> list[dict[str, str]]:
     return parse_results(Path(results_xml))
 
 
-def _expand_runs(table: dict) -> list[dict]:
-    """Expand `cases_from` entries ('<case> <design>' per line) into one run each."""
+class TableError(Exception):
+    """A --vvp table that cannot yield a verdict: no entries, or a `cases_from` index with no cases."""
+
+
+def _expand_runs(table: dict, table_path: Path) -> list[dict]:
+    """Expand `cases_from` entries ('<case> <design>' per line) into one run each.
+
+    Raises TableError when the table has no entries or a `cases_from` index has
+    no cases: a verdict over zero runs is an error, never a pass.
+    """
+    entries = table.get("runs", [])
+    if not entries:
+        raise TableError(f"bench table {table_path} lists no runs")
     runs = []
-    for entry in table["runs"]:
+    for entry in entries:
         src = entry.get("cases_from")
         if src is None:
             runs.append(entry)
             continue
-        for line in (REPO / src).read_text().splitlines():
-            if not line.strip():
-                continue
-            case, design = line.split()
+        cases = [line.split() for line in (REPO / src).read_text().splitlines() if line.strip()]
+        if not cases:
+            run_id = entry["id"]
+            raise TableError(f"bench table {table_path}: run '{run_id}' expands to no runs; index {src} holds no cases")
+        for case, design in cases:
             sub = {k: v for k, v in entry.items() if k != "cases_from"}
             sub["id"] = entry["id"].format(case=case, design=design)
             sub["plusargs"] = [a.format(case=case, design=design) for a in entry["plusargs"]]
@@ -173,7 +187,11 @@ def run_vvp_leg(run: dict, sources: list[str], outdir: Path, timeout: int) -> di
 
 def main_vvp(args) -> int:
     table = json.loads(args.vvp.read_text())
-    runs = _expand_runs(table)
+    try:
+        runs = _expand_runs(table, args.vvp)
+    except TableError as e:
+        print(f"ERROR: {e}", file=sys.stderr)
+        return 2
     for r in runs:
         r["iverilog_args"] = table["iverilog_args"]
     ok = True
