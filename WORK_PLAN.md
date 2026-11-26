@@ -19,14 +19,12 @@ Judge-approved PRs under a hold (`loom:blocked` or `loom:operator`) — only a h
 
 `loom:important`; taken before unlabelled work.
 
-- **#102**: Decide on bumping klt_spec 0.9.0 -> 0.9.2: it unblocks the #4986 crosscheck envelope and the #5006 Verilog-bench evidence
 - **#162**: Item 7 probe: emit per-corner SDFs from the routed tile with klt sta and run tb_logic_tile_routed SDF-annotated through klt functional-verification
 
 ## Ready
 
 Human-approved issues ready for implementation (`loom:issue`).
 
-- **#102**: Decide on bumping klt_spec 0.9.0 -> 0.9.2: it unblocks the #4986 crosscheck envelope and the #5006 Verilog-bench evidence
 - **#162**: Item 7 probe: emit per-corner SDFs from the routed tile with klt sta and run tb_logic_tile_routed SDF-annotated through klt functional-verification
 
 ## In Progress
@@ -57,12 +55,12 @@ Issues carrying `loom:curated`.
 - **#27**: T1 item 5 (corner verification): klt sta on the routed tile at all 15 mcu7t5v0 corners plus klt functional-verification of the stamped bitstream-level tests *(curated)*
 - **#62**: Run PDK-dependent checks after klt single-sourcing (PR #61) *(curated)*
 - **#93**: Decide whether par.json should pin the tapcell master (library.tapcell.master) rather than inherit klt's per-library default *(curated)*
-- **#102**: Decide on bumping klt_spec 0.9.0 -> 0.9.2: it unblocks the #4986 crosscheck envelope and the #5006 Verilog-bench evidence *(curated)*
 - **#143**: Publish a cost-per-LUT estimate for the fabric *(curated)*
 
 ## Proposed (Architect / Hermit)
 
 - **#193**: Replay the committed anatomy request and stage only its SPEF *(hermit)*
+- **#196**: Compare vendored FABulous inputs directly before recording generator success *(hermit)*
 
 ## Epics
 
@@ -74,12 +72,12 @@ _None._
 |------|-------|
 | Operator merge-risk holds | 1 |
 | Very important | 1 |
-| Important | 2 |
-| Ready (`loom:issue`) | 2 |
+| Important | 1 |
+| Ready (`loom:issue`) | 1 |
 | In Progress (`loom:building`) | 2 |
 | PRs awaiting review | 2 |
 | Approved PRs awaiting merge | 1 |
-| Curated | 6 |
-| Architect / Hermit proposals | 1 |
+| Curated | 5 |
+| Architect / Hermit proposals | 2 |
 | Active epics | 0 |
 <!-- guide:plan-body:end -->
