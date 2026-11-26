@@ -13,6 +13,7 @@ export PDK="${PDK:-$(jq -er .smoke_variant "$pdk")}"
 
 "$here/../setup-pdk.sh" --verify || exit 2
 source "$here/../klt.sh" || exit 2
+source "$here/../report-paths.sh" || exit 2
 
 rc=0
 for lib in mcu7t5v0 mcu9t5v0; do
@@ -31,7 +32,7 @@ done
 repo="$(git -C "$here" rev-parse --show-toplevel)"
 pdk_root="$(cd "$PDK_ROOT" && pwd)"
 for f in "$here"/records/mcu*.json; do
-  sed -i -e "s#$repo/##g" -e "s#$pdk_root#\$PDK_ROOT#g" "$f"
+  report_path_rewrite "$repo" "$pdk_root" -- "$f"
 done
 klt env-provenance scan "$here"/records/mcu*.json || rc=1
 exit $rc
