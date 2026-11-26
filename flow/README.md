@@ -173,10 +173,10 @@ regression-tested without FABulous in `flow/tile/test-run-fabulous-guard.sh`
 record's `klt env-provenance scan` printed `clean: 0 leak(s) in 1 file(s)`,
 and `git status --short -- rtl/common/fabulous` stayed empty. Seven runs that
 day, three with the plain command, all passed the guard. The committed record
-differs from the previous one only in the order the five tiles are generated
-in: FABulous takes that order from a `set`, so it follows Python's
-per-process hash seed and changes from run to run while the log lines stay
-the same set (#201).
+differs from the previous one only in tile order. FABulous takes the five
+tiles from a `set`, so Python's hash seed can change their generation order
+between runs (#201). The summary lists the tiles in that order, and each
+tile's log block moves with it.
 
 `flow/tile/attest/item1.json` is the item-1 inventory; the passing envelope is
 `flow/tile/records/item1-attest.json` (`klt signoff --attest 1 --inventory
