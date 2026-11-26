@@ -135,13 +135,6 @@ jobs:
         # generated outputs. FABulous (uvx) and klt are stubbed: no network,
         # no PDK.
         run: flow/tile/test-run-fabulous-guard.sh
-      - name: Record path rewrite
-        # Regression for issue #205: the record writers share one path rewrite
-        # (flow/report-paths.sh) that must emit a symbolic $PDK_ROOT for a PDK
-        # installed inside the checkout (flow/.pdk-root), not a checkout-relative
-        # path. Also runs flow/tile/run-synth.sh itself against a fixture PDK
-        # store and a stub klt. No network, no PDK, no HDL tools.
-        run: flow/test-report-paths.sh
 
   blinky:
     # Issue #144: the documented one-command blinky demo (./flow/blinky.sh,

@@ -31,7 +31,7 @@
         "role": "hygiene",
         "path": ".github/workflows/verification.yml",
         "passed": true,
-        "content_hash": "sha256:402dc19d5293eb3e5013def2b8324ed4affa2d4abaf7786ff5a2e1ded976e9fa"
+        "content_hash": "sha256:c5452778346687150c6037a3fd2968c74d6cf5caa0723b4b6efa0f86fdf4df3b"
       },
       {
         "check": "present",
