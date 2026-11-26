@@ -6,8 +6,9 @@ a re-run lands as a new record.
 ## item5/ — T1 item 5 (issue #27)
 
 Routed tile `layout/logic_tile_routed.def`, library `gf180mcu_fd_sc_mcu7t5v0`,
-variant `gf180mcuD`, all 15 shipped corners. Tools: klt 0.9.1.dev112,
-OpenROAD `26Q3-1510-g6cb3f2b704`. Period **20 ns** on `clk` (spec row 5
+variant `gf180mcuD`, all 15 shipped corners. The STA and extraction reports
+record klt `0.9.1.dev112+g64a726282d8a`. STA used OpenROAD
+`26Q3-1510-g6cb3f2b704`. Period **20 ns** on `clk` (spec row 5
 fallback), I/O delays 0, ideal clock; pre-registered in a comment on #27
 before the first run and not changed. **The routed stream these records were
 measured on is no longer the committed one** — read "Superseded binding"
@@ -173,15 +174,14 @@ Either way the `klt sta` result stands as recorded: item 5 is `unmet`.
   the reader warns that the SPEF's flattened names are not found
   (918 reader warnings, see `spef_annotation` in the report). The SPEF run is
   therefore a lower bound on parasitic impact, not a full post-route claim.
-- **Functional:** the 23 stamped bench runs pass (0 failures, negative control
-  fails as required). `klt functional-verification` was not used: the gap is
-  not that it takes only a cocotb testbench — its Verilog-bench path exists —
-  but that, at the 0.9.0 pin this record was produced with, that path rejects
-  `testbench.plusargs` (2AMLogic/klayout-tools#5006), and these benches need
-  the `+bin=`, `+map=`, `+wiring=` and `+design=` plusargs that only
-  `verification/runner.py` supplies; the plain-Verilog runner's result is
-  cited instead. This is a tool-capability gap, not a substitute for the cocotb
-  report the item text names.
+- **Functional:** The plain-Verilog runner (`verification/runner.py --vvp`)
+  produced `item5/functional-item9.result.json`. All 23 runs passed, and
+  both negative controls failed as expected. The runner supplied plusargs
+  to 17 bitstream runs, including `+bin=`, `+map=`, `+wiring=` and
+  `+design=`. The other six runs used none. In klt 0.9.0, the Verilog-top
+  path of `klt functional-verification` rejected `testbench.plusargs`,
+  preventing it from running those 17 cases (2AMLogic/klayout-tools#5006).
+  The item text calls for a separate cocotb report.
 
 A re-run against `ecf5be0a…` landed as `item5-24um/` (issue #160, the
 measurement carve-out from #27); the records above stay as recorded. #27
@@ -194,13 +194,17 @@ clock, all 15 `gf180mcu_fd_sc_mcu7t5v0` corners, not re-tuned — re-run
 against the **committed** stream: every report's
 `provenance.input.content_hash` pins `layout/logic_tile_routed.gds`
 (`ecf5be0a…`) or `layout/logic_tile_routed.def` (`0b8fa71b…`). Tools: klt
-**0.9.0** (the `flow/pdk.json` pin; the 2026-11-05 set ran a 0.9.1 dev
-build), OpenROAD `26Q4-1310-g98c6045c72`, gf180mcuD at open_pdks
+**0.9.0**, OpenROAD `26Q4-1310-g98c6045c72`, gf180mcuD at open_pdks
 `f6eeac7…`. Run on the batch fleet's heavy image via `repo-script-submit.py`
 (job `rs-20261120T230454Z-3a7acf33-s00`, 2026-11-20; the deployed AMI
 resolves no `PDK_ROOT`, so the job bootstrapped the pinned PDK with ciel
 into a run-local store) by `run-fleet.sh` + `requirements-fleet.txt` in this
 directory; nothing ran on a dispatch host.
+
+To reproduce the fleet run, use a checkout of `674e448` and submit
+`measurements/item5-24um/run-fleet.sh` with the adjacent
+`requirements-fleet.txt`. The script reads that checkout’s `flow/pdk.json`,
+which pins klt 0.9.0 and KLayout 0.30.12.
 
 | File | What |
 | --- | --- |

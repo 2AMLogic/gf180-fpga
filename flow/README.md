@@ -184,13 +184,14 @@ moved `klt_spec` to 0.9.2; the column labels below are relabelled so they still
 say which column is the pin. The probes themselves are unchanged 2026-11-14
 records.)
 
-**Environments.** Both columns were probed in throwaway `uvx` environments;
-nothing was installed host-wide.
+**Environments.** Both probes used throwaway `uvx` environments. At probe
+time, `source flow/klt.sh` selected klt 0.9.0. To reproduce either version
+check with the KLayout engine used in the probe, run the corresponding command.
 
-| Column | How it was entered | `klt --version` printed |
+| Column | Version probe | Output |
 | --- | --- | --- |
-| Pinned at probe time (the 0.9.0 column; the pin moved to 0.9.2 by issue #102 on 2026-11-26) | `source flow/klt.sh` (`klt_spec` = `klayout-tools==0.9.0` at probe time; enter the 0.9.0 column today with `uvx --from "klayout-tools==0.9.0"`) | `klt 0.9.0` |
-| Latest at probe time (the 0.9.2 column — the pin since issue #102) | `uvx --from "klayout-tools==0.9.2" --with "$KLAYOUT_SPEC" klt` | `klt 0.9.2` |
+| Pinned at probe time | `uvx --from 'klayout-tools==0.9.0' --with 'klayout==0.30.12' klt --version` | `klt 0.9.0` |
+| Latest at probe time, pinned since issue #102 | `uvx --from 'klayout-tools==0.9.2' --with 'klayout==0.30.12' klt --version` | `klt 0.9.2` |
 
 **The host `klt` was not used for any cell.** It is
 `klt 0.9.2.dev1029+g76f47afa48f1` (`/home/ubuntu/.local/bin/klt`) — a

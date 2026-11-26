@@ -10,7 +10,7 @@ pending on #27; it produces the measured evidence that decision waits on.
   All runs local and serial, in a scratch tree built by
   [`run-all.sh`](run-all.sh) laid out like this repo (the `run-synth.sh`
   discipline); nothing under `layout/`, `flow/` or `rtl/` was written.
-- **Tools**: `klt 0.9.0` (the `flow/pdk.json` pin at run time, via `flow/klt.sh`/uvx),
+- **Tools**: `klt 0.9.0` (pinned in `flow/pdk.json` at `674e448`),
   KLayout `0.30.12`, OpenROAD `26Q3-1510-g6cb3f2b704`, PDK `gf180mcuD`
   at open_pdks `f6eeac7…` (`flow/setup-pdk.sh --verify` clean). Every
   report's `provenance.klt_version` is `0.9.0`.
@@ -187,17 +187,23 @@ Findings posted on #27; no adoption issue is filed because nothing closes.
 
 ## 6. Reproducing
 
+Run these commands from the root of a checkout of `674e448`. It contains the
+recorded inputs and the `flow/klt.sh` wrapper that selects klt 0.9.0 with
+KLayout 0.30.12 for `run-all.sh`.
+
 ```sh
-measurements/item5-timing-iteration/run-all.sh TREE control
-measurements/item5-timing-iteration/run-all.sh TREE anatomy
-for V in v1 v2 v3 v4 v5 v6; do \
-  measurements/item5-timing-iteration/run-all.sh TREE variant $V; done
-measurements/item5-timing-iteration/run-all.sh TREE spef v6    # best variant
-measurements/item5-timing-iteration/run-all.sh TREE summary
+timing_tree=$(mktemp -d)
+measurements/item5-timing-iteration/run-all.sh "$timing_tree" control
+measurements/item5-timing-iteration/run-all.sh "$timing_tree" anatomy
+for V in v1 v2 v3 v4 v5 v6; do
+  measurements/item5-timing-iteration/run-all.sh "$timing_tree" variant "$V"
+done
+measurements/item5-timing-iteration/run-all.sh "$timing_tree" spef v6    # best variant
+measurements/item5-timing-iteration/run-all.sh "$timing_tree" summary
 ```
 
-`TREE` is a scratch directory (safely re-created once); needs the pinned
-PDK (`flow/setup-pdk.sh`), `jq`, `uvx`, `yosys`, `openroad`. One run per
-phase; v3/v5 consume v1's netlist inside the same tree. Wall clock on this
+The script needs the pinned PDK (`flow/setup-pdk.sh`), `jq`, `uvx`,
+`yosys` and `openroad`. Use the same scratch directory for every phase so
+v3 and v5 can use v1's netlist. Wall clock on this
 host: ~23 s per 15-corner STA, ~75–105 s per P&R; the whole record, ~15
 minutes of serial tool time.
