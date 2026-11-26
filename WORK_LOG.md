@@ -4,6 +4,10 @@ Chronological record of merged PRs and closed issues (maintained by the Guide ro
 
 ### 2026-11-26
 
+- **Issue #209** (closed): run-smoke.sh exits 0 and leaves empty records when klt place-and-route fails
+- **PR #210**: fix(flow): propagate smoke stage failures without truncating records
+- **Issue #205** (closed): Share the report path rewrite so checkout-local PDKs record $PDK_ROOT
+- **PR #206**: fix(flow): share the record path rewrite, $PDK_ROOT matched first
 - **Issue #201** (closed): Pin PYTHONHASHSEED in flow/tile/run-fabulous.sh so the generator record is byte-reproducible
 - **PR #204**: fix(flow): pin PYTHONHASHSEED for the FABulous generator run
 - **PR #202**: chore(flow): record the FABulous generator run under the fixed guard
