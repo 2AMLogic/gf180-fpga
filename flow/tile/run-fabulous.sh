@@ -20,9 +20,30 @@ cp -r "$src" "$scratch/proj"
   uvx --from "FABulous-FPGA==$ver" FABulous --log "$scratch/gen.log" script FABulous.tcl >/dev/null 2>&1 ) \
   || { echo "run-fabulous: generator failed (FABulous $ver)" >&2; exit 1; }
 
-# Vendored files must be byte-identical after the run; generated outputs
-# ("Only in") are expected.
-if diff -rq "$src" "$scratch/proj" | grep -v '^Only in'; then
+# Vendored files must be byte-identical after the run; files that only exist
+# in the scratch copy are generated outputs and expected. Each original is
+# compared directly (#196: a diff|grep filter cannot reject -- pipefail makes
+# the pipeline nonzero exactly when diff reports a difference).
+changed=0
+while IFS= read -r -d '' orig; do
+  rel="${orig#"$src"/}"
+  run_copy="$scratch/proj/$rel"
+  if [[ ! -e "$run_copy" ]]; then
+    echo "run-fabulous: vendored input missing after the run: $rel" >&2
+    changed=1
+    continue
+  fi
+  rc=0
+  cmp -s "$orig" "$run_copy" || rc=$?
+  if [[ $rc -eq 1 ]]; then
+    echo "run-fabulous: vendored input changed: $rel" >&2
+    changed=1
+  elif [[ $rc -ne 0 ]]; then
+    echo "run-fabulous: vendored input cannot be compared: $rel" >&2
+    changed=1
+  fi
+done < <(find "$src" -type f -print0)
+if [[ $changed -ne 0 ]]; then
   echo "run-fabulous: vendored description changed under FABulous $ver" >&2
   exit 3
 fi
