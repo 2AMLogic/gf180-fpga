@@ -12,24 +12,34 @@ here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$here/../klt.sh" || exit 2
 src="$here/../../rtl/common/fabulous"
 ver="$(sed -n "s/^FAB_PROJ_VERSION='\(.*\)'/\1/p" "$src/.FABulous/.env")"
-scratch="$(mktemp -d)"
+scratch="$(mktemp -d)" || exit 3
 trap 'rm -rf "$scratch"' EXIT
 
-cp -r "$src" "$scratch/proj"
+if ! cp -r "$src" "$scratch/proj"; then
+  echo "run-fabulous: cannot copy vendored description" >&2
+  exit 3
+fi
 ( cd "$scratch/proj" &&
   uvx --from "FABulous-FPGA==$ver" FABulous --log "$scratch/gen.log" script FABulous.tcl >/dev/null 2>&1 ) \
   || { echo "run-fabulous: generator failed (FABulous $ver)" >&2; exit 1; }
 
 # Vendored files must be byte-identical after the run; files that only exist
-# in the scratch copy are generated outputs and expected. Each original is
-# compared directly (#196: a diff|grep filter cannot reject -- pipefail makes
-# the pipeline nonzero exactly when diff reports a difference).
+# in the scratch copy are generated outputs and expected. Finish the walk
+# before comparing so a partial list cannot certify the vendored tree.
+if ! find "$src" -type f -print0 > "$scratch/inputs"; then
+  echo "run-fabulous: cannot enumerate vendored inputs" >&2
+  exit 3
+fi
 changed=0
 while IFS= read -r -d '' orig; do
   rel="${orig#"$src"/}"
   run_copy="$scratch/proj/$rel"
   if [[ ! -e "$run_copy" ]]; then
     echo "run-fabulous: vendored input missing after the run: $rel" >&2
+    changed=1
+    continue
+  elif [[ ! -f "$run_copy" ]]; then
+    echo "run-fabulous: vendored input cannot be compared: $rel" >&2
     changed=1
     continue
   fi
@@ -42,7 +52,7 @@ while IFS= read -r -d '' orig; do
     echo "run-fabulous: vendored input cannot be compared: $rel" >&2
     changed=1
   fi
-done < <(find "$src" -type f -print0)
+done < "$scratch/inputs" || exit 3
 if [[ $changed -ne 0 ]]; then
   echo "run-fabulous: vendored description changed under FABulous $ver" >&2
   exit 3

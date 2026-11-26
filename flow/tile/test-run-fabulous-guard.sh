@@ -2,9 +2,7 @@
 # PDK-free, network-free regression test for the vendored-input guard in
 # flow/tile/run-fabulous.sh (issue #196): the success record may only be
 # written when every original vendored file survives the generator run
-# byte-identical. FABulous itself is stubbed (uvx on PATH) and told, per case,
-# to leave the scratch copy alone, add a generated file, edit an input,
-# remove an input or replace one with a directory; klt is stubbed via a
+# byte-identical. The fixtures use a stub generator (uvx on PATH) and a
 # scratch flow/klt.sh. Nothing is fetched and no PDK is read.
 #
 #   flow/tile/test-run-fabulous-guard.sh
@@ -53,6 +51,7 @@ case "${FAB_STUB_MODE:-clean}" in
   edit) printf 'mutated\n' >> fabric.csv ;;
   remove) rm .FABulous/.env ;;
   swap) rm empty.cfg && mkdir empty.cfg ;;
+  fifo) rm empty.cfg && mkfifo empty.cfg ;;
   *) echo "uvx stub: unknown FAB_STUB_MODE '$FAB_STUB_MODE'" >&2; exit 2 ;;
 esac
 exit 0
@@ -68,7 +67,7 @@ run_wrapper() { # $1 = FAB_STUB_MODE
   rm -rf "$work/flow/tile/records" "$work/klt-calls"
   ( cd "$work" &&
     FAB_STUB_MODE="$1" KLT_CALL_LOG="$work/klt-calls" \
-    PATH="$work/bin:$PATH" bash flow/tile/run-fabulous.sh ) \
+    PATH="$work/bin:$PATH" timeout 5 bash flow/tile/run-fabulous.sh ) \
     >"$work/stdout" 2>"$work/stderr" || rc=$?
   RUN_RC=$rc
 }
@@ -102,5 +101,34 @@ run_wrapper swap
 [[ $RUN_RC -eq 3 ]] || fail "uncomparable input: expected exit 3, got $RUN_RC: $(cat "$work/stderr")"
 [[ ! -e $record ]] || fail "uncomparable input: record written"
 grep -q 'cannot be compared: empty.cfg' "$work/stderr" || fail "uncomparable input: stderr does not name the file: $(cat "$work/stderr")"
+
+# 6. a FIFO must be rejected before cmp opens it and blocks
+run_wrapper fifo
+[[ $RUN_RC -eq 3 ]] || fail "FIFO input: expected exit 3, got $RUN_RC"
+[[ ! -e $record ]] || fail "FIFO input: record written"
+grep -q 'cannot be compared: empty.cfg' "$work/stderr" || fail "FIFO input: stderr does not name the file"
+
+# 7. simulate a partial file walk, independent of the user's permissions
+cat > "$work/bin/find" <<'EOF'
+#!/usr/bin/env bash
+printf '%s\0' "$1/fabric.csv"
+exit 1
+EOF
+chmod +x "$work/bin/find"
+run_wrapper clean
+[[ $RUN_RC -eq 3 ]] || fail "incomplete file walk: expected exit 3, got $RUN_RC"
+[[ ! -e $record ]] || fail "incomplete file walk: record written"
+rm "$work/bin/find"
+
+# 8. a failing copy can leave a usable project behind
+cat > "$work/bin/cp" <<'EOF'
+#!/usr/bin/env bash
+command -p cp "$@"
+exit 1
+EOF
+chmod +x "$work/bin/cp"
+run_wrapper clean
+[[ $RUN_RC -eq 3 ]] || fail "failed copy: expected exit 3, got $RUN_RC"
+[[ ! -e $record ]] || fail "failed copy: record written"
 
 echo "ok"
