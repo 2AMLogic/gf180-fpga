@@ -1,1 +1,3 @@
 .klt/
+# run-smoke.sh stage output in flight (removed on exit; ignored if a killed run leaves it)
+records/.smoke-run.*/
