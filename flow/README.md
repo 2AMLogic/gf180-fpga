@@ -166,6 +166,11 @@ comb loops / multi-driven nets. `logic_tile.v` is not instantiated by the top.
 vendored description (`records/fabulous-gen.txt`): it completes and changes no
 vendored file, so no decision record is needed (ADR-0001's deferred question).
 `nextpnr-generic` is absent here, so only the fabric generator stage ran.
+(2026-11-26: that record predates the input-guard fix in #196 — the diff
+filter it relied on could never reject, so the "changes no vendored file"
+claim is unverified until the run is repeated; the corrected guard is
+regression-tested without FABulous in `flow/tile/test-run-fabulous-guard.sh`
+(CI `flow-scripts` job), and the fresh run is tracked in #197.)
 
 `flow/tile/attest/item1.json` is the item-1 inventory; the passing envelope is
 `flow/tile/records/item1-attest.json` (`klt signoff --attest 1 --inventory
