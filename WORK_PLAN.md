@@ -55,12 +55,12 @@ Issues carrying `loom:curated`.
 - **#27**: T1 item 5 (corner verification): klt sta on the routed tile at all 15 mcu7t5v0 corners plus klt functional-verification of the stamped bitstream-level tests *(curated)*
 - **#62**: Run PDK-dependent checks after klt single-sourcing (PR #61) *(curated)*
 - **#93**: Decide whether par.json should pin the tapcell master (library.tapcell.master) rather than inherit klt's per-library default *(curated)*
-- **#102**: Decide on bumping klt_spec 0.9.0 -> 0.9.2: it unblocks the #4986 crosscheck envelope and the #5006 Verilog-bench evidence *(curated)*
 - **#143**: Publish a cost-per-LUT estimate for the fabric *(curated)*
 
 ## Proposed (Architect / Hermit)
 
-_None._
+- **#193**: Replay the committed anatomy request and stage only its SPEF *(hermit)*
+- **#196**: Compare vendored FABulous inputs directly before recording generator success *(hermit)*
 
 ## Epics
 
@@ -77,7 +77,7 @@ _None._
 | In Progress (`loom:building`) | 2 |
 | PRs awaiting review | 2 |
 | Approved PRs awaiting merge | 1 |
-| Curated | 6 |
-| Architect / Hermit proposals | 0 |
+| Curated | 5 |
+| Architect / Hermit proposals | 2 |
 | Active epics | 0 |
 <!-- guide:plan-body:end -->
