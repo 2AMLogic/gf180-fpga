@@ -19,12 +19,14 @@ Judge-approved PRs under a hold (`loom:blocked` or `loom:operator`) — only a h
 
 `loom:important`; taken before unlabelled work.
 
+- **#102**: Decide on bumping klt_spec 0.9.0 -> 0.9.2: it unblocks the #4986 crosscheck envelope and the #5006 Verilog-bench evidence
 - **#162**: Item 7 probe: emit per-corner SDFs from the routed tile with klt sta and run tb_logic_tile_routed SDF-annotated through klt functional-verification
 
 ## Ready
 
 Human-approved issues ready for implementation (`loom:issue`).
 
+- **#102**: Decide on bumping klt_spec 0.9.0 -> 0.9.2: it unblocks the #4986 crosscheck envelope and the #5006 Verilog-bench evidence
 - **#162**: Item 7 probe: emit per-corner SDFs from the routed tile with klt sta and run tb_logic_tile_routed SDF-annotated through klt functional-verification
 
 ## In Progress
@@ -60,7 +62,7 @@ Issues carrying `loom:curated`.
 
 ## Proposed (Architect / Hermit)
 
-_None._
+- **#193**: Replay the committed anatomy request and stage only its SPEF *(hermit)*
 
 ## Epics
 
@@ -72,12 +74,12 @@ _None._
 |------|-------|
 | Operator merge-risk holds | 1 |
 | Very important | 1 |
-| Important | 1 |
-| Ready (`loom:issue`) | 1 |
+| Important | 2 |
+| Ready (`loom:issue`) | 2 |
 | In Progress (`loom:building`) | 2 |
 | PRs awaiting review | 2 |
 | Approved PRs awaiting merge | 1 |
 | Curated | 6 |
-| Architect / Hermit proposals | 0 |
+| Architect / Hermit proposals | 1 |
 | Active epics | 0 |
 <!-- guide:plan-body:end -->
