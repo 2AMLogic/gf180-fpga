@@ -1,5 +1,6 @@
 # FABulous 2.2.0 generator run on rtl/common/fabulous (flow/tile/run-fabulous.sh)
 # exit 0; no vendored file differs after the run
+# PYTHONHASHSEED=0 (pinned by the wrapper so the tile order in this log is reproducible)
 INFO | Resolved yosys path: <host>/yosys
 INFO | Resolved sta path: None
 WARNING | sta not found in PATH during settings initialisation. Some features may be unavailable.
@@ -39,46 +40,7 @@ WARNING | The 'run_FABulous_fabric' command is deprecated. Use 'run_fab' instead
 INFO | Running FABulous
 INFO | Generating fabric eFPGA
 INFO | Generating all tiles
-INFO | Generating tile CAP_N CAP_W CAP_E LOGIC4 CAP_S
-INFO | Generating switch matrix for CAP_N
-INFO | Generating switch matrix for CAP_N
-INFO | Output file: <scratch>/proj/Tile/CAP_N/CAP_N_switch_matrix.v
-INFO | Generate switch matrix debug signals: False
-INFO | Switch matrix generation complete
-INFO | Generating Config Memory for CAP_N
-INFO | Generating configMem for CAP_N
-INFO | Output file: <scratch>/proj/Tile/CAP_N/CAP_N_ConfigMem.v
-INFO | No config bits defined and no bitstream mapping file provided for CAP_N
-INFO | ConfigMem generation complete
-INFO | Generating tile CAP_N
-INFO | Output file: <scratch>/proj/Tile/CAP_N/CAP_N.v
-INFO | Generated tile CAP_N
-INFO | Generating switch matrix for CAP_W
-INFO | Generating switch matrix for CAP_W
-INFO | Output file: <scratch>/proj/Tile/CAP_W/CAP_W_switch_matrix.v
-INFO | Generate switch matrix debug signals: False
-INFO | Switch matrix generation complete
-INFO | Generating Config Memory for CAP_W
-INFO | Generating configMem for CAP_W
-INFO | Output file: <scratch>/proj/Tile/CAP_W/CAP_W_ConfigMem.v
-INFO | No config bits defined and no bitstream mapping file provided for CAP_W
-INFO | ConfigMem generation complete
-INFO | Generating tile CAP_W
-INFO | Output file: <scratch>/proj/Tile/CAP_W/CAP_W.v
-INFO | Generated tile CAP_W
-INFO | Generating switch matrix for CAP_E
-INFO | Generating switch matrix for CAP_E
-INFO | Output file: <scratch>/proj/Tile/CAP_E/CAP_E_switch_matrix.v
-INFO | Generate switch matrix debug signals: False
-INFO | Switch matrix generation complete
-INFO | Generating Config Memory for CAP_E
-INFO | Generating configMem for CAP_E
-INFO | Output file: <scratch>/proj/Tile/CAP_E/CAP_E_ConfigMem.v
-INFO | No config bits defined and no bitstream mapping file provided for CAP_E
-INFO | ConfigMem generation complete
-INFO | Generating tile CAP_E
-INFO | Output file: <scratch>/proj/Tile/CAP_E/CAP_E.v
-INFO | Generated tile CAP_E
+INFO | Generating tile LOGIC4 CAP_S CAP_W CAP_N CAP_E
 INFO | Generating switch matrix for LOGIC4
 INFO | Generating switch matrix for LOGIC4
 INFO | Output file: <scratch>/proj/Tile/LOGIC4/LOGIC4_switch_matrix.v
@@ -110,6 +72,45 @@ INFO | ConfigMem generation complete
 INFO | Generating tile CAP_S
 INFO | Output file: <scratch>/proj/Tile/CAP_S/CAP_S.v
 INFO | Generated tile CAP_S
+INFO | Generating switch matrix for CAP_W
+INFO | Generating switch matrix for CAP_W
+INFO | Output file: <scratch>/proj/Tile/CAP_W/CAP_W_switch_matrix.v
+INFO | Generate switch matrix debug signals: False
+INFO | Switch matrix generation complete
+INFO | Generating Config Memory for CAP_W
+INFO | Generating configMem for CAP_W
+INFO | Output file: <scratch>/proj/Tile/CAP_W/CAP_W_ConfigMem.v
+INFO | No config bits defined and no bitstream mapping file provided for CAP_W
+INFO | ConfigMem generation complete
+INFO | Generating tile CAP_W
+INFO | Output file: <scratch>/proj/Tile/CAP_W/CAP_W.v
+INFO | Generated tile CAP_W
+INFO | Generating switch matrix for CAP_N
+INFO | Generating switch matrix for CAP_N
+INFO | Output file: <scratch>/proj/Tile/CAP_N/CAP_N_switch_matrix.v
+INFO | Generate switch matrix debug signals: False
+INFO | Switch matrix generation complete
+INFO | Generating Config Memory for CAP_N
+INFO | Generating configMem for CAP_N
+INFO | Output file: <scratch>/proj/Tile/CAP_N/CAP_N_ConfigMem.v
+INFO | No config bits defined and no bitstream mapping file provided for CAP_N
+INFO | ConfigMem generation complete
+INFO | Generating tile CAP_N
+INFO | Output file: <scratch>/proj/Tile/CAP_N/CAP_N.v
+INFO | Generated tile CAP_N
+INFO | Generating switch matrix for CAP_E
+INFO | Generating switch matrix for CAP_E
+INFO | Output file: <scratch>/proj/Tile/CAP_E/CAP_E_switch_matrix.v
+INFO | Generate switch matrix debug signals: False
+INFO | Switch matrix generation complete
+INFO | Generating Config Memory for CAP_E
+INFO | Generating configMem for CAP_E
+INFO | Output file: <scratch>/proj/Tile/CAP_E/CAP_E_ConfigMem.v
+INFO | No config bits defined and no bitstream mapping file provided for CAP_E
+INFO | ConfigMem generation complete
+INFO | Generating tile CAP_E
+INFO | Output file: <scratch>/proj/Tile/CAP_E/CAP_E.v
+INFO | Generated tile CAP_E
 INFO | Tile generation complete
 INFO | All tiles generation complete
 INFO | Output file: <scratch>/proj/Fabric/eFPGA.v

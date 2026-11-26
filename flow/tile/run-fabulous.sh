@@ -6,6 +6,10 @@
 # vendored tree is never written; fails if the run changes any vendored file.
 #
 #   flow/tile/run-fabulous.sh    writes flow/tile/records/fabulous-gen.txt
+#
+# The generator runs under a pinned PYTHONHASHSEED (the caller's value is
+# overridden): FABulous builds its tile list from a set, so without the pin
+# the tile order in the log changes with every run (issue #201).
 set -uo pipefail
 
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -14,13 +18,14 @@ src="$here/../../rtl/common/fabulous"
 ver="$(sed -n "s/^FAB_PROJ_VERSION='\(.*\)'/\1/p" "$src/.FABulous/.env")"
 scratch="$(mktemp -d)" || exit 3
 trap 'rm -rf "$scratch"' EXIT
+hashseed=0
 
 if ! cp -r "$src" "$scratch/proj"; then
   echo "run-fabulous: cannot copy vendored description" >&2
   exit 3
 fi
 ( cd "$scratch/proj" &&
-  uvx --from "FABulous-FPGA==$ver" FABulous --log "$scratch/gen.log" script FABulous.tcl >/dev/null 2>&1 ) \
+  env PYTHONHASHSEED="$hashseed" uvx --from "FABulous-FPGA==$ver" FABulous --log "$scratch/gen.log" script FABulous.tcl >/dev/null 2>&1 ) \
   || { echo "run-fabulous: generator failed (FABulous $ver)" >&2; exit 1; }
 
 # Vendored files must be byte-identical after the run; files that only exist
@@ -60,5 +65,6 @@ fi
 mkdir -p "$here/records"
 { echo "# FABulous $ver generator run on rtl/common/fabulous (flow/tile/run-fabulous.sh)"
   echo "# exit 0; no vendored file differs after the run"
+  echo "# PYTHONHASHSEED=$hashseed (pinned by the wrapper so the tile order in this log is reproducible)"
   sed -e "s#$scratch#<scratch>#g" -e 's#path: /[^ ]*/#path: <host>/#' "$scratch/gen.log"; } > "$here/records/fabulous-gen.txt"
 klt env-provenance scan "$here/records/fabulous-gen.txt"
